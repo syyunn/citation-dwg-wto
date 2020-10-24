@@ -1,0 +1,72 @@
+\documentclass[12pt,letterpaper]{article}
+
+\PassOptionsToPackage{hyphens}{url}\usepackage[pdftex, bookmarksopen=true, bookmarksnumbered=true,
+pdfstartview=FitH, breaklinks=true, urlbordercolor={0 1 0}, citebordercolor={0 0 1}]{hyperref}
+
+%% === MGNS ===
+\addtolength{\hoffset}{-0.75in} \addtolength{\voffset}{-1.25in}
+\addtolength{\textwidth}{1.5in} \addtolength{\textheight}{2.25in}
+
+% == ENVS ==
+\newenvironment{tightcenter}{%
+  \setlength\topsep{0pt}
+  \setlength\parskip{0pt}
+  \begin{center}
+}{%
+  \end{center}
+}
+
+% == PACKS ==
+\usepackage{color,soul}
+\usepackage{graphicx}
+\usepackage{calc} % To scale \pagewidth with \real{float}
+\usepackage{pgfplots} % To draw histogram
+% == BIBS ==
+\usepackage{natbib}
+\bibliographystyle{apsr}
+
+% == SPACES == 
+
+% == CMMDS ==
+\newcommand{\tit}{\bf 
+
+Mapping Citation Pattern in the World Trade Organization
+}
+\newcommand\spacingset[1]{\renewcommand{\baselinestretch}
+{#1}\small\normalsize}
+
+% == START (PageCounter, Mode)
+\begin{document}
+\spacingset{1.25}
+
+\setcounter{page}{0}
+\vspace{-.1in}
+
+% == TITLE (includes DraftDate)
+{\title{
+\tit
+% \thanks{Thanks to everyone in KimResearch Group}
+}
+\author{Suyeol Yun
+% \thanks{Applicant. No Affiliates. Email: \href{mailto:syyun@snu.ac.kr}{syyun@snu.ac.kr}}}
+% \date{First Draft: October 2, 2020\\ This Draft: \today
+}
+\maketitle
+}
+
+\thispagestyle{empty}
+\vspace{-.1in}
+
+\begin{abstract}
+
+Understanding complex citation pattern in the international legal system is quite complex to understand.
+To address this issue, this paper introduces new methods to rebuild the systematic association between the articles in the World Trad Organization. By explictly showing that one needs to use the text information in the dispute and legal text to completely recover the citation pattern, this research introduces deep neural network to do that. After that, we are engaging machine learning algorithm to extract the citation pattern lying in the citation pattern predicted by the neural network. By doing so, this paper introduces clusters that are found by this method that are well capturing the most important principle in the World Trade Organization.
+
+\end{abstract}
+
+\spacingset{1.5}
+% \clearpage % let the firs page only include abstract
+
+
+% == END
+\end{document}
