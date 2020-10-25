@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.10.24)  25 OCT 2020 20:08
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.10.24)  25 OCT 2020 20:19
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -508,12 +508,7 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <1> not available
 (Font)              size <5> substituted on input line 17.
 
-) (/Users/suyeol/citation-dwg-wto/pred.tex)
-Overfull \hbox (2.61108pt too wide) in paragraph at lines 137--152
-[][]  [] 
- []
-
-[1] [2 </Users/suyeol/citation-dwg-wto/co-citation-004.png> </Users/suyeol/citation-dwg-wto/pred-000.png>]
+) (/Users/suyeol/citation-dwg-wto/pred.tex) [1] [2 </Users/suyeol/citation-dwg-wto/co-citation-004.png> </Users/suyeol/citation-dwg-wto/pred-000.png>]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 157.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 157.
  (/Users/suyeol/citation-dwg-wto/main.aux)
@@ -537,7 +532,7 @@ Here is how much of TeX's memory you used:
  1141 hyphenation exceptions out of 8191
  74i,15n,127p,795b,2625s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb>
-Output written on /Users/suyeol/citation-dwg-wto/main.pdf (3 pages, 85550 bytes).
+Output written on /Users/suyeol/citation-dwg-wto/main.pdf (3 pages, 85557 bytes).
 PDF statistics:
  73 PDF objects out of 1000 (max. 8388607)
  59 compressed objects within 1 object stream
