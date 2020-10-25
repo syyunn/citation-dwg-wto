@@ -1,7 +1,7 @@
 # Fdb version 3
-["pdflatex"] 1603536379 "/Users/suyeol/citation-dwg-wto/main.tex" "/Users/suyeol/citation-dwg-wto/main.pdf" "main" 1603598098
-  "/Users/suyeol/citation-dwg-wto/main.aux" 1603598097 678 052b82f1e05d44f33077810328f40277 ""
-  "/Users/suyeol/citation-dwg-wto/main.tex" 1603598097 2278 0b2cb8cedd6b64c5f24fb002da8db9c9 ""
+["pdflatex"] 1603598743 "/Users/suyeol/citation-dwg-wto/main.tex" "/Users/suyeol/citation-dwg-wto/main.pdf" "main" 1603598750
+  "/Users/suyeol/citation-dwg-wto/main.aux" 1603598744 1218 22a4459c1cd93d8d811d2ab8fe0a6bdc ""
+  "/Users/suyeol/citation-dwg-wto/main.tex" 1603598749 4787 9dd463ed0a2a2e21f7ae7f588dab1392 ""
   "/usr/local/texlive/2020/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2020/texmf-dist/fonts/tfm/jknappen/ec/ectt1000.tfm" 1136768653 1536 06717a2b50de47d4087ac0e6cd759455 ""
   "/usr/local/texlive/2020/texmf-dist/fonts/tfm/public/cm/cmbx10.tfm" 1136768653 1328 c834bbb027764024c09d3d2bf908b5f0 ""
@@ -62,13 +62,13 @@
   "/usr/local/texlive/2020/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1586288239 4811913 0be9a7e86c70a26e5e3042966bcd7097 ""
   "/usr/local/texlive/2020/texmf-var/web2c/pdftex/pdflatex.fmt" 1603531355 2430747 bf23b900e495217cba3f02c56aab6874 ""
   "/usr/local/texlive/2020/texmf.cnf" 1603531331 601 8db5f70083aa387e359b864af31d4495 ""
-  "main.aux" 1603598097 678 052b82f1e05d44f33077810328f40277 "pdflatex"
-  "main.out" 1603598097 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
-  "main.tex" 1603598097 2278 0b2cb8cedd6b64c5f24fb002da8db9c9 ""
+  "main.aux" 1603598744 1218 22a4459c1cd93d8d811d2ab8fe0a6bdc "pdflatex"
+  "main.out" 1603598744 235 ce617bfe9cf28d579f48b9b25bd5733e "pdflatex"
+  "main.tex" 1603598749 4787 9dd463ed0a2a2e21f7ae7f588dab1392 ""
   (generated)
-  "/Users/suyeol/citation-dwg-wto/main.log"
   "main.pdf"
   "main.log"
+  "main.out"
+  "/Users/suyeol/citation-dwg-wto/main.log"
   "/Users/suyeol/citation-dwg-wto/main.pdf"
   "main.aux"
-  "main.out"
