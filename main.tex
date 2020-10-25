@@ -21,10 +21,18 @@ pdfstartview=FitH, breaklinks=true, urlbordercolor={0 1 0}, citebordercolor={0 0
 \usepackage{color,soul}
 \usepackage{graphicx}
 \usepackage{calc} % To scale \pagewidth with \real{float}
-% \usepackage{pgfplots} % To draw histogram
-% \pgfplotsset{compat=1.17} % request specific version of pgfplots
+\usepackage{pgfplots} % To draw histogram
+\pgfplotsset{compat=1.17} % request specific version of pgfplots
+\usepackage{calc} % to use \real for text -> numeric
+\usepackage{pgf} % to store numeric variables
+\usepackage{subcaption} % to place two figures horizontally
 
-% == BIBS ==
+
+\usepackage{tikz}
+\tikzset{
+  font={\fontsize{1pt}{0}\selectfont}}
+
+  % == BIBS ==
 \usepackage{natbib}
 \bibliographystyle{apsr}
 
@@ -37,6 +45,9 @@ Mapping Citation Pattern of Legal Claims in the WTO Using Deep Nerual Network
 }
 \newcommand\spacingset[1]{\renewcommand{\baselinestretch}
 {#1}\small\normalsize}
+
+% == VARS == 
+\pgfmathsetmacro{\heatmap}{1}
 
 % == START (PageCounter, Mode)
 \begin{document}
@@ -63,7 +74,7 @@ Mapping Citation Pattern of Legal Claims in the WTO Using Deep Nerual Network
 
 \begin{abstract}
 
-  Countries' citation pattern in the World Trad Organization (WTO) is quite complex to understand. 
+  Countries' citation pattern in the World Trad Organization (WTO) is quite complex to understand.
   Since this citation pattern shows how countries are understanding this system and acts upon it,
   this is important to recover this pattern efficiently. To address this issue, this paper introduces new methods to map the systematic association between the articles in the World Trad Organization.
   By explictly showing that one needs to use the text information in the dispute and legal text to completely recover the citation pattern,
@@ -104,7 +115,7 @@ I explitly used the content of the dispute and the articles of the WTO agreement
 
 Moreover, to populate this network, I used 80 GATT 1994 Articles or Paragraph in the Article with 143 Trade Disputes from 1995 to 2018 where the Panel reports exists.
 
-Through this paper I found how wto works. 
+Through this paper I found how wto works.
 Moreover, this complexity efficietnly caputred by this mthod could address the legal capcity problem in the WTO.
 
 \section{Data}
@@ -118,6 +129,28 @@ No Greeks. English. Three Networks.
 
 \section{Conclusion}
 I show how WTO works.
+
+
+\section{Appendix}
+
+\begin{figure}[!tbp]
+  \begin{subfigure}[b]{0.5\textwidth}
+    \centering{
+      \resizebox{\textwidth*\real{\heatmap}}{\textwidth*\real{\heatmap} * \real{1.7889}}{\input{co-citation.tex}}
+      \caption{Co-citation Matrix}
+    }
+    \label{fig:f1}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[b]{0.5\textwidth}
+    \centering{
+      \resizebox{\textwidth*\real{\heatmap}}{\textwidth*\real{\heatmap} * \real{1.7889}}{\input{pred.tex}}
+      \caption{Prediction Matrix}
+    }
+    \label{fig:f2}
+  \end{subfigure}
+  \caption{\bf Spare \& Dense Representation}
+\end{figure}
 
 
 % == END
