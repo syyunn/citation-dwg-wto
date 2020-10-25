@@ -1,0 +1,31 @@
+\begin{tikzpicture}[>={Stealth[color=black]},shorten >=1pt,node distance=2cm,on grid,initial/.style={}]
+        \node[state, label=above:$P1$] (T1) {$T1$};
+        \node[state, label=95:$P3$] (T4) [below =of T1] {$T4$};
+        \node[state, label=above:$P2$] (T3) [left  =of T4] {$T3$};
+        \node[state, label=above:$P1$] (T2) [left  =of T3] {$T2$};
+        \node[state, label=above:$P3$] (T5) [right =of T4] {$T5$};
+        \node[state, label=above:$P3$] (T6) [right =of T5] {$T6$};
+        \node[state, label=120:$P1$] (T8) [below =of T4] {$T8$};
+        \node[state, label=95:$P2$] (T7) [left  =of T8] {$T7$};
+        \node[state, label=85:$P2$] (T9) [right =of T8] {$T9$};
+        \node[state, label=95:$P2$] (T10) [below =of T8] {$T10$};
+        \begin{scope}[every edge/.append style={->, double=black, draw=white}]
+          \path (T1)
+            edge   (T2)
+            edge   (T3)
+            edge   (T4)
+            edge   (T5)
+            edge   (T6);
+          \path (T2)
+            edge   (T8)
+            edge   (T9);
+          \path (T3) edge   (T7);
+          \path (T4) edge   (T8);
+          \path (T4) edge   (T9);
+          \path (T5) edge   (T9);
+          \path (T6) edge   (T8);
+          \path (T7) edge   (T10);
+          \path (T8) edge   (T10);
+          \path (T9) edge   (T10);
+        \end{scope}
+      \end{tikzpicture}

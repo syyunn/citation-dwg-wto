@@ -26,11 +26,11 @@ pdfstartview=FitH, breaklinks=true, urlbordercolor={0 1 0}, citebordercolor={0 0
 \usepackage{calc} % to use \real for text -> numeric
 \usepackage{pgf} % to store numeric variables
 \usepackage{subcaption} % to place two figures horizontally
-
-
 \usepackage{tikz}
+\usetikzlibrary{automata,positioning}
+\usetikzlibrary{arrows.meta, positioning, automata}
 \tikzset{
-  font={\fontsize{1pt}{0}\selectfont}}
+  font={\fontsize{10pt}{0}\selectfont}}
 
   % == BIBS ==
 \usepackage{natbib}
@@ -151,6 +151,9 @@ I show how WTO works.
   \end{subfigure}
   \caption{\bf Spare \& Dense Representation}
 \end{figure}
+
+\input{market_access.tex}
+
 
 
 % == END
