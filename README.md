@@ -6,3 +6,5 @@ LaTex work to summarize how to recover citation directed weighted graph formulat
 - [ ] Draft out the Subsystem with w/o Edges 
 - [ ] Details out the Subsystem with w/ Edges (e.g. "Hypothetical Test")
 - [ ] Measure the Outdegree to explain the Importance with SIZE (as a visual cue)
+- [ ] Clarify the edge-directve: For A->B, A is required to Clarify the Meaning of the B.
+- [ ] Highlight Important Node w/ Colored border

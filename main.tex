@@ -31,6 +31,24 @@ pdfstartview=FitH, breaklinks=true, urlbordercolor={0 1 0}, citebordercolor={0 0
 \usetikzlibrary{arrows.meta, positioning, automata}
 \tikzset{
   font={\fontsize{10pt}{0}\selectfont}}
+\usepackage{forest}
+\tikzset{
+  Decision/.style = {%
+    draw,
+    line width=1.4pt
+  },
+  Lottery/.style = {%
+    draw,
+    line width=1.4pt
+  },
+  Outcome/.style = {%
+    circle,
+    minimum width=3pt,
+    fill,
+    inner sep=0pt
+  }
+}
+
 
   % == BIBS ==
 \usepackage{natbib}
@@ -73,7 +91,7 @@ Mapping Citation Pattern of Legal Claims in the WTO Using Deep Nerual Network
 \vspace{-.1in}
 
 \begin{abstract}
-
+tt
   Countries' citation pattern in the World Trad Organization (WTO) is quite complex to understand.
   Since this citation pattern shows how countries are understanding this system and acts upon it,
   this is important to recover this pattern efficiently. To address this issue, this paper introduces new methods to map the systematic association between the articles in the World Trad Organization.
@@ -132,7 +150,7 @@ I show how WTO works.
 
 
 \section{Appendix}
-
+% == HEATMAP MATRIX == 
 \begin{figure}[!tbp]
   \begin{subfigure}[b]{0.49\textwidth}
     \centering{
@@ -152,8 +170,14 @@ I show how WTO works.
   \caption{\bf Spare \& Dense Representation}
 \end{figure}
 
-\input{market_access.tex}
-
+% == THREE SUBSYSTEM == 
+\begin{figure}
+  \centering{
+    \input{market_access.tex}
+  }
+  \caption{Market Access}
+  \label{fig:f2}
+\end{figure}
 
 
 % == END
