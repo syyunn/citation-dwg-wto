@@ -7,3 +7,6 @@ __pycache__
 *.log
 *.out
 *.synctex.gz
+*.bbl
+*.blg
+main.pdf
