@@ -3,3 +3,5 @@ LaTex work to summarize how to recover citation directed weighted graph formulat
 
 ## ToDos
 - [ ] Add Legend to Co-citation & Pred Figure (colorbar)
+- [ ] Draft out the Subsystem with w/o Edges 
+- [ ] Details out the Subsystem with w/ Edges (e.g. "Hypothetical Test")
