@@ -1,0 +1,27 @@
+\begin{tikzpicture}[>={Stealth[color=black]},shorten >=1pt,node distance=2cm,on grid,initial/.style={}]
+  \node[state, label=right:Interpretation of Tariff Concession] (T1) {II:1};
+  \node[state, label=left:General Elimination of Quantitative Restrictions] at ([shift=({240:3 cm})]T1) (T4) {XI:1};
+  \node[state, label=right:Fair Adminstration of Laws and Regulations] at ([shift=({240:3 cm})]T4) (T5) {X:3(a)};
+  \node[state, label=above:Non-discriminatory Administration of Quantitative Restrictions] at ([shift=({100:6 cm})]T4) (T7) {XIII:1};
+  \node[state, label=right:National Treatment on Internal Taxation] at ([shift=({10:2.5 cm})]T4) (T6) {III:2};
+  \node[state, label=above:Fees Connected with Importation and Exportation] at ([shift=({150:5.5 cm})]T4) (T8) {VIII};
+
+  \begin{scope}[every edge/.append style={-, double=black, draw=white}] % for directed edge, change "style={->, double=black, draw=white}]"
+    \path (T1)
+    edge   (T4)
+    edge   (T6);
+    \path (T4)
+    edge   (T5)
+    edge   (T6)
+    edge   (T7);
+    \path (T5)
+    edge   (T6);
+    \path (T8)
+    edge   (T7)
+    edge   (T1)
+    edge   (T6);
+
+  \end{scope}
+\end{tikzpicture}
+
+% to draw the node's border w/ color, refer to https://tex.stackexchange.com/questions/438412/how-to-add-border-to-a-node
