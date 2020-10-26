@@ -1,0 +1,2 @@
+- [ ] Political Implication of the Legal Citation Pattern
+- [ ] Collective Understanding or Shared Understanding Over Regime Between Countries

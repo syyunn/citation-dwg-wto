@@ -8,3 +8,4 @@ LaTex work to summarize how to recover citation directed weighted graph formulat
 - [ ] Measure the Outdegree to explain the Importance with SIZE (as a visual cue)
 - [ ] Clarify the edge-directve: For A->B, A is required to Clarify the Meaning of the B.
 - [ ] Highlight Important Node w/ Colored border
+- [ ] Add Captions to Market Access
