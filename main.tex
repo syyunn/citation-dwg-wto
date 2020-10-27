@@ -49,6 +49,7 @@ pdfstartview=FitH, breaklinks=true, urlbordercolor={0 1 0}, citebordercolor={0 0
   }
 }
 \usepackage{csquotes}
+\usepackage{lipsum}
 
 
 
@@ -90,14 +91,13 @@ Mapping Regulatory Network of WTO Dispute Settlement Body Using Deep Learning
 \vspace{-.1in}
 
 \begin{abstract}
-
+  \lipsum[1]
 \end{abstract}
 
 \spacingset{1.5} % gives a slightly more margin between abstract and introduction
 
-\section{Tree of Contents}
-
-\input{forest.tex}
+% \section{Tree of Contents}
+% \input{forest.tex}
 
 \section{Introduction}
 
@@ -107,9 +107,10 @@ Mapping Regulatory Network of WTO Dispute Settlement Body Using Deep Learning
 \input{Introduction/motiviation.tex}
 \input{Introduction/diffcult-to-map.tex}
 
-\input{Introduction/solution.tex}
-\input{Introduction/three-distinctive-cluster.tex}
-\input{Introduction/conclusion.tex}
+\input{Introduction/solution/proxy-and-justification.tex}
+
+% \input{Introduction/three-distinctive-cluster.tex}
+% \input{Introduction/conclusion.tex}
 
 \section{Data}
 Privide a running example that explains how to works. (Borrow from previous paper)
@@ -147,7 +148,7 @@ No Greeks. English. Three Networks.
     \input{market_access.tex}
   }
   \caption{Market Access}
-  \label{fig:f2}
+  \label{fig:market-aceess}
 \end{figure}
 
 
