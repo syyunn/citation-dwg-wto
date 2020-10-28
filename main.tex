@@ -1,12 +1,21 @@
 \documentclass[12pt,letterpaper]{article}
 
 \PassOptionsToPackage{hyphens}{url}
-\usepackage[pdftex, bookmarksopen=true, bookmarksnumbered=true,
-pdfstartview=FitH, breaklinks=true, urlbordercolor={0 1 0}, citebordercolor={0 0 1}]{hyperref}
+\usepackage[
+  pdftex, 
+  bookmarksopen=true, 
+  bookmarksnumbered=true,
+  pdfstartview=FitH, 
+  breaklinks=true, 
+  urlbordercolor={0 1 0}, 
+  citebordercolor={0 0 1}]
+  {hyperref}
 
 % === MARGINS ===
-\addtolength{\hoffset}{-0.75in} \addtolength{\voffset}{-1.25in}
-\addtolength{\textwidth}{1.5in} \addtolength{\textheight}{2.25in}
+\addtolength{\hoffset}{-0.75in} 
+\addtolength{\voffset}{-1.25in}
+\addtolength{\textwidth}{1.5in} 
+\addtolength{\textheight}{2.25in}
 
 % == ENVS ==
 \newenvironment{tightcenter}{%
@@ -68,6 +77,11 @@ pdfstartview=FitH, breaklinks=true, urlbordercolor={0 1 0}, citebordercolor={0 0
 \usepackage{xltabular}
 \usepackage{booktabs}
 
+\usepackage[breakable]{tcolorbox} % to add factual asepct inside a frame
+
+\usepackage[title]{appendix}
+
+
 % == BIBS ==
 \usepackage{natbib}
 \bibliographystyle{apsr}
@@ -125,9 +139,12 @@ Mapping Regulatory Network of WTO Dispute Settlement Body Using Deep Learning
 \input{Introduction/methodology/neural-network-design.tex}
 \input{Introduction/conclusion/assessment.tex}
 
-\section{Data}
+\clearpage
 
-\input{Data/intro}
+\section{Data}
+\input{Data/intro.tex}
+
+\subsection{}
 
 \section{Methodology}
 
@@ -186,9 +203,19 @@ This paper shows how WTO works.
 
 \bibliography{bibtemplate}
 
-\section{Appendix}
+\clearpage
+\begin{appendices}
+\section{Data}
 \label{sec:appendix}
+\subsection{Table of Contents of the Panel Report}
+\input{Data/examples/table-of-content-panel.tex}
+
+
+\subsection{Factual Aspect Example}
+\label{sub:factual-aspect-example}
+\input{Data/examples/factual-aspect.tex}
 
 \input{art7dsu.tex}
+\end{appendices}
 % == END
 \end{document}
