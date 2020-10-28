@@ -1,32 +1,30 @@
-To map the regulatory system of WTO DSB with a network of legal articles of WTO agreement,
+To map the regulatory system of WTO DSB with 
+a network of legal articles of WTO agreement,
 this paper introduces a novel design of deep neural network \citep{DBLP:journals/corr/Schmidhuber14} that
-gets two different types of input at the same time.
+gets two different types of input.
 One is textual description of trade policy that led to the dispute and
-the other one is the content of the specific legal article of the WTO agreement.
+the other one is the content of a legal article of the WTO agreement.
 This design is improvised to mimic
 the reasoning process of the legal practitioners
 where the legal practitioners read
 the text description of
 factual circumstances of the dispute and think about the contents of
 the applicable legal articles at the same time.
+To train this neural network, I collected textual description of trade policy 
+that led to the dispute and articles of the WTO agreement cited for each dispute
+case requested to the WTO DSB 
+from 1995 to 2018.
+Then I trained this neural network to answer correctly 
+about whether the given article of the WTO agreement
+can be cited for the given textual description of 
+trade policy that led to the dispute.
+After training, I collected all the answers of the trained neural network 
+and created a network of legal articles of WTO agreement (Figure \ref{fig:market-aceess_directed}) where 
+the nodes are articles of the WTO agreement using 
+the collected answers from the neural network (Figure \ref{predidction_matrix}).
 
-\begin{itemize}
-    \item data composition and collection
-    \item w/ and wo/ textual information - horizontal comparison
-    \item implication of this paper, application to solve real world problems
-\end{itemize}
+% and the edges are ranking of importance between incoming nodes to each 
+% target node using a tree-based ensemble machine learning method 
+% using the answers of the trained neural network.
 
-
-% Moreover, this paper empricially
-% finds that it's important to explicitly
-% consider the textual information
-% to properly map the regulatory network of WTO DSB.
-% By comparing the results of two different approaches,
-% regulatory network reconstructed with and without textual information,
-% this paper shows textual content that describes
-% characteristics of each trade policy
- 
-% it's important
-
-% to properly map
- 
+%, called GENIE3 \citep{genie3} 

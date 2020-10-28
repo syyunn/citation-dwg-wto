@@ -26,6 +26,10 @@ pdfstartview=FitH, breaklinks=true, urlbordercolor={0 1 0}, citebordercolor={0 0
 \usepackage{calc} % to use \real for text -> numeric
 \usepackage{pgf} % to store numeric variables
 \usepackage{subcaption} % to place two figures horizontally
+\usepackage{caption} % to refer subfigure
+\renewcommand{\thesubfigure}{(\alph{subfigure})}
+\captionsetup[sub]{labelformat=simple}
+
 \usepackage{tikz}
 \usetikzlibrary{automata,positioning}
 \usetikzlibrary{arrows.meta, positioning, automata}
@@ -50,6 +54,7 @@ pdfstartview=FitH, breaklinks=true, urlbordercolor={0 1 0}, citebordercolor={0 0
 }
 \usepackage{csquotes}
 \usepackage{lipsum}
+\usetikzlibrary{arrows.meta,automata,positioning} % to draw directed-weighted-graph
 
 
 
@@ -108,9 +113,16 @@ Mapping Regulatory Network of WTO Dispute Settlement Body Using Deep Learning
 \input{Introduction/diffcult-to-map.tex}
 \input{Introduction/solution/proxy-and-justification.tex}
 \input{Introduction/methodology/neural-network-design.tex}
+\input{Introduction/conclusion/assessment.tex}
 
-% \input{Introduction/three-distinctive-cluster.tex}
-% \input{Introduction/conclusion.tex}
+% == THREE SUBSYSTEM == 
+\begin{figure}
+  \centering{
+    \input{market_access_directed.tex}
+  }
+  \caption{Network of the Articles of the WTO Agreement}
+  \label{fig:market-aceess_directed}
+\end{figure}
 
 \section{Data}
 
@@ -135,18 +147,19 @@ Mapping Regulatory Network of WTO Dispute Settlement Body Using Deep Learning
     \centering{
       \resizebox{\textwidth*\real{\heatmap}}{\textwidth*\real{\heatmap} * \real{1.7889}}{\input{co-citation.tex}}
       \caption{Co-citation Matrix}
+      \label{sparse_matrix}
     }
-    \label{fig:f1}
   \end{subfigure}
   \hfill
   \begin{subfigure}[b]{0.49\textwidth}
     \centering{
       \resizebox{\textwidth*\real{\heatmap}}{\textwidth*\real{\heatmap} * \real{1.7889}}{\input{pred.tex}}
       \caption{Prediction Matrix}
+      \label{predidction_matrix}
     }
-    \label{fig:f2}
   \end{subfigure}
   \caption{{\bf Spare \& Dense Representation}}
+  \label{sparse_dense}
 \end{figure}
 
 
@@ -161,6 +174,7 @@ No Greeks. English. Three Networks.
   \caption{Market Access}
   \label{fig:market-aceess}
 \end{figure}
+
 
 
 
@@ -180,7 +194,6 @@ This paper shows how WTO works.
 \begin{itemize}
   \item technical details at here
 \end{itemize}
-
 
 % == END
 \end{document}
