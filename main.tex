@@ -62,6 +62,10 @@ pdfstartview=FitH, breaklinks=true, urlbordercolor={0 1 0}, citebordercolor={0 0
 \usetikzlibrary{decorations.pathreplacing}% NN
 \usetikzlibrary{fadings}% NN
 
+
+\usepackage{xltabular}
+\usepackage{booktabs}
+
 % == BIBS ==
 \usepackage{natbib}
 \bibliographystyle{apsr}
@@ -118,18 +122,6 @@ Mapping Regulatory Network of WTO Dispute Settlement Body Using Deep Learning
 \input{Introduction/solution/proxy-and-justification.tex}
 \input{Introduction/methodology/neural-network-design.tex}
 \input{Introduction/conclusion/assessment.tex}
-
-% == THREE SUBSYSTEM == 
-\begin{figure}
-  \centering{
-    \input{market_access_directed.tex}
-  }
-  \caption{{\bf Network of the Articles of the WTO Agreement:} 
-  This figure demonstrates a network of articles of WTO agreements
-  that achieves \textit{Market Access} principle together.
-  }
-  \label{fig:market-aceess_directed}
-\end{figure}
 
 \section{Data}
 
