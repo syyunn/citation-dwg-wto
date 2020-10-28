@@ -1,12 +1,21 @@
 \documentclass[12pt,letterpaper]{article}
 
 \PassOptionsToPackage{hyphens}{url}
-\usepackage[pdftex, bookmarksopen=true, bookmarksnumbered=true,
-pdfstartview=FitH, breaklinks=true, urlbordercolor={0 1 0}, citebordercolor={0 0 1}]{hyperref}
+\usepackage[
+  pdftex, 
+  bookmarksopen=true, 
+  bookmarksnumbered=true,
+  pdfstartview=FitH, 
+  breaklinks=true, 
+  urlbordercolor={0 1 0}, 
+  citebordercolor={0 0 1}]
+  {hyperref}
 
 % === MARGINS ===
-\addtolength{\hoffset}{-0.75in} \addtolength{\voffset}{-1.25in}
-\addtolength{\textwidth}{1.5in} \addtolength{\textheight}{2.25in}
+\addtolength{\hoffset}{-0.75in} 
+\addtolength{\voffset}{-1.25in}
+\addtolength{\textwidth}{1.5in} 
+\addtolength{\textheight}{2.25in}
 
 % == ENVS ==
 \newenvironment{tightcenter}{%
@@ -19,7 +28,7 @@ pdfstartview=FitH, breaklinks=true, urlbordercolor={0 1 0}, citebordercolor={0 0
 
 % == PACKS ==
 \usepackage{color,soul}
-\usepackage{graphicx}
+\usepackage{graphicx} % to use pngs in tex (include graphix)
 \usepackage{calc} % To scale \pagewidth with \real{float}
 \usepackage{pgfplots} % To draw histogram
 \pgfplotsset{compat=1.17} % request specific version of pgfplots
@@ -68,9 +77,24 @@ pdfstartview=FitH, breaklinks=true, urlbordercolor={0 1 0}, citebordercolor={0 0
 \usepackage{xltabular}
 \usepackage{booktabs}
 
+\usepackage[breakable]{tcolorbox} % to add factual asepct inside a frame
+
+\usepackage[title]{appendix}
+
+% == Checkmarks == 
+\usepackage{bbding}
+\usepackage{pifont}
+\usepackage{wasysym}
+\usepackage{amssymb}
+% ================
+
 % == BIBS ==
 \usepackage{natbib}
+
+\usepackage{diagbox}
+
 \bibliographystyle{apsr}
+
 
 % == SPACES == 
 
@@ -125,18 +149,20 @@ Mapping Regulatory Network of WTO Dispute Settlement Body Using Deep Learning
 \input{Introduction/methodology/neural-network-design.tex}
 \input{Introduction/conclusion/assessment.tex}
 
+\clearpage
+
 \section{Data}
+\input{Data/intro.tex}
 
-
-
+\subsection{Factual Aspect}
 \begin{itemize}
-  \item exemplify as detail as possible to inform readers about how data looks like.
-  \item Privide a running example that shows how WTO works with data. 
-  \item (Borrow from the previous paper)
-  
+  \item it usually explains government measure in detail
 \end{itemize}
+\subsection{Cited Articles}
+
 
 \section{Methodology}
+\subsection{Limits of Naive Approach}
 
 \begin{itemize}
   \item Compare co-occurrences/neural network approach.
@@ -144,42 +170,14 @@ Mapping Regulatory Network of WTO Dispute Settlement Body Using Deep Learning
   \item Show that co-occurrences approach isn't accurate.
 \end{itemize}
 
-% == HEATMAP MATRIX == 
-\begin{figure}[!tbp]
-  \begin{subfigure}[b]{0.49\textwidth}
-    \centering{
-      \resizebox{\textwidth*\real{\heatmap}}{\textwidth*\real{\heatmap} * \real{1.7889}}{\input{co-citation.tex}}
-      \caption{Co-citation Matrix}
-      \label{sparse_matrix}
-    }
-  \end{subfigure}
-  \hfill
-  \begin{subfigure}[b]{0.49\textwidth}
-    \centering{
-      \resizebox{\textwidth*\real{\heatmap}}{\textwidth*\real{\heatmap} * \real{1.7889}}{\input{pred.tex}}
-      \caption{Prediction Matrix}
-      \label{predidction_matrix}
-    }
-  \end{subfigure}
-  \caption{{\bf Spare \& Dense Representation}}
-  \label{sparse_dense}
-\end{figure}
-
 
 \section{Empirical Findings}
-No Greeks. English. Three Networks.
 
-% == THREE SUBSYSTEM == 
-\begin{figure}
-  \centering{
-    \input{market_access.tex}
-  }
-  \caption{Market Access}
-  \label{fig:market-aceess}
-\end{figure}
+\begin{itemize}
+  \item No Greeks. English. Three Networks.
+\end{itemize}
 
-
-
+\input{Figures/Three-subsystems/market-access.tex}
 
 \section{Conclusion}
 This paper shows how WTO works.
@@ -193,8 +191,26 @@ This paper shows how WTO works.
 
 \bibliography{bibtemplate}
 
-\section{Appendix}
+\clearpage
+\begin{appendices}
+\section{Data}
+\label{sec:appendix}
+\subsection{Table of Contents of the Panel Report}
+\input{Data/examples/table-of-content-panel.tex}
+
+
+\subsection{Factual Aspect Example}
+\label{sub:factual-aspect-example}
+\input{Data/examples/factual-aspect.tex}
+
+\subsection{Cited Articles for All WTO DSB Cases Collected}
+\label{sub:cited-articles-table}
+\input{Data/examples/cited-articles-table.tex}
+
 
 \input{art7dsu.tex}
+
+\input{Figures/heatmap.tex}
+\end{appendices}
 % == END
 \end{document}
