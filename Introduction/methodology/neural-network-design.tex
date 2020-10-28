@@ -1,6 +1,6 @@
 To map the regulatory system of WTO DSB with 
 a network of legal articles of WTO agreement,
-this paper introduces a novel design of deep neural network \citep{DBLP:journals/corr/Schmidhuber14} that
+this paper introduces a novel design of deep neural network (Figure \ref{fig:traditional-convolutional-network}) that
 gets two different types of input.
 One is textual description of trade policy that led to the dispute and
 the other one is the content of a legal article of the WTO agreement.
@@ -13,18 +13,35 @@ the applicable legal articles at the same time.
 To train this neural network, I collected textual description of trade policy 
 that led to the dispute and articles of the WTO agreement cited for each dispute
 case requested to the WTO DSB 
-from 1995 to 2018.
+from 1995 to 2018 (Table \ref{table: vardescription}).
 Then I trained this neural network to answer correctly 
 about whether the given article of the WTO agreement
 can be cited for the given textual description of 
 trade policy that led to the dispute.
 After training, I collected all the answers of the trained neural network 
-and created a network of legal articles of WTO agreement (Figure \ref{fig:market-aceess_directed}) where 
-the nodes are articles of the WTO agreement using 
+and created a network of legal articles of the WTO agreement (Figure \ref{fig:market-aceess_directed}) using 
 the collected answers from the neural network (Figure \ref{predidction_matrix}).
 
-% and the edges are ranking of importance between incoming nodes to each 
+
+% == THREE SUBSYSTEM == 
+\begin{figure}
+    \centering{
+      \input{market_access_directed.tex}
+    }
+    \caption{{\bf Network of the Articles of the WTO Agreement:} 
+    This figure demonstrates a network of articles of WTO agreements
+    that achieves \textit{Market Access} principle together.
+    }
+    \label{fig:market-aceess_directed}
+  \end{figure}
+  
+\input{Figures/NN.tex}
+
+\input{Figures/data-tables.tex}
+
+
+
+% where nodes are the articles of the WTO agreement and the edges are ranking of importance between incoming nodes to each 
 % target node using a tree-based ensemble machine learning method 
 % using the answers of the trained neural network.
-
 %, called GENIE3 \citep{genie3} 

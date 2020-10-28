@@ -33,6 +33,8 @@ pdfstartview=FitH, breaklinks=true, urlbordercolor={0 1 0}, citebordercolor={0 0
 \usepackage{tikz}
 \usetikzlibrary{automata,positioning}
 \usetikzlibrary{arrows.meta, positioning, automata}
+\usetikzlibrary{spy}
+
 \tikzset{
   font={\fontsize{10pt}{0}\selectfont}}
 \usepackage{forest}
@@ -57,8 +59,16 @@ pdfstartview=FitH, breaklinks=true, urlbordercolor={0 1 0}, citebordercolor={0 0
 \usetikzlibrary{arrows.meta,automata,positioning} % to draw directed-weighted-graph
 
 
+\usepackage{amsmath, amssymb, latexsym} % NN
+\usepackage{tikz}% NN
+\usetikzlibrary{decorations.pathreplacing}% NN
+\usetikzlibrary{fadings}% NN
 
-  % == BIBS ==
+
+\usepackage{xltabular}
+\usepackage{booktabs}
+
+% == BIBS ==
 \usepackage{natbib}
 \bibliographystyle{apsr}
 
@@ -115,16 +125,9 @@ Mapping Regulatory Network of WTO Dispute Settlement Body Using Deep Learning
 \input{Introduction/methodology/neural-network-design.tex}
 \input{Introduction/conclusion/assessment.tex}
 
-% == THREE SUBSYSTEM == 
-\begin{figure}
-  \centering{
-    \input{market_access_directed.tex}
-  }
-  \caption{Network of the Articles of the WTO Agreement}
-  \label{fig:market-aceess_directed}
-\end{figure}
-
 \section{Data}
+
+
 
 \begin{itemize}
   \item exemplify as detail as possible to inform readers about how data looks like.
@@ -191,9 +194,7 @@ This paper shows how WTO works.
 \bibliography{bibtemplate}
 
 \section{Appendix}
-\begin{itemize}
-  \item technical details at here
-\end{itemize}
 
+\input{art7dsu.tex}
 % == END
 \end{document}

@@ -1,0 +1,29 @@
+
+\begin{xltabular}{\linewidth}{ l | X }
+    \caption{Description of Variables used in this Study} 
+   \label{table: vardescription}\\
+   \hline \hline
+  
+  \textbf{\normalsize Code} & \textbf{\normalsize Definition and source}  \\
+   \hline 
+  \endfirsthead
+   \hline \hline
+  
+  \textbf{\normalsize Code} & \textbf{\normalsize Definition and source}  \\
+   \hline 
+  \endhead
+  
+  \textbf{exportsgr} & Exports of goods and services (annual \% growth) retrieved from World Bank. \\ \hline 
+  
+  
+  \textbf{importsgr} & Imports of goods and services (annual \% growth) retrieved from World Bank.\\ \hline 
+  
+  
+  \textbf{gr\_tot} & Terms of trade change over previous year (in \%).  Data for terms of trade are collected from theglobaleconomy.com  and Kaminsky and Reinhart online database. Since variables have two different base years, the base year for both was changed to 2000 to have the same base year. And then the change is calculated as below.  
+  
+  \begin{equation}
+  gr\_tot_{i,t} = (\frac{tot_{i,t}- tot_{i,t-1}}{tot_{i,t-1}})100
+  \end{equation}
+  \\ \hline
+  
+  \end{xltabular}
