@@ -19,7 +19,7 @@ pdfstartview=FitH, breaklinks=true, urlbordercolor={0 1 0}, citebordercolor={0 0
 
 % == PACKS ==
 \usepackage{color,soul}
-\usepackage{graphicx}
+\usepackage{graphicx} % to use pngs in tex (include graphix)
 \usepackage{calc} % To scale \pagewidth with \real{float}
 \usepackage{pgfplots} % To draw histogram
 \pgfplotsset{compat=1.17} % request specific version of pgfplots
@@ -127,14 +127,7 @@ Mapping Regulatory Network of WTO Dispute Settlement Body Using Deep Learning
 
 \section{Data}
 
-
-
-\begin{itemize}
-  \item exemplify as detail as possible to inform readers about how data looks like.
-  \item Privide a running example that shows how WTO works with data. 
-  \item (Borrow from the previous paper)
-  
-\end{itemize}
+\input{Data/intro}
 
 \section{Methodology}
 
@@ -194,6 +187,7 @@ This paper shows how WTO works.
 \bibliography{bibtemplate}
 
 \section{Appendix}
+\label{sec:appendix}
 
 \input{art7dsu.tex}
 % == END
