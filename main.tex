@@ -154,7 +154,9 @@ Mapping Regulatory Network of WTO Dispute Settlement Body Using Deep Learning
 \section{Data}
 \input{Data/intro.tex}
 
-\subsection{}
+\subsection{Factual Aspect}
+\subsection{Cited Articles}
+
 
 \section{Methodology}
 
@@ -164,42 +166,14 @@ Mapping Regulatory Network of WTO Dispute Settlement Body Using Deep Learning
   \item Show that co-occurrences approach isn't accurate.
 \end{itemize}
 
-% == HEATMAP MATRIX == 
-\begin{figure}[!tbp]
-  \begin{subfigure}[b]{0.49\textwidth}
-    \centering{
-      \resizebox{\textwidth*\real{\heatmap}}{\textwidth*\real{\heatmap} * \real{1.7889}}{\input{co-citation.tex}}
-      \caption{Co-citation Matrix}
-      \label{sparse_matrix}
-    }
-  \end{subfigure}
-  \hfill
-  \begin{subfigure}[b]{0.49\textwidth}
-    \centering{
-      \resizebox{\textwidth*\real{\heatmap}}{\textwidth*\real{\heatmap} * \real{1.7889}}{\input{pred.tex}}
-      \caption{Prediction Matrix}
-      \label{predidction_matrix}
-    }
-  \end{subfigure}
-  \caption{{\bf Spare \& Dense Representation}}
-  \label{sparse_dense}
-\end{figure}
-
 
 \section{Empirical Findings}
-No Greeks. English. Three Networks.
 
-% == THREE SUBSYSTEM == 
-\begin{figure}
-  \centering{
-    \input{market_access.tex}
-  }
-  \caption{Market Access}
-  \label{fig:market-aceess}
-\end{figure}
+\begin{itemize}
+  \item No Greeks. English. Three Networks.
+\end{itemize}
 
-
-
+\input{Figures/Three-subsystems/market-access.tex}
 
 \section{Conclusion}
 This paper shows how WTO works.
@@ -231,6 +205,8 @@ This paper shows how WTO works.
 
 
 \input{art7dsu.tex}
+
+\input{Figures/heatmap.tex}
 \end{appendices}
 % == END
 \end{document}
