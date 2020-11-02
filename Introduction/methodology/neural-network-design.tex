@@ -1,26 +1,44 @@
-To map the regulatory system of WTO DSB with 
-a network of legal articles of WTO agreement,
-this paper improvises a novel design of deep neural network (Figure \ref{fig:traditional-convolutional-network}) that
-gets two different types of input.
+To map the regulatory system of WTO DSB as 
+a network of legal articles of WTO agreement 
+successfully,
+this paper improvises 
+a novel design of deep neural network (Figure \ref{fig:traditional-convolutional-network}) that
+processes two different types of textual information.
+% This deep neural network 
+% processes two different types of input.
 One is textual description of trade policy that led to the dispute and
 the other one is the content of a legal article of the WTO agreement.
 This design is improvised to mimic
-the reasoning process of the legal practitioners
+the reasoning process of WTO legal practitioners
 where the legal practitioners read
 the text description of
-factual circumstances of the dispute and think about the contents of
+factual circumstances of the dispute and think about contents of
 the applicable legal articles at the same time.
-To train this neural network, I collected textual description of trade policy 
+
+
+To train this neural network, this paper collected textual description of trade policy 
 that led to the dispute and articles of the WTO agreement cited for each dispute
 case requested to the WTO DSB 
 from 1995 to 2018 (\hyperref[sub:cited-articles-table]{Appendix A.2}).
-Then I trained this neural network to answer correctly 
+Then I trained this neural network by enforcing the neural network to answer correctly 
 about whether the given article of the WTO agreement
 can be cited for the given textual description of 
 trade policy that led to the dispute.
-After training, I collected all the answers of the trained neural network 
-and created a network of legal articles of the WTO agreement (Figure \ref{fig:market-aceess_directed}) using 
-the collected answers from the neural network (Figure \ref{predidction_matrix}).
+
+After training, I collected all the answers from trained neural network (Figure \ref{predidction_matrix})
+and created a network of legal articles of the WTO agreement (Figure \ref{fig:market-aceess_directed}) from these collected answers.
+This created network is identified as mapping the regulatory system of WTO DSB properly since the network 
+clearly captures the current important jurisprudence of WTO DSB made by Panel and Appellate Body.
+
+Moreover, this paper shows the clear limitation of not using the textual information 
+and justifies the use of neural network to process textual information.
+By doing so, this papeer contributes following points:
+\begin{itemize}
+  \item
+  \item
+  \item
+\end{itemize}
+%using the collected answers from the neural network .
 
 
 % == THREE SUBSYSTEM == 
@@ -28,7 +46,7 @@ the collected answers from the neural network (Figure \ref{predidction_matrix}).
     \centering{
       \input{market_access_directed.tex}
     }
-    \caption{{\bf Network of the Articles of the WTO Agreement:} 
+    \caption{{\bf Network of the Articles that Achieves \textit{Market Access}:} 
     This figure demonstrates a network of articles of WTO agreements
     that achieves \textit{Market Access} principle together.
     }
