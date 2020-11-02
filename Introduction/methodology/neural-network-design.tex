@@ -13,22 +13,27 @@ the reasoning process of WTO legal practitioners
 where the legal practitioners read
 the text description of
 factual circumstances of the dispute and think about contents of
-the applicable legal articles at the same time.
+the applicable legal articles simultaneously.
 
 
 To train this neural network, this paper collected textual description of trade policy 
 that led to the dispute and articles of the WTO agreement cited for each dispute
 case requested to the WTO DSB 
 from 1995 to 2018 (\hyperref[sub:cited-articles-table]{Appendix A.2}).
-Then I trained this neural network by enforcing the neural network to answer correctly 
+Using this collected data, I trained above mentioned design of neural network by enforcing the neural network to answer correctly 
 about whether the given article of the WTO agreement
 can be cited for the given textual description of 
 trade policy that led to the dispute.
 
-After training, I collected all the answers from trained neural network (Figure \ref{predidction_matrix})
-and created a network of legal articles of the WTO agreement (Figure \ref{fig:market-aceess_directed}) from these collected answers.
-This created network is identified as mapping the regulatory system of WTO DSB properly since the network 
-clearly captures the current important jurisprudence of WTO DSB made by Panel and Appellate Body.
+After finish training, I collected all the answers from trained neural network (Figure \ref{predidction_matrix})
+and created a network of legal articles of the WTO agreement (Part of the created network is shown in the Figure \ref{fig:market-aceess_directed}) 
+from this collection of answers using a machine learning technique called GENIE3 (\citep{genie3}) 
+which is widely used in the biomedical engineering to reconstruct gene regulatory networks.
+
+To check whether this created network of WTO agreements maps the regulatory system of WTO DSB properly, this paper
+compares the network and the jurisprudence of WTO DSB made by Panel and Appellate Body. 
+The comparison shows that the network captures the interaction between the articles of WTO agreements
+as similar to the jurisprudence of the Panel and the Appellate Body.
 
 Moreover, this paper shows the clear limitation of not using the textual information 
 and justifies the use of neural network to process textual information.
@@ -48,7 +53,7 @@ By doing so, this papeer contributes following points:
     }
     \caption{{\bf Network of the Articles that Achieves \textit{Market Access}:} 
     This figure demonstrates a network of articles of WTO agreements
-    that achieves \textit{Market Access} principle together.
+    that cooperates and achieves \textit{Market Access} principle.
     }
     \label{fig:market-aceess_directed}
   \end{figure}
