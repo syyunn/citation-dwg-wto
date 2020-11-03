@@ -1,0 +1,32 @@
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}
+        \foreach \i in {\xMin,...,\xMax} {
+            \draw [black] (\i,\yMin) -- (\i,\yMax) node [below] at (\i,\yMin) {};
+        }
+        \foreach \i in {\yMin,...,\yMax} {
+            \draw [black] (\xMin,\i) -- (\xMax,\i) node [left] at (\xMin,\i) {};
+        }
+
+        \node [left] at (0,0.5) {\textbf{[PAD]}};
+        \node [left] at (0,1.5) {\textbf{thereafter}};
+        \node [left] at (0,2.5) {\textbf{issued}};
+        \node [left] at (0,3.5) {\textbf{or}};
+        \node [left] at (0,4.5) {\textbf{\vdots}};
+        \node [left] at (0,5.5) {\textbf{the}};
+        \node [left] at (0,6.5) {\textbf{concerns}};
+        \node [left] at (0,7.5) {\textbf{dispute}};
+        \node [left] at (0,8.5) {\textbf{This}};
+
+        \node [left] at (5.5,9.5) {\textbf{Embedding Dimension = $k$}};
+        \node [right, rotate=-90, font=\small] at (6.5,7) {\textbf{Max Sequence Length = $n$}};
+
+
+    % \draw [step=1.0,blue, very thick] (0.5,0.5) grid (5.5,4.5);
+    % \draw [very thick, brown, step=1.0cm,xshift=-0.5cm, yshift=-0.5cm] (0.5,0.5) grid +(5.5,4.5);
+    \end{tikzpicture} 
+    \label{fig:embedding}      
+    \caption{\textbf{Embedding Layer:} $n \times k$ matrix representation of factual aspect} 
+\end{figure}
+
+% This  dispute  concerns  the  Continued  Dumping 

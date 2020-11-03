@@ -109,6 +109,14 @@ Mapping Regulatory Network of WTO Dispute Settlement Body Using Deep Learning
 \newcommand\spacingset[1]{\renewcommand{\baselinestretch}
 {#1}\small\normalsize}
 
+% To draw embedding layer
+\newcommand*{\xMin}{0}%
+\newcommand*{\xMid}{3}%
+\newcommand*{\xMax}{6}%
+\newcommand*{\yMin}{0}%
+\newcommand*{\yMax}{9}%
+
+
 % == VARS == 
 \pgfmathsetmacro{\heatmap}{1}
 
@@ -169,14 +177,14 @@ Mapping Regulatory Network of WTO Dispute Settlement Body Using Deep Learning
 
 \section{Methodology}
 This section explains 
-how above explained data is processed
+how collected data is processed
 to produce the network of articles of WTO agreements.
 
 \subsection{Considerations for Method Design}
 This paper considers two main points to
-design its methodlogy to maps the regulatory system of WTO DSB
+design its methodology to map the regulatory system of WTO DSB
 as a network of articles of WTO agreements. 
-One in use of textual information and the other one is
+One is use of textual information and the other one is
 generalization of each member's strategic citation.
 
 \subsubsection{Importance of Using Textual Information}
@@ -213,7 +221,9 @@ to regulate certain contents of the dispute.
 
 
 \subsection{Design of Deep Neural Network}
-\subsubsection{Word Embedding}
+\subsubsection{Embedding Layer}
+\input{Methodology/embedding.tex}
+
 One of the most efficient ways to 
 process textual information is neural network.
 The main idea behind the use of neural network is to
