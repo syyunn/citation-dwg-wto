@@ -1,6 +1,7 @@
 \begin{figure}[h]
     \centering
     \begin{tikzpicture}
+        % Conv Runs
         \foreach \i in {\xMin,...,\xMax} {
             \draw [black] (\i,\yMin) -- (\i,\yMax) node [below] at (\i,\yMin) {};
         }
@@ -26,7 +27,30 @@
     \node [right, blue, font=\huge, rotate=-90] at (2.8,5.3) {\textbf{$\dasharrow$}};
     \draw [step=1.0,blue, very thick] (0,0) grid (6,3); % 3-filter
 
+    % Conv Runs Output
+    \foreach \i in {\xMinOut,...,\xMaxOut} {
+        \draw [black] (\i,\yMinOut) -- (\i,\yMaxOut) node [below] at (\i,\yMinOut) {};
+    }
+    \foreach \i in {\yMinOut,...,\yMaxOut} {
+        \draw [black] (\xMinOut,\i) -- (\xMaxOut,\i) node [left] at (\xMinOut,\i) {};
+    }
+    \node [right, rotate=-90, font=\small] at (11.5,8) {\textbf{Feature Map Length = $n-h+1$}};
+
+    \draw [step=1.0,blue, very thick] (11,8) grid (10,7); % 3-filter
+    \node [right, blue, font=\huge, rotate=-90] at (10.5,5.3) {\textbf{$\dasharrow$}};
+    \draw [step=1.0,blue, very thick] (11,2) grid (10,1); % 3-filter
+
+    
+    % Connection between Two Matrix
+    \draw[dotted,blue, very thick] (6,9) -- (10,8);
+    \draw[dotted,blue, very thick] (6,6) -- (10,7);
+
+    \draw[dotted,blue, very thick] (6,0) -- (10,1);
+    \draw[dotted,blue, very thick] (6,3) -- (10,2);
+
     \end{tikzpicture} 
+
+    
     \label{fig:conv1d}      
     % \caption{\textbf{Conv1D:} $m$ number of $h$-sized filter runs over the $n \times k $ embedding matrix and produces $m \times (n-h+1)$ matrix}
     \caption{\textbf{Conv1D:} $h$-sized filter runs over the $n \times k $ embedding matrix and produces $(n-h+1)$ size of feature map.} % actually feature map means "after" non-linear activation.
