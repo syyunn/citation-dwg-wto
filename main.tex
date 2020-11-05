@@ -1,15 +1,7 @@
 \documentclass[12pt,letterpaper]{article}
 
 \PassOptionsToPackage{hyphens}{url}
-\usepackage[
-  pdftex, 
-  bookmarksopen=true, 
-  bookmarksnumbered=true,
-  pdfstartview=FitH, 
-  breaklinks=true, 
-  urlbordercolor={0 1 0}, 
-  citebordercolor={0 0 1}]
-  {hyperref}
+
 
 \usepackage{setspace}
 \onehalfspacing
@@ -41,6 +33,7 @@
 \usepackage{caption} % to refer subfigure
 \renewcommand{\thesubfigure}{(\alph{subfigure})}
 \captionsetup[sub]{labelformat=simple}
+
 
 \usepackage{tikz}
 \usetikzlibrary{automata,positioning}
@@ -95,6 +88,16 @@
 \usepackage{natbib}
 
 \usepackage{diagbox}
+
+\usepackage[
+  pdftex, 
+  bookmarksopen=true, 
+  bookmarksnumbered=true,
+  pdfstartview=FitH, 
+  breaklinks=true, 
+  urlbordercolor={0 1 0}, 
+  citebordercolor={0 0 1}]
+  {hyperref}
 
 \bibliographystyle{apsr}
 
@@ -180,36 +183,30 @@ Mapping Regulatory Network of WTO Dispute Settlement Body Using Deep Learning
 \input{Data/Cited Articles/main.tex}
 
 \section{Methodology}
-This section explains 
-how collected data is processed
-to produce the network of articles of WTO agreements.
+This section explains the criteria of choice for the methods used in this paper. Then introduces the entire process
+to map the regulatory system of WTO DSB as a network of articles of WTO agreements.
 
-\subsection{Considerations for Method Design}
+\subsection{Criteria for Choice of Methods}
 This paper considers two main points to
-design its methodology to map the regulatory system of WTO DSB
+determine its methods to map the regulatory system of WTO DSB
 as a network of articles of WTO agreements. 
-One is use of textual information and the other one is
+One is explicit use of textual information and the other one is
 generalization of each member's strategic citation.
 
 \subsubsection{Importance of Using Textual Information}
 
-This paper emphasizes the use of textual information 
-to produce the network of articles of WTO agreements
-that closely maps the regulatory system of WTO DSB. 
-This is because the result network is incomplete 
-and fails to capture the interactions between the articles of the WTO agreements
-that achieves the main principles of WTO agreements 
-if we do not use
-the textual information inside the description of the trade dispute and 
-the content of the cited articles. 
+This paper emphasizes the necessity of use of textual information 
+to qualitatively map the regulatory system of WTO DSB as the network of articles of WTO agreements.
+One can simply consider a co-citation pattern between the articles of WTO agreements as a network of articles of WTO, however,
+it fails to capture the interactions between the articles of the WTO agreements and cannot explain
+how articles of the WTO agreements cooperate to achieve main principles of WTO.
 
-This incomplete result is mainly because
-of the insufficient information. Members tend to cite the articles of 
-the WTO agreements based on the main characteristics of 
-the trade policy at issue, however, if a model 
+This incompleteness is mainly due to the insufficient information. Members tend to cite the articles of 
+the WTO agreements based on the complex characteristics of 
+the trade policy that led to the dispute, however, if a model 
 can't have any chance to correlate the information
 about the identiy of the trade policy at issue with 
-each article's regulatory content written in text in it,
+each article's regulatory content written in its own article text,
 it can only reflect how articles of WTO agreements are co-cited 
 together rather than reflecting how articles of WTO agreements 
 to regulate certain contents of the dispute. 
@@ -234,7 +231,7 @@ to regulate certain contents of the dispute.
 \subsubsection{1-Dimensional Max-pooling (MaxPool1D)}
 \input{Methodology/MaxPool1D.tex}
 
-\input{Methodology/Conv1D.tex}
+% \input{Methodology/Conv1D.tex}
 
 
 % One of the most efficient ways to 
@@ -244,6 +241,9 @@ to regulate certain contents of the dispute.
 
 \subsection{Limits of Naive Approach}
 
+\subsection{Reconstruction of Network of Articles of WTO Agreements}
+
+
 \begin{itemize}
   \item Compare co-occurrences/neural network approach.
 
@@ -252,12 +252,13 @@ to regulate certain contents of the dispute.
 
 
 \section{Empirical Findings}
+\input{Empirical Findings/intro.tex}
 
-\begin{itemize}
-  \item No Greeks. English. Three Networks.
-\end{itemize}
+\subsection{Market Access}
+\input{Empirical Findings/market-access.tex}
 
-\input{Figures/Three-subsystems/market-access.tex}
+\subsubsection{Market Access Principle Captured in a Reconstructed Network}
+\input{Empirical Findings/market-access-network.tex}
 
 \section{Conclusion}
 This paper shows how WTO works.
