@@ -26,13 +26,19 @@
 \usepackage{graphicx} % to use pngs in tex (include graphix)
 \usepackage{calc} % To scale \pagewidth with \real{float}
 \usepackage{pgfplots} % To draw histogram
-\pgfplotsset{compat=1.17} % request specific version of pgfplots
+
+\pgfplotsset{
+  compat=1.17, 
+colormap/viridis
+} % request specific version of pgfplots
 \usepackage{calc} % to use \real for text -> numeric
 \usepackage{pgf} % to store numeric variables
 \usepackage{subcaption} % to place two figures horizontally
 \usepackage{caption} % to refer subfigure
 \renewcommand{\thesubfigure}{(\alph{subfigure})}
 \captionsetup[sub]{labelformat=simple}
+\captionsetup[table]{font={stretch=1.2}}  % adjust line space in captions of TABLE and FIGURES
+\captionsetup[figure]{font={stretch=1.2}}  
 
 
 \usepackage{tikz}
@@ -73,7 +79,7 @@
 \usepackage{xltabular}
 \usepackage{booktabs}
 
-\usepackage[breakable]{tcolorbox} % to add factual asepct inside a frame
+\usepackage[breakable, skins]{tcolorbox} % to add factual asepct inside a frame
 
 \usepackage[title]{appendix}
 
@@ -183,7 +189,8 @@ Mapping Regulatory Network of WTO Dispute Settlement Body Using Deep Learning
 \input{Data/Cited Articles/main.tex}
 
 \section{Methodology}
-This section explains the criteria of choice for the methods used in this paper. Then introduces the entire process
+This section introduces the criteria of choice for the methods used in this paper. 
+Then explains the entire process
 to map the regulatory system of WTO DSB as a network of articles of WTO agreements.
 
 \subsection{Criteria for Choice of Methods}
@@ -198,18 +205,33 @@ generalization of each member's strategic citation.
 This paper emphasizes the necessity of use of textual information 
 to qualitatively map the regulatory system of WTO DSB as the network of articles of WTO agreements.
 One can simply consider a co-citation pattern between the articles of WTO agreements as a network of articles of WTO, however,
-it fails to capture the interactions between the articles of the WTO agreements and cannot explain
-how articles of the WTO agreements cooperate to achieve main principles of WTO.
+it fails to capture the complex interactions between the articles of the WTO agreements that achieves main principles of WTO.
 
-This incompleteness is mainly due to the insufficient information. Members tend to cite the articles of 
+This failure is mainly due to the insufficient information in co-citation matrix. Members tend to cite the articles of 
 the WTO agreements based on the complex characteristics of 
-the trade policy that led to the dispute, however, if a model 
-can't have any chance to correlate the information
+the trade policy that led to the dispute, however, if a method 
+do not consider a way to encompass the information
 about the identiy of the trade policy at issue with 
 each article's regulatory content written in its own article text,
 it can only reflect how articles of WTO agreements are co-cited 
 together rather than reflecting how articles of WTO agreements 
-to regulate certain contents of the dispute. 
+cooperates to regulate each charactersitic of complex trade policy that led to the dispute. 
+
+This paper will compare two different results that one uses textual information using deep learning and the other one
+uses the frequency of co-citation only after explaining how deep learning works to encompass the textual information.
+At this stage, we can compare two adjacency matrices of each network that maps the regulatory system of WTO DSB as a network of articles of WTO agreements in Figure \ref{fig:sparse_dense}.
+
+\input{Methodology/Figures/spare_dense.tex}
+
+\begin{figure}[ht]
+  \[\text{Network of legal articles of WTO agreement is defined as }  G = (V, E, w) \] 
+  \[\text{ where } V = \{v \mid v\text{ is a legal article of WTO agreement}\}  \text{ , } \]
+  \[\vec{E} = \{(v_1, v_2) \mid (v_1, v_2)\in V \times V)\} \text{ and }w : V \times V \to \Bbb R_{+} \]
+  \[G\text{ is simply called \textit{directed weighted graph}}\]
+  \caption{\textbf{Formal Definition of Adjacency Matrix}}
+  \label{fig:adj}
+  \end{figure}
+
 \begin{itemize}
   \item Incomplete result without using textual inforamtion in in Appendix X.
   \item We are using neural network to process the textual information
