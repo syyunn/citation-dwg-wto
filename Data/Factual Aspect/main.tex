@@ -1,41 +1,34 @@
-Textual description of trade policy that 
-led to the dispute is formally called as
+Textual description of the dispute is preferably called as
 \textit{Factual Aspect} in WTO DSB. 
 Since Panels
 always provide a factual aspect\footnote{
     It's worth noting that Appellate Body doesn't provide any factual aspect because they use the factual aspect provided by the Panel.
 }
 that summarizes the content of the dispute
-in the panel report. %(Figure \ref{fig:panel-report-toc}),
+in the panel report, %(Figure \ref{fig:panel-report-toc}),
 I wrote a program that can 
 automatically search and collect 
 the panel reports from the WTO official doucment website\footnote{
     \url{http://docs.wto.org}
 }.
-Then I wrote another program that locates the start 
-and end page of the factual asepct using the information inside the 
-table of contents of the report (Figure \ref{fig:panel-report-toc}).
+Then I located the factual asepct using the page information inside the 
+table of contents in the panel report as shown in Figure \ref{fig:panel-report-toc}.
 By using this location, I excerpted factual aspect
-% \footnote{
-%     \hyperref[sub:factual-aspect-example]{Appendix A.1} shows an
-%     example of excerpted factual aspect from the panel report for \textit{US - Offset (Byrd Amendment)}.    
-% }
-from each panel report listed in Figure \ref{fig:ds-cases-used} (\textit{See} an example at \hyperref[sub:factual-aspect-example]{Appendix A.1}). Total number of panel reports listed in Figure \ref{fig:ds-cases-used} is 143.
+from 143 number of different panel reports listed in Figure \ref{fig:ds-cases-used}.
 
 \subsubsection{Joint Adjudication \& Early Settlement}
 
-The number 143 seems small compared to the total number of cases requested to WTO DSB, 596\footnote
-{
-    As of November 1st, 2020.
-}. First, This is because panel handles different cases requested by different members
-for the same trade policy of a member together. For example, in \textit{US - Offset (Byrd Amendment)}, panel merged DS217\footnote{
-    DS refers to Dispute Settelement. DS is a officially used prefix that notates the case number in WTO DSB.
-} and DS234 together because they were asking the possible inconsistency to the WTO agreements 
-of the same government measure of the United States (Figure \ref{fig:linked-cases}). 
-This paper selects the smallest case number as a representatitve case number. 
-For example, in case DS217 and DS234 shares the same panel report, we choose DS217 as a representatitve number as shown in Figure \ref{fig:ds-cases-used} where DS217 is included but not DS234.
+The number 143 seems small compared to the total number (596\footnote
+{As of November 1st, 2020.}) of cases requested to WTO DSB. 
 
-Secondly, members sometimes find \textit{mutually agreeable solution} before the panel expresses its judicial opinion by publishing the panel report. Panel stops there and no factual aspect is available. This paper omitted this kind of early settled cases from the data collection.
+This is because, first, panel handles different cases together if the case is about the
+same trade policy. For example, in \textit{US - Offset (Byrd Amendment)}, panel merged DS217\footnote{
+    DS refers to Dispute Settelement. DS is official prefix that indicates the case in WTO DSB.
+} and DS234 together because they were asking the judicial opinion for the same government measure of the United States as shown in Figure \ref{fig:linked-cases}. 
+This paper selects the smallest case number as a representatitve number for this kind of joint Adjudication. 
+For example, since DS217 and DS234 shares the same panel report, this paper choose DS217 as a representatitve number as shown in Figure \ref{fig:ds-cases-used} where the list includes DS217 but not DS234.
+
+Secondly, members sometimes find \textit{mutually agreeable solution} before the panel expresses its judicial opinion by publishing its panel report. Then Panel stops there and no factual aspect is available. This paper omitted this kind of early settled cases as well.
 
  
 % \subsubsection{Judicial Economy \& Early Settlement}
@@ -187,7 +180,7 @@ Secondly, members sometimes find \textit{mutually agreeable solution} before the
         523
     \end{quote}
     \caption{
-        List of case number of collected panel reports. ``DS + number'' uniquely identifies each dispute. For example, DS 523 refers to \textit{US — Pipe and Tube Products (Turkey)} where United States was challenged by Turkey for its possibly inconsistent anti-dumping measure.
+        \textbf{List of case number of collected panel reports:} ``DS + number'' uniquely identifies each dispute. For example, DS 523 refers to \textit{US — Pipe and Tube Products (Turkey)} where United States was challenged by Turkey for its possibly inconsistent anti-dumping measure.
         % where Turkey claimed claimed possible illegal trade policy of United States on pipe ane tube products from Turk. 
     }
     \label{fig:ds-cases-used}

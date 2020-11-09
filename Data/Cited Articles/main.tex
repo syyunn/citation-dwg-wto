@@ -1,12 +1,11 @@
 Every lawsuit in WTO DSB 
-has its own set of aritcles cited by complainant(s)
+cites multiple set of aritcles
 as shown in Table 
 \ref{xltabular:cited-article-for-us-offset}. 
-I wrote a program that collects a set of articles cited for 
-each case from the WTO official webpage\footnote{\url{https://www.wto.org/english/tratop_e/dispu_e/dispu_status_e.htm}}. 
+To collect this set of articles claimed for the same dispute, I wrote a program that collects this set of articles cited for the same dispute from the WTO official webpage\footnote{\url{https://www.wto.org/english/tratop_e/dispu_e/dispu_status_e.htm}}. 
 The webpage chronologically lists up all dispute cases
-requested to WTO DSB and the prgoram visits each dispute page of 143 cases
-and collects cited articles for each case. Among all the articles from different agreements
+requested to WTO DSB and the prgoram visits each page of 143 cases
+and collects the cited articles. Among all the articles from different agreements
 of the WTO agreements\footnote{
     WTO agreeemnts is comprised of mutiple agreements such as
     General Agreement on Tariffs and Trade 1994,
@@ -19,14 +18,14 @@ of the WTO agreements\footnote{
     Agreement on Subsidies and Countervailing Measures,
     Agreement on Rules of Origin,
     Agreement on Safeguards and so on.
-    } ,
-this paper collected articles from General Agreement on Tariffs and Trade 1994 (GATT 1994) only. 
+    },
+this paper collected articles from \textbf{General Agreement on Tariffs and Trade 1994 (GATT 1994)} only. 
 This is because articles in GATT 1994 constitutes basic set of trade rules of WTO and other agreements 
 elaborates the articles of GATT 1994 more in detail \citep{world1999wto}. For example, the official name of \textit{Agreement on Anti-dumping}
-is \textit{Agreement on Implementation of Article VI of the General Agreement on Tariffs and Trade 1994}
-where the name self-explains that it elaborates on the specific article of GATT 1994.
-The collected result is listed in the \hyperref[sub:cited-articles-table]{Appendix A.2} and Figure \ref{fig:set-of-articles-used} 
-lists up 80 different articles of GATT 1994 cited in 143 cases without duplication. 
+is \textit{Agreement on Implementation of \textbf{Article VI of the GATT 1994}}
+where the name self-explains that it elaborates on the article VI of GATT 1994.
+The collected result is listed in the \hyperref[sub:cited-articles-table]{Appendix A.2}. Figure \ref{fig:set-of-articles-used} 
+lists up 80 different articles of GATT 1994 cited in 143 cases without duplication.
 
 \begin{figure}[h]
     \begin{quote}
@@ -111,7 +110,11 @@ lists up 80 different articles of GATT 1994 cited in 143 cases without duplicati
     XXIV:6, 
     XXVIII
     \end{quote}
-    \caption{\textbf{Set of articles of GATT 1994 used in this paper: } The neural network is trained with textual content of each article.}
+    \caption{
+        \textbf{
+            Set of articles of GATT 1994 collected and used in this paper: 
+            }These articles comprises the node set $V$ and their ordered pair comprises the edge set $E$ in Figure \ref{fig:def}
+        }
     \label{fig:set-of-articles-used}
 \end{figure}
 
@@ -122,16 +125,17 @@ cite articles in different levels of scope. For example,
 For the Article VI, member sometimes cites
 Article VI as a whole but sometimes cites
 Article VI:2 or Article VI:2(a).
-This is because two main judicial bodies of WTO DSB, Panel and Appellate Body, 
-both constitutes its jurisprudence using
-various level of scope to interpret the legal texts of the WTO agreements,
-such as in the level of \textit{Title, Article, Paragraph, Sentence or Term} as shown in Table {\ref{xltabular:level-of-scopes}}. 
+This is because two main judicial bodies of WTO DSB, \textit{Panel and Appellate Body}, 
+both constitute its legal precedents citing articles of the WTO agreements in
+various levels of scope.
+Both judicial bodies cite the legal articles with the level of \textit{Title, Article, Paragraph, Sentence} or \textit{Term} as shown in Table {\ref{xltabular:level-of-scopes}}. 
 Following this jurisprudence, members also cite articles in different levels of scope to 
-make their legal claim fit and valid as much as possible.\\
+make their legal claim fit and valid according to the current jurisprudence of WTO DSB.\\ %as much as possible.\\
 
 % \clearpage
 
 \begin{xltabular}{\linewidth}{lXX}
+    \caption{\textbf{Various Levels of Scope Adopted to Cite Articles of WTO agreemnts}}\\
     \hline
     \textbf{\normalsize Scope} 
     & \textbf{\normalsize Quote}
@@ -181,9 +185,7 @@ make their legal claim fit and valid as much as possible.\\
     & Appellate Body Report, \textit{Colombia – Textiles}, para. 5.34.
     \\
     \hline
-    \caption{ Various levels of scope are adopted when the judicial bodies of WTO DSB cites articles of WTO agreeemnts}
     \label{xltabular:level-of-scopes}
-
 \end{xltabular}
 
 

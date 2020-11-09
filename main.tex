@@ -83,6 +83,9 @@ colormap/viridis
 
 \usepackage[title]{appendix}
 
+%to prevent page and footnotes swalloen by the table
+
+
 % == Checkmarks == 
 \usepackage{bbding}
 \usepackage{pifont}
@@ -95,6 +98,7 @@ colormap/viridis
 
 \usepackage{diagbox}
 
+\usepackage[bottom]{footmisc}
 
 \usepackage[
   hidelinks,
@@ -180,13 +184,16 @@ Mapping Regulatory System of WTO Dispute Settlement Body Using Deep Learning
 \section{Data}
 \input{Data/intro.tex}
 
+\subsection{Overview: How Members Raise Claims in WTO DSB}
+\input{Data/overview-wto-dsb.tex}
+
+
 % \subsection{General Explain}
 % \input{Data/general-explain.tex}
-
-\subsection{Factual Aspect}
+\subsection{Factual Aspect: Textual Description of the Dispute}
 \input{Data/Factual Aspect/main.tex}
 
-\subsection{Cited Articles}
+\subsection{Cited Articles: Multiple Articles are Cited for Each Dispute}
 \input{Data/Cited Articles/main.tex}
 
 \section{Methodology}
@@ -321,7 +328,6 @@ WTO DSB identifies each dispute with a unique number for each case such as DS2 a
 
 \input{Figures/heatmap.tex}
 
-% \input{coo.tex}
+\input{coo.tex}
 \end{appendices}
-== END
 \end{document}
