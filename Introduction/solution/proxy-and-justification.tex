@@ -2,84 +2,70 @@ To address this issue,
 this paper maps
 the regulatory system of WTO DSB
 as a network of legal articles
-of the WTO agreements as formally defined in Figure \ref{fig:def} and exemplified in the Figure\ref{fig:market-aceess_directed}. This is because rules of the WTO agreements
+of the WTO agreements as formally defined in Figure \ref{fig:def} and illustrated in Figure \ref{fig:def-example}. This is because the rules of the WTO agreements
 % \footnote{\textit{See} Article 7 in Dispute Settlement Rules: Understanding on Rules and Procedures Governing the Settlement of Disputes, Marrakesh Agreement Establishing the World Trade Organization, Annex 2, 1869 U.N.T.S. 401, 33 I.L.M. 1226 (1994)} 
 explicitly requires judicial bodies to address
-relevant articles together to construct its jurisprudence as shown in Figure \ref{fig:art7dsu}.
+relevant articles together to construct its jurisprudence (\textit{See} Figure \ref{fig:art7dsu}).
 Upon this requirement, judicial bodies refer to
 multiple articles of the WTO agreements together
 to identify the complex legal identity of the trade policy that led to the dispute.
 In addition to it, judicial bodies cite multiple articles together
-to provide an authoritative interpretation of the rules of the WTO agreements
-\citep{oesch2003standards}.
+to provide an authoritative interpretation of the rules of the WTO agreements (\textit{See} Figure \ref{subfig:a:condprob})
+% \citep{oesch2003standards}.
+
+% == THREE SUBSYSTEM == 
+\begin{figure}
+    \centering{
+        \input{market_access_directed.tex}
+    }
+    \caption{{\bf Network of the Articles that Achieves \textit{Market Access}:}
+        This figure demonstrates a network of articles of WTO agreements
+        that cooperatively achieves \textit{Market access} principle of WTO.
+        Tariff and Non-tariff barriers such as quantitative restriction, internal taxations
+        and extra fees for crossing border can inhibit the chance of foreign goods to access the foreign market.
+        Therefore, these articles tend to work together to ensure the \textit{Market access} principle working properly.
+        (Directions and weights of network edges are omitted for brevity.)
+    }
+    \label{fig:market-aceess_directed}
+\end{figure}
 
 \begin{figure}[ht]
     \[\text{Network of legal articles of WTO agreements is defined as}\] %\textit{directed weighted graph}}  G = (V, E, w) \]
     \[ \textit{directed weighted graph }G = (V, E, w) \]
     \[\text{ where } V = \{v \mid v\text{ is a legal article of WTO agreement}\}  \text{ , } \]
-    \[\vec{E} = \{(v_i, v_j) \mid (v_i, v_j)\in V \times V)\} \] %\text{ and } \]
-    \[w : V \times V \to \Bbb R_{+} \text{ } s.t. \sum_{v_j\in V}{w(v_i, v_j)} = 1 \text{ } \forall v_i \in V \text{ and }\]
-    \[\text{simply define } w_{ij} := w(v_i, v_j)\]
+    \[\vec{E} = \{(v_i, v_j) \mid (v_i, v_j)\in V \times V)\} \text{ and } \]
+    \[w : V \times V \to \Bbb R_{+} \text{ } s.t. \sum_{v_j\in V}{w(v_i, v_j)} = 1 \text{ } \forall v_i \in V \]%\text{ and }\]
+    \[\text{ To simplify the notation, let } w_{ij} := w(v_i, v_j)\]
     % \[\text{(}G\text{ is simply called \textit{directed weighted graph)}}\]
-    \caption{\textbf{Formal Definition of Network of Legal Articles of WTO agreements: }
-        We define network of legal articles of WTO agreements
+    \caption{\textbf{Formal Definition of Network of Legal Articles of WTO agreements: }I define network of legal articles of WTO agreements
         as a directed weighted graph where the sum of all weights coming out of a node sum up to 1 as illustrated in Figure \ref{fig:def-example}}
     \label{fig:def}
 \end{figure}
 
-\begin{figure}[ht]
-
-    \centering
-    \begin{tikzpicture}[
-        >={Stealth[color=black]}
-        ,shorten >=1pt,node distance=2cm
-        ,on grid,initial/.style={}
-        ,every label/.style={align=left}
-        ]
-        \linespread{2}
-        \node[state, label=above:{Interpretation of \\[1mm] \hspace{-2mm} Tariff Concession}] (T1) at (10, 0) {II:1(b)};
-
-        \node[text width=5cm] at (8.5,0) 
-        {$\sum_{v_j\in V}{w_{ij}} = 1$};
-        
-        \draw[ultra thick, gray!50, dotted, ->] (13,1.8) arc (30:-170:3.5);
-        \draw[ultra thick, gray!50, dotted, -] (13,1.8) arc (30:170:3.5);
-
-
-        \node[state, label=right:{National Treatment on \\[1mm] \hspace{2mm} Internal Taxation}] at ([shift=({0:5 cm})]T1) (T2) {III:2};
-        \node[state, label=right:{General Elimination of \\[1mm] \hspace{-2mm} Quantitative Restrictions}] at ([shift=({-30:5 cm})]T1) (T3) {XI:1};
-        \node[state, label=right:{Fair Adminstration of \\[1mm] \hspace{-1mm} Laws and Regulations}] at ([shift=({30:5 cm})]T1) (T4) {X:3(a)};
-        
-        
-        % \def\circledarrow#1#2#3{ % #1 Style, #2 Center, #3 Radius
-        % \draw[#1,-, densely dotted] (#2) +(-50:#3) arc(-50:0:#3);
-        % }
-        % \circledarrow{ultra thick, gray!50}{T1}{2cm};
-        % \circledarrow{ultra thick, gray!50}{T1}{2.1cm};
-
-        \begin{scope}[every edge/.append style={->, double=black, draw=white}] % for directed edge, change "style={->, double=black, draw=white}]"
-            \path
-            (T1) edge node[above] {$0.092$} (T2)
-            (T1) edge node[above, xshift=5pt] {$0.07$} (T3)
-            (T1) edge node[above, yshift=5pt] {$0.108$} (T4);
-            
-            \path[->] (T1) edge[thin,->,densely dotted] node[above, xshift=5pt] {$w_{ij_{1}}$} +(1.95,-3.3);
-            \path[->] (T1) edge[thin,->,densely dotted] node[above, xshift=10pt] {$w_{ij_{2}}$} +(0,-3.75);
-            \path[->] (T1) edge[thin,->,densely dotted] node[above, xshift=10pt] {$w_{ij_{3}}$} +(-1.95,-3.3);
-
-
-        \end{scope}
-
-
-    \end{tikzpicture}
-
-
-    \caption{\textbf{Example of Network of Legal Articles of WTO agreements: }}
+% % == DEF EXAMPLE == 
+\begin{figure}[]
+    \begin{subfigure}[b]{1\textwidth}
+        \centering{
+            \input{Introduction/solution/def-example.tex}
+        }
+        \caption{\textbf{Illustrated edge weights of a source node Article II:1(b)}}
+        \label{subfig:a:art2b}
+    \end{subfigure}
+    \vfill
+    \begin{subfigure}[b]{1\textwidth}
+        \centering{
+            \input{Introduction/solution/russia-tariff.tex}
+            \caption{\textbf{Exerpt from the panel report for the \textit{Russia – Tariff Treatment} case:} Panel clarifies the meaning of the \textit{`in excess of'} in Article III:2 with an anology to the Article II:1(b).}
+            \label{subfig:a:condprob}
+        }
+    \end{subfigure}
+    \caption{\textbf{Illustration of Network of Legal Articles of WTO agreements: }Every directed edge weight is interpreted as the conditional probability $P(v_j|v_i)$ of how probably a source node $v_i$ constitutes a legal context to clarify the meaning of the target node $v_j$ among all other target nodes $v_{k \neq j}$. Above subfigure (a) represents how jurisprudence of Panel stated in (b) is represented as an edge weight where source node Article II:1(b) constitutes the legal context of the target node Article III:2 with the probability of $9.2\%$ among all other possible target articles.}
     \label{fig:def-example}
 \end{figure}
 
+\input{art7dsu.tex}
 
-\begin{figure}
+\begin{figure}[ht]
     \begin{tightcenter}
         Article I
     \end{tightcenter}
@@ -98,26 +84,6 @@ to provide an authoritative interpretation of the rules of the WTO agreements
     \label{fig:gatt_art1}
 \end{figure}
 
-% == THREE SUBSYSTEM == 
-\begin{figure}
-    \centering{
-        \input{market_access_directed.tex}
-    }
-    \caption{{\bf Network of the Articles that Achieves \textit{Market Access}:}
-        This figure demonstrates a network of articles of WTO agreements
-        that cooperatively achieves \textit{Market access} principle of WTO.
-        Tariff and Non-tariff barriers such as quantitative restriction, internal taxations
-        and extra fees for crossing border can inhibit the chance of foreign goods to cross the borders.
-        Therefore, these articles tend to work together to ensure the \textit{Market access} principle working properly.
-        (Directions and weights of network edges are omitted for brevity.)
-    }
-    \label{fig:market-aceess_directed}
-\end{figure}
-
-
-
-
-\input{art7dsu.tex}
 
 
 % \begin{displayquote}
