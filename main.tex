@@ -197,12 +197,13 @@ Mapping Regulatory System of WTO Dispute Settlement Body Using Deep Learning
 \section{Methodology: Considerations and Development}
 \input{Methodology/intro.tex}
 
-\subsection{Criteria for Choice of Methods}
-This paper considers two main points to
-determine its methods to map the regulatory system of WTO DSB
-as a network of articles of WTO agreements. 
-One is explicit use of textual information and the other one is
-generalization of each member's strategic citation.
+\subsection{Two Main Considerations For Design of Method}
+This paper considered two main points to
+determine its method to qualitatively fit the edge weights $w^*$ for the \textit{directed weighted graph} $G^*$ as defined in Figure \ref{fig:def}.
+
+One is importance of using the information represented in a form of textual description inside the content of dispute and legal article as exemplified in \hyperref[sub:factual-aspect-example]{Appendix A.1} and Figure {\ref{fig:gatt_art1}} respectively. The other one is about the way to generalize each member's startegic citation pattern. Since members of the WTO strategically cite 
+the articles of WTO agreement expecting different outcomes thats serves member-specific national interest \citep{who_gets, pelc, latent}, this paper
+selected a method that can generalize this member speicific citation pattern. These two considerations and the solution will be explained in the following subsections.
 
 \subsubsection{Importance of Using Textual Information}
 
