@@ -168,7 +168,7 @@ Mapping Regulatory System of WTO Dispute Settlement Body Using Deep Learning
 % \input{forest.tex}
 % \clearpage
 
-
+% == INTRO ==
 \section{Introduction}
 
 \input{Introduction/how-wto-works.tex}
@@ -180,50 +180,34 @@ Mapping Regulatory System of WTO Dispute Settlement Body Using Deep Learning
 \input{Introduction/methodology/neural-network-design.tex}
 \input{Introduction/conclusion/assessment.tex}
 
-
-\section{Data}
+% == DATA ==
+\section{Data: Types, Composition and Collection Process}
 \input{Data/intro.tex}
 
 \subsection{Overview: How Members Raise Claims in WTO DSB}
 \input{Data/overview-wto-dsb.tex}
 
-
-% \subsection{General Explain}
-% \input{Data/general-explain.tex}
 \subsection{Factual Aspect: Textual Description of the Dispute}
 \input{Data/Factual Aspect/main.tex}
 
 \subsection{Cited Articles: Set of Articles Cited for the Same Dispute}
 \input{Data/Cited Articles/main.tex}
 
-\section{Methodology}
-This section introduces the criteria of choice for the methods used in this paper. 
-Then explains the entire process
-to map the regulatory system of WTO DSB as a network of articles of WTO agreements.
+% == METHOD ==
+\section{Methodology: Considerations and Development}
+\input{Methodology/intro.tex}
 
-\subsection{Criteria for Choice of Methods}
-This paper considers two main points to
-determine its methods to map the regulatory system of WTO DSB
-as a network of articles of WTO agreements. 
-One is explicit use of textual information and the other one is
-generalization of each member's strategic citation.
+\subsection{Two Main Considerations For Design of Method}
+This paper considered two main points to
+determine its method to qualitatively fit the edge weights $w^*$ for the \textit{directed weighted graph} $G^*$ as defined in Figure \ref{fig:def}.
+
+One is importance of using the information represented in a form of textual description inside the content of dispute and legal article as exemplified in \hyperref[sub:factual-aspect-example]{Appendix A.1} and Figure {\ref{fig:gatt_art1}} respectively. The other one is about the way to generalize each member's startegic citation pattern. Since members of the WTO strategically cite 
+the articles of WTO agreement expecting different outcomes thats serves member-specific national interest \citep{who_gets, pelc, latent}, this paper
+selected a method that can generalize this member speicific citation pattern. These two considerations and the solution will be explained in the following subsections.
 
 \subsubsection{Importance of Using Textual Information}
+\input{Methodology/Importance-of-Textual-Information/why-it-fails.tex}
 
-This paper emphasizes the necessity of use of textual information 
-to qualitatively map the regulatory system of WTO DSB as the network of articles of WTO agreements.
-One can simply consider a co-citation pattern between the articles of WTO agreements as a network of articles of WTO, however,
-it fails to capture the complex interactions between the articles of the WTO agreements that achieves main principles of WTO.
-
-This failure is mainly due to the insufficient information in co-citation matrix. Members tend to cite the articles of 
-the WTO agreements based on the complex characteristics of 
-the trade policy that led to the dispute, however, if a method 
-do not consider a way to encompass the information
-about the identiy of the trade policy at issue with 
-each article's regulatory content written in its own article text,
-it can only reflect how articles of WTO agreements are co-cited 
-together rather than reflecting how articles of WTO agreements 
-cooperates to regulate each charactersitic of complex trade policy that led to the dispute. 
 
 This paper will compare two different results that one uses textual information using deep learning and the other one
 uses the frequency of co-citation only after explaining how deep learning works to encompass the textual information.
