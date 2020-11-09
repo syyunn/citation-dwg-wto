@@ -3,65 +3,41 @@ a network of legal articles of WTO agreement
 successfully,
 this paper designs a deep neural network (Figure \ref{fig:traditional-convolutional-network}) that
 processes two different types of textual information.
-% This deep neural network 
-% processes two different types of input.
-One is textual description of trade policy that led to the dispute (\hyperref[sub:factual-aspect-example]{Appendix A.1}) and
-the other one is the content of a legal article of the WTO agreement (Figure \ref{fig:gatt_art1}).
+One is textual description of trade policy that led to the dispute (\textit{See} an example at \hyperref[sub:factual-aspect-example]{Appendix A.1}) and
+the other one is the textual content of a legal article of the WTO agreements (\textit{See} an example at Figure \ref{fig:gatt_art1}).
 This design is improvised to mimic
 the reasoning process of WTO legal practitioners
 where the legal practitioners read
-the text description of
+the textual description of
 factual circumstances of the dispute and imagine regulatory contents of
-the applicable legal articles simultaneously.
+the applicable legal articles while he/she reads the factual description.
 
 
 To train this neural network, this paper collected textual description of trade policy 
 that led to the dispute and articles of the WTO agreement cited for each dispute
 case requested to the WTO DSB 
-from 1995 to 2018 (\hyperref[sub:cited-articles-table]{Appendix A.2}).
+from 1995 to 2018 (\hyperref[sub:cited-articles-table]{Total $143$ cases. \textit{Check} the list in Appendix A.2}).
 Using this collected data, I trained the neural network by enforcing the neural network to answer correctly 
-about whether the given article of the WTO agreement
+whether a given article of the WTO agreements
 can be cited for the given textual description of 
 trade policy that led to the dispute.
 
-After finish training, I collected all the answers from trained neural network (Figure \ref{predidction_matrix})
-and created a network of legal articles of the WTO agreement\footnote{Part of the created network is exemplified in the Figure\ref{fig:market-aceess_directed}} from this collection of answers using a machine learning technique called GENIE3 \citep{genie3} 
-which is widely used in the biomedical engineering to reconstruct gene regulatory networks\footnote{Anaology of international normative system to genetics maybe natural because gene expressions (main principles of WTO) are governed by complex interaction between multiple regulatory proteins (legal articles of WTO). \textit{See also} \cite{gene_analogy}}.
+After finish training, I collected all the answers from the trained neural network (Figure \ref{predidction_matrix})
+and fitted a network of legal articles of the WTO agreement
+using this collection of answers.
+Since a network $G$ comprises $V$ (set of articles), $E$ (directed edges) and their $w$ (weights) as defined in Figure \ref{fig:def}, 
+I fitted a best set of weights $w^*$ for given $V$ and $E$
+using a machine learning technique called GENIE3 \citep{genie3} 
+which is widely used in the biomedical engineering to reconstruct gene regulatory networks.\footnote{Anaology of international normative system to genetics maybe natural because gene expressions (achieving main principles of WTO) are governed by complex interaction between multiple regulatory proteins (interaction between legal articles of WTO). Similar notion is adopted in \cite{gene_analogy} to explain the the evolution of norm of transparency in international security.}
 
-To check whether this created network of WTO agreements maps the regulatory system of WTO DSB properly, this paper
-compares the created network and the jurisprudence of WTO DSB made by Panel and Appellate Body. 
-The comparison shows that the network captures the interaction between the articles of WTO agreements
-as similar to the jurisprudence of the Panel and the Appellate Body. This similarity can be interpreted 
-as the created network closely maps the regulatory system of WTO DSB since only these two judicial bodies 
+To check whether this fitted network of WTO agreements $G^*$ maps the regulatory system of WTO DSB properly, this paper
+compares the created network and the jurisprudence of WTO DSB made by \textit{Panel} and \textit{Appellate Body}. 
+This comparison reveals that the fitted network $G^*$ captures the interaction between the articles of WTO agreements
+similarly with the jurisprudence of \textit{Panel} and \textit{the Appellate Body}. This similarity guarantees that the fitted network $G^*$ closely maps the regulatory system of WTO DSB since only these two judicial bodies 
 can authoritatively consitute the jurisprudence over how rules of WTO agreements are working together 
 to achieve the main principles of WTO.
 
-Moreover, this paper justifies the use of neural network to process textual information by showing the limitation of not using the textual information 
-to perform this mapping of regulatory system of WTO DSB. 
+Morover, this paper justifies the use of textual information inside the textual description of the dispute and legal article by showing that simply using the co-citation pattern between articles of the WTO disputes can't qualitatively fit the $G^*$ (\textit{See} Figure \ref{fig:adj} and Figure \ref{}). 
+Upon this necessity of using the textual information, this paper also justifies the use of neural network that is computationally intensive since it's generally known that proper design of neural network is able to effectively extract information from the textual content.
 
-% By doing so, this paper introduces a new method 
-% that maps a regulatory system of WTO DSB as a network of articles of WTO agreements using deep learning.
-
-
-
-
-% contributes following points:
-% \begin{itemize}
-%   \item
-%   \item
-%   \item
-% \end{itemize}
-%using the collected answers from the neural network .
-
-
-
-% \input{Figures/NN.tex}
-
-% \input{Figures/data-tables.tex}
-
-
-
-% where nodes are the articles of the WTO agreement and the edges are ranking of importance between incoming nodes to each 
-% target node using a tree-based ensemble machine learning method 
-% using the answers of the trained neural network.
-%, called GENIE3 \citep{genie3} 
+Finally, I will explain how this fitting of network of legal articles can contribute to the current study of international normative system.
