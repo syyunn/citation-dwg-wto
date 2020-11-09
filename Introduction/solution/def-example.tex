@@ -1,0 +1,41 @@
+    \begin{tikzpicture}[
+        >={Stealth[color=black]}
+        ,shorten >=1pt,node distance=2cm
+        ,on grid,initial/.style={}
+        ,every label/.style={align=left}
+        ]
+        \linespread{2}
+        \node[state, label=above:{Interpretation of \\[1mm] \hspace{-2mm} Tariff Concession}] (T1) at (10, 0) {$v_i$ = II:1(b)};
+
+        \node[text width=5cm] at (8.5,0)
+        {$\sum_{v_j\in V}{w_{ij}} = 1$};
+
+        \draw[ultra thick, gray!50, dotted, ->] (13,1.8) arc (30:-170:3.5);
+        \draw[ultra thick, gray!50, dotted, -] (13,1.8) arc (30:170:3.5);
+
+
+        \node[state, label=right:{National Treatment on \\[1mm] \hspace{2mm} Internal Taxation}] at ([shift=({0:5 cm})]T1) (T2) {$v_j$ = III:2};
+        \node[state, label=right:{General Elimination of \\[1mm] \hspace{-2mm} Quantitative Restrictions}] at ([shift=({-30:5 cm})]T1) (T3) {XI:1};
+        \node[state, label=right:{Fair Adminstration of \\[1mm] \hspace{-1mm} Laws and Regulations}] at ([shift=({30:5 cm})]T1) (T4) {X:3(a)};
+        
+        \draw[red,arrows={->[red]}, ultra thick] node[above, xshift=12.75cm] {$P(v_i|v_j) = 9.2\%$} (T1) -- (T2);
+
+        \begin{scope}[every edge/.append style={->}] % for directed edge, change "style={->, double=black, draw=white}]"
+            \path
+            % (T1) edge[red, ultra thick] node[above] {$0.092$} (T2)
+            (T1) edge[double=black, draw=white] node[above, xshift=5pt] {$7\%$} (T3)
+            (T1) edge[double=black, draw=white] node[above, yshift=5pt] {$10.8\%$} (T4);
+
+            \path[->] (T1) edge[thin,->,densely dotted] node[above, xshift=5pt] {$w_{ij_{1}}$} +(1.95,-3.3);
+            \path[->] (T1) edge[thin,->,densely dotted] node[above, xshift=10pt] {$w_{ij_{2}}$} +(0,-3.75);
+            \path[->] (T1) edge[thin,->,densely dotted] node[above, xshift=10pt] {$w_{ij_{3}}$} +(-1.95,-3.3);
+        \end{scope}
+
+    \end{tikzpicture}
+
+% \begin{figure}[ht]
+%     \centering
+    
+%     \caption{\textbf{Example of Network of Legal Articles of WTO agreements: }}
+%     \label{fig:def-example}
+% \end{figure}

@@ -95,6 +95,7 @@ colormap/viridis
 
 \usepackage{diagbox}
 
+
 \usepackage[
   hidelinks,
   pdftex, 
@@ -176,151 +177,151 @@ Mapping Regulatory System of WTO Dispute Settlement Body Using Deep Learning
 \input{Introduction/conclusion/assessment.tex}
 
 
-% \section{Data}
-% \input{Data/intro.tex}
+\section{Data}
+\input{Data/intro.tex}
 
-% % \subsection{General Explain}
-% % \input{Data/general-explain.tex}
+% \subsection{General Explain}
+% \input{Data/general-explain.tex}
 
-% \subsection{Factual Aspect}
-% \input{Data/Factual Aspect/main.tex}
+\subsection{Factual Aspect}
+\input{Data/Factual Aspect/main.tex}
 
-% \subsection{Cited Articles}
-% \input{Data/Cited Articles/main.tex}
+\subsection{Cited Articles}
+\input{Data/Cited Articles/main.tex}
 
-% \section{Methodology}
-% This section introduces the criteria of choice for the methods used in this paper. 
-% Then explains the entire process
-% to map the regulatory system of WTO DSB as a network of articles of WTO agreements.
+\section{Methodology}
+This section introduces the criteria of choice for the methods used in this paper. 
+Then explains the entire process
+to map the regulatory system of WTO DSB as a network of articles of WTO agreements.
 
-% \subsection{Criteria for Choice of Methods}
-% This paper considers two main points to
-% determine its methods to map the regulatory system of WTO DSB
-% as a network of articles of WTO agreements. 
-% One is explicit use of textual information and the other one is
-% generalization of each member's strategic citation.
+\subsection{Criteria for Choice of Methods}
+This paper considers two main points to
+determine its methods to map the regulatory system of WTO DSB
+as a network of articles of WTO agreements. 
+One is explicit use of textual information and the other one is
+generalization of each member's strategic citation.
 
-% \subsubsection{Importance of Using Textual Information}
+\subsubsection{Importance of Using Textual Information}
 
-% This paper emphasizes the necessity of use of textual information 
-% to qualitatively map the regulatory system of WTO DSB as the network of articles of WTO agreements.
-% One can simply consider a co-citation pattern between the articles of WTO agreements as a network of articles of WTO, however,
-% it fails to capture the complex interactions between the articles of the WTO agreements that achieves main principles of WTO.
+This paper emphasizes the necessity of use of textual information 
+to qualitatively map the regulatory system of WTO DSB as the network of articles of WTO agreements.
+One can simply consider a co-citation pattern between the articles of WTO agreements as a network of articles of WTO, however,
+it fails to capture the complex interactions between the articles of the WTO agreements that achieves main principles of WTO.
 
-% This failure is mainly due to the insufficient information in co-citation matrix. Members tend to cite the articles of 
-% the WTO agreements based on the complex characteristics of 
-% the trade policy that led to the dispute, however, if a method 
-% do not consider a way to encompass the information
-% about the identiy of the trade policy at issue with 
-% each article's regulatory content written in its own article text,
-% it can only reflect how articles of WTO agreements are co-cited 
-% together rather than reflecting how articles of WTO agreements 
-% cooperates to regulate each charactersitic of complex trade policy that led to the dispute. 
+This failure is mainly due to the insufficient information in co-citation matrix. Members tend to cite the articles of 
+the WTO agreements based on the complex characteristics of 
+the trade policy that led to the dispute, however, if a method 
+do not consider a way to encompass the information
+about the identiy of the trade policy at issue with 
+each article's regulatory content written in its own article text,
+it can only reflect how articles of WTO agreements are co-cited 
+together rather than reflecting how articles of WTO agreements 
+cooperates to regulate each charactersitic of complex trade policy that led to the dispute. 
 
-% This paper will compare two different results that one uses textual information using deep learning and the other one
-% uses the frequency of co-citation only after explaining how deep learning works to encompass the textual information.
-% At this stage, we can compare two adjacency matrices of each network that maps the regulatory system of WTO DSB as a network of articles of WTO agreements in Figure \ref{fig:sparse_dense}.
+This paper will compare two different results that one uses textual information using deep learning and the other one
+uses the frequency of co-citation only after explaining how deep learning works to encompass the textual information.
+At this stage, we can compare two adjacency matrices of each network that maps the regulatory system of WTO DSB as a network of articles of WTO agreements in Figure \ref{fig:sparse_dense}.
 
-% \input{Methodology/Figures/spare_dense.tex}
+\input{Methodology/Figures/spare_dense.tex}
 
-% \begin{figure}[ht]
-%   \[\text{Network of legal articles of WTO agreement is defined as }  G = (V, E, w) \] 
-%   \[\text{ where } V = \{v \mid v\text{ is a legal article of WTO agreement}\}  \text{ , } \]
-%   \[\vec{E} = \{(v_1, v_2) \mid (v_1, v_2)\in V \times V)\} \text{ and }w : V \times V \to \Bbb R_{+} \]
-%   \[G\text{ is simply called \textit{directed weighted graph}}\]
-%   \caption{\textbf{Formal Definition of Adjacency Matrix}}
-%   \label{fig:adj}
-%   \end{figure}
+\begin{figure}[ht]
+  \[\text{Network of legal articles of WTO agreement is defined as }  G = (V, E, w) \] 
+  \[\text{ where } V = \{v \mid v\text{ is a legal article of WTO agreement}\}  \text{ , } \]
+  \[\vec{E} = \{(v_1, v_2) \mid (v_1, v_2)\in V \times V)\} \text{ and }w : V \times V \to \Bbb R_{+} \]
+  \[G\text{ is simply called \textit{directed weighted graph}}\]
+  \caption{\textbf{Formal Definition of Adjacency Matrix}}
+  \label{fig:adj}
+  \end{figure}
 
-% \begin{itemize}
-%   \item Incomplete result without using textual inforamtion in in Appendix X.
-%   \item We are using neural network to process the textual information
-% \end{itemize}
+\begin{itemize}
+  \item Incomplete result without using textual inforamtion in in Appendix X.
+  \item We are using neural network to process the textual information
+\end{itemize}
 
-% \subsubsection{Generalization of Each Member's Strategic Citation}
-% \begin{itemize}
-%   \item Neural network is good at generalization.
-% \end{itemize}
+\subsubsection{Generalization of Each Member's Strategic Citation}
+\begin{itemize}
+  \item Neural network is good at generalization.
+\end{itemize}
 
 
-% \subsection{Design of Deep Neural Network}
-% \subsubsection{Embedding Layer}
-% \input{Methodology/embedding.tex}
+\subsection{Design of Deep Neural Network}
+\subsubsection{Embedding Layer}
+\input{Methodology/embedding.tex}
 
-% \subsubsection{1-Dimensional Convolution Layer (Conv1D)}
+\subsubsection{1-Dimensional Convolution Layer (Conv1D)}
+\input{Methodology/Conv1D.tex}
+
+\subsubsection{1-Dimensional Max-pooling (MaxPool1D)}
+\input{Methodology/MaxPool1D.tex}
+
 % \input{Methodology/Conv1D.tex}
 
-% \subsubsection{1-Dimensional Max-pooling (MaxPool1D)}
-% \input{Methodology/MaxPool1D.tex}
 
-% % \input{Methodology/Conv1D.tex}
-
-
-% % One of the most efficient ways to 
-% % process textual information is neural network.
-% % The main idea behind the use of neural network is to
+% One of the most efficient ways to 
+% process textual information is neural network.
+% The main idea behind the use of neural network is to
 
 
-% \subsection{Limits of Naive Approach}
+\subsection{Limits of Naive Approach}
 
-% \subsection{Reconstruction of Network of Articles of WTO Agreements}
-
-
-% \begin{itemize}
-%   \item Compare co-occurrences/neural network approach.
-
-%   \item Show that co-occurrences approach isn't accurate.
-% \end{itemize}
+\subsection{Reconstruction of Network of Articles of WTO Agreements}
 
 
-% \section{Empirical Findings}
-% \input{Empirical Findings/intro.tex}
+\begin{itemize}
+  \item Compare co-occurrences/neural network approach.
 
-% \subsection{Market Access}
-% \input{Empirical Findings/market-access.tex}
-
-% \subsubsection{Market Access Principle Captured in a Reconstructed Network}
-% \input{Empirical Findings/market-access-network.tex}
-
-% \section{Conclusion}
-% This paper shows how WTO works.
-
-% \begin{itemize}
-%   \item Implicaiton of thie method in general.
-%   \item Address the imbalance of legal capacity between developed/ing countries
-% \end{itemize}
-
-% \clearpage
-
-% \bibliography{bibtemplate}
-
-% \clearpage
-% \begin{appendices}
-% \section{}
-% \label{sec:appendix}
-% % \subsection{Table of Contents of the Panel Report}
-% % \input{Data/examples/table-of-content-panel.tex}
+  \item Show that co-occurrences approach isn't accurate.
+\end{itemize}
 
 
-% \subsection{Factual Aspect Example}
-% \label{sub:factual-aspect-example}
-% \input{Data/examples/factual-aspect.tex}
+\section{Empirical Findings}
+\input{Empirical Findings/intro.tex}
 
-% % \subsection{Content of Legal Article Example}
+\subsection{Market Access}
+\input{Empirical Findings/market-access.tex}
+
+\subsubsection{Market Access Principle Captured in a Reconstructed Network}
+\input{Empirical Findings/market-access-network.tex}
+
+\section{Conclusion}
+This paper shows how WTO works.
+
+\begin{itemize}
+  \item Implicaiton of thie method in general.
+  \item Address the imbalance of legal capacity between developed/ing countries
+\end{itemize}
+
+\clearpage
+
+\bibliography{bibtemplate}
+
+\clearpage
+\begin{appendices}
+\section{}
+\label{sec:appendix}
+% \subsection{Table of Contents of the Panel Report}
+% \input{Data/examples/table-of-content-panel.tex}
 
 
-% \subsection{Collected Cited Articles for 143 WTO DSB Cases}
-% DS refers to \textit{Dispute Settelement} and this notation is officially adopted by WTO DSB.\\
-% WTO DSB identifies each dispute with a unique number for each case such as DS2 and DS18.
-% \label{sub:cited-articles-table}
-% \input{Data/examples/cited-articles-table.tex}
+\subsection{Factual Aspect Example}
+\label{sub:factual-aspect-example}
+\input{Data/examples/factual-aspect.tex}
 
-% \subsection{Technical Details}
-% \label{sub:technicial-details}
+% \subsection{Content of Legal Article Example}
 
-% \input{Figures/heatmap.tex}
 
-% % \input{coo.tex}
-% \end{appendices}
-% == END
+\subsection{Collected Cited Articles for 143 WTO DSB Cases}
+DS refers to \textit{Dispute Settelement} and this notation is officially adopted by WTO DSB.\\
+WTO DSB identifies each dispute with a unique number for each case such as DS2 and DS18.
+\label{sub:cited-articles-table}
+\input{Data/examples/cited-articles-table.tex}
+
+\subsection{Technical Details}
+\label{sub:technicial-details}
+
+\input{Figures/heatmap.tex}
+
+% \input{coo.tex}
+\end{appendices}
+== END
 \end{document}
