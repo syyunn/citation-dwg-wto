@@ -1,0 +1,18 @@
+\begin{figure}[]
+    \begin{subfigure}[b]{1\textwidth}
+        \[\text{For given $M$ defined in Figure \ref{subfig:co-cites:def},} \]
+        \[\text{let \textit{normalized co-citation matrix} } N = (n_{ij}) \in \Bbb{R}^{|V| \times |V|} \text{ s.t. } n_{ij} = \frac{m_{ij}}{\sum_{j \in V}m_{ij}} \]
+        \caption{\textbf{Formal Definition of Normalized Co-citation Matrix}}
+        \label{subfig:co-cites:def}
+    \end{subfigure}
+    \vfill
+    \begin{subfigure}[b]{1\textwidth}
+        \centering{
+            \input{Methodology/Importance-of-Textual-Information/normalized-co-citation/co-citation.tex}
+            \caption{\textbf{Illustration of Noramlized Co-citation Matrix}}
+            \label{subfig:co-cites:illus}
+        }
+    \end{subfigure}
+    \label{fig:def-illus-co-cites}      
+    \caption{\textbf{Formal Definition and Illustration of Normalized Co-citation Matrix:} This paper defines normalized co-citation matrix $N$ of $M$ as subfigure $(a)$ and it's illustrated as subfigure $(b)$ using the paper's dataset. Note that normalized co-citation matrix is no more \textit{symmetric}, $n_{ij} \neq n_{ji} \text{ } \forall i,j \in V$. This definition is prepared to fit the definition of co-citation matrix to that of $w$ in Figure \ref{fig:def}.} 
+\end{figure}
