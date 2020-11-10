@@ -45,6 +45,7 @@ colormap/viridis
 \usetikzlibrary{automata,positioning}
 \usetikzlibrary{arrows.meta, positioning, automata}
 \usetikzlibrary{spy}
+\usetikzlibrary{shadows}
 
 \tikzset{
   font={\fontsize{10pt}{0}\selectfont}}
@@ -199,7 +200,7 @@ Mapping Regulatory System of WTO Dispute Settlement Body Using Deep Learning
 
 \subsection{Two Main Considerations For Design of Method}
 This paper considered two main points to
-determine its method to qualitatively fit the edge weights $w^*$ for the \textit{directed weighted graph} $G^*$ as defined in Figure \ref{fig:def}. One is importance of using the information represented in a form of textual description inside the content of dispute and legal article as exemplified in \hyperref[sub:factual-aspect-example]{Appendix A.1} and Figure {\ref{fig:gatt_art1}} respectively. The other one is about the way to generalize each member's startegic citation pattern. Since members of the WTO strategically cite 
+determine its method to qualitatively fit the edge weights $w^*$ for the \textit{directed weighted graph} $G^*$ as defined in Figure \ref{fig:def}. One is importance of using the information represented in a form of textual description inside the content of dispute and legal article as exemplified in \hyperref[sub:factual-aspect-example]{Appendix A.1} and Figure {\ref{fig:gatt_art1}} respectively. The other one is about the way to generalize each member's startegic citation pattern. Since members of the WTO strategically cite
 the articles of WTO agreement expecting different outcomes thats serves member-specific national interest \citep{who_gets, pelc, latent}, this paper
 selected a method that can generalize this member speicific citation pattern. These two considerations and the solution will be explained in the following subsections.
 
@@ -208,32 +209,47 @@ selected a method that can generalize this member speicific citation pattern. Th
 
 \subsubsection{Generalization of Each Member's Strategic Citation}
 
-This paper aims to map the regulatory system of WTO DSB in a form of \textit{directed weighted graph} $G$ as defined in Figure \ref{fig:def}. 
+This paper aims to map the regulatory system of WTO DSB in a form of \textit{directed weighted graph} $G$ as defined in Figure \ref{fig:def}.
 To achieve this purpose, we need to fit $G^{*}$ to generalize member specific strategic citation behavior.
 In terms of generalization, deep neural network is known to generalize well despite
 its large capacity \citep{neyshabur2017exploring}, possible instability of training algorithm \citep{charles2017stability}, nonrobustness \citep{zahavy2017ensemble}, and sharp minima \citep{dinh2017sharp}.
 Therefore this paper trains a deep neural network without any member specific information such as geolocation, GDP or specialized industry. By training a deep neural network only using a description of the possible inconsistent trade policy and the legal text of the cited articles,
-this paper expects a fitted $G^{*}$ can show interactions between articles of the WTO agreements 
+this paper expects a fitted $G^{*}$ can show interactions between articles of the WTO agreements
 without being biased to member specific strategic citation.
 
+\subsection{Design of Deep Neural Network}
+Upon the justification of using deep neural network with two main reasons, %one is to effectively process the text information and the other one is to generalize member specific strategic citation,
+I introduce this paper's design of deep neural network that is expected to efficiently encode members' citation pattern for given possible inconsistent trade policy.
+
+\subsubsection{Visualization of How Member Cites in WTO DSB}
+
+\begin{figure}[ht]
+  \centering
+  \begin{tikzpicture}[font=\sffamily,
+      doc/.style={draw, minimum height=4em, minimum width=3em,
+          fill=white,
+          double copy shadow={shadow xshift=4pt,
+              shadow yshift=4pt, fill=white, draw}},
+    ]
+    \node[doc] at (0, 0) (factual) {factual aspect};
+    \node[doc] at (0, -5)(legal-article) {text of legal article};
+
+    % human torso with head
+    \begin{scope}[xshift=5cm, yshift=-1.5cm]
+      \draw (0,0) circle (.53);
+      \draw (-130:.53) .. controls +(200:.5) and
+      +(-45:-.3) .. (-1,-1.6) .. controls +(-45:.3) and
+      +(45:-.3) .. (1,-1.6) .. controls +(45:.3) and
+      +(-20:.5) .. (-50:.53);
+    \end{scope}
+  \end{tikzpicture}
+  \caption{.}
+  \label{fig:viz:how-wto-dsb-works}
+\end{figure}
 
 
-% \begin{itemize}
-%   \item Neural network is good at generalization.
-% \end{itemize}
 
 
-% \begin{itemize}
-%   \item We are using neural network to process the textual information
-% \end{itemize}
-
-% \subsubsection{Generalization of Each Member's Strategic Citation}
-% \begin{itemize}
-%   \item Neural network is good at generalization.
-% \end{itemize}
-
-
-% \subsection{Design of Deep Neural Network}
 % \subsubsection{Embedding Layer}
 % \input{Methodology/embedding.tex}
 
