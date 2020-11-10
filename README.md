@@ -17,11 +17,14 @@ LaTex work to summarize how to recover citation directed weighted graph formulat
  ## ToDos
 
  - [ ] Clarify the following with neural network diagram
- To train this neural network, this paper collected textual description of trade policy 
-that led to the dispute and articles of the WTO agreement cited for each dispute
-case requested to the WTO DSB 
-from 1995 to 2018 (\hyperref[sub:cited-articles-table]{Total $143$ cases. \textit{Check} the list in Appendix A.2}).
-Using this collected data, I trained the neural network by enforcing the neural network to answer correctly 
-whether a given article of the WTO agreements
-can be cited for the given textual description of 
-trade policy that led to the dispute.
+
+    To train this neural network, this paper collected textual description of trade policy 
+    that led to the dispute and articles of the WTO agreement cited for each dispute
+    case requested to the WTO DSB 
+    from 1995 to 2018 (\hyperref[sub:cited-articles-table]{Total $143$ cases. \textit{Check} the list in Appendix A.2}).
+    Using this collected data, I trained the neural network by enforcing the neural network to answer correctly 
+    whether a given article of the WTO agreements
+    can be cited for the given textual description of 
+    trade policy that led to the dispute.
+
+- [ ] Add calculated graph entropy to spare & dense weight matrix
