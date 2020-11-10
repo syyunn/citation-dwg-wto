@@ -1,0 +1,20 @@
+% % == DEF EXAMPLE == 
+\begin{figure}[h]
+    \begin{subfigure}[b]{1\textwidth}
+        \[\text{Let } \delta^d_{ij} \text{ is defined to be } 1 \text{ if } \{(v_i, v_j) \mid v_i, v_j \in V \text{ and } i \neq j \} \subset c_{d \in D} \ \text{ else } 0\]
+        \[\text{ where } V, D \text{ and } c_d \text{ is defined as in Figure \ref{fig:def:set-of-cited-articles}}. \]
+        \[\text{Then let \textit{co-citation matrix} } M = (m_{ij}) \in \Bbb{N}^{|V| \times |V|} \text{ s.t. } m_{ij} = \sum_{d \in D}\sum_{i,j \in V}\delta^d_{ij}\]
+        \caption{\textbf{Formal Definition of Co-citation Matrix}}
+        \label{subfig:co-cites:def}
+    \end{subfigure}
+    \vfill
+    \begin{subfigure}[b]{1\textwidth}
+        \centering{
+            \input{Methodology/Importance-of-Textual-Information/co-citation/co-citation.tex}
+            \caption{\textbf{Illustration of Co-citation Matrix}}
+            \label{subfig:co-cites:illus}
+        }
+    \end{subfigure}
+    \label{fig:def-illus-co-cites}      
+    \caption{\textbf{Formal Definition and Illustration of Co-citation Matrix:} This paper defines co-citation matrix $M$ as subfigure $(a)$ and it is illustrated as subfigure $(b)$.} 
+\end{figure}
