@@ -182,7 +182,7 @@ Mapping Regulatory System of WTO Dispute Settlement Body Using Deep Learning
 \input{Introduction/conclusion/assessment.tex}
 
 % == DATA ==
-\section{Data: Types, Composition and Collection Process}
+\section{Data: Types, Composition and Collection Process} \label{sec:data}
 \input{Data/intro.tex}
 
 \subsection{Overview: How Members Raise Claims in WTO DSB}
@@ -221,7 +221,7 @@ without being biased to member specific strategic citation.
 Upon the justification of using deep neural network with two main reasons explained in Section \ref{justification-nn}, %one is to effectively process the text information and the other one is to generalize member specific strategic citation,
 I introduce a design of deep neural network that is expected to efficiently encode members' legal citation pattern.
 
-\subsubsection{Visualization of How Member Cites in WTO DSB}
+\subsubsection{Design Training Framework of Deep Neural Network By Analogy with How Member Cites in WTO DSB}
 A rule of thumb to design neural network is to mimic 
 how humans do for a given task. 
 Therefore I present a visualization of how legal expert of rules of WTO determines whether to cite a legal article of WTO agreements with an example of \textit{Korea - Beef} case in Figure \ref{fig:viz:how-member-cites-citable} and Figure \ref{fig:viz:how-member-cites-non-citable}.
@@ -235,6 +235,10 @@ We can understand that there exists a shared understanding over regulatory syste
 Then they organize a legal argument by citing certain article(s) upon this shared understanding for given possible inconsistent measure held by a member of WTO.
 
 To mimic this reasoning process, I present a framework to train the deep neural network as illustrated in Figure \ref{fig:design-of-nn}.
+The neural network is designed to estimate the citable probability for given pair of factual aspect and text of legal article. 
+By iteratively trains the neural network with data explained in Section \ref{sec:data}, I expect the neural network can learn a shared understanding over reglatory system of WTO DSB as closely as to that of legal experts.
+The detailed structure of neural network and training technique will be explained in the later subsections.
+% For total $11,440$ pairs of factual aspect and legal articles (143 different cases (Figure \ref{fig:ds-cases-used}) and 80 different legal articles (Figure \ref{fig:def:set-of-cited-articles})
 
 \input{Methodology/design-of-neural-network/visualize-how-member-cites/citable.tex}
 
@@ -242,65 +246,7 @@ To mimic this reasoning process, I present a framework to train the deep neural 
 
 \input{Methodology/design-of-neural-network/design-of-nn.tex}
 
-
-% \input{Methodology/design-of-neural-network/visualize-how-member-cites.tex}
-
-% \begin{figure}[ht]
-%   \centering
-%   \begin{tikzpicture}[font=\sffamily,
-%       doc/.style={draw, minimum height=4em, minimum width=3em,
-%           fill=white,
-%           double copy shadow={shadow xshift=4pt,
-%               shadow yshift=4pt, fill=white, draw}},
-%     ]
-%     \begin{scope}[xshift=-8cm, yshift=2cm]
-%       \node[doc] at (0, 0) (factual) {factual aspect};
-%       \node[text width=4cm] at (0.5,-2.1) 
-%     {``\textbf{Dual Retail System} allows imported beef to be sold only in specialized store \ldots ''};
-      
-%       \node[doc] at (0, -5)(legal-article) {text of legal article};
-%       \node[text width=4cm] at (0.5,-7.2)
-%       {``\textbf{Article III:4} \ldots members \textit{shall not} discriminate domestic and imported product \ldots''};
-  
-  
-%       % human torso with head
-%       \begin{scope}[xshift=5cm, yshift=-1.5cm]
-%         \draw (0,0) circle (.53);
-%         \draw (-130:.53) .. controls +(200:.5) and
-%         +(-45:-.3) .. (-1,-1.6) .. controls +(-45:.3) and
-%         +(45:-.3) .. (1,-1.6) .. controls +(45:.3) and
-%         +(-20:.5) .. (-50:.53);
-%       \end{scope}
-%       \node[text width=4cm] at (6,-4.25)
-%       {Legal expert that organizes the legal opinion of the United States};
-
-  
-%       % arrows to feed factual and article content
-%       \begin{scope}[every edge/.append style={->}] % for directed edge, change "style={->, double=black, draw=white}]"
-%         \path[->] (factual) edge[thick,->] node[above, xshift=5pt] {} +(4,-1.5);
-%         \path[->] (legal-article) edge[thick,->] node[above, xshift=10pt] {} +(3.8,2);
-%       \end{scope}
-  
-%       \begin{scope}[xshift=16cm, yshift=-1.5cm]
-%         \node [draw, align=center,
-%           cloud callout, 
-%           cloud puffs = 17, 
-%           cloud puff arc=140,
-%           callout pointer segments = 2, 
-%           anchor = pointer,
-%           callout relative pointer = {(200:2cm)},
-%           aspect = 2, 
-%           above left = 1.2 ]
-%         {Article III:4 of GATT 1994 is \\ \textbf{appropriate to be cited} \\ \textit{because} this measure \\ described in factual aspect \\ discriminates domestic and \\ imported product};
-%       \end{scope}      
-%     \end{scope}
-%   \end{tikzpicture}
-%   \caption{\textbf{Visualization of How Member Cites in WTO DSB: }With two different contexts, factual aspect and text of legal articles, a member can judge whether the given legal article is appropriate to be cited or not.}
-%   \label{fig:viz:how-wto-dsb-works}
-% \end{figure}
-
 \subsubsection{Visualization of How Deep Neural Network Work} 
-
 
 % \subsubsection{Embedding Layer}
 \input{Methodology/embedding.tex}
@@ -311,24 +257,12 @@ To mimic this reasoning process, I present a framework to train the deep neural 
 % \subsubsection{1-Dimensional Max-pooling (MaxPool1D)}
 \input{Methodology/MaxPool1D.tex}
 
-\input{Methodology/Conv1D.tex}
-
-
 % % One of the most efficient ways to 
 % % process textual information is neural network.
 % % The main idea behind the use of neural network is to
 
-
-% \subsection{Limits of Naive Approach}
-
 % \subsection{Reconstruction of Network of Articles of WTO Agreements}
-
-
-% \begin{itemize}
-%   \item Compare co-occurrences/neural network approach.
-
-%   \item Show that co-occurrences approach isn't accurate.
-% \end{itemize}
+\subsection{Fitting $W^*$ Using Machine Learning Algorithm: GENIE3}
 
 
 \section{Empirical Findings}

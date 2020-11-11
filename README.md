@@ -15,6 +15,7 @@ LaTex work to summarize how to recover citation directed weighted graph formulat
  -->
 
  ## ToDos
+ - [ ] Clarify W^* as a 1-to-1 corresponder for G^*
 
  - [ ] Clarify the following with neural network diagram
 
