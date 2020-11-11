@@ -15,6 +15,8 @@ LaTex work to summarize how to recover citation directed weighted graph formulat
  -->
 
  ## ToDos
+ - [ ] Add formal definition of Deep Neural Network 
+ - [ ] Add the formal definition of set of model prediction
  - [ ] Clarify W^* as a 1-to-1 corresponder for G^*
 
  - [ ] Clarify the following with neural network diagram
