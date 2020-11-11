@@ -250,7 +250,7 @@ Then they organize a legal argument by citing certain article upon this shared u
       
       \node[doc] at (0, -5)(legal-article) {text of legal article};
       \node[text width=4cm] at (0.5,-7.2)
-      {``\textbf{Article III:4} \ldots members shall not discriminate domestic and imported product \ldots''};
+      {``\textbf{Article III:4} \ldots members \textit{shall not} discriminate domestic and imported product \ldots''};
   
   
       % human torso with head
@@ -261,6 +261,9 @@ Then they organize a legal argument by citing certain article upon this shared u
         +(45:-.3) .. (1,-1.6) .. controls +(45:.3) and
         +(-20:.5) .. (-50:.53);
       \end{scope}
+      \node[text width=4cm] at (6,-4.25)
+      {Legal expert that organizes the legal opinion of the United States};
+
   
       % arrows to feed factual and article content
       \begin{scope}[every edge/.append style={->}] % for directed edge, change "style={->, double=black, draw=white}]"
