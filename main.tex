@@ -198,7 +198,7 @@ Mapping Regulatory System of WTO Dispute Settlement Body Using Deep Learning
 \section{Methodology: Considerations and Development}
 \input{Methodology/intro.tex}
 
-\subsection{Two Main Considerations For Design of Method}
+\subsection{Two Main Considerations For Design of Method} \label{justification-nn}
 This paper considered two main points to
 determine its method to qualitatively fit the edge weights $w^*$ for the \textit{directed weighted graph} $G^*$ as defined in Figure \ref{fig:def}. One is importance of using the information represented in a form of textual description inside the content of dispute and legal article as exemplified in \hyperref[sub:factual-aspect-example]{Appendix A.1} and Figure {\ref{fig:gatt_art1}} respectively. The other one is about the way to generalize each member's startegic citation pattern. Since members of the WTO strategically cite
 the articles of WTO agreement expecting different outcomes thats serves member-specific national interest \citep{who_gets, pelc, latent}, this paper
@@ -218,71 +218,100 @@ this paper expects a fitted $G^{*}$ can show interactions between articles of th
 without being biased to member specific strategic citation.
 
 \subsection{Design of Deep Neural Network}
-Upon the justification of using deep neural network with two main reasons, %one is to effectively process the text information and the other one is to generalize member specific strategic citation,
-I introduce this paper's design of deep neural network that is expected to efficiently encode members' citation pattern for given possible inconsistent trade policy.
+Upon the justification of using deep neural network with two main reasons explained in Section \ref{justification-nn}, %one is to effectively process the text information and the other one is to generalize member specific strategic citation,
+I introduce a design of deep neural network that is expected to efficiently encode members' legal citation pattern.
 
 \subsubsection{Visualization of How Member Cites in WTO DSB}
+A rule of thumb to design neural network is to mimic 
+how humans do for a given task. 
+Therefore I present a visualization of how legal expert of rules of WTO determines whether to cite a legal article of WTO agreements with an example of \textit{Korea - Beef} case in Figure \ref{fig:viz:how-member-cites-citable} and Figure \ref{fig:viz:how-member-cites-non-citable}.
+In this case, the United States raised a claim relating to the \textit{Dual-retail system} maintained by South Korea. In \textit{Dual-retail system}, South Korea maintained two distinct retail systems
+for imported and domestic beef, i.e., there must exist stores specialized for imported beef and they can sell only imported beef and vice versa. U.S. claimed that the \textit{Dual-retail system} is inconsistent to the Article III:4 (National Treatment) of GATT 1994 
+because \textit{Dual-retail system} has a chance to discriminate domestic and imported product. A measure that discriminates domestic and imported products falls under the scope of the Article III:4 of the GATT 1994 that states the principle of \textit{National Treatment} which prohibits the discrimination between imported and domestic \textit{like product}. However, U.S. didn't 
+cite the Article I:1 of GATT 1994 that prohibits the discrimination between members of WTO agreements
+because \textit{Dual-retail system} didn't discriminate the United States with other countries that exports beef to South Korea, such as Argentina, Austrailia, etc.
 
-\begin{figure}[ht]
-  \centering
-  \begin{tikzpicture}[font=\sffamily,
-      doc/.style={draw, minimum height=4em, minimum width=3em,
-          fill=white,
-          double copy shadow={shadow xshift=4pt,
-              shadow yshift=4pt, fill=white, draw}},
-    ]
-    \begin{scope}[xshift=-10cm, yshift=2cm]
-      \node[doc] at (0, 0) (factual) {factual aspect};
-      \node[doc] at (0, -5)(legal-article) {text of legal article};
+We can understand that there exists a shared understanding over regulatory system of WTO DSB among legal experts of the rules of WTO. They follow up new cases and study jurisprudence stated in the \textit{Panel} or  \textit{Appellate Body} reports.
+Then they organize a legal argument by citing certain article(s) upon this shared understanding for given possible inconsistent measure held by a member of WTO.
+
+To mimic this reasoning process, I present a framework to train the deep neural network as illustrated in Figure \ref{fig:design-of-nn}.
+
+\input{Methodology/design-of-neural-network/visualize-how-member-cites/citable.tex}
+
+\input{Methodology/design-of-neural-network/visualize-how-member-cites/non-citable.tex}
+
+\input{Methodology/design-of-neural-network/design-of-nn.tex}
+
+
+% \input{Methodology/design-of-neural-network/visualize-how-member-cites.tex}
+
+% \begin{figure}[ht]
+%   \centering
+%   \begin{tikzpicture}[font=\sffamily,
+%       doc/.style={draw, minimum height=4em, minimum width=3em,
+%           fill=white,
+%           double copy shadow={shadow xshift=4pt,
+%               shadow yshift=4pt, fill=white, draw}},
+%     ]
+%     \begin{scope}[xshift=-8cm, yshift=2cm]
+%       \node[doc] at (0, 0) (factual) {factual aspect};
+%       \node[text width=4cm] at (0.5,-2.1) 
+%     {``\textbf{Dual Retail System} allows imported beef to be sold only in specialized store \ldots ''};
+      
+%       \node[doc] at (0, -5)(legal-article) {text of legal article};
+%       \node[text width=4cm] at (0.5,-7.2)
+%       {``\textbf{Article III:4} \ldots members \textit{shall not} discriminate domestic and imported product \ldots''};
   
-      % human torso with head
-      \begin{scope}[xshift=5cm, yshift=-1.5cm]
-        \draw (0,0) circle (.53);
-        \draw (-130:.53) .. controls +(200:.5) and
-        +(-45:-.3) .. (-1,-1.6) .. controls +(-45:.3) and
-        +(45:-.3) .. (1,-1.6) .. controls +(45:.3) and
-        +(-20:.5) .. (-50:.53);
-      \end{scope}
   
-      % arrows to feed factual and article content
-      \begin{scope}[every edge/.append style={->}] % for directed edge, change "style={->, double=black, draw=white}]"
-        \path[->] (factual) edge[thick,->] node[above, xshift=5pt] {} +(4,-1.5);
-        \path[->] (legal-article) edge[thick,->] node[above, xshift=10pt] {} +(3.8,2);
-      \end{scope}
+%       % human torso with head
+%       \begin{scope}[xshift=5cm, yshift=-1.5cm]
+%         \draw (0,0) circle (.53);
+%         \draw (-130:.53) .. controls +(200:.5) and
+%         +(-45:-.3) .. (-1,-1.6) .. controls +(-45:.3) and
+%         +(45:-.3) .. (1,-1.6) .. controls +(45:.3) and
+%         +(-20:.5) .. (-50:.53);
+%       \end{scope}
+%       \node[text width=4cm] at (6,-4.25)
+%       {Legal expert that organizes the legal opinion of the United States};
+
   
-      \begin{scope}[xshift=15cm, yshift=-1.5cm]
-        \node [draw, align=center,
-          cloud callout, 
-          cloud puffs = 17, 
-          cloud puff arc=140,
-          callout pointer segments = 2, 
-          anchor = pointer,
-          callout relative pointer = {(200:2cm)},
-          aspect = 3, 
-          above left = 1.2 ]
-        {This is some text\\and some more in the next line.\\That's all.};
-      \end{scope}      
-    \end{scope}
+%       % arrows to feed factual and article content
+%       \begin{scope}[every edge/.append style={->}] % for directed edge, change "style={->, double=black, draw=white}]"
+%         \path[->] (factual) edge[thick,->] node[above, xshift=5pt] {} +(4,-1.5);
+%         \path[->] (legal-article) edge[thick,->] node[above, xshift=10pt] {} +(3.8,2);
+%       \end{scope}
+  
+%       \begin{scope}[xshift=16cm, yshift=-1.5cm]
+%         \node [draw, align=center,
+%           cloud callout, 
+%           cloud puffs = 17, 
+%           cloud puff arc=140,
+%           callout pointer segments = 2, 
+%           anchor = pointer,
+%           callout relative pointer = {(200:2cm)},
+%           aspect = 2, 
+%           above left = 1.2 ]
+%         {Article III:4 of GATT 1994 is \\ \textbf{appropriate to be cited} \\ \textit{because} this measure \\ described in factual aspect \\ discriminates domestic and \\ imported product};
+%       \end{scope}      
+%     \end{scope}
+%   \end{tikzpicture}
+%   \caption{\textbf{Visualization of How Member Cites in WTO DSB: }With two different contexts, factual aspect and text of legal articles, a member can judge whether the given legal article is appropriate to be cited or not.}
+%   \label{fig:viz:how-wto-dsb-works}
+% \end{figure}
 
-
-  \end{tikzpicture}
-  \caption{\textbf{Visualization of How Member Cites in WTO DSB: }With two different contexts, factual aspect and text of legal articles, a member can judge whether the given legal article is appropriate to be cited or not.}
-  \label{fig:viz:how-wto-dsb-works}
-\end{figure}
-
-
+\subsubsection{Visualization of How Deep Neural Network Work} 
 
 
 % \subsubsection{Embedding Layer}
-% \input{Methodology/embedding.tex}
+\input{Methodology/embedding.tex}
 
 % \subsubsection{1-Dimensional Convolution Layer (Conv1D)}
-% \input{Methodology/Conv1D.tex}
+\input{Methodology/Conv1D.tex}
 
 % \subsubsection{1-Dimensional Max-pooling (MaxPool1D)}
-% \input{Methodology/MaxPool1D.tex}
+\input{Methodology/MaxPool1D.tex}
 
-% % \input{Methodology/Conv1D.tex}
+\input{Methodology/Conv1D.tex}
 
 
 % % One of the most efficient ways to 
@@ -302,8 +331,8 @@ I introduce this paper's design of deep neural network that is expected to effic
 % \end{itemize}
 
 
-% \section{Empirical Findings}
-% \input{Empirical Findings/intro.tex}
+\section{Empirical Findings}
+\input{Empirical Findings/intro.tex}
 
 % \subsection{Market Access}
 % \input{Empirical Findings/market-access.tex}
@@ -311,7 +340,7 @@ I introduce this paper's design of deep neural network that is expected to effic
 % \subsubsection{Market Access Principle Captured in a Reconstructed Network}
 % \input{Empirical Findings/market-access-network.tex}
 
-% \section{Conclusion}
+\section{Conclusion}
 % This paper shows how WTO works.
 
 % \begin{itemize}
@@ -321,32 +350,32 @@ I introduce this paper's design of deep neural network that is expected to effic
 
 \clearpage \bibliography{bibtemplate}
 
-% \clearpage
-% \begin{appendices}
-% \section{}
-% \label{sec:appendix}
-% % \subsection{Table of Contents of the Panel Report}
-% % \input{Data/examples/table-of-content-panel.tex}
+\clearpage
+\begin{appendices}
+\section{}
+\label{sec:appendix}
+% \subsection{Table of Contents of the Panel Report}
+% \input{Data/examples/table-of-content-panel.tex}
 
 
-% \subsection{Factual Aspect Example}
-% \label{sub:factual-aspect-example}
-% \input{Data/examples/factual-aspect.tex}
+\subsection{Factual Aspect Example}
+\label{sub:factual-aspect-example}
+\input{Data/examples/factual-aspect.tex}
 
-% % \subsection{Content of Legal Article Example}
+% \subsection{Content of Legal Article Example}
 
 
-% \subsection{Collected Cited Articles for 143 WTO DSB Cases}
-% DS refers to \textit{Dispute Settelement} and this notation is officially adopted by WTO DSB.\\
-% WTO DSB identifies each dispute with a unique number for each case such as DS2 and DS18.
-% \label{sub:cited-articles-table}
-% \input{Data/examples/cited-articles-table.tex}
+\subsection{Collected Cited Articles for 143 WTO DSB Cases}
+DS refers to \textit{Dispute Settelement} and this notation is officially adopted by WTO DSB.\\
+WTO DSB identifies each dispute with a unique number for each case such as DS2 and DS18.
+\label{sub:cited-articles-table}
+\input{Data/examples/cited-articles-table.tex}
 
-% \subsection{Technical Details}
-% \label{sub:technicial-details}
+\subsection{Technical Details}
+\label{sub:technicial-details}
 
-% \input{Figures/heatmap.tex}
+\input{Figures/heatmap.tex}
 
 % \input{coo.tex}
-% \end{appendices}
+\end{appendices}
 \end{document}

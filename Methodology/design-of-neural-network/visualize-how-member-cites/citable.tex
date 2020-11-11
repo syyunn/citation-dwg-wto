@@ -1,0 +1,53 @@
+\begin{figure}[ht]
+    \begin{tikzpicture}[font=\sffamily,
+      doc/.style={draw, minimum height=4em, minimum width=3em,
+          fill=white,
+          double copy shadow={shadow xshift=4pt,
+              shadow yshift=4pt, fill=white, draw}},
+    ]
+    \begin{scope}[xshift=-8cm, yshift=2cm]
+      \node[doc] at (0, 0) (factual) {factual aspect};
+      \node[text width=4cm] at (0.5,-2.1) 
+    {``\textbf{Dual Retail System} allows imported beef to be sold only in specialized store \ldots ''};
+      
+      \node[doc] at (0, -5)(legal-article) {text of legal article};
+      \node[text width=4cm] at (0.5,-7.2)
+      {``\textbf{Article III:4} \ldots members \textit{shall not} discriminate domestic and imported product \ldots''};
+  
+  
+      % human torso with head
+      \begin{scope}[xshift=5cm, yshift=-1.5cm]
+        \draw (0,0) circle (.53);
+        \draw (-130:.53) .. controls +(200:.5) and
+        +(-45:-.3) .. (-1,-1.6) .. controls +(-45:.3) and
+        +(45:-.3) .. (1,-1.6) .. controls +(45:.3) and
+        +(-20:.5) .. (-50:.53);
+      \end{scope}
+      \node[text width=4cm] at (6,-4.25)
+      {Legal expert that organizes the legal opinion of the United States};
+  
+  
+      % arrows to feed factual and article content
+      \begin{scope}[every edge/.append style={->}] % for directed edge, change "style={->, double=black, draw=white}]"
+        \path[->] (factual) edge[thick,->] node[above, xshift=5pt] {} +(4,-1.5);
+        \path[->] (legal-article) edge[thick,->] node[above, xshift=10pt] {} +(3.8,2);
+      \end{scope}
+  
+      \begin{scope}[xshift=16cm, yshift=-1.5cm]
+        \node [draw, align=center,
+          cloud callout, 
+          cloud puffs = 17, 
+          cloud puff arc=140,
+          callout pointer segments = 2, 
+          anchor = pointer,
+          callout relative pointer = {(200:2cm)},
+          aspect = 2, 
+          above left = 1.2 ]
+        {Article III:4 of GATT 1994 is \\ \textbf{appropriate to be cited} \\ \textit{because} this measure \\ described in factual aspect \\ discriminates domestic and \\ imported product};
+      \end{scope}      
+    \end{scope}
+  \end{tikzpicture}
+  \caption{\textbf{Visualization of How Member Cites in WTO DSB (Citable Case): }With two different contexts, factual aspect and text of legal articles, member judges whether the given legal article is appropriate to be cited or not.}
+  \label{fig:viz:how-member-cites-citable}   
+  \end{figure}
+    
