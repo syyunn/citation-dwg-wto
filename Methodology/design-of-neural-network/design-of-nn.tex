@@ -1,0 +1,73 @@
+\begin{figure}[ht]
+    \tikzset{%
+        every neuron/.style={
+                circle,
+                draw,
+                minimum size=1cm
+            },
+        neuron missing/.style={
+                draw=none,
+                scale=4,
+                text height=0.333cm,
+                execute at begin node=\color{black}$\vdots$
+            },
+    }
+    \begin{tikzpicture}[font=\sffamily,
+            doc/.style={draw, minimum height=4em, minimum width=3em,
+                    fill=white,
+                    double copy shadow={shadow xshift=4pt,
+                            shadow yshift=4pt, fill=white, draw}},
+        ]
+        \begin{scope}[xshift=-8cm, yshift=2cm]
+            \node[doc] at (0, 0) (factual) {factual aspect};
+            % \node[text width=4cm] at (0.5,-2.1)
+            % {``\textbf{Dual Retail System} allows imported beef to be sold only in specialized store \ldots ''};
+
+            \node[doc] at (0, -5)(legal-article) {text of legal article};
+            % \node[text width=4cm] at (0.5,-7.2)
+            % {``\textbf{Article I:1} \ldots members \textit{shall not} discriminate between two different members of WTO \ldots''};
+
+
+            % human torso with head
+            \begin{scope}[xshift=5cm, yshift=-2cm]
+                \foreach \m/\l [count=\y] in {1,2,3,4}
+                \node [every neuron/.try, neuron \m/.try] (input-\m) at (0,2.5-\y) {};
+
+                \foreach \m [count=\y] in {1,2}
+                \node [every neuron/.try, neuron \m/.try ] (hidden-\m) at (2,2-\y*1.25) {};
+
+                % \foreach \m [count=\y] in {1}
+                % \node [every neuron/.try, neuron \m/.try ] (output-\m) at (4,1.2-\y) {};
+
+                \foreach \i in {1,...,4}
+                \foreach \j in {1,...,2}
+                \draw [->] (input-\i) -- (hidden-\j);
+
+                % \foreach \i in {1,2}
+                % \foreach \j in {1}
+                % \draw [->] (hidden-\i) -- (output-\j);        
+            \end{scope}
+            \node[text width=4cm] at (6.5,-5)
+            {Symbolic representation of deep neural network};
+
+
+            % arrows to feed factual and article content
+            \begin{scope}[every edge/.append style={->}] % for directed edge, change "style={->, double=black, draw=white}]"
+                \path[->] (factual) edge[thick,->] node[above, xshift=5pt] {} +(4,-1.5);
+                \path[->] (legal-article) edge[thick,->] node[above, xshift=10pt] {} +(3.8,2);
+            \end{scope}
+
+            \path[->] (legal-article) edge[thick,->] node[above, xshift=10pt] {} +(3.8,2);
+
+            \draw[thick,->] (8,-1.8) -- (10,-1.8);
+            \node [draw,circle] (P) at (12,-1.8){$\hat{P} \in [0,1]$ };
+            \node[text width=4cm] at (13,-4.5)
+            {Neural network keeps estimating how much given legal article is citable for given factual aspect in probability};
+
+
+        \end{scope}
+    \end{tikzpicture}
+    \caption{\textbf{Design of Training Framework of Deep Neural Network:} I desgined a training framework of deep neural network by an analogy to how member cites visualized in Figure \ref{fig:viz:how-member-cites-citable} and Figure \ref{fig:viz:how-member-cites-non-citable}.}
+    \label{fig:design-of-nn}
+
+\end{figure}

@@ -1,4 +1,5 @@
-\begin{tikzpicture}[font=\sffamily,
+\begin{figure}[ht]
+  \begin{tikzpicture}[font=\sffamily,
     doc/.style={draw, minimum height=4em, minimum width=3em,
         fill=white,
         double copy shadow={shadow xshift=4pt,
@@ -11,7 +12,7 @@
     
     \node[doc] at (0, -5)(legal-article) {text of legal article};
     \node[text width=4cm] at (0.5,-7.2)
-    {``\textbf{Article III:4} \ldots members \textit{shall not} discriminate domestic and imported product \ldots''};
+    {``\textbf{Article I:1} \ldots members \textit{shall not} discriminate between two different members of WTO \ldots''};
 
 
     % human torso with head
@@ -42,9 +43,11 @@
         callout relative pointer = {(200:2cm)},
         aspect = 2, 
         above left = 1.2 ]
-      {Article III:4 of GATT 1994 is \\ \textbf{appropriate to be cited} \\ \textit{because} this measure \\ described in factual aspect \\ discriminates domestic and \\ imported product};
+      {Article I:1 of GATT 1994 is\\ \textbf{not appropriate to be cited} \\ \textit{because} this measure \\ described in factual aspect \\ doesn't discriminate between \\ two different members of WTO };
     \end{scope}      
   \end{scope}
 \end{tikzpicture}
-\caption{\textbf{Visualization of How Member Cites in WTO DSB: }With two different contexts, factual aspect and text of legal articles, a member can judge whether the given legal article is appropriate to be cited or not.}
-\label{fig:viz:how-wto-dsb-works}   
+\caption{\textbf{Visualization of How Member Cites in WTO DSB (Non-Citable Case): }With two different contexts, factual aspect and text of legal articles, member judges whether the given legal article is appropriate to be cited or not.}
+\label{fig:viz:how-member-cites-non-citable} 
+\end{figure}
+

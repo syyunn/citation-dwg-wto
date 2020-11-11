@@ -198,7 +198,7 @@ Mapping Regulatory System of WTO Dispute Settlement Body Using Deep Learning
 \section{Methodology: Considerations and Development}
 \input{Methodology/intro.tex}
 
-\subsection{Two Main Considerations For Design of Method}
+\subsection{Two Main Considerations For Design of Method} \label{justification-nn}
 This paper considered two main points to
 determine its method to qualitatively fit the edge weights $w^*$ for the \textit{directed weighted graph} $G^*$ as defined in Figure \ref{fig:def}. One is importance of using the information represented in a form of textual description inside the content of dispute and legal article as exemplified in \hyperref[sub:factual-aspect-example]{Appendix A.1} and Figure {\ref{fig:gatt_art1}} respectively. The other one is about the way to generalize each member's startegic citation pattern. Since members of the WTO strategically cite
 the articles of WTO agreement expecting different outcomes thats serves member-specific national interest \citep{who_gets, pelc, latent}, this paper
@@ -218,23 +218,32 @@ this paper expects a fitted $G^{*}$ can show interactions between articles of th
 without being biased to member specific strategic citation.
 
 \subsection{Design of Deep Neural Network}
-Upon the justification of using deep neural network with two main reasons, %one is to effectively process the text information and the other one is to generalize member specific strategic citation,
+Upon the justification of using deep neural network with two main reasons explained in Section \ref{justification-nn}, %one is to effectively process the text information and the other one is to generalize member specific strategic citation,
 I introduce a design of deep neural network that is expected to efficiently encode members' legal citation pattern.
 
 \subsubsection{Visualization of How Member Cites in WTO DSB}
 A rule of thumb to design neural network is to mimic 
-how human does for the given domain of task. 
-Therefore I present a visualization of how legal expert of rules of WTO determines whether to cite a legal article of WTO agreements or not with an example of \textit{Korea - Beef} case in Figure \ref{}.
-In this case, the United States raised a claim relating to the \textit{Dual-retail system} maintained South Korea. In \textit{Dual-retail system}, South Korea maintained two distinct retail system
-for imported and domestic beef, i.e., there exist stores specialized for imported beef and they can sell only imported beef and vice versa. U.S. claimed that this \textit{Dual-retail system} is inconsistent to the Article III:4 (National Treatment) of GATT 1994 
-because \textit{Dual-retail system} has a chance to discriminate domestic and imported product. A measure that discriminates domestic and imported products falls under the scope of the principle of \textit{National Treatment}, however, U.S. didn't 
-cite the Article I:1 (Most-Favored Nation) of GATT 1994 
+how humans do for a given task. 
+Therefore I present a visualization of how legal expert of rules of WTO determines whether to cite a legal article of WTO agreements with an example of \textit{Korea - Beef} case in Figure \ref{fig:viz:how-member-cites-citable} and Figure \ref{fig:viz:how-member-cites-non-citable}.
+In this case, the United States raised a claim relating to the \textit{Dual-retail system} maintained by South Korea. In \textit{Dual-retail system}, South Korea maintained two distinct retail systems
+for imported and domestic beef, i.e., there must exist stores specialized for imported beef and they can sell only imported beef and vice versa. U.S. claimed that the \textit{Dual-retail system} is inconsistent to the Article III:4 (National Treatment) of GATT 1994 
+because \textit{Dual-retail system} has a chance to discriminate domestic and imported product. A measure that discriminates domestic and imported products falls under the scope of the Article III:4 of the GATT 1994 that states the principle of \textit{National Treatment} which prohibits the discrimination between imported and domestic \textit{like product}. However, U.S. didn't 
+cite the Article I:1 of GATT 1994 that prohibits the discrimination between members of WTO agreements
 because \textit{Dual-retail system} didn't discriminate the United States with other countries that exports beef to South Korea, such as Argentina, Austrailia, etc.
 
-Therefore, we can understand that there exists a shared understanding over regulatory system of WTO DSB among legal expert of rules of WTO. They follow up new cases and study jurisprudence of Panel and Appellate Body for the cases.
-Then they organize a legal argument by citing certain article upon this shared understanding for given possible inconsistent measure maintained by a member of WTO.
+We can understand that there exists a shared understanding over regulatory system of WTO DSB among legal experts of the rules of WTO. They follow up new cases and study jurisprudence stated in the \textit{Panel} or  \textit{Appellate Body} reports.
+Then they organize a legal argument by citing certain article(s) upon this shared understanding for given possible inconsistent measure held by a member of WTO.
 
-\input{Methodology/design-of-neural-network/visualize-how-member-cites.tex}
+To mimic this reasoning process, I present a framework to train the deep neural network as illustrated in Figure \ref{fig:design-of-nn}.
+
+\input{Methodology/design-of-neural-network/visualize-how-member-cites/citable.tex}
+
+\input{Methodology/design-of-neural-network/visualize-how-member-cites/non-citable.tex}
+
+\input{Methodology/design-of-neural-network/design-of-nn.tex}
+
+
+% \input{Methodology/design-of-neural-network/visualize-how-member-cites.tex}
 
 % \begin{figure}[ht]
 %   \centering
