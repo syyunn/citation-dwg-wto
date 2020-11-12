@@ -1,0 +1,46 @@
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}
+        \foreach \i in {\xMin,...,5} {
+            \draw [black] (\i,4) -- (\i,9) node [below] at (\i,4) {};
+        }
+        \foreach \i in {4,...,9} {
+            \draw [black] (\xMin,\i) -- (5,\i) node [left] at (\xMin,\i) {};
+        }
+        \node [left] at (0,4.5) {\textbf{\vdots}};
+        \node [left] at (0,5.5) {\textbf{DS4}};
+        \node [left] at (0,6.5) {\textbf{DS3}};
+        \node [left] at (0,7.5) {\textbf{DS2}};
+        \node [left] at (0,8.5) {\textbf{DS1}};
+
+        \node [left] at (4.8, 9.25) {\textbf{\ldots}};
+        \node [left] at (3.8, 9.25) {\textbf{II:1}};
+        \node [left] at (2.8, 9.25) {\textbf{II}};
+        \node [left] at (1.85, 9.25) {\textbf{I:1}};
+        \node [left] at (0.7,9.25) {\textbf{I}};
+
+        \node [left] at (0.7,8.5) {\textbf{0}};
+        \node [left] at (2.1,8.5) {\textbf{0.053}};
+        \node [left] at (3.1,8.5) {\textbf{0.125}};
+        \node [left] at (4.1,8.5) {\textbf{0.035}};
+        
+        \node [left] at (1.1,7.5) {\textbf{0.040}};
+        \node [left] at (1.8,7.5) {\textbf{0}};
+        \node [left] at (3,7.5) {\textbf{0.04}};
+        \node [left] at (4.1,7.5) {\textbf{0.054}};
+
+        \node [left] at (1.1,6.5) {\textbf{0.114}};
+        \node [left] at (2.1,6.5) {\textbf{0.049}};
+        \node [left] at (2.8,6.5) {\textbf{0}};
+        \node [left] at (4.1,6.5) {\textbf{0.065}};
+
+        \node [left] at (1.1,5.5) {\textbf{0.032}};
+        \node [left] at (2.1,5.5) {\textbf{0.065}};
+        \node [left] at (3.1,5.5) {\textbf{0.065}};
+        \node [left] at (3.7,5.5) {\textbf{0}};
+
+    \end{tikzpicture} 
+    \label{fig:illutrate-preds}      
+    \caption{\textbf{Definition of Co-citation Matrix:} This paper defines co-citation matrix $C$ as a $\mid V \mid \times \mid V \mid$ matrix where each element $c_{ij}:= \text{Counts of } $ is count of all co-occurrence $  \text{ } s.t. \text{ } \forall i,j \in \mid V \mid$ } 
+\end{figure}
+
