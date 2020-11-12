@@ -1,0 +1,19 @@
+\begin{figure}[ht]
+    \[\text{ Let } E = \{e \mid e \text{ is an english word or special charcter} \} \text{ and }\]
+    \[n_{\text{factual}}, n_{\text{article}} \in \Bbb N \text{ represents \textit{max token length} of factual aspect and legal article respectively }. \]
+    \[\text{Then define } T = \{t \mid t = (e_1, e_2, \ldots , e_{n_\text{factual}}) \text{ } s.t. \text{ } e_{i \le{n_{\text{factual}}}  } \in E \} \]
+    \[\text{ where } t \text{ represents a factual aspect of one of DS cases listed in Figure \ref{fig:ds-cases-used}. }\]
+    \[\text{ Also define } A = \{a \mid a = (e_1, e_2, \ldots , e_{n_\text{article}}) \text{ } s.t. \text{ } e_{i \le{n_{\text{article}}}  } \in E \}  \]
+    \[\text{ where } t \text{ represents texts of one of a legal article listed in Figure \ref{fig:set-of-articles-used}. }\]
+
+    \[\text{ Then define a deep neural network} f \text{ with a set of parameters } \theta \]
+    \[f_{\theta}: T \times A \to [0, 1] \in \Bbb R \]
+
+    % set of factual aspects for all cases in Figure \ref{fig:ds-cases-used} } f \delta^d_{ij} \text{ is defined to be } 1 \text{ if } \{(v_i, v_j) \mid v_i, v_j \in V \text{ and } i \neq j \} \subset c_{d \in D} \ \text{ else } 0\]
+    % \[\text{ where } V, D \text{ and } c_d \text{ is defined as in Figure \ref{fig:def:set-of-cited-articles}}. \]
+    % \[\text{Then let \textit{co-citation matrix} } M = (m_{ij}) \in \Bbb{N}^{|V| \times |V|} \text{ s.t. } m_{ij} = \sum_{d \in D}\sum_{i,j \in V}\delta^d_{ij}\]
+
+    \caption{\textbf{Formal Definition of Input/Ouput of Deep Neural Network}}
+    \label{fig:def:io:nn}
+
+\end{figure}

@@ -20,12 +20,14 @@ from 1995 to 2018 (\hyperref[sub:cited-articles-table]{Total $143$ cases. \texti
 Using this collected data, I trained the neural network by enforcing the neural network to answer correctly 
 whether a given article of the WTO agreements
 can be cited for the given textual description of 
-trade policy that led to the dispute.
+trade policy that led to the dispute (\textit{See} Figure \ref{fig:design-of-nn} and Figure \ref{fig:def:io:nn}).
 % After finish training, I collected all the predictions from the trained neural network (Figure \ref{predidction_matrix})
 % and fitted a best network of legal articles of the WTO agreement
 % using this collection of answers.
-After training, I fitted a set of directed edge weight $W^*$ that best explains the variance of the predictions from the trained neural network%for given $V$, $E$ % and collection of answers from the trained neural network (Figure \ref{predidction_matrix})
- using a machine learning technique called GENIE3 \citep{genie3}. 
+After training, I fitted a set of directed edge weight $W^*$ that 
+best explains the variance of each article's citability predicted by the trained deep neural network using a ensemble of random forests \citep{genie3}. 
+
+%for given $V$, $E$ % and collection of answers from the trained neural network (Figure \ref{predidction_matrix}) 
 %which is widely used in the biomedical engineering to reconstruct gene regulatory networks.\footnote{Anaology of international normative system to genetics maybe natural because gene expressions (achieving main principles of WTO) are governed by complex interaction between multiple regulatory proteins (interaction between legal articles of WTO). Similar notion is adopted in \cite{gene_analogy} to explain the the evolution of norm of transparency in international security.}
 
 To check whether this fitted network of articles of the WTO agreements $G^*$ = ($V$, $E$, $W^*$) maps the regulatory system of WTO DSB properly, this paper
