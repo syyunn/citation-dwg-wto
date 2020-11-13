@@ -37,14 +37,16 @@ to guide an way of interpretation of the rules of the WTO agreements (\textit{Se
     \[w : V \times V \to \Bbb R_{+} \text{ } s.t. \text{ } w(v_i, v_i) = 0 \text{ and } \sum_{v_i\in V}{w(v_i, v_j)} = 1 \text{  } \forall v_i, v_j \in V \]%\text{ and }\]
     \[\text{Then define \textit{edge weight matrix }}W=(w_{ij}) \in \Bbb{R_{+}}^{|V| \times |V|} \text{ } s.t. \text{ } w_{ij} = w(v_i, v_j) \] % \text{ } s.t. \text{ } w_{ii} = 0 \text{ and } \sum_{v_j\in V}{w_{ji}} = 1 \text{  } \forall v_i \in V \] %\text{ } s.t. \text{ } w_{ij} = w(v_i, v_j)\]
     % \[w_{ij} \text{ notates the weight of a directed edge from } v_i \text{ to } v_j \text{ and }  \]
-
     \[(W \text{ is more formally called \textit{weighted adjancency matrix}})\]
+    % \[w_{ij} \text{ represents a directed edge weight from source node $v_i$ to $v_j$} \text{ and }\]
+    % \[w_{ij} \text{ is interpreted as conditional probability P(v_j|v_i)}\]
+    % \[\text{ where a source node $v_i$ clarifies the meaning of the target node $v_j$}\]
     % \[w : V \times V \to \Bbb R_{+} \text{ } s.t. \text{ } w(v_i, v_i) = 0 \text{ and } \sum_{v_j\in V}{w(v_i, v_j)} = 1 \text{  } \forall v_i \in V \]%\text{ and }\]
     % \[\text{ Then define \textit{edge weight matrix} } W=(w_{ij}) \in \Bbb{R}^{|V| \times |V|} \text{ } s.t. \text{ } w_{ij} = w(v_i, v_j)\]
     % \[\text{ This paper assumes there exists } W^{*}=(w^{*}_{ij}) \in \Bbb{R}^{|V| \times |V|} \text{ } s.t. \text{ } w_{ij} = w(v_i, v_j)\]
     % \[\text{(}G\text{ is simply called \textit{directed weighted graph)}}\]
     \caption{\textbf{Formal Definition of Network of Legal Articles of WTO agreements: }I define network of legal articles of WTO agreements
-        as a directed weighted graph where the sum of all weights coming into a node sum up to 1 as illustrated in Figure \ref{fig:def-example}}
+        as a directed weighted graph where the sum of all weights coming into a node sum up to 1. $w_{ij}$ is interpreted as conditional probability $P(v_j|v_i)$ where a source node $v_i$ clarifies the meaning of the target node $v_j$ as illustrated in Figure \ref{fig:def-example}}
     \label{fig:def}
 \end{figure}
 
