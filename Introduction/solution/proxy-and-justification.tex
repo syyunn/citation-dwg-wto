@@ -34,7 +34,7 @@ to guide an way of interpretation of the rules of the WTO agreements (\textit{Se
     \[ \textit{directed weighted graph }G = (V, E, W) \]
     \[\text{ where \textit{vertex set} } V = \{v \mid v\text{ is a legal article of WTO agreement}\}  \text{ , } \]
     \[\text{ \textit{set of directed edges }}\vec{E} = \{(v_i, v_j) \mid (v_i, v_j)\in V \times V)\} \text{ and } \]
-    \[w : V \times V \to \Bbb R_{+} \text{ } s.t. \text{ } w(v_i, v_i) = 0 \text{ and } \sum_{v_i\in V}{w(v_i, v_j)} = 1 \text{  } \forall v_i, v_j \in V \]%\text{ and }\]
+    \[w : V \times V \to \Bbb R_{+} \text{ } s.t. \text{ } w(v_j, v_j) = 0 \text{ and } \sum_{v_i\in V}{w(v_i, v_j)} = 1 \text{  } \forall v_j \in V \]%\text{ and }\]
     \[\text{Then define \textit{edge weight matrix }}W=(w_{ij}) \in \Bbb{R_{+}}^{|V| \times |V|} \text{ } s.t. \text{ } w_{ij} = w(v_i, v_j) \] % \text{ } s.t. \text{ } w_{ii} = 0 \text{ and } \sum_{v_j\in V}{w_{ji}} = 1 \text{  } \forall v_i \in V \] %\text{ } s.t. \text{ } w_{ij} = w(v_i, v_j)\]
     % \[w_{ij} \text{ notates the weight of a directed edge from } v_i \text{ to } v_j \text{ and }  \]
     \[(W \text{ is more formally called \textit{weighted adjancency matrix}})\]
@@ -46,7 +46,7 @@ to guide an way of interpretation of the rules of the WTO agreements (\textit{Se
     % \[\text{ This paper assumes there exists } W^{*}=(w^{*}_{ij}) \in \Bbb{R}^{|V| \times |V|} \text{ } s.t. \text{ } w_{ij} = w(v_i, v_j)\]
     % \[\text{(}G\text{ is simply called \textit{directed weighted graph)}}\]
     \caption{\textbf{Formal Definition of Network of Legal Articles of WTO agreements: }I define network of legal articles of WTO agreements
-        as a directed weighted graph where the sum of all weights coming into a node sum up to 1. $w_{ij}$ is interpreted as conditional probability $P(v_j|v_i)$ where a source node $v_i$ clarifies the meaning of the target node $v_j$ as illustrated in Figure \ref{fig:def-example}}
+        as a directed weighted graph where the sum of all weights coming into a node sum up to 1. $w_{ij}$ is interpreted as conditional probability $P(v_j|v_i)$ how probably a source node $v_i$ clarifies the meaning of the target node $v_j$ compared to other source nodes as illustrated in Figure \ref{fig:def-example}}
     \label{fig:def}
 \end{figure}
 
@@ -69,7 +69,7 @@ to guide an way of interpretation of the rules of the WTO agreements (\textit{Se
         \caption{\textbf{Jurisprudence of Panel in \textit{Russia – Tariff Treatment} case:} \\ Panel clarifies the point that the meaning of the term \textit{`in excess of'} in Article II:1(b) \\ clarifies the meaning of the same phrase in Article III:2.}
         \label{subfig:a:condprob}
     \end{subfigure}
-    \caption{\textbf{Illustration of Network of Legal Articles of WTO agreements: }Every directed edge weight $w_{ij}$ is interpreted as the conditional probability $P(v_j|v_i)$ of how probably a source node $v_i$ constitutes a legal context to clarify the meaning of the target node $v_j$ among all target nodes $v_{j \neq i} \in V$. Above subfigure (a) represents how jurisprudence of \textit{Panel} stated in (b) is represented as an edge weight $8\%$ where the source node Article II:1(b) constitutes the legal context of the target node Article III:2 with the probability of $8\%$ among all other target articles.}
+    \caption{\textbf{Illustration of Network of Legal Articles of WTO agreements: }Every directed edge weight $w_{ij}$ is interpreted as the conditional probability $P(v_j|v_i)$ of how probably a source node $v_i$ constitutes a legal context to clarify the meaning of the target node $v_j$ among all target nodes $v_{j \neq i} \in V$. Above subfigure (a) represents how jurisprudence of \textit{Panel} stated in (b) is represented as an edge weight $8\%$ where the source node Article II:1(b) constitutes the legal context of the target node Article III:2 with the probability of $8\%$ compared to other source articles.}
     \label{fig:def-example}
 \end{figure}
 
