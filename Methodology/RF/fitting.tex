@@ -1,10 +1,16 @@
 Let $f_{\theta^*}$ represent the trained neural network with an optimized set of parameters $\theta^*$. 
 Then we can construct a prediction matrix $P = (f_{\theta^*}(t_d, a_v)) \in [0,1]^{{|D| \times |V|}}$  by collecting all predictions $f_{\theta^*}(t_d, a_v)$ from the trained neural network $f_{\theta^{*}}$ using the all pairs of data $(t_d,a_v) \in T \times A$ as illustrated in Figure \ref{fig:illutrate-preds}.
 
-Upon the assumption that the trained neural network $f_{\theta^*}$ effectively encodes a shared understanding among legal experts of WTO agreements, our task is to find a set of directed edge weights $\{w_{ij} \mid w_{ij} = w(v_i, v_j) \text{ } s.t. \text{ } w(v_j, v_j) = 0 \text{ and } \sum_{v_i\in V}{w(v_i, v_j)} = 1 \text{ } \forall v_j \}$ %W^* = w(v_i, v_j)$ where
-as defined in Figure \ref{fig:def}. % for given target node $v_j$ 
-This set of directed edge weights $W$ represents a set of conditional praobability as conditional probability $P(v_j|v_i)$ how probably a source node $v_i$ clarifies the meaning of the target node $v_j$ compared to other source nodes as illustrated in Figure \ref{fig:def-example}.
+Upon the assumption that the trained neural network $f_{\theta^*}$ effectively encodes a shared understanding among legal experts of WTO agreements, our task is to find a set of directed edge weights $W^* = \{w^{*}_{ij} \mid w^{*}_{ij} = w^{*}(v_i, v_j) \text{ } s.t. \text{ } w(v_j, v_j)^{*} = 0 \text{ and } \sum_{v_i\in V}{w^{*}(v_i, v_j)} = 1 \text{ } \forall v_j \}$ %W^* = w(v_i, v_j)$ where
+by exploiting the information inside the prediction matrix $P = (f_{\theta^*}(t_d, a_v)) \in [0,1]^{{|D| \times |V|}}$. This set of directed edge weights $W^{*} = \{w^{*}_{ij}\}$ shall represent a set of conditional praobability $P^{*}(v_j|v_i)$ how probably a source node $v_i$ clarifies the meaning of the target node $v_j$ compared to other source nodes
+as closely as to a shared understanding of legal experts of WTO agreements.
 
+To perform this task, this paper adopts a machine learning technique called \textit{Random Forest (RF)} that can rank input variables in terms of relative importance to explain the variance of output variable. The step-by-step algorithm of \textit{Random Forest} will be explained in the next subsection.
+
+% as illustrated in Figure \ref{fig:def-example}.
+% This paper defines $W^*$ as a set of directed edge weights that best explains the co-citation pattern inside the prdiction matrix $P = (f_{\theta^*}(t_d, a_v)) \in [0,1]^{{|D| \times |V|}}$.  % that is visualized in Figure \ref{predidction_matrix}.
+
+% To numerically ``best explains'' is that for given 
 
 
 \input{Methodology/RF/illustrate_preds.tex}
