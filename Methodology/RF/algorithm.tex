@@ -1,0 +1,62 @@
+\begin{algorithm}[H]
+    % \SetAlgoLined
+    % \KwResult{Write here the result }
+    % initialization\;
+    % \While{While condition}{
+    %     instructions\;
+    %     \eIf{condition}{
+    %         instructions1\;
+    %         instructions2\;
+    %     }{
+    %         instructions3\;
+    %     }
+    % }
+    \For{$i = 0;\ i < 10;\ i = i + 2$}{
+        Do something\;
+    }
+    \caption{Random Forest}
+\end{algorithm}
+
+\clearpage
+
+\begin{algorithm}[H]
+    \DontPrintSemicolon
+
+    \KwInput{Prediction Matrix $P = (f_{\theta^*}(t_d, a_v)) \in [0,1]^{{|D| \times |V|}}$}
+    \KwOutput{$W^* = (w_{ij}) \in [0,1]^{|V| \times |V|}$}
+
+    \For{$v_j \in V $} {
+        Do something\;
+    }
+
+    % \KwData{Testing set $x$}
+    % $\sum_{i=1}^{\infty} := 0$ \tcp*{this is a comment}
+    \tcc{Now this is an if...else conditional loop}
+    \If{Condition 1}
+    {
+        Do something    \tcp*{this is another comment}
+        \If{sub-Condition}
+        {Do a lot}
+    }
+    \ElseIf{Condition 2}
+    {
+        Do Otherwise \;
+        \tcc{Now this is a for loop}
+        \For{sequence}
+        {
+            loop instructions
+        }
+    }
+    \Else
+    {
+        Do the rest
+    }
+
+    \tcc{Now this is a While loop}
+    \While{Condition}
+    {
+        Do something\;
+    }
+
+    \caption{Random Forest}
+\end{algorithm}

@@ -112,6 +112,17 @@ colormap/viridis
   citebordercolor={0 0 1}]
   {hyperref}
 
+\usepackage[ruled,vlined]{algorithm2e}
+\SetKwFor{For}{for (}{) $\lbrace$}{$\rbrace$}
+
+%%% Coloring the comment as blue
+\newcommand\mycommfont[1]{\footnotesize\ttfamily\textcolor{blue}{#1}}
+\SetCommentSty{mycommfont}
+
+\SetKwInput{KwInput}{Input}                % Set the Input
+\SetKwInput{KwOutput}{Output}   
+
+
 \bibliographystyle{apsr}
 
 % == SPACES == 
@@ -269,9 +280,14 @@ The detailed structure of neural network and training technique will be explaine
 % \subsection{Reconstruction of Network of Articles of WTO Agreements}
 \subsection{Fitting $G^* = (V, E, W^*)$ Using Ensemble of Random Forests}
 \subsubsection{Definition of $W^*$: Best Set of Directed Edge Weights} %for the Network of Legal Articles of the WTO agreements}
-
-
 \input{Methodology/RF/fitting.tex}
+
+\subsubsection{Random Forest on Prediction Matrix: Finding $W^*$} %for the Network of Legal Articles of the WTO agreements}
+\input{Methodology/RF/algorithm.tex}
+
+
+
+
 
 \section{Empirical Findings}
 \input{Empirical Findings/intro.tex}
