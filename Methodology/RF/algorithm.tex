@@ -5,8 +5,8 @@
     \KwInput{Prediction Matrix $P = (p_{dv}) \in [0,1]^{{|D| \times |V|}} \text{ s.t. } p_{dv} = f_{\theta^*}(t_d, a_v)$}
     \KwOutput{$W^* = (w^*_{ij}) \in [0,1]^{|V| \times |V|}$}
     Let number of features $n = |V|$ , \\
-    number of obseravations $o = |D|$ and \\
-    number of trees to ensemble $ m \in \Bbb N$
+    $\:\:\:\:\:\:\:$ number of obseravations $o = |D|$ and \\
+    $\:\:\:\:\:\:\:$ number of trees to ensemble $ m \in \Bbb N$
 
     \For{$v_j \in V $} {
         X $\gets \{ x_d \mid x_d = (p_{dv_1},\: p_{dv_2},\: \ldots, \:p_{dv_{n}}) \: s.t. \: v \in V \setminus{\{v_j\}} \text{ and } d \in D \} \:$  \\
@@ -26,7 +26,7 @@
                 \If{$v_i$ of $N \neq \emptyset$ }
                 {
                     % $I(N) \gets \frac{1}{|S|^2}\sum_{i \in S}\sum_{j \in S}$
-                    $I^k_{v_i \to v_j}(N) \gets \text{Var}(S_N) - \text{Var}(S_{N_{true}}) - \text{Var}(S_{N_{false}})$ where Var($\cdot$) is the variance\\
+                    $I^k_{v_i \to v_j}(N) \gets \text{Var}(S_N) - \text{Var}(S_{N_{true}}) - \text{Var}(S_{N_{false}})$ where Var($\cdot$) is the variance
                     of the output variable $y_d$ in each subset $S_N, S_{N_{true}}$ and $S_{N_{false}}$           
                 } 
 
@@ -34,9 +34,8 @@
     
         }
     }
-
-    $w^*_{ij} \gets \frac{1}{m}\sum_{k \in \{ 1, 2, ... m\}} I^k_{v_i \to v_j}(N)$ 
-
+    \text{\textbf{then}} $w^*_{ij} \gets \frac{1}{m}\sum_{k \in \{ 1, 2, ... m\}} I^k_{v_i \to v_j}(N)$ \\
+    \text{\textbf{return}} $W^* = (w^*_{ij}) \in [0,1]^{|V| \times |V|}$
     % \KwData{Testing set $x$}
     % $\sum_{i=1}^{\infty} := 0$ \tcp*{this is a comment}
     % \tcc{Now this is an if...else conditional loop}
