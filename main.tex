@@ -132,6 +132,7 @@ colormap/viridis
 \newcommand{\tit}{
 \bf 
 Mapping Regulatory System of WTO Dispute Settlement Body Using Deep Learning
+% Mapping Network of Articles of WTO Agreements Using Deep Learning
 }
 \newcommand\spacingset[1]{\renewcommand{\baselinestretch}
 {#1}\small\normalsize}
@@ -230,7 +231,7 @@ Therefore this paper trains a deep neural network without any member specific in
 this paper expects a fitted $G^{*} = (V, E, W^*)$ can show interactions between articles of the WTO agreements
 without being biased to member specific strategic citation.
 
-\subsection{Design of Deep Neural Network}
+\subsection{Design of Deep Neural Network}\label{subsec:design:dnn}
 Upon the justification of using deep neural network with two main reasons explained in Section \ref{justification-nn}, %one is to effectively process the text information and the other one is to generalize member specific strategic citation,
 I introduce a design of deep neural network that is expected to efficiently encode members' legal citation pattern.
 
@@ -282,15 +283,40 @@ The detailed structure of neural network and training technique will be explaine
 \subsubsection{Random Forest on Prediction Matrix: Finding $W^*$} %for the Network of Legal Articles of the WTO agreements}
 \input{Methodology/RF/algorithm.tex}
 
-\section{Empirical Findings}
+\section{Empirical Findings} %: Quality Check of the Fitted Network $G^*$}
 \input{Empirical Findings/intro.tex}
 
 \subsection{\textit{Market Access}: Ensuring Foreign Goods to Cross Borders and Fairly Compete with Domestic Products}
+\subsubsection{Main Articles of \textit{Market Access}}
+
 \input{Empirical Findings/market-access.tex}
+
+\subsubsection{Fine Scoped Interpretation of \textit{Market Access} Network}
 
 \subsection{\textit{Reciprocity} in Non-Tariff Barriers: Compensate or Retaliate as Much as You have Protected}
 % \subsection{\textit{Non-Tariff Barriers}: Anti-dumping, Countervailing Duties and Safeguard}
 \input{Empirical Findings/non-tariff-barrier.tex}
+
+
+\subsection{\textit{Non-discrimination} Principle for Formulating Regional Trade Agreements (RTA)}  %: Non-discrimination, Transparency and Compensatory Adjustment}
+
+\begin{figure}[ht]
+  \centering{
+      \input{Empirical Findings/rta-graph.tex}
+  }
+  \caption{{\bf Network of Articles that Achieves \textit{Non-discrimination} for Formulating \textit{RTAs}:}
+      A rudimentary obligation of Article XXIV that prohibits discrimination between non-RTA and RTA members become realized in a relationship with
+      different types of trade measures, such as \textit{Safeguard} or \textit{Quantitative Restriction}. 
+      % As members are deviating from their obligation under Article XXIV with different types of trade policy, it leads to the multiple disputes and 
+      % it formulates a directive edge weights as shown in the Figure.
+  }
+  \label{fig:rta-explained}
+\end{figure}
+
+% \subsubsection{Non-discriminatory Principle for Formulating RTAs}
+\input{Empirical Findings/rtas.tex}
+
+% \subsubsection{\textit{Due dilligence Consultation} for Formulating RTAs}
 
 
 

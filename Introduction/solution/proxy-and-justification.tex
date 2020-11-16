@@ -1,34 +1,3 @@
-To address this issue,
-this paper maps
-the regulatory system of WTO DSB
-as a network of legal articles
-of the WTO agreements as formally defined in Figure \ref{fig:def} and illustrated in Figure \ref{fig:def-example}. This is because the rules of the WTO agreements
-% \footnote{\textit{See} Article 7 in Dispute Settlement Rules: Understanding on Rules and Procedures Governing the Settlement of Disputes, Marrakesh Agreement Establishing the World Trade Organization, Annex 2, 1869 U.N.T.S. 401, 33 I.L.M. 1226 (1994)} 
-explicitly requires \textit{Panel} or \textit{Appellate Body} to address
-relevant articles together when they construct its jurisprudence related to the meaning, scope and interpretation of any legal text in the WTO agreements (\textit{See} Figure \ref{fig:art7dsu}).
-Upon this requirement, judicial bodies refer to
-multiple articles of the WTO agreements together
-to identify the complex legal identity of the trade policy that led to the dispute as shown in Figure \ref{fig:complex-measure}.
-In addition to it, judicial bodies cite multiple articles together
-to guide an way of interpretation of the rules of the WTO agreements (\textit{See} Figure \ref{subfig:a:condprob})
-% \citep{oesch2003standards}.
-
-% == THREE SUBSYSTEM == 
-\begin{figure}
-    \centering{
-        \input{market_access_directed.tex}
-    }
-    \caption{{\bf Network of the Articles that Achieves \textit{Market Access} Together:}
-        This figure demonstrates a network of articles of WTO agreements
-        that cooperatively achieves the principle of \textit{Market Access} in the regulatory system of WTO.
-        Tariff and Non-tariff barriers such as quantitative restriction, internal taxations
-        and extra fees for crossing border can inhibit the chance of foreign goods to access the foreign market.
-        Therefore, these articles tend to work together to ensure the \textit{Market Access} principle working properly.
-        %(Directions and weights of network edges are omitted for brevity.)
-    }
-    \label{fig:market-aceess_directed}
-\end{figure}
-
 \begin{figure}[ht]
     \[\text{Network of legal articles of WTO agreements is defined as}\] %\textit{directed weighted graph}}  G = (V, E, w) \]
     \[ \textit{directed weighted graph }G = (V, E, W) \]
@@ -69,7 +38,7 @@ to guide an way of interpretation of the rules of the WTO agreements (\textit{Se
         \caption{\textbf{Jurisprudence of Panel in \textit{Russia – Tariff Treatment} case:} \\ Panel clarifies the point that the meaning of the term \textit{`in excess of'} in Article II:1(b) \\ clarifies the meaning of the same phrase in Article III:2.}
         \label{subfig:a:condprob}
     \end{subfigure}
-    \caption{\textbf{Illustration of Network of Legal Articles of WTO agreements: }Every directed edge weight $w_{ij}$ is interpreted as the conditional probability $P(v_j|v_i)$ of how probably a source node $v_i$ constitutes a legal context to clarify the meaning of the target node $v_j$ among all target nodes $v_{j \neq i} \in V$. Above subfigure (a) represents how jurisprudence of \textit{Panel} stated in (b) is represented as an edge weight $8\%$ where the source node Article II:1(b) constitutes the legal context of the target node Article III:2 with the probability of $8\%$ compared to other source articles.}
+    \caption{\textbf{Illustration of Network of Legal Articles of WTO agreements: }Every directed edge weight $w_{ij}$ is interpreted as the conditional probability $P(v_j|v_i)$ of how probably a source node $v_i$ constitutes a legal context to clarify the meaning of the target node $v_j$ among all other source nodes $v\in V \setminus \{v_i, v_{j}\}$. Above subfigure (a) represents how jurisprudence of \textit{Panel} stated in (b) is represented as an edge weight ($8\%$) where the source node Article II:1(b) constitutes the legal context of the target node Article III:2 with the probability of $8\%$ among all other possible source articles.}
     \label{fig:def-example}
 \end{figure}
 
