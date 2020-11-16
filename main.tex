@@ -231,7 +231,7 @@ Therefore this paper trains a deep neural network without any member specific in
 this paper expects a fitted $G^{*} = (V, E, W^*)$ can show interactions between articles of the WTO agreements
 without being biased to member specific strategic citation.
 
-\subsection{Design of Deep Neural Network}
+\subsection{Design of Deep Neural Network}\label{subsec:design:dnn}
 Upon the justification of using deep neural network with two main reasons explained in Section \ref{justification-nn}, %one is to effectively process the text information and the other one is to generalize member specific strategic citation,
 I introduce a design of deep neural network that is expected to efficiently encode members' legal citation pattern.
 
@@ -287,11 +287,32 @@ The detailed structure of neural network and training technique will be explaine
 \input{Empirical Findings/intro.tex}
 
 \subsection{\textit{Market Access}: Ensuring Foreign Goods to Cross Borders and Fairly Compete with Domestic Products}
+\subsubsection{Main Articles of \textit{Market Access}}
+
+% == THREE SUBSYSTEM == 
+\begin{figure}[ht]
+  \centering{
+      \input{market_access_directed.tex}
+  }
+  \caption{{\bf Network of the Articles that Achieves \textit{Market Access}:}
+      This figure demonstrates a network of articles of WTO agreements
+      that cooperatively achieves the principle of \textit{Market Access} in the regulatory system of WTO.
+      Tariff and Non-tariff barriers such as quantitative restriction, internal taxations
+      and extra fees for crossing border can inhibit the chance of foreign goods to access the foreign market.
+      Therefore, these articles tend to work together to ensure the \textit{Market Access} principle working properly.
+      %(Directions and weights of network edges are omitted for brevity.)
+  }
+  \label{fig:market-aceess_directed}
+\end{figure}
+
 \input{Empirical Findings/market-access.tex}
+
+\subsubsection{Fine Scoped Interpretation of \textit{Market Access} Network}
 
 \subsection{\textit{Reciprocity} in Non-Tariff Barriers: Compensate or Retaliate as Much as You have Protected}
 % \subsection{\textit{Non-Tariff Barriers}: Anti-dumping, Countervailing Duties and Safeguard}
 \input{Empirical Findings/non-tariff-barrier.tex}
+
 
 \subsection{\textit{Non-discrimination} Principle for Formulating Regional Trade Agreements (RTA)}  %: Non-discrimination, Transparency and Compensatory Adjustment}
 

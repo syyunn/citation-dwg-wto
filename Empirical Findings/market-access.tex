@@ -1,24 +1,35 @@
+% Figure \ref{fig:market-aceess_directed} shows a part of the fitted network $G^*$ that explains how
+% the articles of WTO agreements are interconnected each other to acheive one of the main principles of 
+% WTO, \textit{Market Access}. 
+\textit{Market Access} 
+refers to the guarantee of the conditions relating to the 
+tariff or non-tariff measures 
+for the entry of 
+goods into the foreign market. For example, if 
+a country set a limit on the quantity of imported goods, no foreign goods above that limit can get access to that market. Also, if a country set a high tariff rate for a imported goods to cross the border, 
+it also prevents foreign goods from accessing to that market.
+Therefore, \textit{Market Access} is the most basic but important principle of the WTO
+because it directly represent the primary goal of the WTO, smoothing the world trade flow.
 
-% == THREE SUBSYSTEM == 
-\begin{figure}
-    \centering{
-        \input{market_access_directed.tex}
-    }
-    \caption{{\bf Network of the Articles that Achieves \textit{Market Access}:}
-        This figure demonstrates a network of articles of WTO agreements
-        that cooperatively achieves the principle of \textit{Market Access} in the regulatory system of WTO.
-        Tariff and Non-tariff barriers such as quantitative restriction, internal taxations
-        and extra fees for crossing border can inhibit the chance of foreign goods to access the foreign market.
-        Therefore, these articles tend to work together to ensure the \textit{Market Access} principle working properly.
-        %(Directions and weights of network edges are omitted for brevity.)
-    }
-    \label{fig:market-aceess_directed}
-\end{figure}
+Three different types of measures - quantitative restriction, tariff and internal taxation or regulations - are recocgnized as 
+three major types of measures that protectionistic country prefer to use. For example, a country can
+discriminate imported and domestic product with internal regulation such as enforcing the specialized retail channel for the imported product as \textit{Korea - Beef} case as introduced in section \ref{subsec:design:dnn}.
+This discrimination provide a unfair ground of competition between domestic and imported products and it can eventually exclude imported beef from the Korean beef market.
+These three main types of measures that are relevant to the \textit{Market Access} is illustrated in Figure \ref{fig:market-aceess_directed}.
+Article XI:1, II:1 and III correponds to the obligations that regulates quantitative restriction, tariff and internal taxation respectively.
+Edges are colored in red if the mean of the two directed edge weights are greater than $10\%$. For example, $w^*(\text{II:1}, \text{III}) = 0.117$ and $w^*(\text{III}, \text{II:1}) = 0.122$ thus their simple mean is 11.95\% which is greater than 10\%.
+This red triangle that is comprised of Article XI:1, II:1 and III shows that the fitted network $G^* = (V, E, W^*)$ captures the principle of \textit{Market Access} as a cluster of articles with large edge weights. Moreover, 
+the fitted network $G^*$ also captures sub-articles that supports this \textit{Market Access} triangle. For example, I colored edges in blue if the mean of the two directed edge weights are greather than 5\% and less than 10\%.
+The Article X:3(a) which prohibits a unfair adminstration of laws and regulations are connected to the Article XI:1 and III that are mostly 
+deteriorates the principle of \textit{Market Access} by unfair adminstration of laws and regulations relating to the quantitative restriction 
+and competitive relationship between imported and domestic products. Also, in a similar notion, Article VIII get connected to the Article II:1 because 
+often the fees connected with the importation are charged with huge amount and can deteriorates the principle of \textit{Market Access} as well.
 
-Figure \ref{fig:market-aceess_directed} shows a part of the entire network that explains how
-the articles of WTO agreements co-cite each other to acheive one of the main principles of 
-WTO, market access. Market access 
-refer to the guarantee of the conditions of
-tariff and non-tariff measures 
-agreed by members for the entry of specific 
-goods into their markets.
+% Mean of directive edge weights between Article II:1, III and XI:1 are $0.289$, 
+
+
+
+% having a sum of directive edge weights bigger than 0.15, which is about ten times bigger than that of  
+
+% The three major articles of the WTO agreements 
+% that regulates 
