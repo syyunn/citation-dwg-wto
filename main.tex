@@ -243,12 +243,12 @@ I introduce a design of deep neural network that is expected to efficiently enco
 
 
 \subsubsection{Design Input/Output of Deep Neural Network: by Analogy with How Member Cites in WTO DSB} \label{design:io}
-A rule of thumb to design input and output of deep neural network is to mimic 
-how humans do for a given task. 
+A rule of thumb to design input and output of deep neural network is to mimic
+how humans do for a given task.
 Therefore I present a visualization of how legal expert of rules of WTO determines whether to cite a legal article of WTO agreements with an example of \textit{Korea - Beef} case (Figure \ref{fig:viz:how-member-cites-citable} and Figure \ref{fig:viz:how-member-cites-non-citable}).
 In this case, the United States raised a claim relating to the \textit{Dual-retail system} maintained by South Korea. In \textit{Dual-retail system}, South Korea maintained two distinct retail systems
-for imported and domestic beef, i.e., there exist stores specialized for imported beef and they can sell only imported beef and cannot sell domestic beef. U.S. claimed that the \textit{Dual-retail system} is inconsistent to the Article III:4 (National Treatment) of GATT 1994 
-because \textit{Dual-retail system} has a chance to discriminate domestic and imported beef. A measure that discriminates domestic and imported products falls under the scope of the Article III:4 of the GATT 1994, which states the principle of \textit{National Treatment} that prohibits the discrimination between imported and domestic \textit{like product}. However, U.S. didn't 
+for imported and domestic beef, i.e., there exist stores specialized for imported beef and they can sell only imported beef and cannot sell domestic beef. U.S. claimed that the \textit{Dual-retail system} is inconsistent to the Article III:4 (National Treatment) of GATT 1994
+because \textit{Dual-retail system} has a chance to discriminate domestic and imported beef. A measure that discriminates domestic and imported products falls under the scope of the Article III:4 of the GATT 1994, which states the principle of \textit{National Treatment} that prohibits the discrimination between imported and domestic \textit{like product}. However, U.S. didn't
 cite the Article I:1 of GATT 1994 that prohibits the discrimination between members of WTO agreements
 because \textit{Dual-retail system} didn't discriminate the United States with other countries that exports beef to South Korea, such as Argentina, Austrailia, etc.
 
@@ -256,7 +256,7 @@ We can understand that there exists a shared understanding over regulatory syste
 Then they organize a legal argument by citing certain article(s) upon this shared understanding for given possible inconsistent measure held by a member of WTO.
 
 To mimic this reasoning process, I designed the input and output of the deep neural network as illustrated in Figure \ref{fig:design-of-nn}.
-The neural network is designed to estimate the citable probability for given pair of a factual aspect and text of a legal article. 
+The neural network is designed to estimate the citable probability for given pair of a factual aspect and text of a legal article.
 By iteratively trains the neural network with data explained in Section \ref{sec:data}, I expect the neural network can learn a shared understanding over reglatory system of WTO DSB as closely as to that of legal experts.
 The detailed structure of neural network and training technique will be explained in the later subsections.
 % For total $11,440$ pairs of factual aspect and legal articles (143 different cases (Figure \ref{fig:ds-cases-used}) and 80 different legal articles (Figure \ref{fig:def:set-of-cited-articles})
@@ -265,15 +265,21 @@ The detailed structure of neural network and training technique will be explaine
 
 \subsubsection{Structure of Deep Neural Network}
 
-An efficient way to architect the structure of deep neural network is to use the 
-human analogy as I did in subsection \ref{design:io}. 
-Human reads the text line by line and creates several local understandings.
-Then he/she merges those local understandings into a global level to summarize 
-an essential information that is enough to peform a subsequent logical task.
+An efficient way to architect the structure of deep neural network is to use the
+human analogy as I did in subsection \ref{design:io}.
+A legal expert reads the text line by line and creates several local understandings.
+Then he/she merges those local understandings into a global level to summarize
+an essential information to deterimine whether 
+the given article is citable or not for the given factual description of the dispute. 
 
-To analogy this local and global level of information gathering, I borrowed \textit{1-Dimensional Text Convolution Neural Network} (TextCNN) from \cite{textcnn}.
+To analogy this process, I borrowed \textit{1-Dimensional Text Convolutional Neural Network} (TextCNN) from \cite{textcnn}.
+This is because of the following two reasons. 
+First, convolutional neural network is known as good at learning how to integrate local and global features to perform classification task \citep{554195, 8227460}.
+Second, \cite{textcnn} has implemented this convolutional neural network into the text domain (TextCNN) 
+and has shown its high performance on classification.
 
-\subsubsection{Train of Deep Neural Network} 
+
+\subsubsection{Train of Deep Neural Network}
 
 
 % \subsubsection{Embedding Layer}
@@ -312,13 +318,13 @@ To analogy this local and global level of information gathering, I borrowed \tex
 
 \begin{figure}[ht]
   \centering{
-      \input{Empirical Findings/rta-graph.tex}
+    \input{Empirical Findings/rta-graph.tex}
   }
   \caption{{\bf Network of Articles that Achieves \textit{Non-discrimination} for Formulating \textit{RTAs}:}
-      A rudimentary obligation of Article XXIV that prohibits discrimination between non-RTA and RTA members become realized in a relationship with
-      different types of trade measures, such as \textit{Safeguard} or \textit{Quantitative Restriction}. 
-      % As members are deviating from their obligation under Article XXIV with different types of trade policy, it leads to the multiple disputes and 
-      % it formulates a directive edge weights as shown in the Figure.
+    A rudimentary obligation of Article XXIV that prohibits discrimination between non-RTA and RTA members become realized in a relationship with
+    different types of trade measures, such as \textit{Safeguard} or \textit{Quantitative Restriction}.
+    % As members are deviating from their obligation under Article XXIV with different types of trade policy, it leads to the multiple disputes and 
+    % it formulates a directive edge weights as shown in the Figure.
   }
   \label{fig:rta-explained}
 \end{figure}
@@ -348,30 +354,30 @@ To analogy this local and global level of information gathering, I borrowed \tex
 
 \clearpage
 \begin{appendices}
-\section{}
-\label{sec:appendix}
-% \subsection{Table of Contents of the Panel Report}
-% \input{Data/examples/table-of-content-panel.tex}
+  \section{}
+  \label{sec:appendix}
+  % \subsection{Table of Contents of the Panel Report}
+  % \input{Data/examples/table-of-content-panel.tex}
 
 
-\subsection{Factual Aspect Example}
-\label{sub:factual-aspect-example}
-\input{Data/examples/factual-aspect.tex}
+  \subsection{Factual Aspect Example}
+  \label{sub:factual-aspect-example}
+  \input{Data/examples/factual-aspect.tex}
 
-% \subsection{Content of Legal Article Example}
+  % \subsection{Content of Legal Article Example}
 
 
-\subsection{Collected Cited Articles for 143 WTO DSB Cases}
-DS refers to \textit{Dispute Settelement} and this notation is officially adopted by WTO DSB.\\
-WTO DSB identifies each dispute with a unique number for each case such as DS2 and DS18.
-\label{sub:cited-articles-table}
-\input{Data/examples/cited-articles-table.tex}
+  \subsection{Collected Cited Articles for 143 WTO DSB Cases}
+  DS refers to \textit{Dispute Settelement} and this notation is officially adopted by WTO DSB.\\
+  WTO DSB identifies each dispute with a unique number for each case such as DS2 and DS18.
+  \label{sub:cited-articles-table}
+  \input{Data/examples/cited-articles-table.tex}
 
-\subsection{Technical Details}
-\label{sub:technicial-details}
+  \subsection{Technical Details}
+  \label{sub:technicial-details}
 
-\input{Figures/heatmap.tex}
+  \input{Figures/heatmap.tex}
 
-% \input{coo.tex}
+  % \input{coo.tex}
 \end{appendices}
 \end{document}
