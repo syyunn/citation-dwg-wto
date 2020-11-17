@@ -1,0 +1,71 @@
+\begin{figure}[ht]
+    \begin{tikzpicture}[>=latex']
+        \tikzset{block/.style= {draw, rectangle, align=center,minimum width=2cm,minimum height=1cm},
+            rblock/.style={draw, shape=rectangle,rounded corners=1.5em,align=center,minimum width=2cm,minimum height=1cm},
+            input/.style={ % requires library shapes.geometric
+                    draw,
+                    trapezium,
+                    trapezium left angle=60,
+                    trapezium right angle=120,
+                    minimum width=2cm,
+                    align=center,
+                    minimum height=1cm
+                },
+        }
+        \node [block, label={[align=left]Factual Aspect}] (start) {$t_d \in T$};
+        \node [block, right =1cm of start, label={[align=left]}] (conv1d) {Conv1D};
+        \node [block, right =1cm of conv1d, label={[align=left]}] (fc1024) {FC};
+        \node [block, right =1cm of fc1024, label={[align=left]}] (relu) {ReLU};
+        \node [block, right =1cm of relu, label={[align=left]}] (highway) {Highway};
+        \node [block, right =1cm of highway, label={[align=left]}] (dropout) {Dropout};
+
+        \path[draw,->] (start) edge (conv1d)
+        (conv1d) edge (fc1024)
+        (fc1024) edge (relu)
+        (relu) edge (highway)
+        (highway) edge (dropout)
+        ;
+
+        \node [block, below =1cm of start, label={[align=left]Legal Article}] (start_art) {$a_v \in A$};
+        \node [block, right =1cm of start_art, label={[align=left]}] (conv1d_art) {Conv1D};
+        \node [block, right =1cm of conv1d_art, label={[align=left]}] (fc1024_art) {FC};
+        \node [block, right =1cm of fc1024_art, label={[align=left]}] (relu_art) {ReLU};
+        \node [block, right =1cm of relu_art, label={[align=left]}] (highway_art) {Highway};
+        \node [block, right =1cm of highway_art, label={[align=left]}] (dropout_art) {Dropout};
+
+
+        \path[draw,->] (start_art) edge (conv1d_art)
+        (conv1d_art) edge (fc1024_art)
+        (fc1024_art) edge (relu_art)
+        (relu_art) edge (highway_art)
+        (highway_art) edge (dropout_art)
+        ;
+
+        \node [block, below=1cm of dropout_art, label={[align=left]}] (concat) {Concat};
+        \node [coordinate, below right=1cm and 1cm of dropout] (right) {};  %% Coordinate on right and middle
+
+        \path[draw,->] (dropout_art) edge (concat)
+        ;
+        \path[draw,->] (dropout) edge[bend left=90] (concat)
+        ;
+
+        \node [block, below=1cm of highway_art, label={[align=left]}] (FC1024_final) {FC};
+        \path[draw,->] (concat) edge (FC1024_final)
+        ;
+
+        \node [block, below=1cm of relu_art, label={[align=left]}] (sigmoid) {Sigmoid};
+        \path[draw,->] (FC1024_final) edge (sigmoid)
+        ;
+
+        \node [block, below=1cm of fc1024_art, label={[align=left]Citability}] (prob) {$p \in [0,1]$};
+        \path[draw,->] (sigmoid) edge (prob)
+        ;
+
+        \draw[red,thick, fill] ($(start.north west)+(2.3,0.6)$) rectangle ($(start_art.south east)+(0.6,-0.6)$);
+        \node[above] at (1.45,-3.7){Embedding};
+
+    \end{tikzpicture}
+    \caption{\textbf{Layers of Deep Neural Network:} The term ``Layer'' refers to an mathematical operation. How layers are stacked in which order determines the ``structure'' of deep neural network. This figure illustrates the structure of the deep neural network tha this paper used. The figure follows the notations defined in Figure \ref{fig:def:io:nn}.}
+    \label{fig:dnn-flow}
+
+\end{figure}
