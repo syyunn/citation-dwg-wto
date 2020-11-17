@@ -242,7 +242,7 @@ I introduce a design of deep neural network that is expected to efficiently enco
 \input{Methodology/design-of-neural-network/visualize-how-member-cites/citable.tex}
 \input{Methodology/design-of-neural-network/visualize-how-member-cites/non-citable.tex}
 \input{Methodology/design-of-neural-network/design-of-nn.tex}
-\input{Methodology/design-of-neural-network/fm-def-nn.tex} 
+\input{Methodology/design-of-neural-network/fm-def-nn.tex}
 
 \subsubsection{Design Input/Output of Deep Neural Network: by Analogy with How Member Cites in WTO DSB} \label{design:io}
 A rule of thumb to design input and output of deep neural network is to mimic
@@ -273,13 +273,13 @@ An efficient way to architect the structure of deep neural network is to use the
 human analogy as I did in subsection \ref{design:io}.
 A legal expert reads the text line by line and creates several local understandings.
 Then he/she merges those local understandings into a global level to summarize
-an essential information to deterimine whether 
-the given article is citable or not for the given factual description of the dispute. 
+an essential information to deterimine whether
+the given article is citable or not for the given factual description of the dispute.
 
 To analogy this process, I borrowed \textit{1-Dimensional Text Convolutional Neural Network} (TextCNN) from \cite{textcnn}.
-This is because of the following two reasons. 
+This is because of the following two reasons.
 First, convolutional neural network is known as good at learning how to integrate local and global features to perform classification task \citep{554195, 8227460}.
-Second, \cite{textcnn} has implemented this convolutional neural network into the text domain (TextCNN) 
+Second, \cite{textcnn} has implemented this convolutional neural network into the text domain (TextCNN)
 and has shown its high performance on classification.
 
 I explained technical Details of each layer illustrated in Figure \ref{fig:dnn-flow} in Appendix.
@@ -287,24 +287,41 @@ I explained technical Details of each layer illustrated in Figure \ref{fig:dnn-f
 
 \subsubsection{Train of Deep Neural Network}
 % \textbf{Split of Train/Test Data} 
+I have total 11,440 number of data instances that is calculated by $|D| * |V|$ where $|D| = 143$ and $|V|=80$.
+Before training, I randomly split the entire dataset $T \times A$ into train and test data in 8:2 ratio.
+The number of split result is 9,153 for train data and 2,287 for test data.
+I used train data only to train the neural network and used test data to check the trained model's performance.
+By measuring a selected performance
+metric on the inference results of the test data, one can check the generalizability of the trained neural network regarding
+how well the trained neural network can perform over the data that it has never seen before.
 
-Before training, I randomly split the entire dataset into train and test data in 8:2 ratio. 
-I used train data only to train the neural network and used test data to check the trained model's performance. 
-By measuring a selected performance 
-metric on the inference result of the test data, one can check the generalizability of the trained neural network.
+The term ``training" refers to fitting a set of parameters $\theta$,
+that constitutes mathematical operations defined in layers illustrated in Figure \ref{fig:dnn-flow}.
+The procedure to fit those set of parameters is as described in Algorithm \ref{algo:fit-dnn}.
 
+\input{Methodology/train-algo.tex}
 
-% \subsubsection{Embedding Layer}
-\input{Methodology/embedding.tex}
+I fitted the nerual network $f_\theta$ using \textit{weighted cross entropy loss} as explained in Algorithm \ref{algo:fit-dnn}.
+I used \textit{cross entropy loss} because it measures how much the probability distribution $\hat{Y}$ projected by the trained model $f_\theta$ 
+deviates from the true distribution $Y$ which symbolically represents a shared understanding regarding the citability of certain legal article for given textual description of the case 
+among the group of legal experts of WTO agreements.
 
-% \subsubsection{1-Dimensional Convolution Layer (Conv1D)}
-\input{Methodology/Conv1D.tex}
+It's worth noting that I ``weighted" \textit{cross entropy loss}. This is because 
+our dataset is highly imbalanced in terms of citability. 
+%represents the number of factual aspects and $|V|=80$ represents the number of legal articles.  
+Among all (11,440) data instances, I have only 435 data instances where the given article $a_v$ is actually cited for the case description $t_d$. This is only 3.802\%.
+This is because a case tends to have only 3 - 4 articles cited on average among 80 different articles in $V$.
+Therefore, I adopted a weight of 26.303, which is inverse of the $3.802\%$ to penalize the neural network with higher loss in case the network fails to cite correctly for the positive case where $y \gets 1$ in Algorithm \ref{algo:fit-dnn}. 
 
-% \subsubsection{1-Dimensional Max-pooling (MaxPool1D)}
-\input{Methodology/MaxPool1D.tex}
+More techinical details regarding epochs and learning rates will be covered in Appendix. and the training result (model performance) will be explained in Appendix.
+
+% Epochs and learning rate are hyperparameters whose value shall be given by the experimenter. Epochs $e$ is about how many times the neural network will train the entire train dataset and learning rate $\alpha$ is about how much update the model parameter for each step. 
+% More technical details about 
 
 % \subsection{Reconstruction of Network of Articles of WTO Agreements}
-\subsection{Fitting $G^* = (V, E, W^*)$ Using Ensemble of Random Forests}
+\subsection{Fitting $G^* = (V, E, W^*)$ using Ensemble of Random Forests}
+This subsection explains how I found the best set of directed edge weights $W^*$ that closely maps the shared understanding of legal experts in a form of \textit{directed weighted graph} as defined in Figure \ref{fig:def} and illustrated in Figure \ref{fig:def-example} using the trained neural network $f_{\theta^*}$. 
+
 \subsubsection{Definition of $W^*$: Best Set of Directed Edge Weights} %for the Network of Legal Articles of the WTO agreements}
 \input{Methodology/RF/fitting.tex}
 
@@ -355,12 +372,23 @@ metric on the inference result of the test data, one can check the generalizabil
 % \input{Empirical Findings/market-access-network.tex}
 
 \section{Conclusion}
+\clearpage
 % This paper shows how WTO works.
 
 % \begin{itemize}
 %   \item Implicaiton of thie method in general.
 %   \item Address the imbalance of legal capacity between developed/ing countries
 % \end{itemize}
+
+% \subsubsection{Embedding Layer}
+\input{Methodology/embedding.tex}
+
+% \subsubsection{1-Dimensional Convolution Layer (Conv1D)}
+\input{Methodology/Conv1D.tex}
+
+% \subsubsection{1-Dimensional Max-pooling (MaxPool1D)}
+\input{Methodology/MaxPool1D.tex}
+
 
 \clearpage \bibliography{bibtemplate}
 

@@ -57,7 +57,7 @@
         \path[draw,->] (FC1024_final) edge (sigmoid)
         ;
 
-        \node [block, below=1cm of fc1024_art, label={[align=left]Citability}] (prob) {$p \in [0,1]$};
+        \node [block, below=1cm of fc1024_art, label={[align=left]Citability}] (prob) {$\hat{p} \in [0,1]$};
         \path[draw,->] (sigmoid) edge (prob)
         ;
 
