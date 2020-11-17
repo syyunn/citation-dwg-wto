@@ -195,6 +195,7 @@ Mapping Regulatory System of WTO Dispute Settlement Body Using Deep Learning
 \input{Introduction/conclusion/assessment.tex}
 
 % == DATA ==
+\clearpage
 \section{Data: Types, Composition and Collection Process} \label{sec:data}
 \input{Data/intro.tex}
 
@@ -235,7 +236,13 @@ without being biased to member specific strategic citation.
 Upon the justification of using deep neural network with two main reasons explained in Section \ref{justification-nn}, %one is to effectively process the text information and the other one is to generalize member specific strategic citation,
 I introduce a design of deep neural network that is expected to efficiently encode members' legal citation pattern.
 
-\subsubsection{Design Input/Output of Deep Neural Network: by Analogy with How Member Cites in WTO DSB}
+
+\input{Methodology/design-of-neural-network/visualize-how-member-cites/citable.tex}
+\input{Methodology/design-of-neural-network/visualize-how-member-cites/non-citable.tex}
+\input{Methodology/design-of-neural-network/design-of-nn.tex}
+
+
+\subsubsection{Design Input/Output of Deep Neural Network: by Analogy with How Member Cites in WTO DSB} \label{design:io}
 A rule of thumb to design input and output of deep neural network is to mimic 
 how humans do for a given task. 
 Therefore I present a visualization of how legal expert of rules of WTO determines whether to cite a legal article of WTO agreements with an example of \textit{Korea - Beef} case (Figure \ref{fig:viz:how-member-cites-citable} and Figure \ref{fig:viz:how-member-cites-non-citable}).
@@ -254,15 +261,18 @@ By iteratively trains the neural network with data explained in Section \ref{sec
 The detailed structure of neural network and training technique will be explained in the later subsections.
 % For total $11,440$ pairs of factual aspect and legal articles (143 different cases (Figure \ref{fig:ds-cases-used}) and 80 different legal articles (Figure \ref{fig:def:set-of-cited-articles})
 
-\input{Methodology/design-of-neural-network/visualize-how-member-cites/citable.tex}
-
-\input{Methodology/design-of-neural-network/visualize-how-member-cites/non-citable.tex}
-
-\input{Methodology/design-of-neural-network/design-of-nn.tex}
-
 \input{Methodology/design-of-neural-network/fm-def-nn.tex}
 
-\subsubsection{Structure of Deep Neural Network} 
+\subsubsection{Structure of Deep Neural Network}
+
+An efficient way to architect the structure of deep neural network is to use the 
+human analogy as I did in subsection \ref{design:io}. 
+Human reads the text line by line and creates several local understandings.
+Then he/she merges those local understandings into a global level to summarize 
+an essential information that is enough to peform a subsequent logical task.
+
+To analogy this local and global level of information gathering, I borrowed \textit{1-Dimensional Text Convolution Neural Network} (TextCNN) from \cite{textcnn}.
+
 \subsubsection{Train of Deep Neural Network} 
 
 
