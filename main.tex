@@ -46,6 +46,8 @@ colormap/viridis
 \usetikzlibrary{arrows.meta, positioning, automata}
 \usetikzlibrary{spy}
 \usetikzlibrary{shadows}
+\usetikzlibrary{arrows,positioning,shapes.geometric} % for dnn flowchart
+
 
 \tikzset{
   font={\fontsize{10pt}{0}\selectfont}}
@@ -240,15 +242,15 @@ I introduce a design of deep neural network that is expected to efficiently enco
 \input{Methodology/design-of-neural-network/visualize-how-member-cites/citable.tex}
 \input{Methodology/design-of-neural-network/visualize-how-member-cites/non-citable.tex}
 \input{Methodology/design-of-neural-network/design-of-nn.tex}
-
+\input{Methodology/design-of-neural-network/fm-def-nn.tex}
 
 \subsubsection{Design Input/Output of Deep Neural Network: by Analogy with How Member Cites in WTO DSB} \label{design:io}
-A rule of thumb to design input and output of deep neural network is to mimic 
-how humans do for a given task. 
+A rule of thumb to design input and output of deep neural network is to mimic
+how humans do for a given task.
 Therefore I present a visualization of how legal expert of rules of WTO determines whether to cite a legal article of WTO agreements with an example of \textit{Korea - Beef} case (Figure \ref{fig:viz:how-member-cites-citable} and Figure \ref{fig:viz:how-member-cites-non-citable}).
 In this case, the United States raised a claim relating to the \textit{Dual-retail system} maintained by South Korea. In \textit{Dual-retail system}, South Korea maintained two distinct retail systems
-for imported and domestic beef, i.e., there exist stores specialized for imported beef and they can sell only imported beef and cannot sell domestic beef. U.S. claimed that the \textit{Dual-retail system} is inconsistent to the Article III:4 (National Treatment) of GATT 1994 
-because \textit{Dual-retail system} has a chance to discriminate domestic and imported beef. A measure that discriminates domestic and imported products falls under the scope of the Article III:4 of the GATT 1994, which states the principle of \textit{National Treatment} that prohibits the discrimination between imported and domestic \textit{like product}. However, U.S. didn't 
+for imported and domestic beef, i.e., there exist stores specialized for imported beef and they can sell only imported beef and cannot sell domestic beef. U.S. claimed that the \textit{Dual-retail system} is inconsistent to the Article III:4 (National Treatment) of GATT 1994
+because \textit{Dual-retail system} has a chance to discriminate domestic and imported beef. A measure that discriminates domestic and imported products falls under the scope of the Article III:4 of the GATT 1994, which states the principle of \textit{National Treatment} that prohibits the discrimination between imported and domestic \textit{like product}. However, U.S. didn't
 cite the Article I:1 of GATT 1994 that prohibits the discrimination between members of WTO agreements
 because \textit{Dual-retail system} didn't discriminate the United States with other countries that exports beef to South Korea, such as Argentina, Austrailia, etc.
 
@@ -256,37 +258,70 @@ We can understand that there exists a shared understanding over regulatory syste
 Then they organize a legal argument by citing certain article(s) upon this shared understanding for given possible inconsistent measure held by a member of WTO.
 
 To mimic this reasoning process, I designed the input and output of the deep neural network as illustrated in Figure \ref{fig:design-of-nn}.
-The neural network is designed to estimate the citable probability for given pair of a factual aspect and text of a legal article. 
+The neural network is designed to estimate the citable probability for given pair of a factual aspect and text of a legal article.
 By iteratively trains the neural network with data explained in Section \ref{sec:data}, I expect the neural network can learn a shared understanding over reglatory system of WTO DSB as closely as to that of legal experts.
 The detailed structure of neural network and training technique will be explained in the later subsections.
 % For total $11,440$ pairs of factual aspect and legal articles (143 different cases (Figure \ref{fig:ds-cases-used}) and 80 different legal articles (Figure \ref{fig:def:set-of-cited-articles})
+\clearpage
 
-\input{Methodology/design-of-neural-network/fm-def-nn.tex}
 
 \subsubsection{Structure of Deep Neural Network}
 
-An efficient way to architect the structure of deep neural network is to use the 
-human analogy as I did in subsection \ref{design:io}. 
-Human reads the text line by line and creates several local understandings.
-Then he/she merges those local understandings into a global level to summarize 
-an essential information that is enough to peform a subsequent logical task.
+\input{Methodology/dnn-flow-chart.tex}
 
-To analogy this local and global level of information gathering, I borrowed \textit{1-Dimensional Text Convolution Neural Network} (TextCNN) from \cite{textcnn}.
+An efficient way to architect the structure of deep neural network is to use the
+human analogy as I did in subsection \ref{design:io}.
+A legal expert reads the text line by line and creates several local understandings.
+Then he/she merges those local understandings into a global level to summarize
+an essential information to deterimine whether
+the given article is citable or not for the given factual description of the dispute.
 
-\subsubsection{Train of Deep Neural Network} 
+To analogy this process, I borrowed \textit{1-Dimensional Text Convolutional Neural Network} (TextCNN) from \cite{textcnn}.
+This is because of the following two reasons.
+First, convolutional neural network is known as good at learning how to integrate local and global features to perform classification task \citep{554195, 8227460}.
+Second, \cite{textcnn} has implemented this convolutional neural network into the text domain (TextCNN)
+and has shown its high performance on classification.
+
+I explained technical Details of each layer illustrated in Figure \ref{fig:dnn-flow} in Appendix.
 
 
-% \subsubsection{Embedding Layer}
-\input{Methodology/embedding.tex}
+\subsubsection{Train of Deep Neural Network}
+% \textbf{Split of Train/Test Data} 
+I have total 11,440 number of data instances that is calculated by $|D| * |V|$ where $|D| = 143$ and $|V|=80$.
+Before training, I randomly split the entire dataset $T \times A$ into train and test data in 8:2 ratio.
+The number of split result is 9,153 for train data and 2,287 for test data.
+I used train data only to train the neural network and used test data to check the trained model's performance.
+By measuring a selected performance
+metric on the inference results of the test data, one can check the generalizability of the trained neural network regarding
+how well the trained neural network can perform over the data that it has never seen before.
 
-% \subsubsection{1-Dimensional Convolution Layer (Conv1D)}
-\input{Methodology/Conv1D.tex}
+The term ``training" refers to fitting a set of parameters $\theta$,
+that constitutes mathematical operations defined in layers illustrated in Figure \ref{fig:dnn-flow}.
+The procedure to fit those set of parameters is as described in Algorithm \ref{algo:fit-dnn}.
 
-% \subsubsection{1-Dimensional Max-pooling (MaxPool1D)}
-\input{Methodology/MaxPool1D.tex}
+\input{Methodology/train-algo.tex}
+
+I fitted the nerual network $f_\theta$ using \textit{weighted cross entropy loss} as explained in Algorithm \ref{algo:fit-dnn}.
+I used \textit{cross entropy loss} because it measures how much the probability distribution $\hat{Y}$ projected by the trained model $f_\theta$ 
+deviates from the true distribution $Y$ which symbolically represents a shared understanding regarding the citability of certain legal article for given textual description of the case 
+among the group of legal experts of WTO agreements.
+
+It's worth noting that I ``weighted" \textit{cross entropy loss}. This is because 
+our dataset is highly imbalanced in terms of citability. 
+%represents the number of factual aspects and $|V|=80$ represents the number of legal articles.  
+Among all (11,440) data instances, I have only 435 data instances where the given article $a_v$ is actually cited for the case description $t_d$. This is only 3.802\%.
+This is because a case tends to have only 3 - 4 articles cited on average among 80 different articles in $V$.
+Therefore, I adopted a weight of 26.303, which is inverse of the $3.802\%$ to penalize the neural network with higher loss in case the network fails to cite correctly for the positive case where $y \gets 1$ in Algorithm \ref{algo:fit-dnn}. 
+
+More techinical details regarding epochs and learning rates will be covered in Appendix. and the training result (model performance) will be explained in Appendix.
+
+% Epochs and learning rate are hyperparameters whose value shall be given by the experimenter. Epochs $e$ is about how many times the neural network will train the entire train dataset and learning rate $\alpha$ is about how much update the model parameter for each step. 
+% More technical details about 
 
 % \subsection{Reconstruction of Network of Articles of WTO Agreements}
-\subsection{Fitting $G^* = (V, E, W^*)$ Using Ensemble of Random Forests}
+\subsection{Fitting $G^* = (V, E, W^*)$ using Ensemble of Random Forests}
+This subsection explains how I found the best set of directed edge weights $W^*$ that closely maps the shared understanding of legal experts in a form of \textit{directed weighted graph} as defined in Figure \ref{fig:def} and illustrated in Figure \ref{fig:def-example} using the trained neural network $f_{\theta^*}$. 
+
 \subsubsection{Definition of $W^*$: Best Set of Directed Edge Weights} %for the Network of Legal Articles of the WTO agreements}
 \input{Methodology/RF/fitting.tex}
 
@@ -312,13 +347,13 @@ To analogy this local and global level of information gathering, I borrowed \tex
 
 \begin{figure}[ht]
   \centering{
-      \input{Empirical Findings/rta-graph.tex}
+    \input{Empirical Findings/rta-graph.tex}
   }
   \caption{{\bf Network of Articles that Achieves \textit{Non-discrimination} for Formulating \textit{RTAs}:}
-      A rudimentary obligation of Article XXIV that prohibits discrimination between non-RTA and RTA members become realized in a relationship with
-      different types of trade measures, such as \textit{Safeguard} or \textit{Quantitative Restriction}. 
-      % As members are deviating from their obligation under Article XXIV with different types of trade policy, it leads to the multiple disputes and 
-      % it formulates a directive edge weights as shown in the Figure.
+    A rudimentary obligation of Article XXIV that prohibits discrimination between non-RTA and RTA members become realized in a relationship with
+    different types of trade measures, such as \textit{Safeguard} or \textit{Quantitative Restriction}.
+    % As members are deviating from their obligation under Article XXIV with different types of trade policy, it leads to the multiple disputes and 
+    % it formulates a directive edge weights as shown in the Figure.
   }
   \label{fig:rta-explained}
 \end{figure}
@@ -337,6 +372,7 @@ To analogy this local and global level of information gathering, I borrowed \tex
 % \input{Empirical Findings/market-access-network.tex}
 
 \section{Conclusion}
+\clearpage
 % This paper shows how WTO works.
 
 % \begin{itemize}
@@ -344,34 +380,44 @@ To analogy this local and global level of information gathering, I borrowed \tex
 %   \item Address the imbalance of legal capacity between developed/ing countries
 % \end{itemize}
 
+% \subsubsection{Embedding Layer}
+\input{Methodology/embedding.tex}
+
+% \subsubsection{1-Dimensional Convolution Layer (Conv1D)}
+\input{Methodology/Conv1D.tex}
+
+% \subsubsection{1-Dimensional Max-pooling (MaxPool1D)}
+\input{Methodology/MaxPool1D.tex}
+
+
 \clearpage \bibliography{bibtemplate}
 
 \clearpage
 \begin{appendices}
-\section{}
-\label{sec:appendix}
-% \subsection{Table of Contents of the Panel Report}
-% \input{Data/examples/table-of-content-panel.tex}
+  \section{}
+  \label{sec:appendix}
+  % \subsection{Table of Contents of the Panel Report}
+  % \input{Data/examples/table-of-content-panel.tex}
 
 
-\subsection{Factual Aspect Example}
-\label{sub:factual-aspect-example}
-\input{Data/examples/factual-aspect.tex}
+  \subsection{Factual Aspect Example}
+  \label{sub:factual-aspect-example}
+  \input{Data/examples/factual-aspect.tex}
 
-% \subsection{Content of Legal Article Example}
+  % \subsection{Content of Legal Article Example}
 
 
-\subsection{Collected Cited Articles for 143 WTO DSB Cases}
-DS refers to \textit{Dispute Settelement} and this notation is officially adopted by WTO DSB.\\
-WTO DSB identifies each dispute with a unique number for each case such as DS2 and DS18.
-\label{sub:cited-articles-table}
-\input{Data/examples/cited-articles-table.tex}
+  \subsection{Collected Cited Articles for 143 WTO DSB Cases}
+  DS refers to \textit{Dispute Settelement} and this notation is officially adopted by WTO DSB.\\
+  WTO DSB identifies each dispute with a unique number for each case such as DS2 and DS18.
+  \label{sub:cited-articles-table}
+  \input{Data/examples/cited-articles-table.tex}
 
-\subsection{Technical Details}
-\label{sub:technicial-details}
+  \subsection{Technical Details}
+  \label{sub:technicial-details}
 
-\input{Figures/heatmap.tex}
+  \input{Figures/heatmap.tex}
 
-% \input{coo.tex}
+  % \input{coo.tex}
 \end{appendices}
 \end{document}

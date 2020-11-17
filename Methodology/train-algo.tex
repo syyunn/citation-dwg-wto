@@ -1,0 +1,24 @@
+\begin{algorithm}[ht]
+    \DontPrintSemicolon
+  
+    \KwInput{neural network $f_\theta$, train dataset $T_{train} \times A_{train}$ and set of cited article $C$ defined in Figure \ref{fig:def:set-of-cited-articles}}
+    \KwOutput{fitted set of parameter $\theta^*$}
+  
+    Let weight of binary cross entropy $w = 26.303$\\
+    $\:\:\:\:\:\:\:$ \textit{weighted binary cross entropy loss} $L(y,\hat{p}) = w*y\log{\hat{p} + (1-y)\log{(1-\hat{p})}}$\\
+    $\:\:\:\:\:\:\:$ Epochs $e \in \Bbb N$\\
+    $\:\:\:\:\:\:\:$ Learning Rate $\alpha \in \Bbb R$\\
+  
+    \For{$i = 1$, $i{+}{+}$, \text{while} $i \le e$} {
+      \For{$(t_d, a_v) \in  T_{train} \times A_{train}$} {
+        % $\hat{p} \gets f_\theta(t_d, a_v)$\\
+        $y \gets 1$ if $v \in c_d$ else 0\\
+        % $L \gets w*y\log{\hat{p} + (1-y)\log{(1-\hat{p})}}$ \\
+        $\theta \gets \theta - \alpha * \nabla_{\theta}L(y, f_\theta(t_d, a_v))$
+      }
+    }
+    % \text{\textbf{then}} $w^*_{ij} \gets \frac{1}{m}\sum_{k \in \{ 1, 2, ... m\}} I^k_{v_i \to v_j}(N)$ \\
+    \text{\textbf{return}} $f_\theta^*$
+    \caption{Steps to Train Neural Network $f_\theta$}
+    \label{algo:fit-dnn}
+  \end{algorithm}
