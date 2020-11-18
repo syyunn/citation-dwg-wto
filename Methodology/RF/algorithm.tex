@@ -1,6 +1,6 @@
-\clearpage
 \begin{algorithm}[H]
     \DontPrintSemicolon
+    \SetAlgoLined
 
     \KwInput{Prediction Matrix $P = (p_{dv}) \in [0,1]^{{|D| \times |V|}} \text{ s.t. } p_{dv} = f_{\theta^*}(t_d, a_v)$}
     \KwOutput{$W^* = (w^*_{ij}) \in [0,1]^{|V| \times |V|}$}
@@ -9,32 +9,34 @@
     $\:\:\:\:\:\:\:$ number of trees to ensemble $ m \in \Bbb N$
 
     \For{$v_j \in V $} {
-        X $\gets \{ x_d \mid x_d = (p_{dv_1},\: p_{dv_2},\: \ldots, \:p_{dv_{n}}) \: s.t. \: v \in V \setminus{\{v_j\}} \text{ and } d \in D \} \:$  \\
-        Y $\gets \{ y_d  \mid y_d = p_{dv_j} \: / \sigma(p_{v_j}) \: s.t. \: d \in D \text{ and } \sigma(p_{v_j}) \text{ is a standard deviation of }$ \\
-        $\{ p_{dv_j} \mid d \in D \} \}$\\
+    X $\gets \{ x_d \mid x_d = (p_{dv_1},\: p_{dv_2},\: \ldots, \:p_{dv_{n}}) \: s.t. \: v \in V \setminus{\{v_j\}} \text{ and } d \in D \} \:$  \\
+    Y $\gets \{ y_d  \mid y_d = p_{dv_j} \: / \sigma(p_{v_j}) \: s.t. \: d \in D \text{ and } \sigma(p_{v_j}) \text{ is a standard deviation of }$ \\
+    $\{ p_{dv_j} \mid d \in D \} \}$\\
 
-        \For{$ k \in \{1,2, \ldots, m \} $} {
-            1. $S = \{(x_d, y_d)\} \gets $ Random sample $o$ number of $(x_d, y_d)$ from $X \times Y$ with replacement. Then let $X_d$ notate set of all sampled $x_d$. \\
-            2. Find a decision tree $T_k: X_d \to \Bbb R$ where\\
-            $T_k = \{ N \mid N = (v_i, b, N_p, \hat{y}) $ represents a decision node where \\ 
-            $ b, \hat{y} \in \Bbb R, v_i \in V \setminus{\{v_j\}} $ and $(v_i, b) \text{ splits } S_N \subset S \text{ that reached the node } N $\\
-            into $S_{N_{true}}$ and $S_{N_{false}}$ with a criterion $p_{dv_i} \ge b$ with a parent node $ N_p \in T_k$ \\             if $N$ is not a root node. Define $N_p = \emptyset$ if N is a root node. $\hat{y}$ represents \\
-            the node's estimate for given input. $v_i$ and $b$ is $\emptyset$ if $N$ has no child node(s).$\}$\\
-            that minimizes the MSE loss $\sum_{(x_d, y_d) \in S} \frac{1}{|S|}(y_d - T_k(x_d))^2$.\\
-            3.
-            \For{$N \in T_i$ } {
-                \If{$v_i$ of $N \neq \emptyset$ }
-                {
-                    % $I(N) \gets \frac{1}{|S|^2}\sum_{i \in S}\sum_{j \in S}$
-                    $I^k_{v_i \to v_j}(N) \gets \text{Var}(S_N) - \text{Var}(S_{N_{true}}) - \text{Var}(S_{N_{false}})$ where Var($\cdot$) is the variance
-                    of the output variable $y_d$ in each subset $S_N, S_{N_{true}}$ and $S_{N_{false}}$           
-                } 
+    \For{$ k \in \{1,2, \ldots, m \} $} {
+    1. $S = \{(x_d, y_d)\} \gets $ Random sample $o$ number of $(x_d, y_d)$ from $X \times Y$ with replacement. Then let $X_d$ notate set of all sampled $x_d$. \\
+    2. Construct a decision tree $T_k: X_d \to \Bbb R$ where\\
+    $T_k = \{ N \mid N = (v_i, b, N_p, \hat{y}) $ represents a decision node where \\
+    $ b, \hat{y} \in \Bbb R, v_i \in V \setminus{\{v_j\}} $ and $(v_i, b) \text{ splits } S_N \subset S \text{ that reached the node } N $\\
+    into $S_{N_{true}}$ and $S_{N_{false}}$ with a criterion $p_{dv_i} \ge b$ with a parent node $ N_p \in T_k$ \\             if $N$ is not a root node. Define $N_p = \emptyset$ if N is a root node. $\hat{y}$ represents \\
+    the node's estimate for given input $x_d$ and $\hat{y} = \frac{1}{|S_N|}\sum_{(x_d, y_d) \in S_N}y_d$.\\
+    $v_i$ and $b$ is $\emptyset$ if $N$ has no child nodes.
+    $(v_i, b)$ at each node N is determined \\ among a random sampled $\sqrt{|V|-1}$ number of $v_i$ from $V$ that minimizes MSE $\frac{1}{|S_{N_p}|}\sum_{(x_d, y_d) \in S_{N_p}}(y_d - T_k(x_d))^2$ $\}$\\
+    3.
+    \For{$N \in T_i$ } {
+    \If{$v_i$ of $N \neq \emptyset$ }
+    {
+    % $I(N) \gets \frac{1}{|S|^2}\sum_{i \in S}\sum_{j \in S}$
+    $I^k_{v_i \to v_j}(N) \gets I^k_{v_i \to v_j}(N) + (\text{Var}(S_N) - \text{Var}(S_{N_{true}}) - \text{Var}(S_{N_{false}}))$ where Var($\cdot$) is the variance
+    of the output variable $y_d$ in each subset $S_N, S_{N_{true}}$ and $S_{N_{false}}$
+    }
 
-            }
-    
-        }
+    }
+
+    }
     }
     \text{\textbf{then}} $w^*_{ij} \gets \frac{1}{m}\sum_{k \in \{ 1, 2, ... m\}} I^k_{v_i \to v_j}(N)$ \\
     \text{\textbf{return}} $W^* = (w^*_{ij}) \in [0,1]^{|V| \times |V|}$
     \caption{Random Forest to Find $W^*$}
+    \label{rf}
 \end{algorithm}

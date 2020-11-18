@@ -115,7 +115,7 @@ colormap/viridis
   citebordercolor={0 0 1}]
   {hyperref}
 
-\usepackage[ruled,vlined]{algorithm2e}
+\usepackage[ruled,vlined,linesnumbered]{algorithm2e}
 \SetKwFor{For}{for (}{) $\lbrace$}{$\rbrace$}
 
 %%% Coloring the comment as blue
@@ -320,13 +320,13 @@ More techinical details regarding epochs and learning rates will be covered in A
 % More technical details about 
 
 % \subsection{Reconstruction of Network of Articles of WTO Agreements}
-\subsection{Fitting $G^* = (V, E, W^*)$ using Ensemble of Random Forests}
+\subsection{Fitting $G^* = (V, E, W^*)$ using Random Forests}
 This subsection explains how I found the best set of directed edge weights $W^*$ that closely maps the shared understanding of legal experts in a form of \textit{directed weighted graph} as defined in Figure \ref{fig:def} and illustrated in Figure \ref{fig:def-example} using the trained neural network $f_{\theta^*}$. 
 
 \subsubsection{Definition of $W^*$: Best Set of Directed Edge Weights} %for the Network of Legal Articles of the WTO agreements}
 \input{Methodology/RF/fitting.tex}
-
-\subsubsection{Random Forest on Prediction Matrix: Finding $W^*$} %for the Network of Legal Articles of the WTO agreements}
+\subsubsection{Random Forest on Prediction Matrix $P$: Finding $W^*$} %for the Network of Legal Articles of the WTO agreements}
+\input{Methodology/RF/explains.tex}
 \input{Methodology/RF/algorithm.tex}
 
 \section{Empirical Findings} %: Quality Check of the Fitted Network $G^*$}
