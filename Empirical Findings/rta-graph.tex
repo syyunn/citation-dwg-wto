@@ -7,54 +7,43 @@
   
     \linespread{2} % to adjust the line spacing inside the label
   
-    \node[state, label=left:{\hspace{-1mm} Required Obligations \\[1mm]\hspace{1mm} to Formulate RTAs}] (T1) {XXIV};
-    \node[state, label=left:{General Elimination of \\[1mm] \hspace{-5mm} Quantitative Restrictions}] at ([shift=({240:3.5cm})]T1) (T2) {XI:1};
-    % \node[state, label=left:{\hspace{3mm} Modification of Schedules}] at ([shift=({120:3 cm})]T1) (T3) {XXVIII};
+    \node[state, label=left:{\hspace{2mm} Non-discrimination between \\[1mm]\hspace{1mm} RTAs and Non-RTA members}] (T1) {XXIV};
+    % \node[state, label=left:{General Elimination of \\[1mm] \hspace{-5mm} Quantitative Restrictions}] at ([shift=({240:3.5cm})]T1) (T2) {XI:1};
     \node[state, label=right:{\hspace{8mm}Emergency Action on \\[1mm]\hspace{0mm} Imports of Particular Products\\[1mm]\hspace{14mm} (Safeguard)}] at ([shift=({0:2.5 cm})]T1) (T5) {XIX};
 
-    \node[state, label=right:{\hspace{0mm}Non-discriminatory Administration of \\[1mm] \hspace{10mm} Quantitative Restrictions}] at ([shift=({-80:4cm})]T1) (T6) {XIII};
+    \node[state, label=right:{\hspace{0mm}Non-discriminatory Administration of \\[1mm] \hspace{10mm} Quantitative Restrictions}] at ([shift=({80:2.5cm})]T1) (T6) {XIII};
   
     \begin{scope}[every edge/.append style={-, double=black, draw=white}] % for directed edge, change "style={->, double=black, draw=white}]"
       \path (T1)
-    %   edge   (T2)
-    %   edge   (T3)
-    %   edge   (T6)
       ;
-      \path (T2)
-      edge (T6)
-      ;  
+      % \path (T2)
+      % edge (T6)
+      % ;  
     \end{scope}
 
     \begin{scope}[every edge/.append style={<-}] % for directed edge, change "style={->, double=black, draw=white}]"
         \path
-        (T1) edge[bend left, double=black, draw=white] node[above, xshift=10pt] {$12.7\%$} (T5)
+        (T1) edge[bend left, double=black, draw=white] node[above, xshift=0pt] {$12.7\%$} (T5)
         ;
     \end{scope}
 
     \begin{scope}[every edge/.append style={->}] % for directed edge, change "style={->, double=black, draw=white}]"
         \path
-        (T1) edge[bend right, double=black, draw=white] node[below, xshift=-5pt] {$8\%$} (T5)
+        (T1) edge[bend right, double=black, draw=white] node[below, xshift=0pt] {$8\%$} (T5)
         ;
     \end{scope}
 
-    \begin{scope}[every edge/.append style={->}] % for directed edge, change "style={->, double=black, draw=white}]"
-        \path
-        (T2) edge[double=black, draw=white] node[below, xshift=-7pt] {$8.7\%$} (T6)
-        ;
-    \end{scope}
-
-    % \begin{scope}[every edge/.append style={<-}] % for directed edge, change "style={->, double=black, draw=white}]"
+    % \begin{scope}[every edge/.append style={->}] % for directed edge, change "style={->, double=black, draw=white}]"
     %     \path
-    %     (T1) edge[bend left, double=black, draw=white] node[above, xshift=-16pt] {$12.7\%$} (T6)
+    %     (T2) edge[double=black, draw=white] node[below, xshift=-7pt] {$8.7\%$} (T6)
     %     ;
     % \end{scope}
 
     \begin{scope}[every edge/.append style={->}] % for directed edge, change "style={->, double=black, draw=white}]"
         \path
-        (T1) edge[double=black, draw=white] node[below, xshift=12pt] {$8\%$} (T6)
+        (T1) edge[double=black, draw=white] node[below, xshift=-10pt, yshift=6pt] {$8\%$} (T6)
         ;
     \end{scope}
-
 
 
 \end{tikzpicture}
