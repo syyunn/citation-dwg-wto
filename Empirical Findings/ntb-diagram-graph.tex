@@ -9,6 +9,7 @@
 
   \node[state, label=left:{\hspace{2mm} Satisfactory Adjustment in case of \\[1mm] \hspace{5mm} Nullification or Impairment of \\[1mm] \hspace{0mm} any Benefit under the WTO Agreements}] (T1) {XXIII};
   \node[state, label=left:{\hspace{1mm} Anti-dumping (AD) and \\[1mm] \hspace{-3mm} Countervailing Duties (CVD)}] at ([shift=({240:3 cm})]T1) (T2) {VI};
+  % \node[state, label=left:{\hspace{1mm} Criterion to Determine Dumping}] at ([shift=({240:3 cm})]T1) (T2) {VI:1};
   \node[state, label=left:{\hspace{3mm} Prohibition of Subsidies that  \\[1mm] \hspace{-3mm} Distorts Exportation or Importation}] at ([shift=({120:3 cm})]T1) (T3) {XVI};
   \node[state, label=below:{\hspace{10mm}Emergency Action on \\[1mm] \hspace{-3mm} Imports of Particular Products (SG)}] at ([shift=({360:3 cm})]T1) (T4) {XIX};
 
@@ -21,24 +22,34 @@
   % \node[state, label=left:{Fees Connected with \\[1mm] \hspace{-10mm} Importation and Exportation}] at ([shift=({150:5.5 cm})]T4) (T8) {VIII};
 
 
-  \begin{scope}[every edge/.append style={-, double=black, draw=white}] % for directed edge, change "style={->, double=black, draw=white}]"
-    \path (T1)
-    edge   (T2)
-    edge   (T3)
-    edge   (T4)
-    ;
-    % \path (T4)
-    % edge   (T5)
-    % edge   (T6)
-    % edge   (T7);
-    % \path (T5)
-    % edge   (T6);
-    % \path (T8)
-    % edge   (T7)
-    % edge   (T1)
-    % edge   (T6);
+%   \begin{scope}[every edge/.append style={-, double=black, draw=white}] % for directed edge, change "style={->, double=black, draw=white}]"
+%     \path (T1)
+%     % edge   (T2)
+%     edge   (T3)
+%     edge   (T4)
+%     ;
+%   \end{scope}
 
-  \end{scope}
+\begin{scope}[every edge/.append style={->}] % for directed edge, change "style={->, double=black, draw=white}]"
+  \path
+  (T4) edge[double=black, draw=white] node[above, xshift=0pt] {$11.6\%$} (T1)
+  ;
+\end{scope}
+
+\begin{scope}[every edge/.append style={->}] % for directed edge, change "style={->, double=black, draw=white}]"
+  \path
+  (T3) edge[double=black, draw=white] node[above, xshift=13pt] {$11.3\%$} (T1)
+  ;
+\end{scope}
+
+\begin{scope}[every edge/.append style={->}] % for directed edge, change "style={->, double=black, draw=white}]"
+  \path
+  (T2) edge[double=black, draw=white] node[above, xshift=7pt, yshift=-20pt] {$6.3\%$} (T1)
+  ;
+\end{scope}
+
+
 \end{tikzpicture}
+
 
 % to draw the node's border w/ color, refer to https://tex.stackexchange.com/questions/438412/how-to-add-border-to-a-node
