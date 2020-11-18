@@ -23,7 +23,7 @@
 %         \node [left] at (2.1,8.5) {\textbf{0.053}};
 %         \node [left] at (3.1,8.5) {\textbf{0.125}};
 %         \node [left] at (4.1,8.5) {\textbf{0.035}};
-        
+
 %         \node [left] at (1.1,7.5) {\textbf{0.040}};
 %         \node [left] at (1.8,7.5) {\textbf{0}};
 %         \node [left] at (3,7.5) {\textbf{0.04}};
@@ -47,84 +47,90 @@
 
 % == HEATMAP MATRIX == 
 \begin{figure}[!tbp]
-    \begin{subfigure}[b]{0.49\textwidth}
-        \centering
-        \begin{tikzpicture}
-            \foreach \i in {\xMin,...,5} {
-                \draw [black] (\i,0) -- (\i,9) node [below] at (\i,4) {};
-            }
-            \foreach \i in {0,...,9} {
-                \draw [black] (\xMin,\i) -- (5,\i) node [left] at (\xMin,\i) {};
-            }
-            \node [left] at (0,0.5) {\textbf{DS523}};
-            \node [left] at (0,1.5) {\textbf{DS518}};
-            \node [left] at (0,2.5) {\textbf{DS513}};
-            \node [left] at (0,3.5) {\textbf{DS505}};
-            % \node [left] at (0,4.5) {\textbf{DS4}};
-            % \node [left] at (0,5.5) {\textbf{DS4}};
-            \node [left] at (0,4.5) {\textbf{\vdots}};
-            \node [left] at (0,5.5) {\textbf{DS4}};
-            \node [left] at (0,6.5) {\textbf{DS3}};
-            \node [left] at (0,7.5) {\textbf{DS2}};
-            \node [left] at (0,8.5) {\textbf{DS1}};
-    
-            \node [left] at (4.8, 9.25) {\textbf{\ldots}};
-            \node [left] at (3.8, 9.25) {\textbf{II:1}};
-            \node [left] at (2.8, 9.25) {\textbf{II}};
-            \node [left] at (1.85, 9.25) {\textbf{I:1}};
-            \node [left] at (0.7,9.25) {\textbf{I}};
-    
-            \node [left] at (0.7,8.5) {\textbf{0}};
-            \node [left] at (2.1,8.5) {\textbf{0.053}};
-            \node [left] at (3.1,8.5) {\textbf{0.125}};
-            \node [left] at (4.1,8.5) {\textbf{0.035}};
-            
-            \node [left] at (1.1,7.5) {\textbf{0.040}};
-            \node [left] at (1.8,7.5) {\textbf{0}};
-            \node [left] at (3,7.5) {\textbf{0.04}};
-            \node [left] at (4.1,7.5) {\textbf{0.054}};
-    
-            \node [left] at (1.1,6.5) {\textbf{0.114}};
-            \node [left] at (2.1,6.5) {\textbf{0.049}};
-            \node [left] at (2.8,6.5) {\textbf{0}};
-            \node [left] at (4.1,6.5) {\textbf{0.065}};
-    
-            \node [left] at (1.1,5.5) {\textbf{0.032}};
-            \node [left] at (2.1,5.5) {\textbf{0.065}};
-            \node [left] at (3.1,5.5) {\textbf{0.065}};
-            \node [left] at (3.7,5.5) {\textbf{0}};
-    
-        \end{tikzpicture} 
-        \label{fig:illutrate-preds}      
-        \caption{\textbf{Illustration of Prediction Matrix:} By defining row as a list of DS case numbers and column as legal articles, we can create $|D| \times |V|$ matrix that includes $f_{\theta^*}(t_d, a_v)$ for each cell.}    
-    \end{subfigure}
-    \hfill
-    \begin{subfigure}[b]{0.49\textwidth}
-      \centering{
-        \resizebox{\textwidth*\real{\heatmap}}{\textwidth*\real{\heatmap} * \real{1.7889}}{\input{pred.tex}}
+  \begin{subfigure}[b]{0.49\textwidth}
+    \centering
+    \resizebox{\columnwidth}{!}{
+      \begin{tikzpicture}
+        \foreach \i in {\xMin,...,5} {
+            \draw [black] (\i,0) -- (\i,9) node [below] at (\i,4) {};
+          }
+        \foreach \i in {0,...,9} {
+            \draw [black] (\xMin,\i) -- (5,\i) node [left] at (\xMin,\i) {};
+          }
+        \node [left] at (0,0.5) {\textbf{DS523}};
+        \node [left] at (0,1.5) {\textbf{DS518}};
+        \node [left] at (0,2.5) {\textbf{DS513}};
+        \node [left] at (0,3.5) {\textbf{DS505}};
+        % \node [left] at (0,4.5) {\textbf{DS4}};
+        % \node [left] at (0,5.5) {\textbf{DS4}};
+        \node [left] at (0,4.5) {\textbf{\vdots}};
+        \node [left] at (0,5.5) {\textbf{DS31}};
+        \node [left] at (0,6.5) {\textbf{DS22}};
+        \node [left] at (0,7.5) {\textbf{DS18}};
+        \node [left] at (0,8.5) {\textbf{DS2}};
+
+        \node [left] at (4.8, 9.25) {\textbf{\ldots}};
+        \node [left] at (3.8, 9.25) {\textbf{II:1}};
+        \node [left] at (2.8, 9.25) {\textbf{II}};
+        \node [left] at (1.85, 9.25) {\textbf{I:1}};
+        \node [left] at (0.7,9.25) {\textbf{I}};
+
+        \node [left] at (1.1,8.5) {\textbf{0.950}};
+        \node [left] at (2.1,8.5) {\textbf{0.933}};
+        \node [left] at (3.1,8.5) {\textbf{0.946}};
+        \node [left] at (4.1,8.5) {\textbf{0.068}};
+
+        \node [left] at (1.1,7.5) {\textbf{0.950}};
+        \node [left] at (2.1,7.5) {\textbf{0.912}};
+        \node [left] at (3.1,7.5) {\textbf{0.947}};
+        \node [left] at (4.1,7.5) {\textbf{0.013}};
+
+        \node [left] at (1.1,6.5) {\textbf{0.070}};
+        \node [left] at (2.1,6.5) {\textbf{0.037}};
+        \node [left] at (3.1,6.5) {\textbf{0.003}};
+        \node [left] at (4.1,6.5) {\textbf{0.042}};
+
+        \node [left] at (1.1,5.5) {\textbf{0.933}};
+        \node [left] at (2.1,5.5) {\textbf{0.967}};
+        \node [left] at (3.1,5.5) {\textbf{0.835}};
+        \node [left] at (4.1,5.5) {\textbf{0.135}};
+
+      \end{tikzpicture}
+    }
+    \label{fig:illutrate-preds}
+    \caption{\textbf{Illustration of Prediction Matrix:} By defining row as a list of DS case numbers and column as legal articles, we can create $|D| \times |V|$ matrix that includes $f_{\theta^*}(t_d, a_v)$ for each cell.}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[b]{0.49\textwidth}
+    \centering{
+      \resizebox{\textwidth*\real{\heatmap}}{\textwidth*\real{\heatmap} * \real{1.7889}}{
+        \input{pred.tex}
+      }
+      \resizebox{\columnwidth}{!}{
         \begin{tikzpicture}
           \begin{axis}[
-                  hide axis,
-                  scale only axis,
-                  height=0pt,
-                  width=0pt,
-                  colormap/viridis,
-                  colorbar horizontal,
-                  point meta min=0,
-                  point meta max=0.15,
-                  colorbar style={
-                          width=10cm,
-                          height=0.5cm,
-                          xtick={0,0.03,0.06,0.09,0.12,0.15}
-                      }]
-              \addplot [draw=none] coordinates {(0,0)};
+              hide axis,
+              scale only axis,
+              height=0pt,
+              width=0pt,
+              colormap/viridis,
+              colorbar horizontal,
+              point meta min=0,
+              point meta max=1,
+              colorbar style={
+                  width=10cm,
+                  height=0.5cm,
+                  xtick={0,0.25,0.5,0.75,1}
+                }]
+            \addplot [draw=none] coordinates {(0,0)};
           \end{axis}
-      \end{tikzpicture}
-        \caption{\textbf{Prediction Matrix:} This heatmap represents the $P$ from the actual data and its predictions from $f_{\theta^*}$} 
-        \label{predidction_matrix}
+        \end{tikzpicture}
       }
-    \end{subfigure}
-    \caption{\textbf{Illustration of Prediction Matrix:} I collected all the predictions from the trained nerual network $f_{\theta^*}$ and constructed prediction matrix $P$}
-    \label{fig:illutrate-preds}
-  \end{figure}
-  
+
+      \caption{\textbf{Prediction Matrix:} This heatmap represents the $P$ from the actual data and its predictions from $f_{\theta^*}$}
+      \label{predidction_matrix}
+    }
+  \end{subfigure}
+  \caption{\textbf{Illustration of Prediction Matrix:} I collected all the predictions from the trained nerual network $f_{\theta^*}$ and constructed prediction matrix $P$}
+  \label{fig:illutrate-preds}
+\end{figure}
