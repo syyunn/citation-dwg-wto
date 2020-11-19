@@ -332,18 +332,47 @@ reflect domain specific characteristics of each token.
 For example, WTO DSB prefer to use the word \textit{inconsistent} rather than the word \textit{breach} to refer to the illegality of a member's trade policy.
 This kind of domain specificity will be stored in this matrix as a distribution of those numerical vectors in this layer. 
 
-I used \textbf{Google News Word2Vec} to initialize this embedding layer. This is an open-source pretrained vectors provided by Google. It contains 300 dimensional English word vectors for 3 million unique words. Because of the GPU memory limit, I had set 400,000 as a maximum number of word vectors to read form the Google Word2vec and this number corresponds to the $|\text{\textit{Size of Dictionary}}|$.
+I used \textit{Google News Word2Vec} to initialize this embedding layer. This is an open-source pretrained vectors provided by Google. It contains 300 dimensional English word vectors for 3 million unique words. Because of the GPU memory limit, I had set 400,000 as a maximum number of word vectors to read form the Google Word2vec and this number corresponds to the $|\text{\textit{Size of Dictionary}}|$.
 
-Figure \ref{fig:embedding} represents the output of the embedding layer for given document that is tokenized 
-from the example factual aspect introduced in \hyperref[sub:factual-aspect-example]{Appendix A.1}. 
+Figure \ref{fig:embedding} represents the ``output" of the embedding layer for given document that is tokenized 
+from the example in \hyperref[sub:factual-aspect-example]{Appendix A.1}. 
 The neural network find correpondent $k$-dimensional vectors for given ordered tokens in the document and returns ($n_{\text{factual}}, k$) or ($n_{\text{article}}, k$) size of matrix for given two different types of inputs.
 This matrix is fed into the next layer, \textit{Conv1D}.
 
-% It's worth noting that I prepared two seperate embedding layers for \textit{Fatcutal Aspect} and \textit{Legal Article} each.
-% Although both of them are initialized with the same Googld News Word2Vec, however, they are trained independently as trains goes by. 
-% This is because I had an background knwoledge that the 
-
+\input{Methodology/Conv1D.tex}
 \paragraph{Conv1D: Capturing the Local Features}
+
+This subsection explains the how convolution filters runs over the ($n_{\text{factual}}, k$) or ($n_{\text{article}}, k$) size of matrix that are pass from the previous layer.
+I define this output matrix from the embedding layer more formally as below following the notation used in \cite{textcnn}
+
+\[
+\begin{array}{c}
+x_{1:n} = x_1 \oplus x_2 \oplus \ldots \oplus x_{\text{max}}\\
+\text{where\:} \oplus \: \text{represents concatenation} \\ 
+\text{and} \: x_i \in \Bbb R^k \: \text{represents the $i$-th embedded token from the document}\\
+\text{let} \: x_{i:i+j} \: \text{refer to the concatenation of the embeddings} x_i, x_{i+1}, . . . , x_{i+j}.
+\end{array}
+\]
+
+\noindent Then a convolution filter $w \in \Bbb R^{h \times k}$ is simply defined as $(h, k)$ size of matrix where $h$ represent the filter size and $k$ represent the embedding dimension which is same to that of the embedding layer.
+Then the convolution is defined as $w \cdot x_{i:i+h-1} + b$ where $b \in \Bbb R$ which is a bias term. 
+I illustrated this convolution operation in Figure \ref{fig:conv1d} where the blue box refers to the convolution filter $w$ with the filter size 3 and it runs over the 
+each set of 3 embeddings as increasing the $i$ of $x_i$ one by one. This will eventually gnerate a feature vector $c$ which is a size of $n-h+1$.
+
+Each convolution filter $w$ learns how to summarize information \textit{locally} for the region of filter size. For example, a convolution filter $w$ holds its unique way of 
+understanding the meaning of the \textit{\textbf{``This dispute concerns''}} in Figure \ref{fig:conv1d}. 
+This convolution filter $w$ generalizes its own way of understanding 3-sized token embeddings over all $n-h+1$ number of 3-sized tokens.
+
+%\: s.t. \: |\{w\}| = 128$
+
+I prepared 128 different convolution filters $\{w\}$  so that each of them can hold their unique way of comprising \textit{local understandings} where the size of locality fits to its filter size. 
+Moreover, I also prepared three different filter sizes 3, 4 and 5. This means we will eventually get $(n-2, 128), (n-3, 128) \text{ and } (n-4,128)$ size of vectors by the \textit{Conv1D} operation.
+% I also prepared 128 number of filters for three different types of filter size respectively.
+
+It's important to note that I introduced \textit{non-linearity} using \textbf{ReLU} ($ReLU(x) = max(0, x)$) after each convolution operation.
+This means output of convolution operation $w \cdot x_{i:i+h-1} + b$ becomes $0$ in case the value is smaller than $0$.
+This sequential layering of linear (such as convolution operation) and non-linear operations (such as ReLU) lets the model to be able to encode 
+more complex patterns like citation patterns appearing upon the juriprudences of WTO DSB.
 
 \paragraph{MaxPool1D: Choose the Most Prominent Feature}
 
@@ -455,7 +484,6 @@ This subsection explains how I found the best set of directed edge weights $W^*$
 % \input{Methodology/embedding.tex}
 
 % \subsubsection{1-Dimensional Convolution Layer (Conv1D)}
-\input{Methodology/Conv1D.tex}
 
 % \subsubsection{1-Dimensional Max-pooling (MaxPool1D)}
 \input{Methodology/MaxPool1D.tex}

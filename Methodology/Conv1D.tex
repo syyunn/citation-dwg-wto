@@ -20,7 +20,7 @@
         \node [left] at (0,8.5) {\textbf{This}};
 
         \node [left] at (5.5,9.5) {\textbf{Embedding Dimension = $k$}};
-        \node [right, rotate=-90, font=\small] at (6.5,7) {\textbf{Max Sequence Length = $n$}};
+        \node [right, rotate=-90, font=\small] at (6.5,7) {\textbf{Max Token Length = $n$}};
 
 
     \draw [step=1.0,blue, very thick] (0,9) grid (6,6); % 3-filter
@@ -50,9 +50,10 @@
     \end{tikzpicture} 
 
     
-    \label{fig:conv1d}      
     % \caption{\textbf{Conv1D:} $m$ number of $h$-sized filter runs over the $n \times k $ embedding matrix and produces $m \times (n-h+1)$ matrix}
     \caption{\textbf{Conv1D:} $h$-sized filter runs over the $n \times k $ embedding matrix and produces $(n-h+1)$ size of feature map.} % actually feature map means "after" non-linear activation.
+    \label{fig:conv1d}      
+
 \end{figure}
 
 % This  dispute  concerns  the  Continued  Dumping 
