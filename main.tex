@@ -433,33 +433,33 @@ By applying \textit{Sigmoid} to this size 1 logit, we get $\hat{p} \in  [0, 1]$.
 \subsubsection{Train of Deep Neural Network}
 
 % \textbf{Split of Train/Test Data} 
-I have total 11,440 number of data instances that is calculated by $|D| * |V|$ where $|D| = 143$ and $|V|=80$.
+I have total 11,440 number of data instances that is calculated by $|D| \times |V|$ where $|D| = 143$ and $|V|=80$.
 Before training, I randomly split the entire dataset $T \times A$ into train and test data in 8:2 ratio.
 The number of split result is 9,153 for train data and 2,287 for test data.
 I used train data only to train the neural network and used test data to check the trained model's performance.
-By measuring a selected performance
+By measuring a performance
 metric on the inference results of the test data, one can check the generalizability of the trained neural network regarding
 how well the trained neural network can perform over the data that it has never seen before.
 
-The term ``training" refers to fitting a set of parameters $\theta$,
-that constitutes mathematical operations defined in layers illustrated in Figure \ref{fig:dnn-flow}.
+The term ``training" refers to adjust a set of parameters $\theta$
+that constitutes mathematical operations defined in layers illustrated in Figure \ref{fig:dnn-flow} and explained in the following subsections.
 The procedure to fit those set of parameters is as described in Algorithm \ref{algo:fit-dnn}.
 
 \input{Methodology/train-algo.tex}
 
-I fitted the nerual network $f_\theta$ using \textit{weighted cross entropy loss} as explained in Algorithm \ref{algo:fit-dnn}.
-I used \textit{cross entropy loss} because it measures how much the probability distribution $\hat{Y}$ projected by the trained model $f_\theta$
-deviates from the true distribution $Y$ which symbolically represents a shared understanding regarding the citability of certain legal article for given textual description of the case
+I fitted the nerual network $f_\theta$ using \textit{weighted cross entropy loss} as formally defined in Algorithm \ref{algo:fit-dnn}.
+I used \textit{cross entropy loss} because it measures how much the probability distribution projected by the trained model $f_\theta$
+deviates from the true distribution which represents a shared understanding regarding the citability of certain legal article for given textual description of the case
 among the group of legal experts of WTO agreements.
 
 It's worth noting that I ``weighted" \textit{cross entropy loss}. This is because
 our dataset is highly imbalanced in terms of citability.
 %represents the number of factual aspects and $|V|=80$ represents the number of legal articles.  
-Among all (11,440) data instances, I have only 435 data instances where the given article $a_v$ is actually cited for the case description $t_d$. This is only 3.802\%.
+Among all (11,440) data instances, I have only 435 data instances where the given article $a_v$ is actually cited for the given case description $t_d$. This is only 3.802\%.
 This is because a case tends to have only 3 - 4 articles cited on average among 80 different articles in $V$.
-Therefore, I adopted a weight of 26.303, which is inverse of the $3.802\%$ to penalize the neural network with higher loss in case the network fails to cite correctly for the positive case where $y \gets 1$ in Algorithm \ref{algo:fit-dnn}.
+Therefore, I adopted a weight of 26.303 which is inverse of the $3.802\%$ to penalize the neural network with higher loss in case the network fails to cite correctly for the positive case where $y \gets 1$ in Algorithm \ref{algo:fit-dnn}.
 
-More techinical details regarding epochs and learning rates will be covered in Appendix. and the training result (model performance) will be explained in Appendix.
+% More techinical details regarding epochs and learning rates will be covered in Appendix. and the training result (model performance) will be explained in Appendix.
 
 % Epochs and learning rate are hyperparameters whose value shall be given by the experimenter. Epochs $e$ is about how many times the neural network will train the entire train dataset and learning rate $\alpha$ is about how much update the model parameter for each step. 
 % More technical details about 
