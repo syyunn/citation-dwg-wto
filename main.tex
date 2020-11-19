@@ -127,6 +127,17 @@ colormap/viridis
 \usepackage{algpseudocode}% http://ctan.org/pkg/algorithmicx
 \usepackage{varwidth}% http://ctan.org/pkg/varwidth
 
+
+\usepackage{titlesec}
+
+\setcounter{secnumdepth}{4}
+
+\titleformat{\paragraph}
+{\normalfont\normalsize\bfseries}{\theparagraph}{1em}{}
+\titlespacing*{\paragraph}
+{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+
+
 \bibliographystyle{apsr}
 
 % == SPACES == 
@@ -262,7 +273,7 @@ because \textit{Dual-retail system} didn't discriminate the United States from o
 We can understand that there exists a shared understanding over jurisprudences of WTO DSB among legal experts of the rules of WTO. They follow up new cases and study jurisprudence stated in the \textit{Panel} or  \textit{Appellate Body} reports.
 Then they organize a legal argument by citing certain article(s) upon this shared understanding for given possible inconsistent measure claimed by a member of WTO.
 
-To mimic this reasoning process, I designed the input and output of the deep neural network as illustrated in Figure \ref{fig:design-of-nn}.
+To mimic this reasoning process, I designed the input and output of the deep neural network as illustrated in Figure \ref{fig:design-of-nn} and formally defined in Figure \ref{fig:def:io:nn}.
 The neural network is designed to estimate the citability for given pair of a factual aspect and text of a legal article.
 By iteratively training the neural network with data explained in Section \ref{sec:data}, I expect the neural network can learn a shared understanding over reglatory system of WTO DSB as closely to that of legal experts.
 The detailed structure of neural network and training schemes will be explained in the later subsections.
@@ -285,6 +296,9 @@ This is because of the following two reasons.
 First, convolutional neural network is known as good at learning how to integrate local and global features to perform classification task \citep{554195, 8227460}.
 Second, \cite{textcnn} has implemented this convolutional neural network into the text domain
 and has shown its high performance on classification.
+
+\paragraph{Test Modified Paragraph}
+
 
 I explained technical Details of each layer illustrated in Figure \ref{fig:dnn-flow} in Appendix.
 
