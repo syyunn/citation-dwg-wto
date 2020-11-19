@@ -301,7 +301,7 @@ Figure \ref{fig:dnn-flow} demonstrates the entire structure of deep neural netwo
 General flow is to return the citability of an legal article that is fed into the neural network with a factual aspect.
 Each block in Figure \ref{fig:dnn-flow} represents a set of unique mathematical operations.
 We prefer to call those blocks as ``layer''
-and calleach layer has its desired role regarding how to process the information for which purpose.
+and each layer has its desired role regarding how to process the information for which purpose.
 I will explain each block's role and composition at the following subsections.
 
 \paragraph{Inputs: a Pair of Documents, Factual Aspect and Legal Article}
@@ -432,7 +432,6 @@ By applying \textit{Sigmoid} to this size 1 logit, we get $\hat{p} \in  [0, 1]$.
 
 \subsubsection{Train of Deep Neural Network}
 
-% \textbf{Split of Train/Test Data} 
 I have total 11,440 number of data instances that is calculated by $|D| \times |V|$ where $|D| = 143$ and $|V|=80$.
 Before training, I randomly split the entire dataset $T \times A$ into train and test data in 8:2 ratio.
 The number of split result is 9,153 for train data and 2,287 for test data.
@@ -458,6 +457,11 @@ our dataset is highly imbalanced in terms of citability.
 Among all (11,440) data instances, I have only 435 data instances where the given article $a_v$ is actually cited for the given case description $t_d$. This is only 3.802\%.
 This is because a case tends to have only 3 - 4 articles cited on average among 80 different articles in $V$.
 Therefore, I adopted a weight of 26.303 which is inverse of the $3.802\%$ to penalize the neural network with higher loss in case the network fails to cite correctly for the positive case where $y \gets 1$ in Algorithm \ref{algo:fit-dnn}.
+
+\subsubsection{Training Result of Deep Neural Network}
+Training loss converges to around \(1.25\) after \(8\) epochs. The loss plot of training data is shown in Figure \ref{trainFig}. Test loss converges to around \(2\) after 100,000 iteration step of training which corresponds to \(10.9\) epochs. The loss plot of test data is shown in Figure \ref{testFig}. Both train and test loss is logged and plotted every 100 iteration of training step with batch size \(8\), which corresponds to 0.087 epoch. \\\\
+
+\paragraph{Train \& Test Loss}
 
 % More techinical details regarding epochs and learning rates will be covered in Appendix. and the training result (model performance) will be explained in Appendix.
 
