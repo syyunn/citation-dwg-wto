@@ -390,9 +390,19 @@ Then by apply \textbf{ReLU} again to the output of this \textit{Fully Connected 
 to introduce more complexity in terms of non-linearity without losing important features 
 from the non-linear operation.
 
-\paragraph{Highway: Make the Network More Robust \& Flexible}
+\paragraph{Highway: Intorducing another Non-linearity while Preventing the \textit{Vanishing Gradients}}
+I implemented \textit{Highway network} \citep{highway} to add more non-linearity. Adding additional non-lineairties may increase the chance that the neural network can approximate more complex pattern in the data, however, as the network gets deeper \textit{vanishing gradients} problem arises.
+Deep neural network is trained by updating its parameter weight proportional to the partial derivate of the loss function with respect to the current parameter (\textit{See} Algorithm \ref{algo:fit-dnn}) and computes this gradient by chain rules. Therefore, as the network gets deeper in terms of non-linearity, the value of gradient tend to become \textit{vanishingly small} compared to that of front layer. 
+
+To add another non-linearity while preventing this \textit{vanshing gradients problem},
 
 \paragraph{Dropout: Ensure More generalizability}
+
+\paragraph{Concat: Feature Map from Factual Asepct and Legal Content Meets}
+
+\paragraph{FC: Generates Logit}
+
+\paragraph{Sigmoid: Generates Citability}
 
 
 
