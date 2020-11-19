@@ -380,12 +380,15 @@ more complex patterns like citation patterns appearing upon the juriprudences of
 Our general goal is to estimate the citability $\hat{p} \in [0, 1]$ as closely to that of real world citation pattern.
 Therefore we need an efficient \textit{down-sampling} process to sample the large dimensional features into smaller dimension.
 With a convolution, \textit{Max-pooling} is preferred to use for this purpose. \textit{Max-pooling} simply selects the largest values among $(n-h+1)$ size of vector where each of dimension is calculated by the same convolution filter $w$, i.e., $ReLU(w \cdot x + b)$.
-Figure \ref{fig:maxpool1d} illustrates this process. I used 128 ($=m$ in Figure) number of filters for each filter size, thus I got 3 differnt 128-dimensional vectors as a result of \textit{MaxPool1D}.
+Figure \ref{fig:maxpool1d} illustrates this process. I used 128 ($=m$ in Figure \ref{fig:maxpool1d}) number of filters for each filter size, thus I got 3 differnt 128-dimensional vectors as a result of \textit{MaxPool1D}.
 
 
 \paragraph{FC: Enlarge the Capacity}
-Using the output
-
+Using the $(3, 128)$ size of feature map from the \textit{Max-pooling}, I flatten those 3 different filter-sized (128) dimensional feature maps into a (384) dimensional vector.
+To increase the model capacity in terms of size of parameters and non-linearity, I introduced a \textit{Fully Connected Layer} (FC) that is defined as $W_{fc} \cdot x + b_{fc}$ where $W_{fc} \in \Bbb R^{1024 \times 384}$ is a learnable parameter, $x$ is the flattened (384) size of feature vector and $b_{fc} \in \Bbb R^{1024}$ is a bias term of \textit{Fully Connected Layer}.
+Then by apply \textbf{ReLU} again to the output of this \textit{Fully Connected Layer}, I introudced another \textit{non-linearity}. This is to let the model 
+to introduce more complexity in terms of non-linearity without losing important features 
+from the non-linear operation.
 
 \paragraph{Highway: Make the Network More Robust \& Flexible}
 
