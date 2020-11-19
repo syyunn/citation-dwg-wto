@@ -297,10 +297,27 @@ First, convolutional neural network is known as good at learning how to integrat
 Second, \cite{textcnn} has implemented this convolutional neural network into the text domain
 and has shown its high performance on classification.
 
-\paragraph{Test Modified Paragraph}
+Figure \ref{fig:dnn-flow} demonstrates the entire structure of deep neural network that is used in this paper.
+General flow is to return the citability of an legal article that is fed into the neural network with a factual aspect. 
+Each block in Figure \ref{fig:dnn-flow} represents a set of unique mathematical operations. 
+We prefer to call those blocks as ``layer'' 
+and calleach layer has its desired role regarding how to process the information for which purpose.
+I will explain each block's role and composition at the following subsections.
 
+\paragraph{Inputs: a Pair of Documents, Factual Aspect and Legal Article}
 
-I explained technical Details of each layer illustrated in Figure \ref{fig:dnn-flow} in Appendix.
+\paragraph{Embeddiing Layer: From Documents to Numerical Vectors}
+
+\paragraph{Conv1D: Capturing the Local Features}
+
+\paragraph{MaxPool1D: Choose the Most Prominent Feature}
+
+\paragraph{FC: Enlarge the Capacity}
+
+\paragraph{Highway: Make the Network More Robust \& Flexible}
+
+\paragraph{Dropout: Ensure More generalizability}
+
 
 
 \subsubsection{Train of Deep Neural Network}
