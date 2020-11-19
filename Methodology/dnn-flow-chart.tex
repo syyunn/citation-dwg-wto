@@ -14,8 +14,8 @@
         }
         \node [block, label={[align=left]Factual Aspect}] (start) {$t_d \in T$};
         \node [block, right =1cm of start, label={[align=left]}] (conv1d) {Conv1D};
-        \node [block, right =1cm of conv1d, label={[align=left]}] (fc1024) {FC};
-        \node [block, right =1cm of fc1024, label={[align=left]}] (relu) {ReLU};
+        \node [block, right =1cm of conv1d, label={[align=left]}] (fc1024) {MaxPool1D};
+        \node [block, right =1cm of fc1024, label={[align=left]}] (relu) {FC};
         \node [block, right =1cm of relu, label={[align=left]}] (highway) {Highway};
         \node [block, right =1cm of highway, label={[align=left]}] (dropout) {Dropout};
 
@@ -28,8 +28,8 @@
 
         \node [block, below =1cm of start, label={[align=left]Legal Article}] (start_art) {$a_v \in A$};
         \node [block, right =1cm of start_art, label={[align=left]}] (conv1d_art) {Conv1D};
-        \node [block, right =1cm of conv1d_art, label={[align=left]}] (fc1024_art) {FC};
-        \node [block, right =1cm of fc1024_art, label={[align=left]}] (relu_art) {ReLU};
+        \node [block, right =1cm of conv1d_art, label={[align=left]}] (fc1024_art) {MaxPool1D};
+        \node [block, right =1cm of fc1024_art, label={[align=left]}] (relu_art) {FC};
         \node [block, right =1cm of relu_art, label={[align=left]}] (highway_art) {Highway};
         \node [block, right =1cm of highway_art, label={[align=left]}] (dropout_art) {Dropout};
 
@@ -63,6 +63,18 @@
 
         \draw[red,thick, fill] ($(start.north west)+(2.3,0.6)$) rectangle ($(start_art.south east)+(0.6,-0.6)$);
         \node[above] at (1.45,-3.7){Embedding};
+
+        \draw[red,thick, fill] ($(start.north west)+(2.3,0.6)$) rectangle ($(start_art.south east)+(0.6,-0.6)$);
+        \node[above] at (1.45,-3.7){Embedding};
+
+        \draw[blue,thick, fill] ($(start.north west)+(5.3,0.6)$) rectangle ($(start_art.south east)+(3.6,-0.6)$);
+        \node[above] at (4.45,1.2){ReLU};
+
+        \draw[blue,thick, fill] ($(start.north west)+(11.4,0.6)$) rectangle ($(start_art.south east)+(9.7,-0.6)$);
+        \node[above] at (10.56,1.2){ReLU};
+
+
+
 
     \end{tikzpicture}
     \caption{\textbf{Layers of Deep Neural Network:} The term ``Layer'' refers to an mathematical operation. How layers are stacked in which order determines the ``structure'' of deep neural network. This figure illustrates the structure of the deep neural network tha this paper used. The figure follows the notations defined in Figure \ref{fig:def:io:nn}.}
