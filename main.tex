@@ -267,12 +267,11 @@ The neural network is designed to estimate the citability for given pair of a fa
 By iteratively training the neural network with data explained in Section \ref{sec:data}, I expect the neural network can learn a shared understanding over reglatory system of WTO DSB as closely to that of legal experts.
 The detailed structure of neural network and training schemes will be explained in the later subsections.
 % For total $11,440$ pairs of factual aspect and legal articles (143 different cases (Figure \ref{fig:ds-cases-used}) and 80 different legal articles (Figure \ref{fig:def:set-of-cited-articles})
-% \clearpage
-
+\clearpage
+\input{Methodology/dnn-flow-chart.tex}
 
 \subsubsection{Structure of Deep Neural Network}
 
-\input{Methodology/dnn-flow-chart.tex}
 
 An efficient way to architect the structure of deep neural network is to use the
 human analogy as I did in subsection \ref{design:io}.
