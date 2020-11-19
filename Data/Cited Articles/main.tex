@@ -5,9 +5,8 @@ as shown in Table
 To collect this set of articles claimed for the same dispute, I wrote a program that collects this set of articles cited for the same dispute from the WTO official webpage\footnote{\url{https://www.wto.org/english/tratop_e/dispu_e/dispu_status_e.htm}}. 
 The webpage chronologically lists up all dispute cases
 requested to WTO DSB and the prgoram visits each page of 143 cases
-and collects the cited articles. Among all the articles from different agreements
-of the WTO agreements\footnote{
-    WTO agreeemnts is comprised of mutiple agreements such as
+and collects the cited articles. Among all the agreements included in the WTO agreements\footnote{
+    WTO agreeemnts is comprised of mutiple agreements, such as
     General Agreement on Tariffs and Trade 1994,
     Agreement on Agriculture,
     Agreement on the Application of Sanitary and Phytosanitary Measures,
@@ -18,7 +17,7 @@ of the WTO agreements\footnote{
     Agreement on Subsidies and Countervailing Measures,
     Agreement on Rules of Origin,
     Agreement on Safeguards and so on.
-    },
+    } as a component,
 this paper collected articles from \textbf{General Agreement on Tariffs and Trade 1994 (GATT 1994)} only. 
 This is because articles in GATT 1994 constitutes basic set of trade rules of WTO and other agreements 
 elaborates the articles of GATT 1994 more in detail \citep{world1999wto}. For example, the official name of \textit{Agreement on Anti-dumping}
@@ -58,9 +57,9 @@ lists up 80 different articles of GATT 1994 cited in 143 cases without duplicati
     V:7, 
     VI, 
     VI:1, 
+    VI:1(a), 
+    VI:1(b), 
     VI:2, 
-    VI:2(a), 
-    VI:2(b), 
     VI:3, 
     VI:5(a), 
     VI:6, 
@@ -121,7 +120,7 @@ lists up 80 different articles of GATT 1994 cited in 143 cases without duplicati
 
 \begin{figure}[ht]
     \[\text{Let } D \text{ is a set of DS case numbers listed in Figure \ref{fig:ds-cases-used}.} \] %\textit{directed weighted graph}}  G = (V, E, w) \]
-    \[\text{Then there exists } c_d = \{v_d \in V \mid\ v_d \text{ is an article cited in the case } d\} \text{ } \forall d \in D \]
+    \[\text{Then there exists } c_d = \{v_d \in V \mid\ v_d \text{ is an article cited in the case } d \in D\} \]
     \[\text{ where } V \text{ is set of articles listed in Figure \ref{fig:set-of-articles-used}}.\]
     \[\text{Then define set of cited articles } C = \{c_d \mid d \in D\}\]
     \caption{\textbf{Formal Definition of Set of Cited Articles: }I formally define a set of cited articles $C$ and the elements of $C$ are listed in \hyperref[sub:cited-articles-table]{Appendix A.2}.}
@@ -133,15 +132,15 @@ lists up 80 different articles of GATT 1994 cited in 143 cases without duplicati
 As shown in Figure \ref{fig:set-of-articles-used}, 
 members sometimes
 cite articles in different levels of scope. For example, 
-For the Article VI, member sometimes cites
-Article VI as a whole but sometimes cites
-Article VI:2 or Article VI:2(a).
+For the Article II, member sometimes cites
+Article II as a whole but sometimes cites
+Article II:1 or Article II:1(a).
 This is because two main judicial bodies of WTO DSB, \textit{Panel and Appellate Body}, 
 both constitute its legal precedents citing articles of the WTO agreements in
 various levels of scope.
-Both judicial bodies cite the legal articles with the level of \textit{Title, Article, Paragraph, Sentence} or \textit{Term} as shown in Table {\ref{xltabular:level-of-scopes}}. 
+Those judicial bodies cite the articles with the level of various scopes, such as \textit{Title, Article, Paragraph, Sentence} or \textit{Term} as shown in Table {\ref{xltabular:level-of-scopes}}. 
 Following this jurisprudence, members also cite articles in different levels of scope to 
-make their legal claim fit and valid according to the current jurisprudence of WTO DSB.\\ %as much as possible.\\
+make their legal claim fit and valid according to the current jurisprudences of WTO DSB.\\ %as much as possible.\\
 
 % \clearpage
 
@@ -172,7 +171,7 @@ make their legal claim fit and valid according to the current jurisprudence of W
     \\
     \hline
     Paragraph
-    &  ``The verb 'may' in \textbf{Article VI:2} of the GATT 1994 is, in our opinion, properly
+    &  ``The verb `may' in \textbf{Article VI:2} of the GATT 1994 is, in our opinion, properly
     understood as giving Members a choice between imposing an anti-dumping duty or
     not, as well as a choice between imposing an anti-dumping duty equal to the dumping
     margin or imposing a lower duty. \ldots''
