@@ -3,15 +3,15 @@ to qualitatively fit a set of edge weight $W$ defined in Figure \ref{fig:def}. %
 One can simply consider a co-citation pattern between the articles of WTO agreements that counts the co-occurrences of each article with other articles, however,
 it simply allocates a large edge weight for frequently cited articles and fails to explain how articles interact to achieve certain jurisprudence of WTO DSB. % as exemplified in Figure \ref{fig:market-aceess_directed}.
 
-This failure is mainly due to the insufficient information in the co-citation matrix. Members tend to cite the articles of 
+This failure is mainly due to the insufficient information in the co-citation matrix. Members cite the articles of 
 the WTO agreements based on the complex characteristics of 
 the trade policy that led to the dispute, however, co-citation pattern omits this contextual and prior information. To visualize the importance of using textual information, I prepared two differeent matrices $W_{\text{co-cites}}$ and $W_{\text{text}}$ that are following the definition of \textit{edge weight matrix} $W$ in Figure \ref{fig:def}.
 $W_{\text{co-cites}}$ is calculated only using the co-citation pattern between the articles of the WTO agreements as formally defined as \textit{Normalized Co-citation Matrix} in Figure \ref{fig:def-illus-co-cites} and \ref{fig:def-illus-normal-co-cites}. 
-$W_{\text{text}}$ is the one that is fitted using the textual information and the way how it's fitted will be explained at the following bodies of this section.
-Two Heatmaps visualized in Figure \ref{fig:heatmap:edgeweights:compare} shows how sparse the $W_{\text{co-cites}}$ is compared to the $W_{\text{text}}$. This sparisty indirectly refers to the insufficient information
-to qualitatively map the regulatory system of WTO DSB. 
+$W_{\text{text}}$ is the one fitted using the textual information and the way how it's fitted will be explained at the following bodies of this section, in particular in Section \ref{subsec:rf}.
+Two heatmaps visualized in Figure \ref{fig:heatmap:edgeweights:compare} shows how sparse the $W_{\text{co-cites}}$ is compared to the $W_{\text{text}}$. This sparisty indirectly refers to the insufficient information
+to qualitatively map the jurisprudences of WTO DSB. 
 % and I will introduce the failure of the weight fitting algoritm using \textit{Random Forest} in case of using this sparse matrix $W_{\text{co_cites}}$. 
-In contrast with it, if we fit the \textit{edge weight matrix} $W$ using the textual information, we get more dense, informative matrix as visualized in Figure\ref{subfig:adj_dense}.
+In contrast with it, if we fit the \textit{edge weight matrix} $W$ using the textual information, we get more dense and informative matrix as visualized in Figure\ref{subfig:adj_dense}.
 
 % and visualized them as a heatmap in Figure \ref{fig:heatmap:edgeweights:compare}.
 % $W_{\text{co-cites}}$ is an edge weight matrix that is calculated only using the co-citation pattern between articles without textual information. 

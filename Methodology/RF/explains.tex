@@ -7,7 +7,7 @@ To materialize this co-citation pattern in a form of \textit{directed edge weigh
 I used a machine learning technique called \textit{Random Forest} (RF). RF is an ensemble method that averages out
 multiple decision trees.
 
-A decision tree consists of several nodes where each node splits the all observations in data into two with a inequality criterion of an input feature.
+A decision tree consists of several nodes where each node splits the all observations into two with an inequality criterion of an input feature.
 This split reduces the varaince of the output variables gradually as tree grows.
 % uses one of input features and explains the variance reduction of the output variable. 
 % Then simply by averaging out this explanations over all trees, we can score and rank 
@@ -35,4 +35,4 @@ I sampled 143 observations with replacement for each construction of decision tr
 Third, RF requires to compare the result of random subset of input features to split.
 I random sampled $\sqrt{|V|-1}$ number of input features at each split because \cite{genie3} reported high performance of use of this parameter for solving regression problem with random forest that is same to our setting.
 
-All the process of finding $W^*$ from the prediction matrix $P$ is formally defined in Algorithm \ref{rf} and final output of $W^*$ is visualized as an heatmap $W_{text}$ in Figure \ref{subfig:adj_dense}.
+All the process of finding $W^*$ from the prediction matrix $P$ is formally defined in Algorithm \ref{rf} and final output of $W^*$ is visualized as the heatmap $W_{text}$ in Figure \ref{subfig:adj_dense}.
