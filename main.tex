@@ -312,7 +312,7 @@ refer to the process of decomposing the text into the equence of words or specia
 I used the \textit{off-the-shelf} tokenizer provided by \textit{Spacy} API\footnote{https://spacy.io/api/tokenizer}.
 Since the neural network is represented as a \textit{function}, it must hold a predefined input and output dimension.
 I checked the \textit{max token length} over all tokenized results for factual aspect and legal article.
-The \textit{max token length} was $35,842$ and $20,158$ for factual aspect and legal article respectively.
+The \textit{max token length} was $35,842$ and $20,158$ for factual aspect and legal article respectively. These numbers correspond to $n_{\text{factual}}$ and $n_{\text{article}}$ in Figure \ref{fig:def:io:nn}.
 Then I \textit{padded} a special token \textbf{[PAD]} at the tail in case the token length of a factual aspect 
 or legal article is shorter than those \textit{max token lengths}. 
 
@@ -336,7 +336,7 @@ I used \textbf{Google News Word2Vec} to initialize this embedding layer. This is
 
 Figure \ref{fig:embedding} represents the output of the embedding layer for given document that is tokenized 
 from the example factual aspect introduced in \hyperref[sub:factual-aspect-example]{Appendix A.1}. 
-The neural network find correpondent $k$-dimensional vectors for given ordered tokens in the document and returns ($n_{\text{max token length}}, k$) size of matrix.
+The neural network find correpondent $k$-dimensional vectors for given ordered tokens in the document and returns ($n_{\text{factual}}, k$) or ($n_{\text{article}}, k$) size of matrix for given two different types of inputs.
 This matrix is fed into the next layer, \textit{Conv1D}.
 
 % It's worth noting that I prepared two seperate embedding layers for \textit{Fatcutal Aspect} and \textit{Legal Article} each.
