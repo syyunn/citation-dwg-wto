@@ -458,10 +458,34 @@ Among all (11,440) data instances, I have only 435 data instances where the give
 This is because a case tends to have only 3 - 4 articles cited on average among 80 different articles in $V$.
 Therefore, I adopted a weight of 26.303 which is inverse of the $3.802\%$ to penalize the neural network with higher loss in case the network fails to cite correctly for the positive case where $y \gets 1$ in Algorithm \ref{algo:fit-dnn}.
 
-\subsubsection{Training Result of Deep Neural Network}
-Training loss converges to around \(1.25\) after \(8\) epochs. The loss plot of training data is shown in Figure \ref{trainFig}. Test loss converges to around \(2\) after 100,000 iteration step of training which corresponds to \(10.9\) epochs. The loss plot of test data is shown in Figure \ref{testFig}. Both train and test loss is logged and plotted every 100 iteration of training step with batch size \(8\), which corresponds to 0.087 epoch. \\\\
+Epochs $e$ and learning rate $\alpha$ is a hyperparameters whose value shall be determined before training. 
+First, one epoch refers to one cycle that the neural network trains over entire training data once and I set $e$ as 15. Therefore, this neural network sees each training data instance 15 times.
+Second, learning rate is about how much we are adjusting the model parameters with respect the loss gradient. I trained the neural network with learning rate of $0.01$ but decays it with the rate of 0.95 for seeing every 5000 data instances because gradual decay of learning rate is known as good at avoiding the training stuck in the local minima.
 
-\paragraph{Train \& Test Loss}
+
+\subsubsection{Training Result: AUC-ROC as Performance Metric}
+I trained Train loss and test loss converged to around $2$ and $1.25$ after epoch of 10. 
+However one needs a well-defined performance metric that can measure how well model does for given task.
+Our task can be understood as classification problem where the model decides a pair of factual aspect and legal article falls in to the citable case or not.
+Therefore I used AUC-ROC metric to measure the model performance.
+
+The AUC-ROC curve measures model peformance at various threshold settings. 
+Since the model accuracy varies upon the which thresholds settings being selected, 
+one needs to consider every case of thresholds together to measure the model's classification power conclusively. 
+ROC is measured with given threshold $t \in [0, 1]$ and defined as following.
+\begin{gather}
+  \nonumber \text{ROC} (t) = \frac{\text{TPR (True Positive Rate)}}{\text{FPR (False Positive Rate)}}\\
+  \nonumber \text{where } \text{TPR} = \frac{\text{TP (True Positive)}}{\text{TP (True Positive) + FN (False Negative)}}\\
+  \nonumber \:\:\:\:\:\:\:\:\:\:\:\:\:\text{FPR} = \frac{\text{FP (False Positive)}}{\text{FP (False Positive) + TN (True Negative)}}
+\end{gather}
+
+% \noindent Therefore, ROC measures model's classification power as a value between $[0,1]$ where the higher value represent better classification power.
+Then AUC-ROC measures the ``area'' under ROC curve where the curve represents ROC value at every threshold of $t$. The maximum value of AUC-ROC is 1 and its baseline is $0.5$ where the model randomly estimate the case as citable or not.
+Our model's AUC-ROC is converged to around 0.85 after the epoch of 5. It means that model encoded the pattern inside data and predicts better than the naive baseline $0.5$ where the model randomly determine whether the legal article is citable or not for given factual description. 
+However, we need more substantial analysis what the value $0.85$ means. I will generate a network of articles using this trained neural network at the following subsections and will empirically interpret the generated network with my background knowledge about jurisprudences of WTO DSB in Section \ref{ef}.
+
+
+% Training loss converges to around \(1.25\) after \(8\) epochs. The loss plot of training data is shown in Figure \ref{trainFig}. Test loss converges to around \(2\) after 100,000 iteration step of training which corresponds to \(10.9\) epochs. The loss plot of test data is shown in Figure \ref{testFig}. Both train and test loss is logged and plotted every 100 iteration of training step with batch size \(8\), which corresponds to 0.087 epoch. \\\\
 
 % More techinical details regarding epochs and learning rates will be covered in Appendix. and the training result (model performance) will be explained in Appendix.
 
