@@ -313,10 +313,30 @@ I used the \textit{off-the-shelf} tokenizer provided by \textit{Spacy} API\footn
 Since the neural network is represented as a \textit{function}, it must hold a predefined input and output dimension.
 I checked the \textit{max token length} over all tokenized results for factual aspect and legal article.
 The \textit{max token length} was $35,842$ and $20,158$ for factual aspect and legal article respectively.
-Then I \textit{padded} a special token \textbf{[PAD]} at the tail in case the token length of a factual aspect or legal article is shorter than those \textit{max token lengths}.
+Then I \textit{padded} a special token \textbf{[PAD]} at the tail in case the token length of a factual aspect 
+or legal article is shorter than those \textit{max token lengths}. 
+
+It's worth noting that the field of deep learning preferably call this ordered set of tokens as `\textit{Document}'.
+Therefore I prepares documents from the raw data collected in Section \ref{sec:data} at this stage and move on to the next step, \textit{Embedding Layer}.
 
 
 \paragraph{Embeddiing Layer: From Documents to Numerical Vectors}
+\input{Methodology/embedding.tex}
+Since the deep neural network is comprised of mathematical operations, 
+we need to transform the word tokens into a form of numerical vector. 
+This process can be conducted with a single \textit{Embedding Layer}\footnote{I used Google News \textit{Word2Vec} to initialize this embedding layer. This is a open-source pretrained word vectors proviced by Google which is trained over Google News corpus (billion unique words). It contains 3 million 300 dimensional English word vectors. Because of the memory limit, I had set 400,000 as a maximum number of word vectors to read form the Google Word2vec and this number corresponds to the \textit{|Size of Dictionary|} in the body.
+}. %as illustrated in Figure \ref{fig:embedding}. 
+This layer is defined as $|\text{\textit{Size of Dictionary}}| \times k $ matrix where this matrix works as a dictionary for the neural network.
+Neural network refers to this matrix to find the meaning of a token in a form of $k$-dimensional vector and updates its value while it's trained to
+reflect domain specific characteristics of each token.
+
+For example, WTO DSB prefer to use the word \textit{inconsistent} rather than the word \textit{breach} to refer to the illegality of a member's trade policy.
+This kind of domain specificity will be stored in this matrix as a distribution of those numerical vectors in this layer. 
+
+Figure \ref{fig:embedding} represents the output of the embedding layer for given document that is tokenized 
+from the example factual aspect introduced in \hyperref[sub:factual-aspect-example]{Appendix A.1}. 
+The neural network find correpondent $k$-dimensional vectors for given ordered tokens in the document and returns ($n_{\text{max token length}}, k$) size of matrix.
+This matrix will be fed into the next layer, \textit{Conv1D}.
 
 \paragraph{Conv1D: Capturing the Local Features}
 
@@ -427,7 +447,7 @@ This subsection explains how I found the best set of directed edge weights $W^*$
 % \end{itemize}
 
 % \subsubsection{Embedding Layer}
-\input{Methodology/embedding.tex}
+% \input{Methodology/embedding.tex}
 
 % \subsubsection{1-Dimensional Convolution Layer (Conv1D)}
 \input{Methodology/Conv1D.tex}
