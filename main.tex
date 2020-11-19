@@ -198,7 +198,7 @@ Mapping Jurisprudence of WTO Dispute Settlement Body Using Deep and Machine Lear
 \input{Introduction/conclusion/assessment.tex}
 
 % == DATA ==
-\clearpage
+% \clearpage
 \section{Data: Types, Composition and Collection Process} \label{sec:data}
 \input{Data/intro.tex}
 
@@ -303,16 +303,16 @@ The procedure to fit those set of parameters is as described in Algorithm \ref{a
 \input{Methodology/train-algo.tex}
 
 I fitted the nerual network $f_\theta$ using \textit{weighted cross entropy loss} as explained in Algorithm \ref{algo:fit-dnn}.
-I used \textit{cross entropy loss} because it measures how much the probability distribution $\hat{Y}$ projected by the trained model $f_\theta$ 
-deviates from the true distribution $Y$ which symbolically represents a shared understanding regarding the citability of certain legal article for given textual description of the case 
+I used \textit{cross entropy loss} because it measures how much the probability distribution $\hat{Y}$ projected by the trained model $f_\theta$
+deviates from the true distribution $Y$ which symbolically represents a shared understanding regarding the citability of certain legal article for given textual description of the case
 among the group of legal experts of WTO agreements.
 
-It's worth noting that I ``weighted" \textit{cross entropy loss}. This is because 
-our dataset is highly imbalanced in terms of citability. 
+It's worth noting that I ``weighted" \textit{cross entropy loss}. This is because
+our dataset is highly imbalanced in terms of citability.
 %represents the number of factual aspects and $|V|=80$ represents the number of legal articles.  
 Among all (11,440) data instances, I have only 435 data instances where the given article $a_v$ is actually cited for the case description $t_d$. This is only 3.802\%.
 This is because a case tends to have only 3 - 4 articles cited on average among 80 different articles in $V$.
-Therefore, I adopted a weight of 26.303, which is inverse of the $3.802\%$ to penalize the neural network with higher loss in case the network fails to cite correctly for the positive case where $y \gets 1$ in Algorithm \ref{algo:fit-dnn}. 
+Therefore, I adopted a weight of 26.303, which is inverse of the $3.802\%$ to penalize the neural network with higher loss in case the network fails to cite correctly for the positive case where $y \gets 1$ in Algorithm \ref{algo:fit-dnn}.
 
 More techinical details regarding epochs and learning rates will be covered in Appendix. and the training result (model performance) will be explained in Appendix.
 
@@ -321,7 +321,7 @@ More techinical details regarding epochs and learning rates will be covered in A
 
 % \subsection{Reconstruction of Network of Articles of WTO Agreements}
 \subsection{Fitting $G^* = (V, E, W^*)$ using Random Forests}
-This subsection explains how I found the best set of directed edge weights $W^*$ that closely maps the shared understanding of legal experts in a form of \textit{directed weighted graph} as defined in Figure \ref{fig:def} and illustrated in Figure \ref{fig:def-example} using the trained neural network $f_{\theta^*}$. 
+This subsection explains how I found the best set of directed edge weights $W^*$ that closely maps the shared understanding of legal experts in a form of \textit{directed weighted graph} as defined in Figure \ref{fig:def} and illustrated in Figure \ref{fig:def-example} using the trained neural network $f_{\theta^*}$.
 
 \subsubsection{Definition of $W^*$: Best Set of Directed Edge Weights} %for the Network of Legal Articles of the WTO agreements}
 \input{Methodology/RF/fitting.tex}
