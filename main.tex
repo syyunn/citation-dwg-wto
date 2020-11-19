@@ -306,6 +306,16 @@ I will explain each block's role and composition at the following subsections.
 
 \paragraph{Inputs: a Pair of Documents, Factual Aspect and Legal Article}
 
+I defined neural network in terms of its input and outputs in Figure \ref{fig:def:io:nn}.
+First we need to \textit{tokenize} the text of factual aspect and legal article. The term ``\textit{tokenize}''
+refer to the process of decomposing the text into the equence of words or special characters. 
+I used the \textit{off-the-shelf} tokenizer provided by \textit{Spacy} API\footnote{https://spacy.io/api/tokenizer}.
+Since the neural network is represented as a \textit{function}, it must hold a predefined input and output dimension.
+I checked the \textit{max token length} over all tokenized results for factual aspect and legal article.
+The \textit{max token length} was $35,842$ and $20,158$ for factual aspect and legal article respectively.
+Then I \textit{padded} a special token \textbf{[PAD]} at the tail in case the token length of a factual aspect or legal article is shorter than those \textit{max token lengths}.
+
+
 \paragraph{Embeddiing Layer: From Documents to Numerical Vectors}
 
 \paragraph{Conv1D: Capturing the Local Features}
