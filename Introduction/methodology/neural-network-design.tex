@@ -1,23 +1,23 @@
-
-To train this neural network, this paper collected textual description of trade policy 
+ 
+To train this neural network, this paper collected textual description of trade policy
 that led to the dispute and articles of the WTO agreement cited for each dispute
-case requested to the WTO DSB 
+case requested to the WTO DSB
 from 1995 to 2018 (\hyperref[sub:cited-articles-table]{Total $143$ cases. \textit{Check} the list in Appendix A.2}).
-Using this collected data, I trained the neural network by enforcing the neural network to answer correctly 
+Using this collected data, I trained the neural network by enforcing the neural network to answer correctly
 whether a given article of the WTO agreements
-can be cited for the given textual description of 
+can be cited for the given textual description of
 trade policy. (\textit{See} Figure \ref{fig:design-of-nn} and Figure \ref{fig:def:io:nn}).
-
-After training, I fitted a set of directed edge weights $W^*$ that 
-best explains the variance of each article's citabilities that are predicted by the trained deep neural network using a machine learning technique \textit{Random Forests} \citep{rf, genie3}. 
-
+ 
+After training, I fitted a set of directed edge weights $W^*$ that
+best explains the variance of each article's citabilities that are predicted by the trained deep neural network using a machine learning technique \textit{Random Forests} \citep{rf, genie3}.
+ 
 After fitting $W^*$, to check whether this fitted network of articles of the WTO agreements\\  $G^*$ = ($V$, $E$, $W^*$) maps the jurisprudences of WTO DSB properly, this paper
-compares the way of the fitted network $G^*$ explaining how articles of WTO agreements achieve some main principles of WTO, such as \textit{Market Access}, \textit{Reciprocity} and \textit{Non-discrimination} 
+compares the way of the fitted network $G^*$ explaining how articles of WTO agreements achieve some main principles of WTO, such as \textit{Market Access}, \textit{Reciprocity} and \textit{Non-discrimination}
 with the jurisprudences of \textit{Panel} and \textit{Appellate Body}. This comparison reveals that the fitted network $G^*$ captures the interactions between the articles of WTO agreements
-closely to the jurisprudences of \textit{Panel} and \textit{the Appellate Body}. We can infer from this similarity that the fitted network $G^*$ closely maps the jurisprudences of WTO DSB. This is because those two judicial bodies 
-authoritatively consitute the jurisprudences over how rules of WTO agreements are working together 
+closely to the jurisprudences of \textit{Panel} and \textit{the Appellate Body}. We can infer from this similarity that the fitted network $G^*$ closely maps the jurisprudences of WTO DSB. This is because those two judicial bodies
+authoritatively constitute the jurisprudences over how rules of WTO agreements are working together
 to achieve those main principles.
-
+ 
 Finally, upon this similarity, this paper offers this methodology as
 an alternative solution to the widening gap of legal capacity between developing and developed countries in WTO DSB.
 Since this method effectively materializes the shared understanding of legal experts and reveals important interactions between articles inside the system of WTO DSB,
@@ -25,4 +25,7 @@ it can lower the cost to build the same amount of legal capacity to understand t
 Moreover, rather than keep relying on previous approach that provides legal advice to developing countries that does not create a shared understanding over the system between developing and developed countries,
 if we shift our focus on how to materialize the current shape of the system, WTO
 will become more effective as members being able to discuss their trade issues upon the measurable ground of shared understanding about how WTO works.
+ 
+ 
+ 
 
