@@ -1,5 +1,5 @@
-
-% == THREE SUBSYSTEM == 
+ 
+% == THREE SUBSYSTEM ==
 \begin{figure}[ht]
     \centering{
         \input{market_access_directed.tex}
@@ -8,68 +8,71 @@
         This figure demonstrates a network of articles of WTO agreements
         that cooperatively achieves the principle of \textit{Market Access} in the regulatory system of WTO.
         Tariff and Non-tariff barriers such as quantitative restriction, internal taxations
-        and extra fees for crossing border can inhibit the chance of foreign goods to access the foreign market.
+        and extra fees for crossing borders can inhibit the chance of foreign goods to access the foreign market.
         Therefore, these articles tend to work together to ensure the \textit{Market Access} principle working properly.
         %(Directions and weights of network edges are omitted for brevity.)
     }
     \label{fig:market-aceess_directed}
   \end{figure}
+  % Figure \ref{fig:market-aceess_directed} shows a part of the fitted network $G^*$ that explains how
+ % the articles of WTO agreements are interconnected each other to achieve one of the main principles of
+ % WTO, \textit{Market Access}.
+ \textit{Market Access}
+ refers to the guarantee of the conditions relating to the
+ tariff or non-tariff measures
+ for the entry of
+ goods into the foreign market. For example, if
+ a country set a limit on the quantity of imported goods, no foreign goods can get access to that market above that limit. Also, if a country sets too high tariff rate for the foreign goods that cross the border,
+ it can prevent those foreign goods from accessing that market.
+ Therefore, \textit{Market Access} is the most basic but the most important principle of the WTO
+ because it directly represents the primary goal of the WTO.
   
-% Figure \ref{fig:market-aceess_directed} shows a part of the fitted network $G^*$ that explains how
-% the articles of WTO agreements are interconnected each other to acheive one of the main principles of 
-% WTO, \textit{Market Access}. 
-\textit{Market Access} 
-refers to the guarantee of the conditions relating to the 
-tariff or non-tariff measures 
-for the entry of 
-goods into the foreign market. For example, if 
-a country set a limit on the quantity of imported goods, no foreign goods can get access to that market above that limit. Also, if a country sets too high tariff rate for the foreign goods that cross the border, 
-it can prevent those foreign goods from accessing to that market.
-Therefore, \textit{Market Access} is the most basic but the most important principle of the WTO
-because it directly represent the primary goal of the WTO.
-
-Three different types of measures - \textit{quantitative restriction, tariff} and \textit{internal regulations} - are mostly preferred by the countries to protect their domestic market from the importation of foreign goods. For example, a country can
-discriminate imported and domestic product with its internal regulation as shown in the \textit{Korea - Beef} case in Section \ref{subsec:design:dnn}.
-% This discrimination provides an unfair ground of competition between domestic and imported products and it eventually excluded imported beef from the Korea beef market.
-These three types of measures that are mostly relevant to the \textit{Market Access} is illustrated in Figure \ref{fig:market-aceess_directed}.
-Article XI:1, II:1 and III correponds to the obligations that regulates quantitative restriction, tariff and internal regulations respectively.
-Edges are colored in red if the mean of the two directed edge weights are greater than $10\%$. For example, $w^*(\text{II:1}, \text{III}) = 0.117$ and $w^*(\text{III}, \text{II:1}) = 0.122$ thus their simple mean is 11.95\% which is greater than 10\%.
-This red triangle that is comprised of Article XI:1, II:1 and III shows that the fitted network $G^* = (V, E, W^*)$ captures the principle of \textit{Market Access} as a cluster of these three articles with relatively large edge weights ($\: >10\%$)\footnote{Compare $10\%$ to the simple mean of total edge weight $100\%$ over all 79 possible source nodes, $1.26\%$ $(\sim 100\% / 79)$}.
-These three articles are \textit{cohesively} interconnected because they need each other to clealry distinguish the role of each one from others to achieve the \textit{Market Access}.
-For example, \textit{Panel} explicitly opinionated that Article XI:1 and Article III shall take in charge of \textit{quantitative restriction} and \textit{internal requirements} respectively without duplication of their responsibilities as following: 
-
-\begin{displayquote}[][]
-``the General Agreement distinguishes between measures affecting the `importation' of products,
-which are regulated in Article XI:1, and those affecting `imported products', which are dealt with in
-Article III. \textbf{If Article XI:1 were interpreted broadly to cover also internal requirements, Article III
-would be partly superfluous.}"
-\end{displayquote}
-
-In addition to it, 
-the fitted network $G^*$ also captures sub-articles that supports \textit{Market Access} triangle. For example, I colored edges in blue if the mean of the two directed edge weights are greather than 5\% and less than 10\%.
-The Article X:3(a) which prohibits \textit{unfair adminstration of laws and regulations} are connected to the Article XI:1 and III because those two are mostly 
-deteriorates the principle of \textit{Market Access} by adminstrating their relevant laws and regulations unfairly. Also, in a similar notion, Article VIII that prohibits \textit{the collection of abnormal amount of fees connected with importation or exportation} is connected to the Article II:1 because 
-often those fees are indistinguishable from the tariff schedule whose Interpretation is regulated under Article II:1. For example, in \textit{Argentina - Textile} case, Argentina insisted that they didn't collect fees connected to importation inconsistently with the obligation under Article VIII because they included the fees into the tariff schedule. %which is regulated by the Article II.
-However, \textit{Panel} refuted this logic as following\footnote{Panel Report, Argentina – Textiles and Apparel, paras. 6.81-6.82.}:
-
-\begin{displayquote}[][]
-``The provisions of the WTO Understanding on the Interpretation of \textbf{Article II:1(b)} of
-GATT 1994, dealing with `other duties and charges’, make clear that \textbf{including a
-charge in a schedule of concessions in no way immunizes that charge from challenge
-as a violation of an applicable GATT rule} \ldots Therefore, we consider that the fact that Argentina's statistical tax is included in its
-Schedule is not a defence to its inconsistency with the provisions of \textbf{Article VIII} of
-GATT."
-\end{displayquote}
-
-% \noindent These supportive relationships are captured in $W^*$ with relatively high $(>5\%)$ weights but lower than the most important triangle.
-
-% ligation under the Article VIII in \textit{Argentina - Textile} case, 
-
-% Mean of directive edge weights between Article II:1, III and XI:1 are $0.289$, 
-
-
-
-% having a sum of directive edge weights bigger than 0.15, which is about ten times bigger than that of  
-
-% The three major articles of the WTO agreements 
-% that regulates 
+ Three different types of measures - \textit{quantitative restriction, tariff} and \textit{internal regulations} - are mostly preferred by the countries to protect their domestic market from the importation of foreign goods. For example, a country can
+ discriminate imported and domestic products with its internal regulation as shown in the \textit{Korea - Beef} case in Section \ref{subsec:design:dnn}.
+ % This discrimination provides an unfair ground of competition between domestic and imported products and it eventually excluded imported beef from the Korea beef market.
+ These three types of measures that are mostly relevant to the \textit{Market Access} are illustrated in Figure \ref{fig:market-aceess_directed}.
+ Article XI:1, II:1 and III correspond to the obligations that regulate quantitative restriction, tariff and internal regulations respectively.
+ Edges are colored in red if the mean of the two directed edge weights are greater than $10\%$. For example, $w^*(\text{II:1}, \text{III}) = 0.117$ and $w^*(\text{III}, \text{II:1}) = 0.122$ thus their simple mean is 11.95\% which is greater than 10\%.
+ This red triangle that is comprised of Article XI:1, II:1 and III shows that the fitted network $G^* = (V, E, W^*)$ captures the principle of \textit{Market Access} as a cluster of these three articles with relatively large edge weights ($\: >10\%$)\footnote{Compare $10\%$ to the simple mean of total edge weight $100\%$ over all 79 possible source nodes, $1.26\%$ $(\sim 100\% / 79)$}.
+ These three articles are \textit{cohesively} interconnected because they need each other to clearly distinguish the role of each one from others to achieve the \textit{Market Access}.
+ For example, \textit{Panel} explicitly opinionated that Article XI:1 and Article III shall take in charge of \textit{quantitative restriction} and \textit{internal requirements} respectively without duplication of their responsibilities as following:
+  
+ \begin{displayquote}[][]
+ ``the General Agreement distinguishes between measures affecting the `importation' of products,
+ which are regulated in Article XI:1, and those affecting `imported products', which are dealt with in
+ Article III. \textbf{If Article XI:1 were interpreted broadly to cover also internal requirements, Article III
+ would be partly superfluous.}"
+ \end{displayquote}
+  
+ In addition to it,
+ the fitted network $G^*$ also captures sub-articles that support the \textit{Market Access} triangle. For example, I colored edges in blue if the mean of the two directed edge weights are greater than 5\% and less than 10\%.
+ The Article X:3(a) which prohibits \textit{unfair administration of laws and regulations} are connected to the Article XI:1 and III because those two are mostly
+ deteriorates the principle of \textit{Market Access} by administering their relevant laws and regulations unfairly. Also, in a similar notion, Article VIII that prohibits \textit{the collection of abnormal amount of fees connected with importation or exportation} is connected to the Article II:1 because
+ often those fees are indistinguishable from the tariff schedule whose Interpretation is regulated under Article II:1. For example, in \textit{Argentina - Textile} case, Argentina insisted that they didn't collect fees connected to importation inconsistently with the obligation under Article VIII because they included the fees into the tariff schedule. %which is regulated by the Article II.
+ However, \textit{Panel} refuted this logic as following\footnote{Panel Report, Argentina – Textiles and Apparel, paras. 6.81-6.82.}:
+  
+ \begin{displayquote}[][]
+ ``The provisions of the WTO Understanding on the Interpretation of \textbf{Article II:1(b)} of
+ GATT 1994, dealing with `other duties and charges’, make clear that \textbf{including a
+ charge in a schedule of concessions in no way immunizes that charge from challenge
+ as a violation of an applicable GATT rule} \ldots Therefore, we consider that the fact that Argentina's statistical tax is included in its
+ Schedule is not a defence to its inconsistency with the provisions of \textbf{Article VIII} of
+ GATT."
+ \end{displayquote}
+  
+ % \noindent These supportive relationships are captured in $W^*$ with relatively high $(>5\%)$ weights but lower than the most important triangle.
+  
+ % ligation under the Article VIII in \textit{Argentina - Textile} case,
+  
+ % Mean of directive edge weights between Article II:1, III and XI:1 are $0.289$,
+  
+  
+  
+ % having a sum of directive edge weights bigger than 0.15, which is about ten times bigger than that of 
+  
+ % The three major articles of the WTO agreements
+ % that regulates
+  
+  
+ 
+ 

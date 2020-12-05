@@ -1,12 +1,15 @@
-Let $f_{\theta^*}$ represent the trained neural network that is equipped with an optimized set of parameters $\theta^*$. 
+Let $f_{\theta^*}$ represent the trained neural network that is equipped with an optimized set of parameters $\theta^*$.
 Then we can construct a prediction matrix $P = (f_{\theta^*}(t_d, a_v)) \in [0,1]^{{|D| \times |V|}}$  by collecting all predictions $f_{\theta^*}(t_d, a_v)$ from the trained neural network $f_{\theta^{*}}$ using the all pairs of data $(t_d,a_v) \in T \times A$ as illustrated in Figure \ref{fig:illutrate-preds}.
-
+ 
 Upon the assumption that the trained neural network $f_{\theta^*}$ effectively encodes a shared understanding about jurisprudences of WTO DSB among legal experts of WTO agreements, our task is to find a set of directed edge weights $W^* = \{w^{*}_{ij} \mid w^{*}_{ij} = w^{*}(v_i, v_j) \text{ } s.t. \text{ } w^{*}(v_j, v_j) = 0 \text{ and } \sum_{v_i\in V}{w^{*}(v_i, v_j)} = 1 \text{ } \forall v_j \}$ %W^* = w(v_i, v_j)$ where
-by exploiting the information encoded in the prediction matrix $P = (f_{\theta^*}(t_d, a_v)) \in [0,1]^{{|D| \times |V|}}$. This set of directed edge weights $W^{*} = \{w^{*}_{ij}\}$ shall represent a set of conditional praobability $P^{*}(v_j|v_i)$ how probably a source node $v_i$ clarifies the meaning of the target node $v_j$ compared to other source nodes
+by exploiting the information encoded in the prediction matrix $P = (f_{\theta^*}(t_d, a_v)) \in [0,1]^{{|D| \times |V|}}$. This set of directed edge weights $W^{*} = \{w^{*}_{ij}\}$ shall represent a set of conditional probability $P^{*}(v_j|v_i)$ how probably a source node $v_i$ clarifies the meaning of the target node $v_j$ compared to other source nodes
 closely to a shared understanding about jurisprudences of WTO DSB among legal experts. %of WTO agreements.
-
-To perform this task, this paper adopts a machine learning technique called \textit{Random Forest} that can rank input features, $\{v_i \mid v_i \in V \setminus \{v_j\}\}$, in terms of relative importance to explain the variance of output variables, $\text{Var}(\{f_{\theta^*}(t_d, a_{v_j}) \mid d \in D \})$ for given target article $v_j \in V$. The step-by-step algorithm of \textit{Random Forest} will be explained in the next subsection.
+ 
+To perform this task, this paper adopts a machine learning technique called \textit{Random Forest} that can rank input features, $\{v_i \mid v_i \in V \setminus \{v_j\}\}$, in terms of relative importance to explain the variance of output variables, $\text{Var}(\{f_{\theta^*}(t_d, a_{v_j}) \mid d \in D \})$ for a given target article $v_j \in V$. The step-by-step algorithm of \textit{Random Forest} will be explained in the next subsection.
 % $\{f_{\theta^*}(t_d, a_{v_i}) \mid d \in D \text{ and } v_i \in V \setminus \{v_j\}\}$
 \input{Methodology/RF/illustrate_preds.tex}
 % \clearpage
+ 
+ 
+ 
 
