@@ -229,10 +229,10 @@ Mapping Jurisprudences of WTO Dispute Settlement Body Using Deep and Machine Lea
 \subsection{Two Main Considerations: Sufficient Information in Text \& Generalization} \label{justification-nn}
 This paper considered two main points to
 determine its method to qualitatively fit a set of edge weight $W$ for the \textit{directed weighted graph} $G$ defined in Figure \ref{fig:def}.
-One is importance of using the information inside the text of factual aspect and legal article as exemplified in \hyperref[sub:factual-aspect-example]{Appendix A.1} and Figure {\ref{fig:gatt_art1}} respectively. The other one is about the way to generalize each member's startegic citation pattern. Since members of the WTO strategically cite
+One is the importance of using the information inside the text of factual aspect and legal article as exemplified in \hyperref[sub:factual-aspect-example]{Appendix A.1} and Figure {\ref{fig:gatt_art1}} respectively. The other one is about the way to generalize each member's strategic citation pattern. Since members of the WTO strategically cite
 the articles of WTO agreement expecting different outcomes that are fit to each member's specific interest \citep{who_gets, pelc, latent}, this paper
 selected a method that can generalize these member specific citation patterns. These two considerations and the solution will be explained in the following subsections.
-\input{Methodology/Figures/spare_dense.tex}
+ \input{Methodology/Figures/spare_dense.tex}
 
 \subsubsection{Importance of Using Textual Information}
 \input{Methodology/Importance-of-Textual-Information/why-it-fails.tex}
@@ -250,10 +250,10 @@ without being biased to member specific trade interest and its strategic citatio
 
 \subsection{Design of Deep Neural Network}\label{subsec:design:dnn}
 Upon the justification of using deep neural network with above two main considerations in Section \ref{justification-nn}, %one is to effectively process the text information and the other one is to generalize member specific strategic citation,
-I explain a design process of deep neural network that can encode the citation patterns in WTO DSB.
+I explain a design process of the deep neural network that can encode the citation patterns in WTO DSB.
 This paper understands that those citations are performed upon the general understanding over jurisprudences of WTO DSB and encoding of
-those citation pattern could reveal the jurisprudences of WTO DSB.
-
+those citation patterns could reveal the jurisprudences of WTO DSB.
+ 
 
 \input{Methodology/design-of-neural-network/visualize-how-member-cites/citable.tex}
 \input{Methodology/design-of-neural-network/visualize-how-member-cites/non-citable.tex}
@@ -266,15 +266,15 @@ how humans do for a given task.
 Therefore I present a visualization of how legal experts of WTO agreements determine whether to cite a legal article of WTO agreements with an example of \textit{Korea - Beef} case (Figure \ref{fig:viz:how-member-cites-citable} and Figure \ref{fig:viz:how-member-cites-non-citable}).
 In this case, the United States raised a claim relating to the \textit{Dual-retail system} maintained by South Korea. In \textit{Dual-retail system}, South Korea maintained two distinct retail systems
 for imported and domestic beef. There existed stores specialized for imported beef and they can sell only imported beef and cannot sell domestic (Korean) beef. U.S. claimed that the \textit{Dual-retail system} is inconsistent to the Article III:4 (National Treatment) of GATT 1994
-because \textit{Dual-retail system} discriminates domestic and imported beef. A measure that discriminates domestic and imported products falls under the scope of the Article III:4 of the GATT 1994, which states the principle of \textit{National Treatment} that prohibits the discrimination between imported and domestic product. However, U.S. didn't
+because \textit{Dual-retail system} discriminates between domestic and imported beef. A measure that discriminates domestic and imported products falls under the scope of the Article III:4 of the GATT 1994, which states the principle of \textit{National Treatment} that prohibits the discrimination between imported and domestic product. However, U.S. didn't
 cite the Article I:1 of GATT 1994 that prohibits the discrimination between members of WTO
-because \textit{Dual-retail system} didn't discriminate the United States from other countries who export beef to South Korea, such as Argentina, Austrailia, etc.
-
+because \textit{Dual-retail system} didn't discriminate against the United States from other countries who export beef to South Korea, such as Argentina, Australia, etc.
+ 
 We can understand that there exists a shared understanding over jurisprudences of WTO DSB among legal experts of the WTO agreements. They follow up new cases and study jurisprudence stated in the \textit{Panel} or  \textit{Appellate Body} reports.
-Then they organize a legal argument by citing certain article(s) upon this shared understanding for given possible inconsistent measure claimed by a member of WTO.
-
+Then they organize a legal argument by citing certain article(s) upon this shared understanding for given possible inconsistent measures claimed by a member of WTO.
+ 
 To mimic this reasoning process, I designed the input and output of the deep neural network as illustrated in Figure \ref{fig:design-of-nn} and formally defined in Figure \ref{fig:def:io:nn}.
-The neural network is designed to estimate the citability for given pair of a factual aspect and text of a legal article.
+The neural network is designed to estimate the citability for a given pair of a factual aspect and text of a legal article.
 By iteratively training the neural network with data explained in Section \ref{sec:data}, I expect the neural network can learn a shared understanding over jurisprudences of WTO DSB closely to that of legal experts.
 The detailed structure of neural network and training schemes will be explained in the later subsections.
 % For total $11,440$ pairs of factual aspect and legal articles (143 different cases (Figure \ref{fig:ds-cases-used}) and 80 different legal articles (Figure \ref{fig:def:set-of-cited-articles})
@@ -283,143 +283,142 @@ The detailed structure of neural network and training schemes will be explained 
 
 \subsubsection{Structure of Deep Neural Network}
 
-
+ 
 An efficient way to architect the structure of deep neural network is to use the
 human analogy as I did in subsection \ref{design:io}.
 A legal expert reads the text line by line and creates several local understandings.
 Then he/she merges those local understandings into a global level to summarize
-an essential information to deterimine whether
+an essential information to determine whether
 the given article is citable or not for the given factual description of the dispute.
-
+ 
 To analogy this process, I borrowed \textit{1-Dimensional Text Convolutional Neural Network} (TextCNN) from \cite{textcnn}.
 This is because of the following two reasons.
-First, convolutional neural network is known as good at learning how to integrate local and global features to perform classification task \citep{554195, 8227460}.
+First, convolutional neural networks are known as good at learning how to integrate local and global features to perform classification tasks \citep{554195, 8227460}.
 Second, \cite{textcnn} has implemented this convolutional neural network into the text domain
 and has shown its high performance on classification.
-
-Figure \ref{fig:dnn-flow} demonstrates the entire structure of deep neural network that is used in this paper.
+ 
+Figure \ref{fig:dnn-flow} demonstrates the entire structure of the deep neural network that is used in this paper.
 General flow is to return the citability of an legal article that is fed into the neural network with a factual aspect.
 Each block in Figure \ref{fig:dnn-flow} represents a set of unique mathematical operations.
 We prefer to call those blocks as ``layer''
 and each layer has its desired role regarding how to process the information for which purpose.
-I will explain each block's role and composition at the following subsections.
+I will explain each block's role and composition in the following subsections.
 
 \paragraph{Inputs: a Pair of Documents, Factual Aspect and Legal Article}
 
-I defined neural network in terms of its input and outputs in Figure \ref{fig:def:io:nn}.
+I defined the neural network in terms of its input and outputs in Figure \ref{fig:def:io:nn}.
 First we need to \textit{tokenize} the text of factual aspect and legal article. The term ``\textit{tokenize}''
-refer to the process of decomposing the text into the equence of words or special characters.
+refer to the process of decomposing the text into the sequence of words or special characters.
 I used the \textit{off-the-shelf} tokenizer provided by \textit{Spacy} API\footnote{https://spacy.io/api/tokenizer}.
 Since the neural network is represented as a \textit{function}, it must hold a predefined input and output dimension.
-I checked the \textit{max token length} over all tokenized results for factual aspect and legal article.
-The \textit{max token length} was $35,842$ and $20,158$ for factual aspect and legal article respectively. These numbers correspond to $n_{\text{factual}}$ and $n_{\text{article}}$ in Figure \ref{fig:def:io:nn}.
+I checked the \textit{max token length} over all tokenized results for factual aspects and legal articles.
+The \textit{max token length} was $35,842$ and $20,158$ for factual aspects and legal articles respectively. These numbers correspond to $n_{\text{factual}}$ and $n_{\text{article}}$ in Figure \ref{fig:def:io:nn}.
 Then I \textit{padded} a special token \textbf{[PAD]} at the tail in case the token length of a factual aspect
 or legal article is shorter than those \textit{max token lengths}.
-
-It's worth noting that the field of deep learning preferably call this ordered set of tokens as `\textit{Document}'.
-Therefore I prepares documents from the raw data collected in Section \ref{sec:data} at this stage and move on to the next step, \textit{Embedding Layer}.
-
+ 
+It's worth noting that the field of deep learning preferably calls this ordered set of tokens as `\textit{Document}'.
+Therefore I prepare documents from the raw data collected in Section \ref{sec:data} at this stage and move on to the next step, \textit{Embedding Layer}.
 
 \paragraph{Embeddiing Layer: From Documents to Numerical Vectors}
 \input{Methodology/embedding.tex}
 Since the deep neural network is comprised of mathematical operations,
 we need to transform the word tokens into a form of numerical vectors.
-This process can be conducted with a single \textit{Embedding Layer}. %as illustrated in Figure \ref{fig:embedding}. 
+This process can be conducted with a single \textit{Embedding Layer}. %as illustrated in Figure \ref{fig:embedding}.
 This layer is defined as $|\text{\textit{Size of Dictionary}}| \times k $ matrix where this matrix works as a dictionary for the neural network.
 Neural network refers to this matrix to find the meaning of a token in a form of $k$-dimensional vector and updates its value while it's trained to
 reflect domain specific meaning of each token.
-
-For example, WTO DSB prefer to use the word \textit{inconsistent} rather than the word \textit{breach} to refer to the illegality of a member's trade policy.
+ 
+For example, WTO DSB prefers to use the word \textit{inconsistent} rather than the word \textit{breach} to refer to the illegality of a member's trade policy.
 This kind of domain specific information will be stored in this matrix as a distribution of those numerical vectors in this layer.
-
-I used \textit{Google News Word2Vec}\footnote{https://code.google.com/archive/p/word2vec/} to initialize this embedding layer. This is an open-source pretrained vectors provided by Google. It contains 300 dimensional English word vectors for 3 million unique words. Because of the GPU memory limit, I set 400,000 as a maximum number of word vectors to read form the Google Word2Vec and this number corresponds to the $|\text{\textit{Size of Dictionary}}|$.
-
+ 
+I used \textit{Google News Word2Vec}\footnote{https://code.google.com/archive/p/word2vec/} to initialize this embedding layer. This is an open-source pretrained vector provided by Google. It contains 300 dimensional English word vectors for 3 million unique words. Because of the GPU memory limit, I set 400,000 as a maximum number of word vectors to read form the Google Word2Vec and this number corresponds to the $|\text{\textit{Size of Dictionary}}|$.
+ 
 Figure \ref{fig:embedding} represents the ``output" of the embedding layer for given document that is tokenized
 from the example in \hyperref[sub:factual-aspect-example]{Appendix A.1}.
-The neural network find correpondent $k$-dimensional vectors for given ordered tokens in the document and returns ($n_{\text{factual}}, k$) or ($n_{\text{article}}, k$) size of matrix for given two different types of inputs.
+The neural network find correspondent $k$-dimensional vectors for given ordered tokens in the document and returns ($n_{\text{factual}}, k$) or ($n_{\text{article}}, k$) size of matrix for given two different types of inputs.
 This matrix is fed into the next layer, \textit{Conv1D}.
+
 
 \input{Methodology/Conv1D.tex}
 \paragraph{Conv1D: Capturing the Local Features}
-
+ 
 This subsection explains the how convolution filters runs over the ($n_{\text{factual}}, k$) or ($n_{\text{article}}, k$) size of matrix that are passed from the previous layer.
 I define this output matrix from the embedding layer more formally as below following the notation used in \cite{textcnn}
 % \[
 % \begin{array}{c}
 % x_{1:n} = x_1 \oplus x_2 \oplus \ldots \oplus x_{\text{max}}\\
-% \text{where\:} \oplus \: \text{represents concatenation} \\ 
+% \text{where\:} \oplus \: \text{represents concatenation} \\
 % \text{and} \: x_i \in \Bbb R^k \: \text{represents the $i$-th embedded token from the document.}\\
 % \text{Let} \: x_{i:i+j} \: \text{refer to the concatenation of the embeddings} x_i, x_{i+1}, . . . , x_{i+j}.
 % \end{array}
 % \]
 \begin{gather}
-  \nonumber x_{1:n} = x_1 \oplus x_2 \oplus \ldots \oplus x_{\text{max}}\\
-  \nonumber \text{where\:} \oplus \: \text{represents concatenation and} \\
-  \nonumber x_i \in \Bbb R^k \: \text{represents the $i$-th embedded token from the document.}\\
-  \nonumber \text{Let} \: x_{i:i+j} \: \text{refer to the concatenation of the embeddings} x_i, x_{i+1}, . . . , x_{i+j}
+ \nonumber x_{1:n} = x_1 \oplus x_2 \oplus \ldots \oplus x_{\text{max}}\\
+ \nonumber \text{where\:} \oplus \: \text{represents concatenation and} \\
+ \nonumber x_i \in \Bbb R^k \: \text{represents the $i$-th embedded token from the document.}\\
+ \nonumber \text{Let} \: x_{i:i+j} \: \text{refer to the concatenation of the embeddings} x_i, x_{i+1}, . . . , x_{i+j}
 \end{gather}
-
-
+ 
+ 
 \noindent Then a convolution filter $w \in \Bbb R^{h \times k}$ is simply defined as $(h, k)$ size of matrix where $h$ represents the filter size and $k$ represents the embedding dimension which is same to that of the embedding layer.
 Then the convolution is defined as $w \cdot x_{i:i+h-1} + b$ where $b \in \Bbb R$ is a bias term.
 I illustrated this convolution operation in Figure \ref{fig:conv1d} where the blue box refers to the convolution filter $w$ with the filter size 3 and it runs over the
-each set of 3 embeddings as increasing the $i$ of $x_i$ one by one. This will eventually gnerate a feature vector $c$ which is a size of $n-h+1$.
-
+each set of 3 embeddings as increasing the $i$ of $x_i$ one by one. This will eventually generate a feature vector $c$ which is a size of $n-h+1$.
+ 
 Each convolution filter $w$ learns how to summarize information \textit{locally} for the region of filter size. For example, a convolution filter $w$ holds its unique way of
 understanding the meaning of the \textit{\textbf{``This dispute concerns''}} in Figure \ref{fig:conv1d}.
-This convolution filter $w$ generalizes its own way of understanding 3 token embeddings together over all $n-h+1$ number of set of 3 tokens embeddings.
-
+This convolution filter $w$ generalizes its own way of understanding 3 token embeddings together over all $n-h+1$ number sets of 3 token embeddings.
+ 
 %\: s.t. \: |\{w\}| = 128$
-
+ 
 I prepared 128 different convolution filters $\{w\}$  so that each of them can hold their unique way of comprising \textit{local understandings} where the size of locality corresponds to its filter size.
 Moreover, I also prepared three different filter sizes 3, 4 and 5. This means we will eventually get $(n-2, 128), (n-3, 128) \text{ and } (n-4,128)$ size of vectors by the \textit{Conv1D} operation.
 % I also prepared 128 number of filters for three different types of filter size respectively.
-
+ 
 It's important to note that I introduced \textit{non-linearity} using \textbf{ReLU} ($ReLU(x) = max(0, x)$) after each convolution operation.
 This means output of convolution operation $w \cdot x_{i:i+h-1} + b$ becomes $0$ in case the value is smaller than $0$.
 This sequential layering of linear (such as convolution operation) and non-linear operations (such as ReLU) lets the model to be able to encode
-more complex patterns like citation patterns appearing upon the juriprudences of WTO DSB.
+more complex patterns like citation patterns appearing upon the jurisprudence of WTO DSB.
 
 \input{Methodology/MaxPool1D.tex}
 \paragraph{MaxPool1D: Choose the Most Prominent Feature}
 
-Our general goal is to estimate the citability $\hat{p} \in [0, 1]$ as closely to that of real world citation pattern.
-Therefore we need an efficient \textit{down-sampling} process to sample the large dimensional features into smaller dimension.
+Our general goal is to estimate the citability $\hat{p} \in [0, 1]$ as closely to that of real world citation patterns.
+Therefore we need an efficient \textit{down-sampling} process to sample the large dimensional features into smaller dimensions.
 With a convolution, \textit{Max-pooling} is preferred to use for this purpose. \textit{Max-pooling} simply selects the largest values among $(n-h+1)$ size of vector where each of dimension is calculated by the same convolution filter $w$, i.e., $ReLU(w \cdot x + b)$.
-Figure \ref{fig:maxpool1d} illustrates this process. I used 128 ($=m$ in Figure \ref{fig:maxpool1d}) number of filters for each filter size, thus I got 3 differnt 128-dimensional vectors as a result of \textit{MaxPool1D}.
-
+Figure \ref{fig:maxpool1d} illustrates this process. I used 128 ($=m$ in Figure \ref{fig:maxpool1d}) number of filters for each filter size, thus I got 3 different 128-dimensional vectors as a result of \textit{MaxPool1D}.
 
 \paragraph{FC: Enlarge the Capacity}
 Using the $(3, 128)$ size of feature map from the \textit{Max-pooling}, I flatten those three (128) dimensional feature maps into a (384) dimensional vector.
 To increase the model capacity in terms of size of parameters and non-linearity, I introduced a upscaling \textit{Fully Connected Layer} (FC) that is defined as $W_{fc} \cdot x + b_{fc}$ where $W_{fc} \in \Bbb R^{1024 \times 384}$ is a linear map that increases the feature dimension, $x$ is the flattened (384) size of feature vector and $b_{fc} \in \Bbb R^{1024}$ is a bias term. % of \textit{Fully Connected Layer}.
-Then by applying \textbf{ReLU} again to the output of this \textit{Fully Connected Layer}, I introudced another \textit{non-linearity}. This is to let the model
-to introduce more complexity in terms of non-linearity without losing important features
-from this non-linear operation by introducing upscaled dimension to the feature map. This operation returns (1024) size of feature vector.
+Then by applying \textbf{ReLU} again to the output of this \textit{Fully Connected Layer}, I introduced another \textit{non-linearity}. This is to let the model
+to introduce more complexity in terms of nonlinearity without losing important features
+from this non-linear operation by introducing upscaled dimension to the feature map. This operation returns a (1024) size of feature vector.
 
 \paragraph{Highway: Intorducing another Non-linearity while Preventing the \textit{Vanishing Gradients}}
-I implemented \textit{Highway network} \citep{highway} to add more non-linearity. Adding non-lineairties increase the chance that the neural network can approximate more complex pattern in the data, however, as the network gets deeper \textit{vanishing gradients} problem arises.
-Deep neural network is trained by updating its parameter weight proportional to the partial derivate of the loss function with respect to the current parameter (\textit{See} Algorithm \ref{algo:fit-dnn}) and computes this gradient by chain rules. Therefore, as the network gets deeper in terms of non-linearity, the value of gradient tend to become \textit{vanishingly small} compared to that of front layer.
+I implemented \textit{Highway network} \citep{highway} to add more non-linearity. Adding non-linearities increases the chance that the neural network can approximate more complex patterns in the data, however, as the network gets deeper \textit{vanishing gradients} problem arises.
+Deep neural network is trained by updating its parameter weight proportional to the partial derivative of the loss function with respect to the current parameter (\textit{See} Algorithm \ref{algo:fit-dnn}) and computes this gradient by chain rules. Therefore, as the network gets deeper in terms of non-linearity, the value of gradient tends to become \textit{vanishingly small} compared to that of the front layer.
 
-\textit{Highway network} prevents this \textit{vanishing gradient problem} by introducing additional parameter that learns the \textit{adequate amount of non-linearity}. The highway network is formally defined as following.
+\textit{Highway network} prevents this \textit{vanishing gradient problem} by introducing an additional parameter that learns the \textit{adequate amount of non-linearity}. The highway network is formally defined as following.
 \begin{gather}
-  \nonumber Y = H(W_H \cdot x + b_H) \cdot T(W_T \cdot x + b_T) + x \cdot (1-T(W_T \cdot x + b_T)) \\
-  \nonumber \text{where } H \text{ is ReLU, }  T \text{ is Sigmoid}\\
-  \nonumber (W_H \in \Bbb R^{1024 \times 1024}, W_T \in \Bbb R^{1024 \times 1}, b_H \in \Bbb R^{1024} \text{ and } b_T \in \Bbb R \text{ in this paper's setting})
+ \nonumber Y = H(W_H \cdot x + b_H) \cdot T(W_T \cdot x + b_T) + x \cdot (1-T(W_T \cdot x + b_T)) \\
+ \nonumber \text{where } H \text{ is ReLU, }  T \text{ is Sigmoid}\\
+ \nonumber (W_H \in \Bbb R^{1024 \times 1024}, W_T \in \Bbb R^{1024 \times 1}, b_H \in \Bbb R^{1024} \text{ and } b_T \in \Bbb R \text{ in this paper's setting})
 \end{gather}
-
-\noindent By defining $W_T$ a linear map that returns 1-diminesional output, sigmoid of its ouput $T(W_T \cdot x + b_T)$ is confined in $[0, 1]$. Therefore, the network gets to introduce $T(W_T \cdot x + b_T)$ amount of ReLU to $W_H \cdot x + b_H$ where $x$ is (1024) shape of feature vector from the previous layer.
+ 
+\noindent By defining $W_T$ a linear map that returns 1-dimensional output, the sigmoid of its output $T(W_T \cdot x + b_T)$ is confined in $[0, 1]$. Therefore, the network gets to introduce $T(W_T \cdot x + b_T)$ amount of ReLU to $W_H \cdot x + b_H$ where $x$ is (1024) shape of feature vector from the previous layer.
 
 \paragraph{Dropout: Ensure more Generalizability}
 
-Highway network returns (1024) shape of feature vector and I apply \textit{dropout} operation \citep{dropout} with the drop rate $0.5$ on this feature vector. Dropout randomly sets the value of each dimension as $0$ or scales up by $1/(1-\text{drop rate})$ thus dimension-wise sum of feature vector is unchanged.
-Dropout is one of the most widely accepted regularization technique which prevents overfitting and helps the model to achieve its generalizability.
+Highway network returns (1024) shape of feature vector and I apply \textit{dropout} operation \citep{dropout} with the drop rate $0.5$ on this feature vector. Dropout randomly sets the value of each dimension as $0$ or scales up by $1/(1-\text{drop rate})$ thus dimension-wise sum of the feature vector is unchanged.
+Dropout is one of the most widely accepted regularization techniques which prevents overfitting and helps the model to achieve its generalizability.
 
 
 \paragraph{Concat: Feature Map from Factual Asepct and Legal Content Meets}
 
-We have run through the two same processes of Embedding, Conv1D, MaxPool1D, FC, Highway and Dropout for two differenet types of data, \textit{Factual Aspect} and \textit{Legal Article}.
-This generates two (1024) size of feature vectors.
-We simply concatenates those two and generates (2048) size of feature vector.
+We have run through the two same processes of Embedding, Conv1D, MaxPool1D, FC, Highway and Dropout for two different types of data, \textit{Factual Aspect} and \textit{Legal Article}.
+This generates two (1024) sizes of feature vectors.
+We simply concatenate those two and generate a (2048) size of feature vector.
 
 
 \paragraph{FC: Generates Logit}
@@ -434,12 +433,12 @@ By applying \textit{Sigmoid} to this size 1 logit, we get $\hat{p} \in  [0, 1]$.
 
 I have total 11,440 number of data instances that is calculated by $|D| \times |V|$ where $|D| = 143$ and $|V|=80$.
 Before training, I randomly split the entire dataset $T \times A$ into train and test data in 8:2 ratio.
-The number of split result is 9,153 for train data and 2,287 for test data.
+The number of split results is 9,153 for train data and 2,287 for test data.
 I used train data only to train the neural network and used test data to check the trained model's performance.
 By measuring a performance
 metric on the inference results of the test data, one can check the generalizability of the trained neural network regarding
 how well the trained neural network performs over the data that it has never seen before.
-
+ 
 The term ``training" refers to adjust a set of parameters $\theta$
 that constitutes mathematical operations defined in layers illustrated in Figure \ref{fig:dnn-flow} and explained in the following subsections.
 The procedure to fit those set of parameters is described in Algorithm \ref{algo:fit-dnn}.
@@ -453,37 +452,35 @@ among the group of legal experts of WTO agreements.
 
 It's worth noting that I ``weighted" \textit{cross entropy loss}. This is because
 our dataset is highly imbalanced in terms of citability.
-%represents the number of factual aspects and $|V|=80$ represents the number of legal articles.  
+%represents the number of factual aspects and $|V|=80$ represents the number of legal articles. 
 Among all 11,440 data instances, I have only 435 data instances where the given article $a_v$ is actually cited for the given case description $t_d$. This is only 3.802\%.
 This is because a case tends to have only 3 - 4 articles cited on average among 80 different articles in $V$.
 Therefore, I adopted a weight of 26.303 which is inverse of the $3.802\%$ to penalize the neural network with higher loss in case the network fails to cite correctly for the positive case where $y = 1$ in Algorithm \ref{algo:fit-dnn}.
-
-Epochs $e$ and learning rate $\alpha$ in Algorithm \ref{algo:fit-dnn} is a hyperparameters whose value shall be determined before training. 
-First, one epoch refers to one cycle that the neural network trains over entire training data once and I set $e$ as 15. Therefore, this neural network sees each training data instance 15 times.
-Second, learning rate is about how much we are adjusting the model parameters with respect the loss gradient. I trained the neural network with learning rate of $0.01$ but decays with the rate of 0.95 for seeing every 5000 data instances because gradual decay of learning rate is known as good at preventing the training from being stuck in the local minima.
-
+ 
+Epochs $e$ and learning rate $\alpha$ in Algorithm \ref{algo:fit-dnn} is a hyperparameter whose value shall be determined before training.
+First, one epoch refers to one cycle that the neural network trains over the entire training data once and I set $e$ as 15. Therefore, this neural network sees each training data instance 15 times.
+Second, the learning rate is about how much we are adjusting the model parameters with respect to the loss gradient. I trained the neural network with learning rate of $0.01$ but decays with the rate of 0.95 for seeing every 5000 data instances because gradual decay of learning rate is known as good at preventing the training from being stuck in the local minima.
 
 \subsubsection{Training Result: AUC-ROC as Performance Metric}
-Train loss and test loss converged to around $2$ and $1.25$ after epoch of 10 respectively. 
-However one needs a well-defined performance metric that can measure how well model performs for given task.
-Our task can be understood as classification problem where the model decides a pair of factual aspect and legal article falls into the citable case or not.
-Therefore I used AUC-ROC metric to measure the model performance.
-
-The AUC-ROC measures model peformance at various threshold settings. 
-Since the model accuracy varies upon the threshold selected, 
-one needs to consider every case of threshold together to measure the model's classification power conclusively. 
-ROC is measured with given threshold $t \in [0, 1]$ and defined as following.
+Train loss and test loss converged to around $2$ and $1.25$ after epoch of 10 respectively.
+However one needs a well-defined performance metric that can measure how well a model performs for a given task.
+Our task can be understood as a classification problem where the model decides a pair of factual aspects and the legal article falls into the citable case or not.
+Therefore I used the AUC-ROC metric to measure the model performance.
+ 
+The AUC-ROC measures model performance at various threshold settings.
+Since the model accuracy varies upon the threshold selected,
+one needs to consider every case of threshold together to measure the model's classification power conclusively.
+ROC is measured with a given threshold $t \in [0, 1]$ and defined as follows.
 \begin{gather}
-  \nonumber \text{ROC} (t) = \frac{\text{TPR (True Positive Rate)}}{\text{FPR (False Positive Rate)}}\\
-  \nonumber \text{where } \text{TPR} = \frac{\text{TP (True Positive)}}{\text{TP (True Positive) + FN (False Negative)}}\\
-  \nonumber \:\:\:\:\:\:\:\:\:\:\:\:\:\text{FPR} = \frac{\text{FP (False Positive)}}{\text{FP (False Positive) + TN (True Negative)}}
+ \nonumber \text{ROC} (t) = \frac{\text{TPR (True Positive Rate)}}{\text{FPR (False Positive Rate)}}\\
+ \nonumber \text{where } \text{TPR} = \frac{\text{TP (True Positive)}}{\text{TP (True Positive) + FN (False Negative)}}\\
+ \nonumber \:\:\:\:\:\:\:\:\:\:\:\:\:\text{FPR} = \frac{\text{FP (False Positive)}}{\text{FP (False Positive) + TN (True Negative)}}
 \end{gather}
-
+ 
 % \noindent Therefore, ROC measures model's classification power as a value between $[0,1]$ where the higher value represent better classification power.
-Then AUC-ROC measures the ``area'' under ROC curve where the curve represents ROC value at every threshold of $t$. The maximum value of AUC-ROC is 1 and its baseline is $0.5$ where the model randomly estimate the case as citable or not.
-Our model's AUC-ROC is converged to around 0.85 after the epoch of 5. It means that model encoded the pattern inside data and predicts better than the naive baseline. %where the model randomly determine whether the legal article is citable or not for given factual description. 
-However, we need more substantial analysis what the value $0.85$ means. I will generate a network of articles using this trained neural network at the following subsections and will empirically interpret the generated network with my background knowledge about jurisprudences of WTO DSB in Section \ref{ef}.
-
+Then AUC-ROC measures the ``area'' under the ROC curve where the curve represents ROC value at every threshold of $t$. The maximum value of AUC-ROC is 1 and its baseline is $0.5$ where the model randomly estimates the case as citable or not.
+Our model's AUC-ROC converged to around 0.85 after the epoch of 5. It means that the model encoded the pattern inside data and predicts better than the naive baseline. %where the model randomly determine whether the legal article is citable or not for given factual description.
+However, we need more substantial analysis of what the value $0.85$ means. I will generate a network of articles using this trained neural network at the following subsections and will empirically interpret the generated network with my background knowledge about jurisprudences of WTO DSB in Section \ref{ef}.
 
 % Training loss converges to around \(1.25\) after \(8\) epochs. The loss plot of training data is shown in Figure \ref{trainFig}. Test loss converges to around \(2\) after 100,000 iteration step of training which corresponds to \(10.9\) epochs. The loss plot of test data is shown in Figure \ref{testFig}. Both train and test loss is logged and plotted every 100 iteration of training step with batch size \(8\), which corresponds to 0.087 epoch. \\\\
 
