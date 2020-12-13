@@ -1,31 +1,32 @@
 Textual description of the dispute is preferably called as
 \textit{Factual Aspect} in WTO DSB.
-Since Panels
+Since Panel
 always provide a factual aspect\footnote{
   It's worth noting that Appellate Body doesn't provide any factual aspect because they always use the factual aspect provided by the Panel.
 }
-that summarizes the content of the dispute
-in the panel report, %(Figure \ref{fig:panel-report-toc}),
-I wrote a program that can
+that describes the circumstances of the dispute
+in each report, %(Figure \ref{fig:panel-report-toc}),
+I wrote a program that
 automatically search and collect
 the panel reports from the WTO official document website\footnote{
   \url{http://docs.wto.org}
 }.
-Then I located the factual aspect using the page information inside the
-table of contents in the panel report as shown in Figure \ref{fig:panel-report-toc}.
-By using this location, I excerpted 143 numbers of different factual aspects from the same number of different panel reports. The case numbers are listed in Figure \ref{fig:ds-cases-used}.
+Then I located the factual aspect using the page information from the
+table of contents in each panel report as shown in Figure \ref{fig:panel-report-toc}.
+I collected the total 143 numbers of different factual aspects . The collected case numbers are listed in Figure \ref{fig:ds-cases-used}.
+
 \subsubsection{Joint Adjudication \& Early Settlement}
-The number 143 seems small compared to the total 596\footnote
+The number 143 may seem small compared to the total 596\footnote
 {As of November 1st, 2020.} number of cases that are requested to WTO DSB. This is due to the following two reasons.
-First, panel handles different cases together if the case is about the
-same trade policy. For example, in \textit{US - Offset (Byrd Amendment)}, panel merged DS217\footnote{
+First, panel jointly adjudicates different cases together if the cases raise the claim toward the
+same trade policy of the same member state. For example, in \textit{US - Offset (Byrd Amendment)}, panel merged DS217\footnote{
   DS refers to \textit{Dispute Settelement}. DS is the official prefix that indicates the case in WTO DSB.
 } and DS234 together because they were asking the judicial opinion for the same government measure of the United States as shown in Figure \ref{fig:linked-cases}.
 This paper selects the smallest case number as a representative number for this case of joint adjudication.
 For example, DS217 and DS234 share the same panel report then this paper chooses DS217 as a representative number as shown in Figure \ref{fig:ds-cases-used} where the list includes DS217 but not DS234.
-Second, members sometimes find \textit{mutually agreeable solution} before the panel expresses its judicial opinion by publishing its panel report. Then Panel stops there and no factual aspect is provided. This paper omitted this kind of \textit{early settled} cases as well.
+Second, members sometimes find \textit{mutually agreeable solution} before the panel expresses its judicial opinion by publishing its panel report. Then Panel stops there and no factual aspect is provided. I omitted this kind of \textit{early settled} cases as well.
 % \subsubsection{Judicial Economy \& Early Settlement}
-\begin{figure}[h]
+\begin{figure}[t!]
   \begin{quote}
       DS 2,
       18,
@@ -172,16 +173,18 @@ Second, members sometimes find \textit{mutually agreeable solution} before the p
       523
   \end{quote}
   \caption{
-      \textbf{List of case number of collected panel reports:} ``DS + number'' uniquely identifies each dispute. For example, DS 523 refers to \textit{US — Pipe and Tube Products (Turkey)} where the United States was challenged by Turkey for its possibly inconsistent anti-dumping measure.
+      \textbf{List of the Collected Case numbers:} ``DS + number'' uniquely identifies each dispute. For example, DS 523 refers to \textit{US — Pipe and Tube Products (Turkey)} where the United States was challenged by Turkey for its possibly inconsistent anti-dumping measure.
       % where Turkey claimed claimed possible illegal trade policy of United States on pipe ane tube products from Turk.
   }
   \label{fig:ds-cases-used}
 \end{figure}
 \begin{figure}[h]
   \centering
-  \includegraphics[scale=0.35]{Data/pngs/linked_cases.png}
+  \frame{
+    \includegraphics[scale=0.35]{Data/pngs/linked_cases.png}
+  }
   \caption{\textbf{Cover of a Panel Report Includes Information about Joint Adjudication:}
-      Panel explicitly marks which different cases are handled together in the cover of the panel report. DS217 and DS234 are handled together in this example.
+      Panel explicitly marks which different cases are adjudicated together in the cover of the panel report. DS217 and DS234 are handled together in this example.
       }
   \label{fig:linked-cases}
 \end{figure}

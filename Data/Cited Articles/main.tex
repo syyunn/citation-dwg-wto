@@ -1,10 +1,10 @@
-Every lawsuit in WTO DSB
+Every legal claim in WTO DSB
 cites multiple set of articles
 as shown in Table
 \ref{xltabular:cited-article-for-us-offset}.
-To collect this set of articles claimed for the same dispute, I wrote a program that collects this set of articles cited for the same dispute from the WTO official webpage\footnote{\url{https://www.wto.org/english/tratop_e/dispu_e/dispu_status_e.htm}}.
+To collect this set of articles claimed for each dispute, I wrote a program that collects this set of articles cited from the WTO official webpage\footnote{\url{https://www.wto.org/english/tratop_e/dispu_e/dispu_status_e.htm}}.
 The webpage chronologically lists up all dispute cases
-requested to WTO DSB and the program visits each page of 143 cases
+requested to WTO DSB and the program visits each page
 and collects the cited articles. Among all the agreements included in the WTO agreements\footnote{
    WTO agreements is comprised of multiple agreements, such as
    General Agreement on Tariffs and Trade 1994,
@@ -17,8 +17,8 @@ and collects the cited articles. Among all the agreements included in the WTO ag
    Agreement on Subsidies and Countervailing Measures,
    Agreement on Rules of Origin,
    Agreement on Safeguards and so on.
-   } as a component,
-this paper collected articles from \textbf{General Agreement on Tariffs and Trade 1994 (GATT 1994)} only.
+   },
+this paper collected articles from the \textit{General Agreement on Tariffs and Trade 1994} (GATT 1994) only.
 This is because articles in GATT 1994 constitutes basic set of trade rules of WTO and other agreements
 elaborates the articles of GATT 1994 more in detail \citep{world1999wto}. For example, the official name of \textit{Agreement on Anti-dumping}
 is \textit{Agreement on Implementation of \textbf{Article VI of the GATT 1994}}
@@ -27,7 +27,7 @@ The collected result is listed in the \hyperref[sub:cited-articles-table]{Append
 lists up 80 different articles of GATT 1994 cited in 143 cases without duplication.
  
  
-\begin{figure}[h]
+\begin{figure}[t!]
    \begin{quote}
    I,
    I:1,
@@ -113,22 +113,23 @@ lists up 80 different articles of GATT 1994 cited in 143 cases without duplicati
    \caption{
        \textbf{
            Set of articles of GATT 1994 collected and used in this paper:
-           }These articles comprises the node set $V$ and their ordered pairs comprise the edge set $E$ in Figure \ref{fig:def}
+           }These articles comprises the node set $V$ and their ordered pairs comprise the edge set $\vec{E}$ as formally defined in Section \ref{subsec:def}
        }
    \label{fig:set-of-articles-used}
 \end{figure}
  
-\begin{figure}[ht]
-   \[\text{Let } D \text{ is a set of DS case numbers listed in Figure \ref{fig:ds-cases-used}.} \] %\textit{directed weighted graph}}  G = (V, E, w) \]
-   \[\text{Then there exists } c_d = \{v_d \in V \mid\ v_d \text{ is an article cited in the case } d \in D\} \]
-   \[\text{ where } V \text{ is set of articles listed in Figure \ref{fig:set-of-articles-used}}.\]
-   \[\text{Then define set of cited articles } C = \{c_d \mid d \in D\}\]
-   \caption{\textbf{Formal Definition of Set of Cited Articles: }I formally define a set of cited articles $C$ and the elements of $C$ are listed in \hyperref[sub:cited-articles-table]{Appendix A.2}.}
-   \label{fig:def:set-of-cited-articles}
-\end{figure}
- 
+% \begin{figure}[ht]
+%    \[\text{Let } D \text{ is a set of DS case numbers listed in Figure \ref{fig:ds-cases-used}.} \] %\textit{directed weighted graph}}  G = (V, E, w) \]
+%    \[\text{Then there exists } c_d = \{v_d \in V \mid\ v_d \text{ is an article cited in the case } d \in D\} \]
+%    \[\text{ where } V \text{ is set of articles listed in Figure \ref{fig:set-of-articles-used}}.\]
+%    \[\text{Then define set of cited articles } C = \{c_d \mid d \in D\}\]
+%    \caption{\textbf{Formal Definition of Set of Cited Articles: }I formally define a set of cited articles $C$ and the elements of $C$ are listed in \hyperref[sub:cited-articles-table]{Appendix A.2}.}
+%    \label{fig:def:set-of-cited-articles}
+% \end{figure}
+
  
 \subsubsection{Various Levels of Scope in Cited Articles}
+
 As shown in Figure \ref{fig:set-of-articles-used},
 members sometimes
 cite articles in different levels of scope. For example,
@@ -138,78 +139,10 @@ Article II:1 or Article II:1(a).
 This is because two main judicial bodies of WTO DSB, \textit{Panel and Appellate Body},
 both constitute its legal precedents citing articles of the WTO agreements in
 various levels of scope.
-Those judicial bodies cite the articles with the level of various scopes, such as \textit{Title, Article, Paragraph, Sentence} or \textit{Term} as shown in Table {\ref{xltabular:level-of-scopes}}.
-Following this jurisprudence, members also cite articles in different levels of scope to
-make their legal claim fit and valid according to the current jurisprudences of WTO DSB.\\ %as much as possible.\\
- 
-% \clearpage
- 
-\begin{xltabular}{\linewidth}{lXX}
-   \caption{\textbf{Various Levels of Scope Adopted to Cite Articles of WTO agreemnts}}\\
-   \hline
-   \textbf{\normalsize Scope}
-   & \textbf{\normalsize Quote}
-   & \textbf{\normalsize Source}
-   \\
-   \endfirsthead
-   \hline \hline
-   Title
-   & ``As the \textbf{\textit{title}
-   of Article 21 makes clear},
-   the task of panels \ldots
-   forms part of the process
-   of the `Surveillance of
-   Implementation of the
-   Recommendations and Rulings' of the
-   DSB. \ldots''
-   & Appellate Body Report, \textit{US – Shrimp (Malaysia)}, paras. 86-87.
-   \\
-   \hline
-   Article
-   &  ``The sequence of steps indicated above in the analysis of a claim of justification under \textbf{Article XX} reflects, not inadvertence or random choice, but rather the fundamental structure and logic of Article XX. \ldots''
-   & Appellate Body Report, \textit{US – Shrimp (Malaysia)}, paras. 119-120.
-   \\
-   \hline
-   Paragraph
-   &  ``The verb `may' in \textbf{Article VI:2} of the GATT 1994 is, in our opinion, properly
-   understood as giving Members a choice between imposing an anti-dumping duty or
-   not, as well as a choice between imposing an anti-dumping duty equal to the dumping
-   margin or imposing a lower duty. \ldots''
-   & Appellate Body Report, \textit{US – 1916 Act}, paras. 116.    
-   \\
-   \hline
-   Sentence
-   & ``The customary rules of interpretation of public international law as
-   required by \textbf{the first sentence of Article 17.6(ii) of the Anti-Dumping Agreement}, do
-   not admit of another interpretation as far as the issue of zeroing raised in this appeal
-   is concerned.''
-   & Appellate Body Report, \textit{US – Zeroing (EC)}, paras. 132-133.
-   \\
-   \hline
-   Term
-   & ``Article II:1(a) provides that a
-   Member shall accord to the `commerce' of other Members treatment no less
-   favourable than that provided for in its Schedule. \textbf{The term `commerce'} is defined as
-   referring broadly to the exchange of goods such that, in this provision, the 'commerce'
-   of a Member should be understood to refer to all such exchanges of that Member''
-   & Appellate Body Report, \textit{Colombia – Textiles}, para. 5.34.
-   \\
-   \hline
-   \label{xltabular:level-of-scopes}
-\end{xltabular}
- 
- 
-% \begin{figure}[h]
-% \begin{quote}
-%     \ldots As the \textit{title} of Article 21 makes clear, the task of panels \ldots
-%      forms part of the process
-%     of the 'Surveillance of Implementation of the Recommendations and Rulings' of the
-%     DSB. - \textit{Appellate Body Report, US – Shrimp (Malaysia), paras. 86-87. }
-% \end{quote}
-% \caption{Various Interpretative Scopes of Panel and Appellate Body}
-% \end{figure}
- 
-% paragraph is also important in terms of scope.
+The various levels of scopes include, \textit{Title, Article, Paragraph, Sentence} or \textit{Term} as shown in  \hyperref[xltabular:level-of-scopes]{Appendix A.3}.
+Following this practice, members also cite articles in different levels of scope to
+make their legal claim fit and valid according to the general jurisprudence of WTO DSB.\\ %as much as possible.\\
+
  
  
  
