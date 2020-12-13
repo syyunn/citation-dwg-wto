@@ -1,13 +1,13 @@
 \begin{figure}[ht]
-    \[\text{For given $V$, $D$ defined in Figure \ref{fig:set-of-articles-used} and  Figure\ref{fig:def:set-of-cited-articles},}\]
+    \[\text{For given $V$, $D$ defined in Figure \ref{fig:set-of-articles-used} and  Figure \ref{fig:def:set-of-cited-articles},}\]
     \[\text{ let } E = \{e \mid e \text{ is an english word or special charcter} \} \text{ and }\]
     \[n_{\text{factual}}, n_{\text{article}} \in \Bbb N \text{ represents \textit{max token length} of factual aspect and legal article respectively}. \]
     
     \[\text{Then define } T = \{t_d \mid t_d = (e_1, e_2, \ldots , e_{n_\text{factual}}) \text{ } s.t. \text{ } d \in D \text{ and } e_{i \le{n_{\text{factual}}}  } \in E \} \]
     \[\text{ where } t_d \text{ represents a factual aspect of one of DS cases listed in Figure \ref{fig:ds-cases-used}. }\]
     
-    \[\text{ Also define } A = \{a_v \mid a_v = (e_1, e_2, \ldots , e_{n_\text{article}}) \text{ } s.t. \text{ } v \in V \text{ and } e_{i \le{n_{\text{article}}}  } \in E \}  \]
-    \[\text{ where } a_v \text{ represents texts of one of a legal article listed in Figure \ref{fig:set-of-articles-used}. }\]
+    \[\text{ Also, define } A = \{a_v \mid a_v = (e_1, e_2, \ldots , e_{n_\text{article}}) \text{ } s.t. \text{ } v \in V \text{ and } e_{i \le{n_{\text{article}}}  } \in E \}  \]
+    \[\text{ where } a_v \text{ represents texts of one of the legal article listed in Figure \ref{fig:set-of-articles-used}. }\]
 
     \[\text{ Now defines a deep neural network } f \text{ with a set of parameters } \theta \]
     \[f_{\theta}: T \times A \to [0, 1] \]

@@ -259,16 +259,13 @@ I explain the design process of the deep neural network that can encode the patt
 Since the citations are performed upon the general understanding over jurisprudences of WTO DSB, encoding of
 those citation patterns could reflect the jurisprudences of WTO DSB.
  
-
-\input{Methodology/design-of-neural-network/visualize-how-member-cites/citable.tex}
-\input{Methodology/design-of-neural-network/visualize-how-member-cites/non-citable.tex}
 \input{Methodology/design-of-neural-network/design-of-nn.tex}
 \input{Methodology/design-of-neural-network/fm-def-nn.tex}
 
 \subsubsection{Design Input/Output of Deep Neural Network: by Analogy with How Member Cites in WTO DSB} \label{design:io}
 A rule of thumb to design input and output of deep neural network is to mimic
 how humans do for a given task.
-Therefore I present a visualization of how legal experts of WTO agreements determine whether to cite a legal article of WTO agreements with an example of \textit{Korea - Beef} case (Figure \ref{fig:viz:how-member-cites-citable} and Figure \ref{fig:viz:how-member-cites-non-citable}).
+Therefore I present a visualization of how legal experts of WTO agreements determine whether to cite a legal article of WTO agreements with an example of \textit{Korea - Beef} case. %(Figure \ref{fig:viz:how-member-cites-citable} and Figure \ref{fig:viz:how-member-cites-non-citable}).
 In this case, the United States raised a claim relating to the \textit{Dual-retail system} maintained by South Korea. In \textit{Dual-retail system}, South Korea maintained two distinct retail systems
 for imported and domestic beef. There existed stores specialized for imported beef and they can sell only imported beef and cannot sell domestic (Korean) beef. U.S. claimed that the \textit{Dual-retail system} is inconsistent to the Article III:4 (National Treatment) of GATT 1994
 because \textit{Dual-retail system} discriminates between domestic and imported beef. A measure that discriminates domestic and imported products falls under the scope of the Article III:4 of the GATT 1994, which states the principle of \textit{National Treatment} that prohibits the discrimination between imported and domestic product. However, U.S. didn't
@@ -283,7 +280,7 @@ The neural network is designed to estimate the citability for a given pair of a 
 By iteratively training the neural network with data explained in Section \ref{sec:data}, I expect the neural network can learn a shared understanding over jurisprudences of WTO DSB closely to that of legal experts.
 The detailed structure of neural network and training schemes will be explained in the later subsections.
 % For total $11,440$ pairs of factual aspect and legal articles (143 different cases (Figure \ref{fig:ds-cases-used}) and 80 different legal articles (Figure \ref{fig:def:set-of-cited-articles})
-\clearpage
+% \clearpage
 \input{Methodology/dnn-flow-chart.tex}
 
 \subsubsection{Structure of Deep Neural Network}
@@ -361,7 +358,7 @@ I define this output matrix from the embedding layer more formally as below foll
  \nonumber x_{1:n} = x_1 \oplus x_2 \oplus \ldots \oplus x_{\text{max}}\\
  \nonumber \text{where\:} \oplus \: \text{represents concatenation and} \\
  \nonumber x_i \in \Bbb R^k \: \text{represents the $i$-th embedded token from the document.}\\
- \nonumber \text{Let} \: x_{i:i+j} \: \text{refer to the concatenation of the embeddings} x_i, x_{i+1}, . . . , x_{i+j}
+ \nonumber \text{Let} \: x_{i:i+j} \: \text{refer to the concatenation of the embeddings } x_i, x_{i+1}, . . . , x_{i+j}
 \end{gather}
  
  
@@ -496,7 +493,7 @@ However, we need more substantial analysis of what the value $0.85$ means. I wil
 
 % \subsection{Reconstruction of Network of Articles of WTO Agreements}
 \subsection{Fitting $G^* = (V, E, W^*)$ using Random Forests}
-This subsection explains how I found the best set of directed edge weights $W^*$ that closely maps the shared understanding about jurisprudences of WTO DSB among legal experts in a form of \textit{directed weighted graph} as defined in Figure \ref{fig:def} and illustrated in Figure \ref{fig:def-example} using the trained neural network $f_{\theta^*}$.
+This subsection explains how I found the best set of directed edge weights $W^*$ that closely maps the shared understanding about jurisprudences of WTO DSB among legal experts in a form of \textit{directed weighted graph} $G^*$ as defined in Section \ref{subsec:def} and illustrated in Figure \ref{fig:def-example} using the trained neural network $f_{\theta^*}$.
 
 \subsubsection{Definition of $W^*$: Best Set of Directed Edge Weights} %for the Network of Legal Articles of the WTO agreements}
 \input{Methodology/RF/fitting.tex}
@@ -507,37 +504,37 @@ This subsection explains how I found the best set of directed edge weights $W^*$
 \section{Empirical Findings}\label{ef} %: Quality Check of the Fitted Network $G^*$}
 \input{Empirical Findings/intro.tex}
 
-% \subsection{\textit{Market Access}: Ensuring Foreign Goods to Cross Borders and Fairly Compete with Domestic Products}\label{emp:ma}
-% % \subsubsection{Main Articles of \textit{Market Access}}
+\subsection{\textit{Market Access}: Ensuring Foreign Goods to Cross Borders and Fairly Compete with Domestic Products}\label{emp:ma}
+% \subsubsection{Main Articles of \textit{Market Access}}
 
-% \input{Empirical Findings/market-access.tex}
+\input{Empirical Findings/market-access.tex}
 
-% % \subsubsection{Fine Scoped Interpretation of \textit{Market Access} Network}
+% \subsubsection{Fine Scoped Interpretation of \textit{Market Access} Network}
 
-% \subsection{\textit{Reciprocity} in Non-Tariff Barriers: Compensate or Retaliate as Much as You have Protected}
-% % \subsection{\textit{Non-Tariff Barriers}: Anti-dumping, Countervailing Duties and Safeguard}
-% \input{Empirical Findings/non-tariff-barrier.tex}
+\subsection{\textit{Reciprocity} in Non-Tariff Barriers: Compensate or Retaliate as Much as You have Protected}
+% \subsection{\textit{Non-Tariff Barriers}: Anti-dumping, Countervailing Duties and Safeguard}
+\input{Empirical Findings/non-tariff-barrier.tex}
 
 
-% \subsection{\textit{Non-discrimination} Principle for Formulating Regional Trade Agreements (RTA)}  %: Non-discrimination, Transparency and Compensatory Adjustment}
+\subsection{\textit{Non-discrimination} Principle for Formulating Regional Trade Agreements (RTA)}  %: Non-discrimination, Transparency and Compensatory Adjustment}
 
-% \begin{figure}[ht]
-%   \centering{
-%     \input{Empirical Findings/rta-graph.tex}
-%   }
-%   \caption{{\bf Network of Articles that Achieves \textit{Non-discrimination} for Formulating \textit{RTAs}:}
-%     A rudimentary obligation of Article XXIV that prohibits discrimination between non-RTA and RTA members become realized in a relationship with
-%     different types of trade measures, such as \textit{Safeguard} or \textit{Quantitative Restriction}.
-%     % As members are deviating from their obligation under Article XXIV with different types of trade policy, it leads to the multiple disputes and 
-%     % it formulates a directive edge weights as shown in the Figure.
-%   }
-%   \label{fig:rta-explained}
-% \end{figure}
+\begin{figure}[ht]
+  \centering{
+    \input{Empirical Findings/rta-graph.tex}
+  }
+  \caption{{\bf Network of Articles that Achieves \textit{Non-discrimination} for Formulating \textit{RTAs}:}
+    A rudimentary obligation of Article XXIV that prohibits discrimination between non-RTA and RTA members become realized in a relationship with
+    different types of trade measures, such as \textit{Safeguard} or \textit{Quantitative Restriction}.
+    % As members are deviating from their obligation under Article XXIV with different types of trade policy, it leads to the multiple disputes and 
+    % it formulates a directive edge weights as shown in the Figure.
+  }
+  \label{fig:rta-explained}
+\end{figure}
 
-% \input{Empirical Findings/rtas.tex}
+\input{Empirical Findings/rtas.tex}
 
-% \section{Conclusion}
-% \input{conclusion.tex}
+\section{Conclusion}
+\input{conclusion.tex}
 
 % % \clearpage
 
@@ -626,6 +623,7 @@ This subsection explains how I found the best set of directed edge weights $W^*$
        \\
       \hline \label{xltabular:level-of-scopes}
     \end{xltabular}
+    \clearpage
 
   \subsection{Example of Article of the WTO agreements}
   \label{fig:gatt_art1}
@@ -646,7 +644,12 @@ This subsection explains how I found the best set of directed edge weights $W^*$
     like product originating in or destined for the territories of all other contracting parties...
     % \caption{\textbf{Example of a legal article of the WTO agreements:} Article I:1 of General Agreement on Tariffs and Trade 1994 that prohibits the discrimination between members of WTO.}
 \end{figure}
+% \section{Design of Deep Neural Network}
 
+% \subsection{Example of Article of the WTO agreements}
+
+% \input{Methodology/design-of-neural-network/visualize-how-member-cites/citable.tex}
+% \input{Methodology/design-of-neural-network/visualize-how-member-cites/non-citable.tex}
 
 
   

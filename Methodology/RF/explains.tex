@@ -3,7 +3,7 @@ includes a co-citation pattern between articles of WTO agreements. For example,
 we can see several highlighted bands in Figure \ref{predidction_matrix}
 and it tells us there exists some co-citation patterns inside the matrix.
  
-To materialize this co-citation pattern in a form of \textit{directed edge weights} $W$ as defined in Figure \ref{fig:def},
+To materialize this co-citation pattern in a form of \textit{directed edge weights} $W$ as defined in Section \ref{subsec:def},
 I used a machine learning technique called \textit{Random Forest} (RF). RF is an ensemble method that averages out
 multiple decision trees.
  
@@ -24,7 +24,7 @@ Then we can collect and assign the amount of variance reduced by each input feat
 by interpreting this variance reduction as how much
 The source article $v_i$ clarifies the interpretation of the target article $v_j$.
 I normalize the variance of output variables before constructing the tree, thus total variance reduction
-sums up to 1. Therefore $W = (w_{ij})$ fits to its definition in Figure \ref{fig:def}.
+sums up to 1. Therefore $W = (w_{ij})$ fits to its formal definition (Section \ref{subsec:def}).
  
 There are three different aspects that distinguish RF from a single decision tree.
 First, as noted earlier, RF requires to average out multiple decision trees.
