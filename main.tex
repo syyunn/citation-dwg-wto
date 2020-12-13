@@ -244,20 +244,20 @@ select a method that can generalize these member-specific citation patterns.% Th
 
 \subsubsection{Generalization of Each Member's Strategic Citation}
 
-This paper aims to map the regulatory system of WTO DSB in a form of \textit{directed weighted graph} $G$ as defined in Figure \ref{fig:def}.
-To achieve this purpose, we need to fit $W$ to generalize member specific strategic citation behavior.
-In terms of generalization, deep neural network is known to generalize well despite
+This paper aims to map the regulatory system of WTO DSB in a form of \textit{directed weighted graph} $G$ as defined in Section \ref{subsec:def}.
+To achieve this objective, we need to fit $W$ to generalize member specific strategic citation behavior.
+Deep neural network is known as good at generalization despite
 its large capacity \citep{neyshabur2017exploring}, possible instability of training algorithm \citep{charles2017stability}, nonrobustness \citep{zahavy2017ensemble}, and sharp minima \citep{dinh2017sharp}.
-Therefore, this paper trains a deep neural network without any member specific information such as geolocation, GDP or specialized industry and so on. % that can refer to the member's trade related interest.
-By training a deep neural network only using a description of the possible inconsistent trade policy and the legal text of the cited articles,
-this paper expects a fitted $G^{*} = (V, E, W^*)$ can show interactions between articles of the WTO agreements
-without being biased to member specific trade interest and its strategic citation upon it.
+Therefore, this paper trains a deep neural network without any member specific information, such as geolocation, GDP or specialized industry. % that can refer to the member's trade related interest.
+By training a deep neural network only using the text description of the trade dispute and the legal text of the cited articles,
+this paper expects the fitted $G^{*} = (V, \vec{E}, W^*)$ can show interactions between articles of the WTO agreements
+without being biased to member-specific citation patterns.
 
 \subsection{Design of Deep Neural Network}\label{subsec:design:dnn}
 Upon the justification of using deep neural network with above two main considerations in Section \ref{justification-nn}, %one is to effectively process the text information and the other one is to generalize member specific strategic citation,
-I explain a design process of the deep neural network that can encode the citation patterns in WTO DSB.
-This paper understands that those citations are performed upon the general understanding over jurisprudences of WTO DSB and encoding of
-those citation patterns could reveal the jurisprudences of WTO DSB.
+I explain the design process of the deep neural network that can encode the pattern of citations in WTO DSB.
+Since the citations are performed upon the general understanding over jurisprudences of WTO DSB, encoding of
+those citation patterns could reflect the jurisprudences of WTO DSB.
  
 
 \input{Methodology/design-of-neural-network/visualize-how-member-cites/citable.tex}
@@ -546,7 +546,7 @@ This subsection explains how I found the best set of directed edge weights $W^*$
 
 % \clearpage
 \begin{appendices}
-  \section{}
+  \section{Examples of the Data Collected}
   \label{sec:appendix}
   % \subsection{Table of Contents of the Panel Report}
   % \input{Data/examples/table-of-content-panel.tex}
