@@ -1,23 +1,29 @@
-This paper emphasizes the necessity of using textual information
-to qualitatively fit a set of edge weight $W$ defined in Figure \ref{fig:def}. % for the \textit{directed weighted graph} $G^*$ that is defined in Figure \ref{fig:def}.
-One can simply consider a co-citation pattern between the articles of WTO agreements that counts the co-occurrences of each article with other articles, however,
-it simply allocates a large edge weight for frequently cited articles and fails to explain how articles interact to achieve certain jurisprudence of WTO DSB. % as exemplified in Figure \ref{fig:market-aceess_directed}.
+I emphasizes the necessity of using textual information
+to qualitatively fit the edge weight matrix $W^*$ as defined in Section \ref{subsec:def}. 
+Rather than using the textual data, one can simply model the co-citation matrix as $W^*$, which counts the co-occurrences of each article with other articles.
+% pattern between the articles of WTO agreements that counts the co-occurrences of each article with other articles, however,
+However, it simply allocates a large edge weight for frequently cited articles and fails to explain how articles systematically interact with other articles.
 This failure is mainly due to the insufficient information in the co-citation matrix. Members cite the articles of
 the WTO agreements based on the complex characteristics of
-the trade policy that led to the dispute, however, the co-citation pattern omits this contextual and prior information. To visualize the importance of using textual information, I prepared two different matrices $W_{\text{co-cites}}$ and $W_{\text{text}}$ that are following the definition of \textit{edge weight matrix} $W$ in Figure \ref{fig:def}.
-$W_{\text{co-cites}}$ is calculated only using the co-citation pattern between the articles of the WTO agreements as formally defined as \textit{Normalized Co-citation Matrix} in Figure \ref{fig:def-illus-co-cites} and \ref{fig:def-illus-normal-co-cites}.
+the trade policy that led to the dispute. 
+However, the co-citation pattern omits this contextual information . To emphasize the necessity of using the textual information, I prepared two different matrices $W_{\text{co-cites}}$ and $W_{\text{text}}$ that are both following the definition of \textit{edge weight matrix} $W$ in Section \ref{subsec:def}.
+$W_{\text{co-cites}}$ is calculated using the co-citation pattern between the articles of the WTO agreements as formally defined
+%  \textit{Normalized Co-citation Matrix} 
+in Figure %\ref{fig:def-illus-co-cites} and 
+\ref{fig:def-illus-normal-co-cites}.
 $W_{\text{text}}$ is the one fitted using the textual information and the way how it's fitted will be explained at the following bodies of this section, in particular in Section \ref{subsec:rf}.
 Two heatmaps visualized in Figure \ref{fig:heatmap:edgeweights:compare} shows how sparse the $W_{\text{co-cites}}$ is compared to the $W_{\text{text}}$. This sparsity indirectly refers to the insufficient information
 to qualitatively map the jurisprudences of WTO DSB.
 % and I will introduce the failure of the weight fitting algorithm using \textit{Random Forest} in case of using this sparse matrix $W_{\text{co_cites}}$.
-In contrast with it, if we fit the \textit{edge weight matrix} $W$ using the textual information, we get a more dense and informative matrix as visualized in Figure\ref{subfig:adj_dense}.
+In contrast with it, if we fit the \textit{edge weight matrix} $W$ using the textual information, we get a more dense and informative matrix as visualized in Figure \ref{subfig:adj_dense}.
 % and visualized them as a heatmap in Figure \ref{fig:heatmap:edgeweights:compare}.
 % $W_{\text{co-cites}}$ is an edge weight matrix that is calculated only using the co-citation pattern between articles without textual information.
 % We can compare two weight matrices of each network that maps the regulatory system of WTO DSB as a network of articles of WTO agreements in Figure \ref{fig:sparse_dense}.
 \input{Methodology/Importance-of-Textual-Information/co-citation/figure-wrapper.tex}
 \input{Methodology/Importance-of-Textual-Information/normalized-co-citation/figure-wrapper.tex}
-Upon this observation, this paper justifies the use of a deep neural network to process information embedded in the text description of the trade policy and regulatory content of the legal articles. This is because deep neural network is known to
-extract information from text effectively to perform various tasks such as text classification \citep{minaee2020deep}, text summarization \citep{textsum} and text generation \citep{guo2017long}.
+Upon this observation, this paper justifies the use of a deep neural network to process information embedded in the text description of the dispute and regulatory content of the articles. 
+This is because deep neural network is known to effectively
+extract information from the textual data to perform various tasks such as text classification \citep{minaee2020deep}, text summarization \citep{textsum} and text generation \citep{guo2017long}.
 % This paper will compare two different results that one uses textual information using deep learning and the other one
 % uses the frequency of co-citation only after explaining how deep learning works to encompass the textual information.
 % if a method
