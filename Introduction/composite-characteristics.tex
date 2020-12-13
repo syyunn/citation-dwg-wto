@@ -1,29 +1,25 @@
 This process requires enormous legal knowledge and resources because the legal system of WTO is highly complex.
 This complexity has constrained many developing countries with limited legal knowledge and resources from fully utilizing the WTO DSB
-\citep{busch_reinhardt_shaffer_2009, dev_busch, shaffer_2006}. 
- 
+\citep{busch_reinhardt_shaffer_2009, dev_busch, shaffer_2006}.
 To address this issue, I provide a novel method to summarize the network of WTO articles.
-Currently, understanding of how articles of WTO agreements systematically interact with each other is exclusively shared among legal experts.
+Currently, understanding of how articles of WTO agreements systematically interact is exclusively shared among the legal experts.
 However, by developing the method that can quantitatively summarize the systematic interaction between articles of WTO,
 we can lower the cost of understanding the legal system of WTO. This will help resolve the unbalanced legal capacity issue in WTO DSB.
- 
-To properly summarize the systematic interactions between articles of WTO agreements, I designed my method based on two following considerations.
-First, since the legal system of WTO evolves from the way how real-world dispute interacts with the regulatory content of the article of WTO agreement,
-I considered a way of utilizing two different types of textual data, factual description of the trade dispute and the content of each article of the WTO agreements.
+To properly summarize the systematic interactions between articles of WTO agreements, I considered following two points.
+First, since the legal system of WTO evolves from how real-world dispute interacts with the regulatory content of the article of WTO agreement,
+I considered a way of utilizing the textual data, factual description of the trade dispute and the content of each article of the WTO agreements.
 Second, since members strategically cite rules of the WTO agreements to encourage
-the third party participation \citep{who_gets} or to reshape the legal precedents\citep{pelc, latent},
-I considered a way of generalizing these member-specific strategic citations.
- 
-Upon these two considerations, this paper uses deep learning.
+the third party participation \citep{who_gets} or to reshape the legal precedents \citep{pelc, latent},
+I considered a way of generalizing the member-specific citation patterns.
+Upon these two considerations, I selected deep learning as a methodological approach.
 Deep learning is empirically known as good at extracting information from the textual data.
-In addition to it, deep learning also generalizes the patterns inside data.
-Therefore, this paper designs a deep neural network that
+In addition to it, deep learning also well generalizes the patterns inside data.
+Therefore, I designed a deep neural network that
 processes two different types of textual data,
 description of the dispute and each article content of the WTO agreements.
 The design mimics the reasoning process of the legal experts,
 where the experts read
 the textual description of the dispute and imagine applicable legal articles of the WTO agreements according to its regulatory content.
- 
 To train this neural network, I collected textual description of trade dispute and articles of the WTO agreement cited for each dispute requested to the WTO DSB
 from 1995 to 2018.
 Using this collected data, I trained the neural network by enforcing the neural network to answer correctly
@@ -32,55 +28,53 @@ can be cited for the given textual description of
 trade dispute.
 After training, I fitted a network that summarizes the systematic interactions between articles of WTO agreements using \textit{Random Forests} \citep{rf, genie3}.
 The network is fitted as to best explain the variance of each article's citabilities. Those citabilities are collected from the predictions of the trained deep neural network.
- 
 To verify the quality of the fitted network, I compared the fitted network with the jurisprudence of WTO DSB appearing in the Panel and Appellate Body reports.
 Specifically, I found three major principles of WTO DSB, \textit{Market Access}, \textit{Reciprocity}, and \textit{Non-discrimination}, are clustered in the fitted network.
 The systematic interactions between articles of WTO agreements are formed as how the Panel and Appellate Body explained in their judicial opinions.
-As Panel and Appellate Body authoritatively constitute the jurisprudence of WTO DSB, one can conclude that the method qualitatively summarizes the systematic interactions of articles of WTO agreements.
- 
-% % == DEF EXAMPLE == 
+As Panel and Appellate Body authoritatively constitute the jurisprudence of WTO DSB, I concluded that the method qualitatively summarizes the systematic interactions of articles of WTO agreements.
+% % == DEF EXAMPLE ==
 \begin{figure}[t!]
-  \captionsetup[subfigure]{justification=centering}
-  \begin{subfigure}[b]{1\textwidth}
-      \centering{
-          \input{Introduction/solution/def-example.tex}
-      }
-      \caption{\textbf{Illustration of $P(v_j \mid v_i)$ where the target article $v_j=$ Article III:2}}
-      \label{subfig:a:art2b}
-  \end{subfigure}
-  \vfill
-  \begin{subfigure}[b]{1\textwidth}
-      \centering{
-          \input{Introduction/solution/russia-tariff.tex}
-      }
-      \centering
-      \caption{\textbf{Jurisprudence of Panel in \textit{Russia – Tariff Treatment} case:} Panel explains that the meaning of the term \textit{`in excess of'} in Article II:1(b) clarifies the meaning of the same phrase in Article III:2.}
-      \label{subfig:a:condprob}
-  \end{subfigure}
-  \caption{\textbf{Modeling of the Network of Articles of WTO agreements}}
-  \label{fig:def-example}
+ \captionsetup[subfigure]{justification=centering}
+ \begin{subfigure}[b]{1\textwidth}
+     \centering{
+         \input{Introduction/solution/def-example.tex}
+     }
+     \caption{\textbf{Illustration of $P(v_j \mid v_i)$ where the target article $v_j=$ Article III:2}}
+     \label{subfig:a:art2b}
+ \end{subfigure}
+ \vfill
+ \begin{subfigure}[b]{1\textwidth}
+     \centering{
+         \input{Introduction/solution/russia-tariff.tex}
+     }
+     \centering
+     \caption{\textbf{Jurisprudence of Panel in \textit{Russia – Tariff Treatment} case:} Panel explains that the meaning of the term \textit{`in excess of'} in Article II:1(b) clarifies the meaning of the same phrase in Article III:2.}
+     \label{subfig:a:condprob}
+ \end{subfigure}
+ \caption{\textbf{Modeling of the Network of Articles of WTO agreements}}
+ \label{fig:def-example}
 \end{figure}
-
+ 
 \section{Modeling and Formal Definitions}
 \subsection{Network of Articles of the WTO agreements \label{subsec:def}}
-
-I define the network of articles of WTO agreements as directed weighted graph $G=(V, \vec{E}, W)$ which is comprised of 
+ 
+I define the network of articles of WTO agreements as directed weighted graph $G=(V, \vec{E}, W)$ which is comprised of
 vertex set $V$, set of directed edges $\vec{E}$, and edge weight matrix $W$. I define each legal article of WTO agreement as a vertex, thus
 $V=\{v \mid v\text{ is a legal article of WTO agreement\}}$. Then I define all ordered pairs of vertices as a set of directed edges $\vec{E}$, thus
-$\vec{E} = \{(v_i, v_j) \mid (v_i, v_j)\in V \times V)\}$. 
+$\vec{E} = \{(v_i, v_j) \mid (v_i, v_j)\in V \times V)\}$.
 Finally, I define the edge weight matrix $W=(w(v_i, v_j)) \in [0,1]^{|V| \times |V|}$ where all incoming edge weights sum up to $1$ for all given target vertex $v_j$, thus
-$\sum_{v_i\in V}{w(v_i, v_j)}$ = 1. $w$ denotes a map that assigns a weight for each ordered pair of vertices, thus $w : V \times V \to [0,1]$. 
+$\sum_{v_i\in V}{w(v_i, v_j)}$ = 1. $w$ denotes a map that assigns a weight for each ordered pair of vertices, thus $w : V \times V \to [0,1]$.
 I always assign weight $0$ for the directed edge comprised of the same vertex, thus  $w(v_i, v_i) = 0 \:\: \forall{v_i \in V}$.
 For convenience, I define $w_{ij} = w(v_i, v_j)$.
-
-
+ 
+ 
 \subsection{Modeling Interaction between Articles of WTO agreements as Conditional Probability}
-I interpret every directed edge weight $w(v_i, v_j)$ as the conditional probability $P(v_j|v_i) \in [0,1]$, where the probability represents how probably the source node $v_i$ clarifies the interpretation of the target node $v_j$ comapred to all other source nodes $v\in V \setminus \{v_i, v_{j}\}$. 
-The articles of WTO agreements interdependently constitute the legal context to clarify the interpretation of other articles as shown in the the Panel report of \textit{Russia-Tariff Treatment} case, as excerpted in Figure \ref{subfig:a:condprob}. In \textit{Russia-Tariff Treatment} case, the Panel explained that Article II:1(b) clarifies the meaning of the same phrase \textit{`in excess of'} in Article III:2.
-By modeling this clarification relationship as the directed edge weight $w_{ij}$, I let the edge weight $w_{ij}$ represent the realtive importance of a source article $v_i$ clarifying the interpretation of the target article $v_j$. I illustrated this relationship in Figure \ref{subfig:a:art2b}.
-
+I interpret every directed edge weight $w(v_i, v_j)$ as the conditional probability $P(v_j|v_i) \in [0,1]$, where the probability represents how probably the source node $v_i$ clarifies the interpretation of the target node $v_j$ compared to all other source nodes $v\in V \setminus \{v_i, v_{j}\}$.
+The articles of WTO agreements interdependently constitute the legal context to clarify the interpretation of other articles as shown in the Panel report of \textit{Russia-Tariff Treatment} case, as excerpted in Figure \ref{subfig:a:condprob}. In \textit{Russia-Tariff Treatment} case, the Panel explained that Article II:1(b) clarifies the meaning of the same phrase \textit{`in excess of'} in Article III:2.
+By modeling this clarification relationship as the directed edge weight $w_{ij}$, I let the edge weight $w_{ij}$ represent the relative importance of a source article $v_i$ clarifying the interpretation of the target article $v_j$. I illustrated this relationship in Figure \ref{subfig:a:art2b}.
+ 
 \subsection{Methodological Objective: Finding $G^*$} \label{subsec:obj}
-I aim to find $G^* = (V, \vec{E}, W^*)$ where the $W^*$ closely reflect the clarification relationship between articles of WTO agreements as explained by the authoritative judicial bodies of the WTO DSB, Panel and Appellate Body. To find $W^*$, this paper collected the past 20 years of legal dispute data in WTO DSB. The types and composition of the data collected will be explained in Section \ref{sec:data}.
+I aim to find $G^* = (V, \vec{E}, W^*)$ where the $W^*$ closely reflects the clarification relationship between articles of WTO agreements as explained by the authoritative judicial bodies of the WTO DSB, Panel and Appellate Body. To find $W^*$, this paper collected the past 20 years of legal dispute data in WTO DSB. The types and composition of the data collected will be explained in Section \ref{sec:data}.
 Then I design a deep neural network to encode the pattern of interactions of the articles of WTO agreements found in the data. Justification of using deep learning, design and training of deep neural network, and fitting process of $W^*$ using \textit{Random Forest} will be explained in Section \ref{sec:methods}.
 Finally in Section \ref{ef}, I will verify the quality of the fitted $G^*$ by comparing the systematic interaction between articles of WTO agreements found in $G^*$ with the corresponding jurisprudence of the Panel and Appellate Body.
 
