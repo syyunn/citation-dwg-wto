@@ -1,15 +1,193 @@
-A lawsuit tends to cite multiple rules of the WTO agreement because one simple rule can't cover the complex characteristics of the trade policy that led to the dispute \citep{palmeter2004dispute}.
+This process requires enormous legal knowledge and resources because the legal system of WTO is highly complex.
+This complexity has constrained many developing countries with limited legal knowledge and resources from fully utilizing the WTO DSB
+% The system has become more complex as the number of cases requested to WTO DSB increases and developing countries can't resolve their dissatisfaction over the trade relationship in WTO DSB.
+\citep{busch_reinhardt_shaffer_2009, dev_busch, shaffer_2006}. 
+
+To address this issue, I provide a novel method to summarize the network of WTO articles as a whole.
+Currently, understanding of how articles of WTO agreements systematically interacts with each other is exclusively shared among a legal experts.
+However, by developing the method that can summarize the systematic interaction between artciels of WTO,
+we can lower the cost of understanding the legal system of WTO. This will help resolving the unbalanced legal capacity issue in WTO DSB. 
+
+% This understanding is exclusively shared  and training of them
+% requires huge amount of resources. 
+% Therefore, developing a qunantitative method to materialize the systematic interaction between articles of WTO agreements
+% as a whole can lower the cost of understanding the system and resolve the insufficient legal capacity issue in WTO DSB.
+
+I aim to summarize the network of WTO articles as a whole not by parts.
+There already exists numerous literatures that studied the relationship between articles of WTO agreements \citep{chadXXIII, charnovitz, Trachtman, who_gets}.
+However, previous literatures have been limited to studying the interconnections between relatively small number of articles, which are mostly less than 10. % and has not been conducted in a level of entire WTO agreements. As my method captures the entire systematic correlation between the articles of WTO agreements, it becomes 
+By pursuing a holistic approach, I intend to enhance the practicalness of the method. The legal system of WTO always works as whole and the entire system provide legal contexts to its sub-systems \citep{system_as_a_whole}.
+
+To properly summarize the systematic interactions between articles of WTO agreements, I designed my method based on two considerations.
+First, I considered a way of explictly utilizing two types of text data, factual description of the trade dispute and the regulatory content of the each article of the WTO agreements.
+This is because legal system of WTO is formed as real-world dispute interacts with the regulatory contents of the article of WTO agreement.
+Second, I considered a way of generalizing the member-specific citation pattern that is limited to each member's startegic interest.
+This method aims to summarize the general functionality of the WTO legal system rather than certain countries' specific citation pattern.
+
+Upon these two considerations, this paper uses deep learning. % to effectively extract information from the text and to generalize the member specific strategic citation patterns.
+Deep learning is empirically known as good at extracting information from the textual data. 
+In addition to it, deep learning also generalizes the patterns inside data well.
+Therefore, this paper designs a deep neural network that
+processes two different types of text data,
+description of the dispute and each article content of the WTO agreements.
+This design mimics the reasoning process of the legal exeperts, 
+where the experts read
+the textual description of the dispute and imagine applicable legal articles of the WTO agreements according to its regulatory content.
+
+To train this neural network, I collected textual description of trade dispute and articles of the WTO agreement cited for each dispute requested to the WTO DSB
+from 1995 to 2018. %(\hyperref[sub:cited-articles-table]{Total $143$ cases. \textit{Check} the list in Appendix A.2}).
+Using this collected data, I trained the neural network by enforcing the neural network to answer correctly
+whether a given article of the WTO agreements
+can be cited for the given textual description of
+trade dispute. % (\textit{See} Figure \ref{fig:design-of-nn} and Figure \ref{fig:def:io:nn}).
+ 
+After training, I fitted a network that summarizes the systematic interactions between articles of WTO agreements using \textit{Random Forests} \citep{rf, genie3}.
+The network is fitted as to best explain the variance of each article's citabilities that are predicted by the trained deep neural network. % using a machine learning technique \textit{Random Forests} \citep{rf, genie3}.
+
+To verify the quality of the fitted network, I compared the fitted network with the jurisprudence of WTO DSB appearing in the Panel and Appellate Body reports.
+Specifically, I found three major principles of WTO DSB, \textit{Market Access}, \textit{Reciprocity}, and \textit{Non-discrimination} are clustered in the fitted network.
+The systematic interactions between articles of WTO agreements appearing in each cluster, are found to be similar to how the Panel and Appellate Body explains those principles in their reports.
+As Panel and Appellate body authoritatively constitute the jurisprudence of WTO DSB, one can conclude that my method qualitatively summarizes the network of articles of WTO agreements.
+% In other words, this method effectively materializes the shared understanding of legal experts thus can lower the cost to build the same amount of legal capacity to understand the WTO DSB.
+% Moreover, rather than keep relying on previous approach that provides legal advice to developing countries that does not create a shared understanding over the system between developing and developed countries,
+% if we shift our focus on how to materialize the current shape of the system, WTO
+% will become more effective as members being able to discuss their trade issues upon the measurable ground of shared understanding about how WTO works.
+
+
+
+
+way of the fitted network $G^*$ explaining how articles of WTO agreements achieve some main principles of WTO, such as \textit{Market Access}, \textit{Reciprocity} and \textit{Non-discrimination}
+
+
+
+% fitted a set of directed edge weights $W^*$ that
+% best explains the variance of each article's citabilities that are predicted by the trained deep neural network using a machine learning technique \textit{Random Forests} \citep{rf, genie3}.
+ 
+After fitting $W^*$, to check whether this fitted network of articles of the WTO agreements\\  $G^*$ = ($V$, $E$, $W^*$) maps the jurisprudences of WTO DSB properly, this paper
+compares the way of the fitted network $G^*$ explaining how articles of WTO agreements achieve some main principles of WTO, such as \textit{Market Access}, \textit{Reciprocity} and \textit{Non-discrimination}
+with the jurisprudences of \textit{Panel} and \textit{Appellate Body}. This comparison reveals that the fitted network $G^*$ captures the interactions between the articles of WTO agreements
+closely to the jurisprudences of \textit{Panel} and \textit{the Appellate Body}. We can infer from this similarity that the fitted network $G^*$ closely maps the jurisprudences of WTO DSB. This is because those two judicial bodies
+authoritatively constitute the jurisprudences over how rules of WTO agreements are working together
+to achieve those main principles.
+ 
+Finally, upon this similarity, this paper offers this methodology as
+an alternative solution to the widening gap of legal capacity between developing and developed countries in WTO DSB.
+Since this method effectively materializes the shared understanding of legal experts and reveals important interactions between articles inside the system of WTO DSB,
+it can lower the cost to build the same amount of legal capacity to understand the WTO DSB.
+Moreover, rather than keep relying on previous approach that provides legal advice to developing countries that does not create a shared understanding over the system between developing and developed countries,
+if we shift our focus on how to materialize the current shape of the system, WTO
+will become more effective as members being able to discuss their trade issues upon the measurable ground of shared understanding about how WTO works.
+ 
+
+
+
+% Therefore, this paper designs a deep neural network (\textit{See} Figure \ref{fig:design-of-nn} and \ref{fig:dnn-flow}) that
+% processes two different types of textual information.
+% One is textual description of the dispute (\textit{See} an example at \hyperref[sub:factual-aspect-example]{Appendix A.1}) and
+% the other one is the text of a legal article of the WTO agreements (\textit{See} an example at Figure \ref{fig:gatt_art1}).
+% This design is improvised to mimic
+% the reasoning process of WTO legal practitioners
+% where the legal practitioners read
+% the textual description of
+% factual circumstances of the dispute and imagine applicable regulatory contents of
+% the legal articles while he/she reads that factual description of the case (\textit{See} Figure \ref{fig:viz:how-member-cites-citable}, \ref{fig:viz:how-member-cites-non-citable} and \ref{fig:design-of-nn}).
+
+
+The legal system of WTO is understood as a complex network of articles of WTO agreements.
+The articles of WTO agreements interact with each other to constitute specific norms and regulates specific trade issues.
+There exists a numerous literatures that studies the relationship between articles of WTO agreements \citep{chadXXIII, charnovitz, Trachtman, who_gets}.
+However, previous literatures have been limited to study the interconnection between relatively small number of articles, which are mostly less than 10. % and has not been conducted in a level of entire WTO agreements.
+Since the legal system of WTO comprises 
+
+
+To address this issue, I provide a novel method to summarize the network of WTO articles as a whole.
+
+
+
+
+aims to find out the network of legal articles of WTO agreements as a whole.
+
+This kind of research that studies the relationship between articles of WTO agreements has been actively pursued in numerous literatures \citep{chadXXIII, charnovitz, Trachtman, who_gets}, however, those efforts has been limited to
+
+
+The entire map of this network between articles of WTO agreements has been exclusively shared among a group of legal experts of the WTO agreements.
+
+
+
+network of interconnection between articles of WTO agreements is exclusively shared among a group of legal experts of the WTO agreements. 
+This exclusiveness becomes more severe as the number of cases requested to WTO DSB increases and this has led to a widening gap of legal capacities between developing and developed countries.
+This gap now inhibits the effectiveness of the WTO because developing countries are excluded from the WTO DSB to resolve their dissatisfaction over the trade relationship with other members.
+The legal system of WTO is understood as a complex network of articles of WTO agreements.
+
+
+
+
+This process requires enormous legal knowledge and resources.
+
+
+A trade dispute tend to involve complex issue structure.
+
+
+because it requires many legal experts to structure a legal argument with a full understanding of the WTO legal system.
+
+
+and 
+
+The legal system of WTO is understood as a complex network of articles of WTO agreements.
+Each part of the network constitutes specific norms and regulates specific trade issues.
+
+
+
+
+where each part of network handles each 
+
+
+between articles are constituting specific norms and regulating specific trade issues.
+
+
+Countries usually cite multiple articles to claim their impaired benefits in WTO DSB.
+
+and the legal system of WTO DSB has evolved into complex network of articles where the interconnectedness between articles are constituting specific norms and regulating specific trade issues.
+
+This process requires enormous legal knowledge and resources because a trade dispute tend to involve several interconnected trade issues.
+
+to handle those trade disputes.
+
+analyzing the network of articles of the WTO agreements provides us a clear view on how WTO DSB constitutes specific norms and regulates specific trade issues.
+
+
+Therefore, countries tend to cite multiple articles of WTO agreements to claim their impaired benefits in WTO DSB.
+
+% Citation of articles of the WTO agreements are evidence of how WTO rules are applied in the real world.
+
+
+Therefore, a lawsuit tends to cite multiple rules of the WTO agreement because one simple rule can't cover the complex characteristics of the trade policy that led to the dispute \citep{palmeter2004dispute}.
 For example, the United States enacted \textit{Continued Dumping and Subsidy Act of 2000} (CDSOA) that distributes
 the collected anti-dumping duties to its affected domestic producers.
 This act was challenged by other members with several rules of
 the WTO agreements such as \textit{rules of anti-dumping} and \textit{rules of subsidy}. This was because
-this distribution could constitute an illegal subsidy and illegal anti-dumping duty at the same time (\textit{See} Figure \ref{fig:complex-measure}).
-Citation of articles of the WTO agreements are evidence of how WTO rules are applied in the real world.
-For example, principle of \textit{Market Access} which is one of the most important principles in WTO is achieved through a cooperation of multiple articles of the WTO agreements (Figure \ref{fig:market-aceess_directed}) and those cooperation is realized through the act of citation by members.
-Therefore, analyzing the network of articles of the WTO agreements provides us a clear view on how WTO DSB constitutes specific norms and regulates specific trade issues.
-This kind of study has been actively pursued by a group of researchers in numerous literatures \citep{chadXXIII, charnovitz, Trachtman, who_gets}, however, those efforts has been limited to
+this distribution could constitute an illegal subsidy and illegal anti-dumping duty at the same time as stated in the Panel report of the \textit{US - Offset (CDSOA)} case%(\textit{See} Figure \ref{fig:complex-measure}).
+
+\blockquote{
+  8.1 In the light of our findings, we conclude that \textbf{the CDSOA is inconsistent with AD (Anti-dumping)
+  Articles 5.4, 18.1 and 18.4, SCM (Subsidy and Countervailing Measure) Articles 11.4, 32.1 and 32.5,} Articles VI:2 and VI:3 of the GATT
+  1994, and Article XVI:4 of the WTO Agreement. \ldots\\
+  8.3 \textbf{The CDSOA is a new and complex measure, applied in a complex legal environment}. In
+  concluding that the CDSOA is in violation of the above mentioned provisions, we have been
+  confronted by sensitive issues regarding the use of subsidies as trade remedies.
+  this matter through negotiation.
+}
+
+% Citation of articles of the WTO agreements are evidence of how WTO rules are applied in the real world.
+Since multiple articles cooperate to deal with the real world dispute, analyzing the network of articles of the WTO agreements provides us a clear view on how WTO DSB constitutes specific norms and regulates specific trade issues.
+% Principle of \textit{Market Access} which is one of the most important principles in WTO is achieved through a cooperation of multiple articles of the WTO agreements %(Figure \ref{fig:market-aceess_directed}) 
+% and those cooperation is realized through the act of citation by members.
+% Therefore, analyzing the network of articles of the WTO agreements provides us a clear view on how WTO DSB constitutes specific norms and regulates specific trade issues.
+This kind of research that studies the relationship between articles of WTO agreements has been actively pursued in numerous literatures \citep{chadXXIII, charnovitz, Trachtman, who_gets}, however, those efforts has been limited to
 study interconnectedness between relatively small numbers (less than 10) of articles. % and has not been conducted in a level of entire WTO agreements.
-There exists an shared understanding about how rules of the WTO agreements are interconnected as a whole, however, this entire map is exclusively shared among a group of legal experts of the WTO agreements.
+
+Therefore, this research aims to find out the network of legal articles of WTO agreements as a whole.
+Currently, the entire map of interconnection between articles of WTO agreements is exclusively shared among a group of legal experts of the WTO agreements.
 This exclusiveness becomes more severe as the number of cases requested to WTO DSB increases and this has led to a widening gap of legal capacity between developing and developed countries.
 This gap now inhibits the effectiveness of the WTO because developing countries are excluded from the WTO DSB to resolve their dissatisfaction over the trade relationship with other members.
 % at this moment and members are discussing possible solutions under the agenda of \textit{WTO reform}
@@ -27,12 +205,16 @@ This gap now inhibits the effectiveness of the WTO because developing countries 
 % and to adopt to constantly
 % changing world trade circumstances
 % \citep{FREDEBEULKREIN1999625, shaffer_2004, 10.1093/jiel/jgm028}.
-Therefore, this paper emphasizes the importance of revolutionizing the way of studying network of articles of WTO agreements and proposes a new method that
-materializes the relationship between the articles of the WTO agreements as a whole.
-For this purpose, this paper maps
+% Therefore, this paper emphasizes the importance of revolutionizing the way of studying network of articles of WTO agreements 
+
+Therefore, this paper provides a novel method to summarize the network of articles of WTO agreements. 
+% This network materializes the relationship between the articles of the WTO agreements as a .
+This paper maps
 the jurisprudence of WTO DSB
 as a network of legal articles
-as formally defined in Figure \ref{fig:def} and illustrated in Figure \ref{fig:def-example}. This is because the rules of the WTO agreements
+as formally defined as
+
+in Figure \ref{fig:def} and illustrated in Figure \ref{fig:def-example}. This is because the rules of the WTO agreements
 explicitly requires \textit{Panel} or \textit{Appellate Body} to address
 relevant articles together when they construct its jurisprudence related to the meaning, scope and interpretation of any legal text in the WTO agreements as excerpted in Figure \ref{fig:art7dsu}.
 Upon this requirement, judicial bodies cite
@@ -40,28 +222,28 @@ multiple articles together
 to identify the complex legal identity of a trade policy at issue as clearly opinionated in Figure \ref{fig:complex-measure}.
 In addition to it, judicial bodies cite multiple articles together
 to guide an way of interpretation of the rules of the WTO agreements (\textit{See} Figure \ref{subfig:a:condprob}).
-\begin{figure}[h]
-  \begin{quote}
-      8.1 In the light of our findings, we conclude that \textbf{the CDSOA is inconsistent with AD (Anti-dumping)
-      Articles 5.4, 18.1 and 18.4, SCM (Subsidy and Countervailing Measure) Articles 11.4, 32.1 and 32.5,} Articles VI:2 and VI:3 of the GATT
-      1994, and Article XVI:4 of the WTO Agreement. \ldots
-  \end{quote}
-  % \begin{quote}
-  %     \centering{\ldots}
-  % \end{quote}
-  \begin{quote}
-      8.3 \textbf{The CDSOA is a new and complex measure, applied in a complex legal environment}. In
-      concluding that the CDSOA is in violation of the above mentioned provisions, we have been
-      confronted by sensitive issues regarding the use of subsidies as trade remedies.
-      this matter through negotiation.
-  \end{quote}
-  \caption{\textbf{Panel's Judicial Opinion On the \textit{US - Offset (Byrd Amendment; CDSOA)} case:} Panel explicitly expresses the complexity of the trade policy (CDSOA) at issue and cites the rules of anti-dumping (AD) and subsidy (SCM) at the same time to cover its complex characteristics.}
-  \label{fig:complex-measure}
-\end{figure}
+% \begin{figure}[h]
+%   \begin{quote}
+%       8.1 In the light of our findings, we conclude that \textbf{the CDSOA is inconsistent with AD (Anti-dumping)
+%       Articles 5.4, 18.1 and 18.4, SCM (Subsidy and Countervailing Measure) Articles 11.4, 32.1 and 32.5,} Articles VI:2 and VI:3 of the GATT
+%       1994, and Article XVI:4 of the WTO Agreement. \ldots
+%   \end{quote}
+%   % \begin{quote}
+%   %     \centering{\ldots}
+%   % \end{quote}
+%   \begin{quote}
+%       8.3 \textbf{The CDSOA is a new and complex measure, applied in a complex legal environment}. In
+%       concluding that the CDSOA is in violation of the above mentioned provisions, we have been
+%       confronted by sensitive issues regarding the use of subsidies as trade remedies.
+%       this matter through negotiation.
+%   \end{quote}
+%   \caption{\textbf{Panel's Judicial Opinion On the \textit{US - Offset (Byrd Amendment; CDSOA)} case:} Panel explicitly expresses the complexity of the trade policy (CDSOA) at issue and cites the rules of anti-dumping (AD) and subsidy (SCM) at the same time to cover its complex characteristics.}
+%   \label{fig:complex-measure}
+% \end{figure}
 To develop a proper method that can find a set of directed edge weights $W$ defined in Figure \ref{fig:def}
 as close to a shared understanding of legal experts, this paper points out two main considerations.
-First, one need to use information inside a textual description of factual circumstances of the legal dispute and the regulatory contents described in the text of each article of the WTO agreements.
-Second, one need to generalize the members' strategic citation pattern that is limited to a member's specific political interest.
+First, one need to use information inside a textual description of factual circumstances of the legal dispute and the regulatory contents inside the text of each article of the WTO agreements.
+Second, one need to generalize the members' strategic citation pattern that is limited to a member-specific political interest.
 For example, members strategically cite different rules of the WTO agreements to limit or to encourage
 the third party participation. Since the third party participation
 can lead to early settlement of the dispute without continuous
@@ -73,7 +255,7 @@ in favor of their future interest \citep{pelc, latent}.
 % favorable previous cases more often in issue areas where they face ligitagion more frequently with other members
 % \citep{latent}.
 Upon these two considerations, this paper selects the deep neural network as a technical solution. % to effectively extract information from the text and to generalize the member specific strategic citation patterns.
-This is because a deep neural network is empirically known as good at extracting information from text data and generalizing the patterns inside data.
+This is because a deep neural network is empirically known as good at extracting information from text and generalizing the patterns inside data.
 Therefore, this paper designs a deep neural network (\textit{See} Figure \ref{fig:design-of-nn} and \ref{fig:dnn-flow}) that
 processes two different types of textual information.
 One is textual description of the dispute (\textit{See} an example at \hyperref[sub:factual-aspect-example]{Appendix A.1}) and
