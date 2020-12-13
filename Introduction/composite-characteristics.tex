@@ -1,53 +1,89 @@
 This process requires enormous legal knowledge and resources because the legal system of WTO is highly complex.
 This complexity has constrained many developing countries with limited legal knowledge and resources from fully utilizing the WTO DSB
-% The system has become more complex as the number of cases requested to WTO DSB increases and developing countries can't resolve their dissatisfaction over the trade relationship in WTO DSB.
 \citep{busch_reinhardt_shaffer_2009, dev_busch, shaffer_2006}. 
-
-To address this issue, I provide a novel method to summarize the network of WTO articles as a whole.
-Currently, understanding of how articles of WTO agreements systematically interacts with each other is exclusively shared among a legal experts.
-However, by developing the method that can summarize the systematic interaction between artciels of WTO,
-we can lower the cost of understanding the legal system of WTO. This will help resolving the unbalanced legal capacity issue in WTO DSB. 
-
-% This understanding is exclusively shared  and training of them
-% requires huge amount of resources. 
-% Therefore, developing a qunantitative method to materialize the systematic interaction between articles of WTO agreements
-% as a whole can lower the cost of understanding the system and resolve the insufficient legal capacity issue in WTO DSB.
-
-I aim to summarize the network of WTO articles as a whole not by parts.
-There already exists numerous literatures that studied the relationship between articles of WTO agreements \citep{chadXXIII, charnovitz, Trachtman, who_gets}.
-However, previous literatures have been limited to studying the interconnections between relatively small number of articles, which are mostly less than 10. % and has not been conducted in a level of entire WTO agreements. As my method captures the entire systematic correlation between the articles of WTO agreements, it becomes 
-By pursuing a holistic approach, I intend to enhance the practicalness of the method. The legal system of WTO always works as whole and the entire system provide legal contexts to its sub-systems \citep{system_as_a_whole}.
-
-To properly summarize the systematic interactions between articles of WTO agreements, I designed my method based on two considerations.
-First, I considered a way of explictly utilizing two types of text data, factual description of the trade dispute and the regulatory content of the each article of the WTO agreements.
-This is because legal system of WTO is formed as real-world dispute interacts with the regulatory contents of the article of WTO agreement.
-Second, I considered a way of generalizing the member-specific citation pattern that is limited to each member's startegic interest.
-This method aims to summarize the general functionality of the WTO legal system rather than certain countries' specific citation pattern.
-
-Upon these two considerations, this paper uses deep learning. % to effectively extract information from the text and to generalize the member specific strategic citation patterns.
-Deep learning is empirically known as good at extracting information from the textual data. 
-In addition to it, deep learning also generalizes the patterns inside data well.
+ 
+To address this issue, I provide a novel method to summarize the network of WTO articles.
+Currently, understanding of how articles of WTO agreements systematically interact with each other is exclusively shared among legal experts.
+However, by developing the method that can quantitatively summarize the systematic interaction between articles of WTO,
+we can lower the cost of understanding the legal system of WTO. This will help resolve the unbalanced legal capacity issue in WTO DSB.
+ 
+To properly summarize the systematic interactions between articles of WTO agreements, I designed my method based on two following considerations.
+First, since the legal system of WTO evolves from the way how real-world dispute interacts with the regulatory content of the article of WTO agreement,
+I considered a way of utilizing two different types of textual data, factual description of the trade dispute and the content of each article of the WTO agreements.
+Second, since members strategically cite rules of the WTO agreements to encourage
+the third party participation \citep{who_gets} or to reshape the legal precedents\citep{pelc, latent},
+I considered a way of generalizing these member-specific strategic citations.
+ 
+Upon these two considerations, this paper uses deep learning.
+Deep learning is empirically known as good at extracting information from the textual data.
+In addition to it, deep learning also generalizes the patterns inside data.
 Therefore, this paper designs a deep neural network that
-processes two different types of text data,
+processes two different types of textual data,
 description of the dispute and each article content of the WTO agreements.
-This design mimics the reasoning process of the legal exeperts, 
+The design mimics the reasoning process of the legal experts,
 where the experts read
 the textual description of the dispute and imagine applicable legal articles of the WTO agreements according to its regulatory content.
-
+ 
 To train this neural network, I collected textual description of trade dispute and articles of the WTO agreement cited for each dispute requested to the WTO DSB
-from 1995 to 2018. %(\hyperref[sub:cited-articles-table]{Total $143$ cases. \textit{Check} the list in Appendix A.2}).
+from 1995 to 2018.
 Using this collected data, I trained the neural network by enforcing the neural network to answer correctly
 whether a given article of the WTO agreements
 can be cited for the given textual description of
-trade dispute. % (\textit{See} Figure \ref{fig:design-of-nn} and Figure \ref{fig:def:io:nn}).
- 
+trade dispute.
 After training, I fitted a network that summarizes the systematic interactions between articles of WTO agreements using \textit{Random Forests} \citep{rf, genie3}.
-The network is fitted as to best explain the variance of each article's citabilities that are predicted by the trained deep neural network. % using a machine learning technique \textit{Random Forests} \citep{rf, genie3}.
-
+The network is fitted as to best explain the variance of each article's citabilities. Those citabilities are collected from the predictions of the trained deep neural network.
+ 
 To verify the quality of the fitted network, I compared the fitted network with the jurisprudence of WTO DSB appearing in the Panel and Appellate Body reports.
-Specifically, I found three major principles of WTO DSB, \textit{Market Access}, \textit{Reciprocity}, and \textit{Non-discrimination} are clustered in the fitted network.
-The systematic interactions between articles of WTO agreements appearing in each cluster, are found to be similar to how the Panel and Appellate Body explains those principles in their reports.
-As Panel and Appellate body authoritatively constitute the jurisprudence of WTO DSB, one can conclude that my method qualitatively summarizes the network of articles of WTO agreements.
+Specifically, I found three major principles of WTO DSB, \textit{Market Access}, \textit{Reciprocity}, and \textit{Non-discrimination}, are clustered in the fitted network.
+The systematic interactions between articles of WTO agreements are formed as how the Panel and Appellate Body explained in their judicial opinions.
+As Panel and Appellate body authoritatively constitute the jurisprudence of WTO DSB, one can conclude that the method qualitatively summarizes the systematic interactions of articles of WTO agreements.
+ 
+% % == DEF EXAMPLE == 
+\begin{figure}[t!]
+  \captionsetup[subfigure]{justification=centering}
+  \begin{subfigure}[b]{1\textwidth}
+      \centering{
+          \input{Introduction/solution/def-example.tex}
+      }
+      \caption{\textbf{Illustrated edge weights of a target node Article III:2}}
+      \label{subfig:a:art2b}
+  \end{subfigure}
+  \vfill
+  \begin{subfigure}[b]{1\textwidth}
+      \centering{
+          \input{Introduction/solution/russia-tariff.tex}
+      }
+      \centering
+      \caption{\textbf{Jurisprudence of Panel in \textit{Russia – Tariff Treatment} case:} \\ Panel clarifies the point that the meaning of the term \textit{`in excess of'} in Article II:1(b) \\ clarifies the meaning of the same phrase in Article III:2.}
+      \label{subfig:a:condprob}
+  \end{subfigure}
+  \caption{\textbf{Illustration of Network of Legal Articles of WTO agreements: }Every directed edge weight $w_{ij}$ is interpreted as the conditional probability $P(v_j|v_i)$ of how probably a source node $v_i$ constitutes a legal context to clarify the meaning of the target node $v_j$ among all other source nodes $v\in V \setminus \{v_i, v_{j}\}$. Above subfigure (a) represents how jurisprudence of \textit{Panel} stated in (b) is represented as an edge weight where the source node Article II:1(b) constitutes the legal context of the target node Article III:2 regarding how to interpret its term \textit{`in excess of'} with the $8\%$ of importance compared to other possible source articles.}
+  \label{fig:def-example}
+\end{figure}
+
+\section{Modeling and Formal Definitions}
+\subsection{Network of Articles of the WTO agreements \label{subsec:def}}
+
+I define the network of articles of WTO agreements as directed weighted graph $G=(V, \vec{E}, W)$ which is comprised of 
+vertex set $V$, set of directed edges $\vec{E}$, and edge weight matrix $W$. I define each legal article of WTO agreement as a vertex, thus
+$V=\{v \mid v\text{ is a legal article of WTO agreement\}}$. Then I define all ordered pairs of vertices as a set of directed edges $\vec{E}$, thus
+$\vec{E} = \{(v_i, v_j) \mid (v_i, v_j)\in V \times V)\}$. 
+Finally, I define the edge weight matrix $W=(w(v_i, v_j)) \in [0,1]^{|V| \times |V|}$ where all incoming edge weights sum up to $1$ for all given target vertex $v_j$, thus
+$\sum_{v_i\in V}{w(v_i, v_j)}$ = 1. $w$ denotes a map that assigns a weight for each ordered pair of vertices, thus $w : V \times V \to [0,1]$. 
+I always assign weight $0$ for the directed edge comprised of the same vertex, thus  $w(v_i, v_i) = 0 \:\: \forall{v_i \in V}$.
+For convenience, I define $w_{ij} = w(v_i, v_j)$.
+
+
+\subsection{Modeling of Systematic Interaction between Articles of WTO agreements as Conditional Probability}
+I defined 
+
+% The system has become more complex as the number of cases requested to WTO DSB increases and developing countries can't resolve their dissatisfaction over the trade relationship in WTO DSB.
+
+% Moreover, I aim to summarize the network of WTO articles as a whole not by parts.
+% There already exists numerous literatures that studied the relationship between articles of WTO agreements \citep{chadXXIII, charnovitz, Trachtman, who_gets}.
+% However, previous literatures have been limited to studying the interconnections between relatively small number of articles, which are mostly less than 10. % and has not been conducted in a level of entire WTO agreements. As my method captures the entire systematic correlation between the articles of WTO agreements, it becomes 
+% By pursuing a holistic approach, I intend to enhance the practicalness of the method. The legal system of WTO always works as whole and the entire system provide legal contexts to its sub-systems \citep{system_as_a_whole}.
+
 % In other words, this method effectively materializes the shared understanding of legal experts thus can lower the cost to build the same amount of legal capacity to understand the WTO DSB.
 % Moreover, rather than keep relying on previous approach that provides legal advice to developing countries that does not create a shared understanding over the system between developing and developed countries,
 % if we shift our focus on how to materialize the current shape of the system, WTO
@@ -96,7 +132,7 @@ will become more effective as members being able to discuss their trade issues u
 The legal system of WTO is understood as a complex network of articles of WTO agreements.
 The articles of WTO agreements interact with each other to constitute specific norms and regulates specific trade issues.
 There exists a numerous literatures that studies the relationship between articles of WTO agreements \citep{chadXXIII, charnovitz, Trachtman, who_gets}.
-However, previous literatures have been limited to study the interconnection between relatively small number of articles, which are mostly less than 10. % and has not been conducted in a level of entire WTO agreements.
+However, previous literatures have been limited to study the interconnection between relatively small number of articles, which are mostly less than ten. % and has not been conducted in a level of entire WTO agreements.
 Since the legal system of WTO comprises 
 
 
