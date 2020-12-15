@@ -50,7 +50,7 @@ $V=\{v \mid v\text{ is a legal article of WTO agreement\}}$. Then I define all o
 $\vec{E} = \{(v_i, v_j) \mid (v_i, v_j)\in V \times V)\}$.
 Finally, I define the edge weight matrix $W=(w(v_i, v_j)) \in [0,1]^{|V| \times |V|}$ where all incoming edge weights sum up to $1$ for all given target vertex $v_j$, thus
 $\sum_{v_i\in V}{w(v_i, v_j)}$ = 1. $w$ denotes a map that assigns a weight for each ordered pair of vertices, thus $w : V \times V \to [0,1]$.
-I always assign weight $0$ for the directed edge comprised of the same vertex, thus  $w(v_i, v_i) = 0 \:\: \forall{v_i \in V}$.
+I always assign weight $0$ for the directed edge consisting of the same vertex, thus  $w(v_i, v_i) = 0 \:\: \forall{v_i \in V}$.
 For convenience, I define $w_{ij} = w(v_i, v_j)$.
  
  
@@ -61,8 +61,8 @@ By modeling this clarification relationship as the directed edge weight $w_{ij}$
  
 \subsection{Methodological Objective: Finding $G^*$} \label{subsec:obj}
 I aim to find $G^* = (V, \vec{E}, W^*)$ where the $W^*$ closely reflects the clarification relationship between articles of WTO agreements as explained by the authoritative judicial bodies of the WTO DSB, Panel and Appellate Body. To find $W^*$, this paper collected the past 20 years of legal dispute data in WTO DSB. The types and composition of the data collected will be explained in Section \ref{sec:data}.
-Then I design a deep neural network to encode the pattern of interactions of the articles of WTO agreements found in the data. Justification of using deep learning, design and training of deep neural network, and fitting process of $W^*$ using \textit{Random Forest} will be explained in Section \ref{sec:methods}.
-Finally in Section \ref{ef}, I will verify the quality of the fitted $G^*$ by comparing the systematic interaction between articles of WTO agreements found in $G^*$ with the corresponding jurisprudence of the Panel and Appellate Body.
+Then I design a deep neural network to encode the pattern of interactions of the articles of WTO agreements found in the data. Justification to use deep learning, design and training of the deep neural network, and fitting process of $W^*$ using \textit{Random Forest} will be explained in Section \ref{sec:methods}.
+Finally, in Section \ref{ef}, I will verify the quality of the fitted $G^*$ by comparing the systematic interaction between articles of WTO agreements found in $G^*$ with the corresponding jurisprudence of the Panel and Appellate Body.
 
 % network $G = (V, \vec{E}, W)$ collect all the relative importance of each article compared to other articles to 
 
