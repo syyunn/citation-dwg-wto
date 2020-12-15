@@ -11,3 +11,4 @@ __pycache__
 *.blg
 *.pdf
 !main.pdf
+.DS_Store

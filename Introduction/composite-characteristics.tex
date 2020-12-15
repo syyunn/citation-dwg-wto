@@ -1,11 +1,23 @@
+The Dispute Settlement Body (DSB) of
+the World Trade Organization (WTO) deals
+with trade disputes between WTO members.
+WTO members file a lawsuit in WTO DSB to
+claim their impaired benefit related to the WTO agreements as a result of another member's possible illegal trade policy.
+The judicial body of WTO DSB, Panel or Appellate Body, then adjudicates the dispute and submits a report in which it expresses
+its judicial opinion as to whether the challenged
+trade policy is inconsistent to the rules of the WTO or not \citep{world2017handbook}.
 This process requires enormous legal knowledge and resources because the legal system of WTO is highly complex.
-This complexity has constrained many developing countries with limited legal knowledge and resources from fully utilizing the WTO DSB
+This complexity has constrained many developing countries with limited legal knowledge and resources from fully utilizing the WTO DSB.
 \citep{busch_reinhardt_shaffer_2009, dev_busch, shaffer_2006}.
+Moreover, this complexity also has greatly constrained scholars as well as practitioners with limited legal resources from fully utilizing the dispute settlement mechanisms of WTO. 
+
+
 
 To address this issue, I provide a novel method to summarize the network of WTO articles.
-Currently, understanding of how articles of WTO agreements systematically interact is exclusively shared among the legal experts.
+Currently, understanding how articles of WTO agreements systematically interact is exclusively shared among the legal experts.
 However, by developing the method that can quantitatively summarize the systematic interaction between articles of WTO,
-we can lower the cost of understanding the legal system of WTO. This will help resolve the unbalanced legal capacity issue in WTO DSB.
+we can lower the cost of understanding the legal system of WTO. This will help resolve the unbalanced legal capacity between developing and developed countries in WTO DSB.
+Moreover, this will also help researchers to map complex inter-dependencies across legal documents in other domains where no clear measurements exist even among experts.
 
 To properly summarize the systematic interactions between articles of WTO agreements, I considered following two points.
 First, since the legal system of WTO evolves from how real-world dispute interacts with the regulatory content of the article of WTO agreement,
@@ -17,27 +29,27 @@ I considered a way of generalizing the member-specific citation patterns.
 Upon these two considerations, I selected deep learning as a methodological approach.
 Deep learning is empirically known as good at extracting information from the textual data.
 In addition to it, deep learning also well generalizes the patterns inside data.
-Therefore, I designed a deep neural network that
-processes two different types of textual data,
+Therefore, I designed a neural network model that processes two different types of textual data,
 description of the dispute and each article content of the WTO agreements.
 The design mimics the reasoning process of the legal experts,
 where the experts read
 the textual description of the dispute and imagine applicable legal articles of the WTO agreements according to its regulatory content.
 
 To train this neural network, I collected textual description of trade dispute and articles of the WTO agreement cited for each dispute requested to the WTO DSB
-from 1995 to 2018.
+from 1995 to 2018. This data addresses the WTO dispute settlement mechanism most in granular level as it includes the textual description of the factual circumstances of each trade dispute.
 Using this collected data, I trained the neural network by enforcing the neural network to answer correctly
 whether a given article of the WTO agreements
 can be cited for the given textual description of
-trade dispute.
-
-After training, I fitted a network that summarizes the systematic interactions between articles of WTO agreements using \textit{Random Forests} \citep{rf, genie3}.
+trade dispute. After training, I fitted a network that summarizes the systematic interactions between articles of WTO agreements using \textit{Random Forests} \citep{rf, genie3}.
 The network is fitted as to best explain the variance of each article's citabilities. Those citabilities are collected from the predictions of the trained deep neural network.
 
-To verify the quality of the fitted network, I compared the fitted network with the jurisprudence of WTO DSB appearing in the Panel and Appellate Body reports.
-Specifically, I found three major principles of WTO DSB, \textit{Market Access}, \textit{Reciprocity}, and \textit{Non-discrimination}, are clustered in the fitted network.
-The systematic interactions between articles of WTO agreements are formed as how the Panel and Appellate Body explained in their judicial opinions.
-As Panel and Appellate Body authoritatively constitute the jurisprudence of WTO DSB, I concluded that the method qualitatively summarizes the systematic interactions of articles of WTO agreements.
+To verify the quality of the fitted network, I compared the fitted network with the jurisprudence of WTO DSB.
+% As the systematic interactions between articles of WTO agreements are formed as the Panel and Appellate Body express their judicial opinion in their report.
+Specifically, I found that three major principles of WTO DSB, \textit{Market Access}, \textit{Reciprocity}, and \textit{Non-discrimination}, are also clustered in the fitted network.
+This result is also consistent with the current literature that points out those three principles as being the primary principles of the WTO \citep{bagwell}.
+Therefore, I concluded that the method qualitatively summarizes the systematic interactions of articles of WTO agreements.
+
+
 % % == DEF EXAMPLE ==
 \begin{figure}[t!]
  \captionsetup[subfigure]{justification=centering}
