@@ -1,13 +1,13 @@
 The prediction matrix $P$ illustrated in Figure \ref{predidction_matrix}
 includes a co-citation pattern between articles of WTO agreements. For example,
 we can see several highlighted bands in Figure \ref{predidction_matrix}
-and it tells us there exists some co-citation patterns inside the matrix.
+and it tells us there exist some co-citation patterns inside the matrix.
  
 To materialize this co-citation pattern in a form of \textit{directed edge weights} $W$ as defined in Section \ref{subsec:def},
 I used a machine learning technique called \textit{Random Forest} (RF). RF is an ensemble method that averages out
 multiple decision trees.
  
-A decision tree consists of several nodes where each node splits the all observations into two with an inequality criterion of an input feature.
+A decision tree consists of several nodes where each node splits all observations into two with an inequality criterion of an input feature.
 This split reduces the variance of the output variables gradually as the tree grows.
 % uses one of input features and explains the variance reduction of the output variable.
 % Then simply by averaging out this explanations over all trees, we can score and rank
@@ -15,11 +15,11 @@ This split reduces the variance of the output variables gradually as the tree gr
 In our case, for a given target article $v_j \in V$, the rest of the articles $v_i \in V \setminus \{v_j\}$ becomes the input features.
 % Then we construct a decision tree where each tree tries to explain the variance of output variables with those input features as much as possible.
 For example, we have 143 observations in Figure \ref{predidction_matrix} where the number equals that of rows.
-Then we grow a tree where each node of tree splits
+Then we grow a tree where each node of the tree splits
 the observations according to its own criterion
-whether the value of that input features greater (or lesser) than certain value.
+whether the value of that input features greater (or lesser) than a certain value.
 By doing so,
-variance of output variables in 143 observations keep reduced following down the tree.
+the variance of output variables in 143 observations keeps reduced following down the tree.
 Then we can collect and assign the amount of variance reduced by each input feature to $w_{ij}$
 by interpreting this variance reduction as how much
 The source article $v_i$ clarifies the interpretation of the target article $v_j$.
@@ -29,10 +29,10 @@ sums up to 1. Therefore $W = (w_{ij})$ fits to its formal definition (Section \r
 There are three different aspects that distinguish RF from a single decision tree.
 First, as noted earlier, RF requires to average out multiple decision trees.
 I ensembled 1,000 decision trees and averaged out all $w_{ij}$ generated from each decision tree.
-Second, RF requires \textit{bagging} that random samples observations with replacement before constructing a tree.
+Second, RF requires \textit{bagging} that random samples observations with a replacement before constructing a tree.
 This is to avoid overfitting by letting each tree being trained on different parts of the same dataset.
-I sampled 143 observations with replacement for each construction of decision tree.
-Third, RF requires to compare the result of random subset of input features to split.
-I random sampled $\sqrt{|V|-1}$ number of input features at each split because \cite{genie3} reported high performance of use of this parameter for solving regression problem with random forest that is same to our setting.
+I sampled 143 observations with a replacement for each construction of a decision tree.
+Third, RF requires comparing the result of a random subset of input features to split.
+I random sampled $\sqrt{|V|-1}$ number of input features at each split because \cite{genie3} reported high performance of use of this parameter for solving regression problem with the random forest that is same to our setting.
  
 All the process of finding $W^*$ from the prediction matrix $P$ is formally defined in Algorithm \ref{rf} and final output of $W^*$ is visualized as the heatmap $W_{text}$ in Figure \ref{subfig:adj_dense}.
